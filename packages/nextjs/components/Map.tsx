@@ -147,7 +147,7 @@ export function Map() {
                           await refetchUserAlignedLocations();
                         }}
                       >
-                        <p className="m-0 p-0">{`Get Based`}</p>
+                        <p className="m-0 p-0">{`Checkin`}</p>
                         {/* <p className="m-0 p-0">{`(${formatEther(alignmentCost || BigInt(0))} ETH)`}</p> */}
                       </button>
                     </>

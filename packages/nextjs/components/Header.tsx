@@ -97,8 +97,8 @@ export const Header = () => {
             <Image alt="SE2 logo" className="cursor-pointer" fill src="/base-world.png" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">Based World</span>
-            <span className="text-xs">{"Find the most based places in the world!"}</span>
+            <span className="font-bold leading-tight">Home Base</span>
+            <span className="text-xs">{"Community-driven, onchain check-in app"}</span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
