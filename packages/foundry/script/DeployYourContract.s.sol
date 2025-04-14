@@ -57,10 +57,10 @@ contract DeployYourContract is ScaffoldETHDeploy {
             admins = [_deployer, 0xCbEbcc04B4A5fA18089695AB357fD149c7862Cce]; // Default anvil account
             contractManagers = [0xCbEbcc04B4A5fA18089695AB357fD149c7862Cce];
             managerAlignmentAdders = [
-                0xCbEbcc04B4A5fA18089695AB357fD149c7862Cce
+                0xa0Ee7A142d267C1f36714E4a8F75612F20a79720
             ];
             managerAlignmentRemovers = [
-                0xCbEbcc04B4A5fA18089695AB357fD149c7862Cce
+                0xa0Ee7A142d267C1f36714E4a8F75612F20a79720
             ];
             nftContractSetters = [0xCbEbcc04B4A5fA18089695AB357fD149c7862Cce];
             // fundRecipient = 0xCbEbcc04B4A5fA18089695AB357fD149c7862Cce;

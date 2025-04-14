@@ -456,7 +456,7 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744586071.json",
+      deploymentFile: "run-1744592682.json",
       deploymentScript: "Deploy.s.sol",
     },
     AlignmentV1: {
@@ -796,7 +796,7 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744586071.json",
+      deploymentFile: "run-1744592682.json",
       deploymentScript: "Deploy.s.sol",
     },
   },
