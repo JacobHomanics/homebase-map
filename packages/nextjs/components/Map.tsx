@@ -1,4 +1,4 @@
-import { SyntheticEvent } from "react";
+import { SyntheticEvent, useMemo } from "react";
 import { LoadingOverlay } from "./LoadingOverlay";
 import { HomebaseMap } from "./homebase-map/HomebaseMap";
 import { UserAlignedLocations } from "./homebase-map/UserAlignedLocations";
@@ -10,7 +10,8 @@ import { useLocationScores } from "~~/hooks/homebase-map/useLocationScores";
 import { useMapHeight } from "~~/hooks/homebase-map/useMapHeight";
 import { useSelectedMarker } from "~~/hooks/homebase-map/useSelectedMarker";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
-import { locations } from "~~/locations.config";
+import { Location, locations } from "~~/locations.config";
+import { DEFAULT_RANGE_METERS, isWithinRange } from "~~/utils/distance";
 
 export function Map() {
   const mapHeight = useMapHeight(450, 650);
@@ -27,6 +28,27 @@ export function Map() {
   const { selectedMarker } = useSelectedMarker();
 
   const { locationScores } = useLocationScores();
+
+  // Calculate which locations are within range of the user's location
+  let locationsInRange: number[] = [];
+
+  if (userLocation) {
+    locationsInRange = locations
+      .filter(location =>
+        isWithinRange(
+          userLocation?.lat,
+          userLocation?.lng,
+          location.position.lat,
+          location.position.lng,
+          DEFAULT_RANGE_METERS,
+        ),
+      )
+      .map(location => location.id);
+  }
+
+  const isLocationInRange = (location: Location) => {
+    return locationsInRange.includes(location.id);
+  };
 
   // const { data: alignmentCost } = useScaffoldReadContract({
   //   contractName: "AlignmentManagerV1",
@@ -55,30 +77,27 @@ export function Map() {
         center={center}
         locations={locations}
         containerStyle={mapContainerStyle}
-        infoWindowChildren={
+        infoWindowChildren={(location: Location) => (
           <div className="p-4 text-center bg-base-300 m-4 rounded-lg items-center flex justify-center flex-col">
-            <p className="m-0 text-xl md:text-4xl text-black dark:text-white">
-              {selectedMarker && selectedMarker.title}
-            </p>
+            <p className="m-0 text-xl text-black dark:text-white">{location.title}</p>
             <p className="m-0 text-2xl md:text-xl text-black dark:text-white">Pledges</p>{" "}
-            <p className="m-0 text-2xl md:text-6xl text-black dark:text-white">
-              {selectedMarker && locationScores[selectedMarker.address]}
-            </p>
+            <p className="m-0 text-2xl md:text-6xl text-black dark:text-white">{locationScores[location.address]}</p>
+            {!isLocationInRange(location) && <p className="text-red-500">This location is outside your range</p>}
             {!connectedAddress && <ConnectButton />}
             {connectedAddress &&
-              (isUserAlignedWithEntity ? (
+              (isUserAlignedWithEntity === true ? (
                 <>
                   <p className="text-green-600 text-2xl">You are Based with this Region!</p>
                 </>
               ) : (
                 <>
-                  <button className="btn btn-primary btn-sm" onClick={pledge}>
-                    {"Attest Location"}
+                  <button className="btn btn-primary btn-sm" onClick={pledge} disabled={!isLocationInRange(location)}>
+                    {!isLocationInRange(location) ? "Location Out of Range" : "Attest Location"}
                   </button>
                 </>
               ))}
           </div>
-        }
+        )}
       />
 
       <UserAlignedLocations />
