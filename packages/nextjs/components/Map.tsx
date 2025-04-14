@@ -1,6 +1,6 @@
 import { SyntheticEvent, useContext, useEffect, useState } from "react";
 import { EASContext } from "./EASContextProvider";
-import { AttestButton } from "./homebase-map/AttestButton";
+import { HomebaseMap } from "./homebase-map/HomebaseMap";
 import { SchemaEncoder } from "@ethereum-attestation-service/eas-sdk";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { GoogleMap, InfoWindow, LoadScript, Marker } from "@react-google-maps/api";
@@ -12,6 +12,7 @@ import easConfig from "~~/EAS.config";
 import { useAttestLocation } from "~~/hooks/homebase-map/useAttestLocation";
 import { useGetUserLocation } from "~~/hooks/homebase-map/useGetUserLocation";
 import { useMapHeight } from "~~/hooks/homebase-map/useMapHeight";
+import { useSelectedMarker } from "~~/hooks/homebase-map/useSelectedMarker";
 import { useScaffoldContract, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 import { Location, locations } from "~~/locations.config";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
@@ -30,7 +31,7 @@ export function Map() {
 
   const { address: connectedAddress } = useAccount();
 
-  const [selectedMarker, setSelectedMarker] = useState<Location | null>(null);
+  const { selectedMarker } = useSelectedMarker();
 
   const { data: userAlignedLocations, refetch: refetchUserAlignedLocations } = useScaffoldReadContract({
     contractName: "AlignmentManagerV1",
@@ -78,13 +79,59 @@ export function Map() {
 
   const { handleSubmit: attestLocation } = useAttestLocation({ userLocation });
 
+  console.log(selectedMarker);
   return (
     <>
-      <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ""}>
+      <HomebaseMap
+        userLocation={userLocation}
+        center={center}
+        locations={locations}
+        containerStyle={mapContainerStyle}
+        infoWindowChildren={
+          <div className="p-4 text-center bg-base-300 m-4 rounded-lg items-center flex justify-center flex-col">
+            <p className="m-0 text-xl md:text-4xl text-black dark:text-white">
+              {selectedMarker && selectedMarker.title}
+            </p>
+            <p className="m-0 text-2xl md:text-xl text-black dark:text-white">Pledges</p>{" "}
+            <p className="m-0 text-2xl md:text-6xl text-black dark:text-white">
+              {selectedMarker && locationScores[selectedMarker.address]}
+            </p>
+            {!connectedAddress && <ConnectButton />}
+            {connectedAddress &&
+              (isUserAlignedWithEntity ? (
+                <>
+                  <p className="text-green-600 text-2xl">You are Based with this Region!</p>
+                  {/* <button
+                  className="btn btn-primary btn-sm"
+                  onClick={async () => {
+                    await writeAlignmentManagerAsync({
+                      functionName: "removeAlignment",
+                      args: [selectedMarker?.address],
+                    });
+
+                    await fetchLocationScores();
+                    await refetchIsUserAlignedWithEntity();
+                    await refetchUserAlignedLocations();
+                  }}
+                >
+                  {"Remove alignment"}
+                </button> */}
+                </>
+              ) : (
+                <>
+                  <button className="btn btn-primary btn-sm" onClick={attestLocation}>
+                    {"Attest Location"}
+                  </button>
+                </>
+              ))}
+          </div>
+        }
+      />
+      {/* <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ""}>
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           center={center}
-          zoom={4} //options={{ styles: customMapStyle }}//
+          zoom={4} 
         >
           {userLocation && (
             <Marker
@@ -100,14 +147,14 @@ export function Map() {
             <Marker
               key={marker.id}
               position={marker.position}
-              onClick={() => setSelectedMarker(marker)} // Show InfoWindow on click
+              onClick={() => setSelectedMarker(marker)} 
             />
           ))}
 
           {selectedMarker && (
             <InfoWindow
               position={selectedMarker.position}
-              onCloseClick={() => setSelectedMarker(null)} // Close InfoWindow on click
+              onCloseClick={() => setSelectedMarker(null)}
             >
               <div className="p-4 text-center bg-base-300 m-4 rounded-lg items-center flex justify-center flex-col">
                 <p className="m-0 text-xl md:text-4xl text-black dark:text-white">{selectedMarker.title}</p>
@@ -120,21 +167,7 @@ export function Map() {
                   (isUserAlignedWithEntity ? (
                     <>
                       <p className="text-green-600 text-2xl">You are Based with this Region!</p>
-                      {/* <button
-                        className="btn btn-primary btn-sm"
-                        onClick={async () => {
-                          await writeAlignmentManagerAsync({
-                            functionName: "removeAlignment",
-                            args: [selectedMarker?.address],
-                          });
-
-                          await fetchLocationScores();
-                          await refetchIsUserAlignedWithEntity();
-                          await refetchUserAlignedLocations();
-                        }}
-                      >
-                        {"Remove alignment"}
-                      </button> */}
+                  
                     </>
                   ) : (
                     <>
@@ -147,7 +180,7 @@ export function Map() {
             </InfoWindow>
           )}
         </GoogleMap>
-      </LoadScript>
+      </LoadScript> */}
 
       {userAlignedLocations && userAlignedLocations.length > 0 && (
         <div className="flex flex-wrap items-center justify-center gap-10 bg-primary">
