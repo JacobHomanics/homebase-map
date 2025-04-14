@@ -8,6 +8,7 @@ import { ethers } from "ethers";
 import { getAddress } from "viem";
 import { Config, UseChainIdParameters, useAccount, useChainId } from "wagmi";
 import easConfig from "~~/EAS.config";
+import { useMapHeight } from "~~/hooks/homebase-map/something";
 import { useScaffoldContract, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 import { Location, locations } from "~~/locations.config";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
@@ -23,30 +24,15 @@ const defaultCenter = {
 };
 
 export function Map() {
-  const [mapHeight, setMapHeight] = useState(650);
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
   const [center, setCenter] = useState(defaultCenter);
+
+  const mapHeight = useMapHeight(450, 650);
 
   const mapContainerStyle = {
     width: "100%",
     height: `${mapHeight}px`,
   };
-
-  useEffect(() => {
-    const handleResize = () => {
-      // Check if window width is less than typical mobile breakpoint (768px)
-      setMapHeight(window.innerWidth < 768 ? 450 : 650);
-    };
-
-    // Set initial height
-    handleResize();
-
-    // Add event listener for window resize
-    window.addEventListener("resize", handleResize);
-
-    // Clean up event listener on component unmount
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   useEffect(() => {
     console.log("Attempting to get geolocation...");
