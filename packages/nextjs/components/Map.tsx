@@ -79,7 +79,7 @@ export function Map() {
 
   const { handleSubmit: attestLocation } = useAttestLocation({ userLocation });
 
-  console.log(selectedMarker);
+  // console.log(selectedMarker);
   return (
     <>
       <HomebaseMap

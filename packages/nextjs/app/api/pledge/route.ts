@@ -9,25 +9,25 @@ import deployedContracts from "~~/contracts/deployedContracts";
 // In production, use a database like MongoDB, Redis, etc.
 
 export async function POST(request: Request) {
-  async function getLocationProofs() {
-    try {
-      // Get all location proofs
-      const response = await fetch("https://api.astral.global/api/v0/location-proofs");
-      const data = await response.json();
-      //   console.log(`Found ${data.count} location proofs`);
-      //   console.log(data.data);
-    } catch (error) {
-      console.error("Error fetching location proofs:", error);
-    }
-  }
+  //   async function getLocationProofs() {
+  //     try {
+  //       // Get all location proofs
+  //       const response = await fetch("https://api.astral.global/api/v0/location-proofs");
+  //       const data = await response.json();
+  //       //   console.log(`Found ${data.count} location proofs`);
+  //       //   console.log(data.data);
+  //     } catch (error) {
+  //       console.error("Error fetching location proofs:", error);
+  //     }
+  //   }
 
-  getLocationProofs();
+  //   getLocationProofs();
 
   try {
     const { password, userAddress, location } = await request.json();
 
     const result = await attestLocation(userAddress);
-    console.log(result);
+    // console.log(result);
 
     // // Create wallet client with private key
     // // IMPORTANT: Store this in an environment variable in production

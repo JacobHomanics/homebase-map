@@ -1,6 +1,4 @@
-import { InfoWindow } from "@react-google-maps/api";
-import { LoadScript, Marker } from "@react-google-maps/api";
-import { GoogleMap } from "@react-google-maps/api";
+import { GoogleMap, InfoWindow, LoadScript, Marker } from "@react-google-maps/api";
 import { UserLocation } from "~~/hooks/homebase-map/useGetUserLocation";
 import { useSelectedMarker } from "~~/hooks/homebase-map/useSelectedMarker";
 import { Location } from "~~/locations.config";
@@ -26,16 +24,17 @@ export const HomebaseMap = ({
   const { selectedMarker, set } = useSelectedMarker();
   return (
     <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ""}>
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={4} //options={{ styles: customMapStyle }}//
-      >
+      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={4}>
         {userLocation && (
           <Marker
             position={userLocation}
             icon={{
               url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+              scaledSize: {
+                width: 32,
+                height: 32,
+                equals: () => false,
+              },
             }}
             title="Your Location"
           />
@@ -46,6 +45,14 @@ export const HomebaseMap = ({
             key={marker.id}
             position={marker.position}
             onClick={() => set(marker)} // Show InfoWindow on click
+            icon={{
+              url: "/homebase.jpg",
+              scaledSize: {
+                width: 32,
+                height: 32,
+                equals: () => false,
+              },
+            }}
           />
         ))}
 
