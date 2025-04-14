@@ -23,10 +23,9 @@ export const useAttestLocation = ({ userLocation }: { userLocation: UserLocation
   const schemaEncoder = new SchemaEncoder(easConfig.schema.rawString);
   const schemaUID = easConfig.chains[chainId.toString() as keyof typeof easConfig.chains]?.schemaUID;
 
-  const handleSubmit = async (event: SyntheticEvent) => {
+  const handleSubmit = async () => {
     console.log("started");
 
-    event.preventDefault();
     setIsTxLoading(true);
     setError(null);
 
