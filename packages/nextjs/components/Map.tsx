@@ -1,4 +1,5 @@
 import { SyntheticEvent } from "react";
+import { LoadingOverlay } from "./LoadingOverlay";
 import { HomebaseMap } from "./homebase-map/HomebaseMap";
 import { UserAlignedLocations } from "./homebase-map/UserAlignedLocations";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
@@ -48,6 +49,7 @@ export function Map() {
 
   return (
     <>
+      <LoadingOverlay message="Where is your Homebase?" duration={1000} />
       <HomebaseMap
         userLocation={userLocation}
         center={center}
