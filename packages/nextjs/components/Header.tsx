@@ -94,7 +94,13 @@ export const Header = () => {
         </div>
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
           <div className="flex relative w-10 h-10">
-            <Image alt="SE2 logo" className="cursor-pointer" fill src="/base-world.png" />
+            <Image
+              alt="SE2 logo"
+              className="cursor-pointer"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              src="/base-world.png"
+            />
           </div>
           <div className="flex flex-col">
             <span className="font-bold leading-tight">Home Base</span>

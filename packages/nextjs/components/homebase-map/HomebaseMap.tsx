@@ -1,4 +1,5 @@
-import { GoogleMap, InfoWindow, LoadScript, Marker } from "@react-google-maps/api";
+import { MarkerWithInfowindow } from "../MarkerWithInfowindow";
+import { APIProvider, AdvancedMarker, Map, Pin } from "@vis.gl/react-google-maps";
 import { UserLocation } from "~~/hooks/homebase-map/useGetUserLocation";
 import { useSelectedMarker } from "~~/hooks/homebase-map/useSelectedMarker";
 import { Location } from "~~/locations.config";
@@ -21,50 +22,32 @@ export const HomebaseMap = ({
   containerStyle,
   infoWindowChildren,
 }: HomebaseMapProps) => {
-  const { selectedMarker, set } = useSelectedMarker();
+  const { set } = useSelectedMarker();
+
   return (
-    <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ""}>
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={4}>
+    <>
+      {" "}
+      <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ""}>
+        <Map
+          style={containerStyle}
+          defaultCenter={center}
+          defaultZoom={4}
+          gestureHandling={"greedy"}
+          mapId="8c78d816c97d148e"
+        />
+
         {userLocation && (
-          <Marker
-            position={userLocation}
-            icon={{
-              url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-              scaledSize: {
-                width: 32,
-                height: 32,
-                equals: () => false,
-              },
-            }}
-            title="Your Location"
-          />
+          <AdvancedMarker position={userLocation}>
+            <Pin scale={1} background="#0052FF" borderColor="#000000" glyphColor="#000000" />
+          </AdvancedMarker>
         )}
 
         {locations.map(marker => (
-          <Marker
-            key={marker.id}
-            position={marker.position}
-            onClick={() => set(marker)} // Show InfoWindow on click
-            icon={{
-              url: "/homebase.jpg",
-              scaledSize: {
-                width: 32,
-                height: 32,
-                equals: () => false,
-              },
-            }}
-          />
-        ))}
-
-        {selectedMarker && (
-          <InfoWindow
-            position={selectedMarker.position}
-            onCloseClick={() => set(null)} // Close InfoWindow on click
-          >
+          <MarkerWithInfowindow key={marker.id} position={marker.position} onClick={() => set(marker)}>
             {infoWindowChildren}
-          </InfoWindow>
-        )}
-      </GoogleMap>
-    </LoadScript>
+          </MarkerWithInfowindow>
+        ))}
+      </APIProvider>
+    </>
   );
 };
