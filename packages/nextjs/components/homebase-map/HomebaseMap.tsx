@@ -52,7 +52,7 @@ export const HomebaseMap = ({
         {selectedMarker && (
           <InfoWindow
             position={selectedMarker.position}
-            onCloseClick={() => set(undefined)} // Close InfoWindow on click
+            onCloseClick={() => set(null)} // Close InfoWindow on click
           >
             {infoWindowChildren}
           </InfoWindow>
