@@ -8,7 +8,7 @@ import { ethers } from "ethers";
 import { getAddress } from "viem";
 import { Config, UseChainIdParameters, useAccount, useChainId } from "wagmi";
 import easConfig from "~~/EAS.config";
-import { useMapHeight } from "~~/hooks/homebase-map/something";
+import { useMapHeight } from "~~/hooks/homebase-map/useMapHeight";
 import { useScaffoldContract, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 import { Location, locations } from "~~/locations.config";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
