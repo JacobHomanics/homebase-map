@@ -45,4 +45,18 @@ contract NFTV1 is AccessControl, ERC721Enumerable {
     {
         return super.supportsInterface(interfaceId);
     }
+
+    // Prevent transfers
+    function _beforeTokenTransfer(
+        address from,
+        address to,
+        uint256 tokenId,
+        uint256 batchSize
+    ) internal virtual override {
+        require(
+            from == address(0) || to == address(0),
+            "This is a Soulbound token. It cannot be transferred."
+        );
+        super._beforeTokenTransfer(from, to, tokenId, batchSize);
+    }
 }
