@@ -67,6 +67,7 @@ export function Map() {
     functionName: "totalSupply",
   });
 
+  console.log(brusselsTotalSupply);
   const { data: goshoTotalSupply } = useScaffoldReadContract({
     contractName: "Gosho",
     functionName: "totalSupply",
@@ -193,7 +194,7 @@ export function Map() {
             <p className="m-0 text-xl text-black dark:text-white">{location.title}</p>
             <p className="m-0 text-2xl md:text-xl text-black dark:text-white">Pledges</p>{" "}
             <p className="m-0 text-2xl md:text-6xl text-black dark:text-white">{nftTotalSupplyMapping[location.id]}</p>
-            {!isLocationInRange(location) && <p className="text-red-500">This location is outside your range</p>}
+            {/* {!isLocationInRange(location) && <p className="text-red-500">This location is outside your range</p>} */}
             {!connectedAddress && <ConnectButton />}
             {connectedAddress &&
               ((nftBalanceMapping?.[location.id] ?? 0) > 0 ? (
@@ -202,8 +203,14 @@ export function Map() {
                 </>
               ) : (
                 <>
-                  <button className="btn btn-primary btn-sm" onClick={pledge} disabled={!isLocationInRange(location)}>
-                    {!isLocationInRange(location) ? "Location Out of Range" : "Attest Location"}
+                  <button
+                    className="btn btn-primary btn-sm"
+                    onClick={pledge} //disabled={!isLocationInRange(location)}
+                  >
+                    {
+                      //!isLocationInRange(location) ? "Location Out of Range" :
+                      "Attest Location"
+                    }
                   </button>
                 </>
               ))}
