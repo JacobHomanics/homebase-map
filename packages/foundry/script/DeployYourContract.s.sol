@@ -33,8 +33,8 @@ contract DeployYourContract is ScaffoldETHDeploy {
         // Set admin address based on the network
         if (chainId == 8453) {
             // Base Mainnet
-            admins = [_deployer, 0xc0f0E1512D6A0A77ff7b9C172405D1B0d73565Bf];
-            minters = [0xc0f0E1512D6A0A77ff7b9C172405D1B0d73565Bf];
+            admins = [_deployer, 0xe80A48BcA9552d5DC6567841CdD5d0F870C4b98B];
+            minters = [0xe80A48BcA9552d5DC6567841CdD5d0F870C4b98B];
             // contractManagers = [0xc0f0E1512D6A0A77ff7b9C172405D1B0d73565Bf];
             // managerAlignmentAdders = [
             //     0xc0f0E1512D6A0A77ff7b9C172405D1B0d73565Bf
@@ -47,8 +47,8 @@ contract DeployYourContract is ScaffoldETHDeploy {
             // fundRecipient = 0xc0f0E1512D6A0A77ff7b9C172405D1B0d73565Bf;
         } else if (chainId == 84531) {
             // Base Sepolia (testnet)
-            admins = [_deployer, 0xc0f0E1512D6A0A77ff7b9C172405D1B0d73565Bf]; // You can change this to a different testnet address
-            minters = [0xc0f0E1512D6A0A77ff7b9C172405D1B0d73565Bf];
+            admins = [_deployer, 0xe80A48BcA9552d5DC6567841CdD5d0F870C4b98B]; // You can change this to a different testnet address
+            minters = [0xe80A48BcA9552d5DC6567841CdD5d0F870C4b98B];
             // contractManagers = [0xc0f0E1512D6A0A77ff7b9C172405D1B0d73565Bf];
             // managerAlignmentAdders = [
             //     0xc0f0E1512D6A0A77ff7b9C172405D1B0d73565Bf

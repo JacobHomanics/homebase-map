@@ -67,7 +67,6 @@ export function Map() {
     functionName: "totalSupply",
   });
 
-  console.log(brusselsTotalSupply);
   const { data: goshoTotalSupply } = useScaffoldReadContract({
     contractName: "Gosho",
     functionName: "totalSupply",
@@ -209,7 +208,7 @@ export function Map() {
                   >
                     {
                       //!isLocationInRange(location) ? "Location Out of Range" :
-                      "Attest Location"
+                      "Check in"
                     }
                   </button>
                 </>

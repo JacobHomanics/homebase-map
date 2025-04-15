@@ -24,17 +24,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Location not found" }, { status: 400 });
     }
 
-    const isInRange = isWithinRange(
-      userLocation?.lat,
-      userLocation?.lng,
-      selectedLocation?.position.lat,
-      selectedLocation?.position.lng,
-      DEFAULT_RANGE_METERS,
-    );
+    // const isInRange = isWithinRange(
+    //   userLocation?.lat,
+    //   userLocation?.lng,
+    //   selectedLocation?.position.lat,
+    //   selectedLocation?.position.lng,
+    //   DEFAULT_RANGE_METERS,
+    // );
 
-    if (!isInRange) {
-      return NextResponse.json({ error: "You are not in range of this location" }, { status: 400 });
-    }
+    // if (!isInRange) {
+    //   return NextResponse.json({ error: "You are not in range of this location" }, { status: 400 });
+    // }
 
     const nfts = [
       deployedContracts[base.id].Brussels,
