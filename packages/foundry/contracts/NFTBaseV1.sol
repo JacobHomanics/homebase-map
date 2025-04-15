@@ -151,20 +151,29 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
 
         // s_distanceInMeters = distanceInMeters;
 
-        int256 bufferMeters = 35; // 35 meters
-        int256 bufferLatNanodegrees = metersToNanodegreesLatitude(bufferMeters);
-        int256 bufferLonNanodegrees = metersToNanodegreesLongitude(
-            bufferMeters,
-            coordinates[0]
-        );
+        // int256 bufferMeters = 56000; // 56 km
+        // int256 bufferLatNanodegrees = metersToNanodegreesLatitude(bufferMeters);
+        // int256 bufferLonNanodegrees = metersToNanodegreesLongitude(
+        //     bufferMeters,
+        //     coordinates[0]
+        // );
+
+        int256 buffer = 1 * 10 ** 9; // 5 degrees in nanodegrees
 
         int256[2][2] memory bbox;
         // Lower left
-        bbox[0][0] = coordinates[0] - bufferLatNanodegrees;
-        bbox[0][1] = coordinates[1] - bufferLonNanodegrees;
+
+        bbox[0][0] = coordinates[0] - buffer;
+        bbox[0][1] = coordinates[1] - buffer;
         // Upper right
-        bbox[1][0] = coordinates[0] + bufferLatNanodegrees;
-        bbox[1][1] = coordinates[1] + bufferLonNanodegrees;
+        bbox[1][0] = coordinates[0] + buffer;
+        bbox[1][1] = coordinates[1] + buffer;
+
+        // bbox[0][0] = coordinates[0] - bufferLatNanodegrees;
+        // bbox[0][1] = coordinates[1] - bufferLonNanodegrees;
+        // // Upper right
+        // bbox[1][0] = coordinates[0] + bufferLatNanodegrees;
+        // bbox[1][1] = coordinates[1] + bufferLonNanodegrees;
 
         bool isInBbox = attestationLatitude > bbox[0][0] &&
             attestationLatitude < bbox[1][0] &&

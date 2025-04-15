@@ -22,4 +22,4 @@ export function isWithinRange(
 }
 
 // The default range used in the HomebaseMap component (35 miles in meters)
-export const DEFAULT_RANGE_METERS = 56327.04;
+export const DEFAULT_RANGE_METERS = 56000;

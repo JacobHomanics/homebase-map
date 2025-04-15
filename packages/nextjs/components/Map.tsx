@@ -1,4 +1,4 @@
-import { SyntheticEvent, useMemo } from "react";
+import { SyntheticEvent, useState } from "react";
 import { LoadingOverlay } from "./LoadingOverlay";
 import { HomebaseMap } from "./homebase-map/HomebaseMap";
 import { UserAlignedLocations } from "./homebase-map/UserAlignedLocations";
@@ -24,10 +24,10 @@ export function Map() {
     height: `${mapHeight}px`,
   };
 
-  // const { userLocation, center } = useGetUserLocation();
+  const { userLocation, center, isManualMode, setManualLocation, toggleManualMode } = useGetUserLocation();
 
-  const userLocation = { lat: -3.3816595331, lng: 36.701730603 };
-  const center = { lat: 50.84364262516137, lng: 4.403013511221624 };
+  // const userLocation = { lat: -3.3816595331, lng: 36.701730603 };
+  // const center = { lat: 50.84364262516137, lng: 4.403013511221624 };
   const { address: connectedAddress } = useAccount();
 
   const { selectedMarker } = useSelectedMarker();
@@ -195,8 +195,8 @@ export function Map() {
     // const longitude = parseUnits(userLocation.lng.toString(), 9);
     // const latitude = parseUnits(userLocation.lat.toString(), 9);
 
-    const testLongitude = parseUnits(userLocation.lng.toString(), 9);
-    const testLatitude = parseUnits(userLocation.lat.toString(), 9);
+    const testLongitude = parseUnits(userLocation?.lng?.toString() ?? "0", 9);
+    const testLatitude = parseUnits(userLocation?.lat?.toString() ?? "0", 9);
 
     const newAttestationUID = await attestLocation({ lat: testLatitude, lng: testLongitude });
     console.log("newAttestationUID");
@@ -212,20 +212,53 @@ export function Map() {
     // }
   }
 
+  // Handler for clicking on the map in manual mode
+  const handleMapClick = (location: { lat: number; lng: number }) => {
+    setManualLocation(location);
+  };
+
   return (
     <>
       <LoadingOverlay message="Where is your Homebase?" duration={1000} />
+
+      <div className="flex justify-between items-center mb-4 px-4">
+        <div className="flex items-center">
+          <label className="cursor-pointer label">
+            <span className="label-text mr-2">Manual Location</span>
+            <input
+              type="checkbox"
+              className="toggle toggle-primary"
+              checked={isManualMode}
+              onChange={toggleManualMode}
+            />
+          </label>
+        </div>
+        {isManualMode && (
+          <div className="text-sm text-info">
+            {userLocation
+              ? `Current location: ${userLocation.lat.toFixed(6)}, ${userLocation.lng.toFixed(6)}`
+              : "Click on the map to set your location"}
+          </div>
+        )}
+      </div>
+
       <HomebaseMap
         userLocation={userLocation}
         center={center}
         locations={locations}
         containerStyle={mapContainerStyle}
+        isManualMode={isManualMode}
+        onMapClick={handleMapClick}
         infoWindowChildren={(location: Location) => (
           <div className="p-4 text-center bg-base-300 m-4 rounded-lg items-center flex justify-center flex-col">
             <p className="m-0 text-xl text-black dark:text-white">{location.title}</p>
             <p className="m-0 text-2xl md:text-xl text-black dark:text-white">Pledges</p>{" "}
             <p className="m-0 text-2xl md:text-6xl text-black dark:text-white">{nftTotalSupplyMapping[location.id]}</p>
-            {/* {!isLocationInRange(location) && <p className="text-red-500">This location is outside your range</p>} */}
+            {/* {isManualMode && (
+              <button className="btn btn-secondary btn-sm mt-2" onClick={() => setManualLocation(location.position)}>
+                Set my location here
+              </button>
+            )} */}
             {!connectedAddress && <ConnectButton />}
             {connectedAddress &&
               ((nftBalanceMapping?.[location.id] ?? 0) > 0 ? (

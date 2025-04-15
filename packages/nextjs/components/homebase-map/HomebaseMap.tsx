@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { MarkerWithInfowindow } from "../MarkerWithInfowindow";
-import { APIProvider, AdvancedMarker, Map, Pin, useMap } from "@vis.gl/react-google-maps";
+import { APIProvider, AdvancedMarker, Map, MapMouseEvent, Pin, useMap } from "@vis.gl/react-google-maps";
 import { UserLocation } from "~~/hooks/homebase-map/useGetUserLocation";
 import { useSelectedMarker } from "~~/hooks/homebase-map/useSelectedMarker";
 import { Location } from "~~/locations.config";
@@ -15,6 +15,8 @@ interface HomebaseMapProps {
     height: string;
   };
   infoWindowChildren: (location: Location) => React.ReactNode;
+  isManualMode?: boolean;
+  onMapClick?: (location: UserLocation) => void;
 }
 
 const UserLocationCircle = ({ position }: { position: UserLocation }) => {
@@ -49,6 +51,7 @@ const UserLocationCircle = ({ position }: { position: UserLocation }) => {
       strokeOpacity: 0.5,
       strokeWeight: 1,
       map,
+      clickable: false, // Make the circle non-clickable so clicks pass through to the map
     });
 
     return () => {
@@ -65,9 +68,21 @@ export const HomebaseMap = ({
   locations,
   containerStyle,
   infoWindowChildren,
+  isManualMode = false,
+  onMapClick,
 }: HomebaseMapProps) => {
   const { set } = useSelectedMarker();
   const [openInfoWindowId, setOpenInfoWindowId] = useState<number | null>(null);
+
+  // Handle map click events when in manual mode
+  const handleMapClick = (e: MapMouseEvent) => {
+    if (isManualMode && onMapClick && e.detail?.latLng) {
+      onMapClick({
+        lat: e.detail.latLng.lat,
+        lng: e.detail.latLng.lng,
+      });
+    }
+  };
 
   return (
     <>
@@ -79,6 +94,7 @@ export const HomebaseMap = ({
           defaultZoom={4}
           gestureHandling={"greedy"}
           mapId="8c78d816c97d148e"
+          onClick={handleMapClick}
         >
           {locations.map(marker => (
             <MarkerWithInfowindow

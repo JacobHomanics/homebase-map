@@ -13,8 +13,12 @@ const defaultCenter = {
 export const useGetUserLocation = () => {
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
   const [center, setCenter] = useState(defaultCenter);
+  const [isManualMode, setIsManualMode] = useState(false);
 
   useEffect(() => {
+    // Only attempt to get geolocation if not in manual mode
+    if (isManualMode) return;
+
     console.log("Attempting to get geolocation...");
 
     if ("geolocation" in navigator) {
@@ -68,7 +72,18 @@ export const useGetUserLocation = () => {
       setUserLocation(null);
       //   setUserLocation(defaultCenter);
     }
-  }, []);
+  }, [isManualMode]);
 
-  return { userLocation, center };
+  // Function to manually set user location
+  const setManualLocation = (location: UserLocation) => {
+    setUserLocation(location);
+    setCenter(location);
+  };
+
+  // Toggle between automatic and manual location modes
+  const toggleManualMode = () => {
+    setIsManualMode(prev => !prev);
+  };
+
+  return { userLocation, center, isManualMode, setManualLocation, toggleManualMode };
 };

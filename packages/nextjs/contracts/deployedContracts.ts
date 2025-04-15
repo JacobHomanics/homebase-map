@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   8453: {
     Ndotohub: {
-      address: "0x0bfd665e9c6dad7297b9de3cee552c3fa8ad5b31",
+      address: "0x69ec16dcd97d22177d161b94c9d80b712247b658",
       abi: [
         {
           type: "constructor",
@@ -849,11 +849,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744757554.json",
+      deploymentFile: "run-1744759032.json",
       deploymentScript: "Deploy.s.sol",
     },
     Brussels: {
-      address: "0xbbd62d1c38760dd16049735c377d09e96fca3ccd",
+      address: "0xcc751205b3aadc718c3a29b8dedec3c5640e5744",
       abi: [
         {
           type: "constructor",
@@ -1695,11 +1695,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744757554.json",
+      deploymentFile: "run-1744759032.json",
       deploymentScript: "Deploy.s.sol",
     },
     Gosho: {
-      address: "0xf71bf49f9ec4974a5acd602deaa7ce61f90caf94",
+      address: "0x432c246a5a044beab8031fe618d15bb422c2e6d3",
       abi: [
         {
           type: "constructor",
@@ -2541,11 +2541,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744757554.json",
+      deploymentFile: "run-1744759032.json",
       deploymentScript: "Deploy.s.sol",
     },
     Yogyakarta: {
-      address: "0x9a9a39762a3db0fa00d5d9c78fd84a940f31d4e2",
+      address: "0xb0f220484b9cd6b11c310d4bc457278dda5a4e3e",
       abi: [
         {
           type: "constructor",
@@ -3387,7 +3387,7 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744757554.json",
+      deploymentFile: "run-1744759032.json",
       deploymentScript: "Deploy.s.sol",
     },
   },
