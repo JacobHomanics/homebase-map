@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   8453: {
     Ndotohub: {
-      address: "0x84d148f6bf8b6ddbed572e03143eea1326e305ac",
+      address: "0x7c6a7d68cc6ed4487668288491c918c7c2e98dfb",
       abi: [
         {
           type: "constructor",
@@ -75,19 +75,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "EARTH_RADIUS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "MAX_DISTANCE",
           inputs: [],
           outputs: [
@@ -108,6 +95,19 @@ const deployedContracts = {
               name: "",
               type: "bytes32",
               internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCALING_FACTOR",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -164,6 +164,35 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "calculateDistance",
+          inputs: [
+            {
+              name: "userLat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "userLong",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          outputs: [
+            {
+              name: "distance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isWithinRange",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -190,6 +219,24 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getContractLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "lat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "long",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -385,96 +432,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_eventTimestamp",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_location",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_locationType",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipePayload",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes",
-              internalType: "bytes",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipeType",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_srs",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -972,11 +929,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744692703.json",
+      deploymentFile: "run-1744732531.json",
       deploymentScript: "Deploy.s.sol",
     },
     Brussels: {
-      address: "0x505ac475a100755d989896ac8d8617588fadf67c",
+      address: "0x3b47efccbd3802ace7ad7c5a29cc598ce2c3213a",
       abi: [
         {
           type: "constructor",
@@ -1044,19 +1001,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "EARTH_RADIUS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "MAX_DISTANCE",
           inputs: [],
           outputs: [
@@ -1077,6 +1021,19 @@ const deployedContracts = {
               name: "",
               type: "bytes32",
               internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCALING_FACTOR",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -1133,6 +1090,35 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "calculateDistance",
+          inputs: [
+            {
+              name: "userLat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "userLong",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          outputs: [
+            {
+              name: "distance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isWithinRange",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -1159,6 +1145,24 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getContractLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "lat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "long",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -1354,96 +1358,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_eventTimestamp",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_location",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_locationType",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipePayload",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes",
-              internalType: "bytes",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipeType",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_srs",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -1941,11 +1855,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744692703.json",
+      deploymentFile: "run-1744732531.json",
       deploymentScript: "Deploy.s.sol",
     },
     Gosho: {
-      address: "0x6b47f33ce022ddafe424ff30097b4b9bce494446",
+      address: "0xfffbcd46cab427a6ee93ce49ecb3dce71d552879",
       abi: [
         {
           type: "constructor",
@@ -2013,19 +1927,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "EARTH_RADIUS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "MAX_DISTANCE",
           inputs: [],
           outputs: [
@@ -2046,6 +1947,19 @@ const deployedContracts = {
               name: "",
               type: "bytes32",
               internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCALING_FACTOR",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -2102,6 +2016,35 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "calculateDistance",
+          inputs: [
+            {
+              name: "userLat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "userLong",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          outputs: [
+            {
+              name: "distance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isWithinRange",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -2128,6 +2071,24 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getContractLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "lat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "long",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -2323,96 +2284,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_eventTimestamp",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_location",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_locationType",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipePayload",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes",
-              internalType: "bytes",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipeType",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_srs",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -2910,11 +2781,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744692703.json",
+      deploymentFile: "run-1744732531.json",
       deploymentScript: "Deploy.s.sol",
     },
     Yogyakarta: {
-      address: "0x10303712ec85aecc466d54642d43950fb241de99",
+      address: "0x8afc68c1fc695a4786fbe7f7971b547329dc0ebf",
       abi: [
         {
           type: "constructor",
@@ -2982,19 +2853,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "EARTH_RADIUS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "MAX_DISTANCE",
           inputs: [],
           outputs: [
@@ -3015,6 +2873,19 @@ const deployedContracts = {
               name: "",
               type: "bytes32",
               internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCALING_FACTOR",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -3071,6 +2942,35 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "calculateDistance",
+          inputs: [
+            {
+              name: "userLat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "userLong",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          outputs: [
+            {
+              name: "distance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isWithinRange",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -3097,6 +2997,24 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getContractLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "lat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "long",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -3292,96 +3210,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_eventTimestamp",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_location",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_locationType",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipePayload",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes",
-              internalType: "bytes",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipeType",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_srs",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -3879,7 +3707,7 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744692703.json",
+      deploymentFile: "run-1744732531.json",
       deploymentScript: "Deploy.s.sol",
     },
   },
@@ -3953,19 +3781,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "EARTH_RADIUS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "MAX_DISTANCE",
           inputs: [],
           outputs: [
@@ -3986,6 +3801,19 @@ const deployedContracts = {
               name: "",
               type: "bytes32",
               internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCALING_FACTOR",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -4042,6 +3870,35 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "calculateDistance",
+          inputs: [
+            {
+              name: "userLat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "userLong",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          outputs: [
+            {
+              name: "distance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isWithinRange",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -4068,6 +3925,24 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getContractLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "lat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "long",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -4263,96 +4138,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_eventTimestamp",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_location",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_locationType",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipePayload",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes",
-              internalType: "bytes",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipeType",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_srs",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -4922,19 +4707,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "EARTH_RADIUS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "MAX_DISTANCE",
           inputs: [],
           outputs: [
@@ -4955,6 +4727,19 @@ const deployedContracts = {
               name: "",
               type: "bytes32",
               internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCALING_FACTOR",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -5011,6 +4796,35 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "calculateDistance",
+          inputs: [
+            {
+              name: "userLat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "userLong",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          outputs: [
+            {
+              name: "distance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isWithinRange",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -5037,6 +4851,24 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getContractLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "lat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "long",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -5232,96 +5064,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_eventTimestamp",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_location",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_locationType",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipePayload",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes",
-              internalType: "bytes",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipeType",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_srs",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -5891,19 +5633,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "EARTH_RADIUS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "MAX_DISTANCE",
           inputs: [],
           outputs: [
@@ -5924,6 +5653,19 @@ const deployedContracts = {
               name: "",
               type: "bytes32",
               internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCALING_FACTOR",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -5980,6 +5722,35 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "calculateDistance",
+          inputs: [
+            {
+              name: "userLat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "userLong",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          outputs: [
+            {
+              name: "distance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isWithinRange",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -6006,6 +5777,24 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getContractLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "lat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "long",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -6201,96 +5990,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_eventTimestamp",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_location",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_locationType",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipePayload",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes",
-              internalType: "bytes",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipeType",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_srs",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -6860,19 +6559,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "EARTH_RADIUS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "MAX_DISTANCE",
           inputs: [],
           outputs: [
@@ -6893,6 +6579,19 @@ const deployedContracts = {
               name: "",
               type: "bytes32",
               internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCALING_FACTOR",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -6949,6 +6648,35 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "calculateDistance",
+          inputs: [
+            {
+              name: "userLat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "userLong",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          outputs: [
+            {
+              name: "distance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isWithinRange",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -6975,6 +6703,24 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getContractLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "lat",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "long",
+              type: "int256",
+              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -7170,96 +6916,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_eventTimestamp",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_location",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_locationType",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipePayload",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "bytes",
-              internalType: "bytes",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_recipeType",
-          inputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_srs",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",

@@ -22,8 +22,10 @@ export function Map() {
     height: `${mapHeight}px`,
   };
 
-  const { userLocation, center } = useGetUserLocation();
+  // const { userLocation, center } = useGetUserLocation();
 
+  const userLocation = { lat: 50.84364262516137, lng: 4.403013511221624 };
+  const center = { lat: 50.84364262516137, lng: 4.403013511221624 };
   const { address: connectedAddress } = useAccount();
 
   const { selectedMarker } = useSelectedMarker();
