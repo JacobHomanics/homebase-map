@@ -108,25 +108,33 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         }
 
         // Decode the attestation data
-        (, , , string memory location, , , , , ) = abi.decode(
+        (, int256 userLat, int256 userLong) = abi.decode(
             attestation.data,
-            (
-                uint256,
-                string,
-                string,
-                string,
-                string[],
-                bytes[],
-                string[],
-                string[],
-                string
-            )
+            (uint256, int256, int256)
         );
 
-        s_userLocation = location;
+        // s_userLocation = location;
 
         // Parse location string to get coordinates
-        (int256 userLat, int256 userLong) = _parseLocation(location);
+        // (int256 userLat, int256 userLong) = _parseLocation(location);
+
+        // // Ensure coordinates have exactly 18 decimal places
+        // // Fixed scale to 10^18 (18 decimal places)
+        // int256 scale = 1_000_000_000_000_000_000; // 10^18
+
+        // // Count digits in userLat to determine current scale
+        // int256 absLat = userLat < 0 ? -userLat : userLat;
+        // int256 absLong = userLong < 0 ? -userLong : userLong;
+
+        // // If latitude has 17 decimal places (common issue), add one more zero
+        // if (absLat > 0 && absLat < scale / 10) {
+        //     userLat *= 10;
+        // }
+
+        // // If longitude has 17 decimal places, add one more zero
+        // if (absLong > 0 && absLong < scale / 10) {
+        //     userLong *= 10;
+        // }
 
         s_userLat = userLat;
         s_userLong = userLong;
@@ -135,17 +143,17 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         int256 distanceInMeters = DistanceUtils.getDistance(
             latitude,
             longitude,
-            userLat,
+            userLat, // these are reversed due to attestation
             userLong
         );
 
         s_distanceInMeters = distanceInMeters;
-        // require(
-        //     distanceInMeters <= DEFAULT_RANGE_METERS,
-        //     "User location too far from contract location"
-        // );
+        require(
+            distanceInMeters <= DEFAULT_RANGE_METERS,
+            "User location too far from contract location"
+        );
 
-        // _mint(msg.sender, totalSupply());
+        _mint(msg.sender, totalSupply());
     }
 
     string public s_userLocation;
@@ -256,7 +264,7 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
             result = -result;
         }
 
-        // Scale to 18 decimals
+        // Always scale to exactly 18 decimal places (fixed-point format required by distance calculations)
         if (decimals > 0) {
             // If we have less than 18 decimal places, multiply to reach 18
             if (decimals < 18) {
@@ -269,6 +277,17 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         } else {
             // No decimals found, scale to 18 decimal places
             result = result * 1_000_000_000_000_000_000;
+        }
+
+        // Validation: ensure the result has exactly 18 decimal places
+        int256 scale = 1_000_000_000_000_000_000; // 10^18
+        int256 absResult = result < 0 ? -result : result;
+
+        // If result has 17 decimal places (common issue), add one more zero
+        if (
+            absResult > 0 && absResult < scale / 10 && absResult >= scale / 100
+        ) {
+            result *= 10;
         }
 
         return result;

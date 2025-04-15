@@ -24,7 +24,7 @@ export function Map() {
 
   // const { userLocation, center } = useGetUserLocation();
 
-  const userLocation = { lat: -3.3816595330236003, lng: 36.701730603710025 };
+  const userLocation = { lat: 50.822830042, lng: 4.358665232 };
   const center = { lat: 50.84364262516137, lng: 4.403013511221624 };
   const { address: connectedAddress } = useAccount();
 

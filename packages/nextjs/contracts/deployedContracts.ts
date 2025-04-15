@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   8453: {
     Ndotohub: {
-      address: "0xd7743befa1aa7db947d38040fc38f775676523e4",
+      address: "0xd669b38d1064f02ef09eb107d71fd42bf2a23310",
       abi: [
         {
           type: "constructor",
@@ -426,32 +426,6 @@ const deployedContracts = {
               name: "",
               type: "int256",
               internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_latStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_longStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
             },
           ],
           stateMutability: "view",
@@ -1093,11 +1067,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744742158.json",
+      deploymentFile: "run-1744744235.json",
       deploymentScript: "Deploy.s.sol",
     },
     Brussels: {
-      address: "0xe40879915fa78660b133facbe21294f869725b1b",
+      address: "0x94ee33c7bd762c61c9d8511a1be81d4a17a4577a",
       abi: [
         {
           type: "constructor",
@@ -1516,32 +1490,6 @@ const deployedContracts = {
               name: "",
               type: "int256",
               internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_latStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_longStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
             },
           ],
           stateMutability: "view",
@@ -2183,11 +2131,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744742158.json",
+      deploymentFile: "run-1744744235.json",
       deploymentScript: "Deploy.s.sol",
     },
     Gosho: {
-      address: "0x2e9666a6c7fa73acb463cfe0aa0a37be5ed755bf",
+      address: "0x989690e5e49eb0859f853ec42c9e244ea612e1da",
       abi: [
         {
           type: "constructor",
@@ -2606,32 +2554,6 @@ const deployedContracts = {
               name: "",
               type: "int256",
               internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_latStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_longStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
             },
           ],
           stateMutability: "view",
@@ -3273,11 +3195,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744742158.json",
+      deploymentFile: "run-1744744235.json",
       deploymentScript: "Deploy.s.sol",
     },
     Yogyakarta: {
-      address: "0x771de67dd3d88c4eb0ca77e87891644b4cf6e546",
+      address: "0x6456c42d839ed215fef155574a8daca324130703",
       abi: [
         {
           type: "constructor",
@@ -3696,32 +3618,6 @@ const deployedContracts = {
               name: "",
               type: "int256",
               internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_latStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_longStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
             },
           ],
           stateMutability: "view",
@@ -4363,7 +4259,7 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744742158.json",
+      deploymentFile: "run-1744744235.json",
       deploymentScript: "Deploy.s.sol",
     },
   },
@@ -4788,32 +4684,6 @@ const deployedContracts = {
               name: "",
               type: "int256",
               internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_latStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_longStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
             },
           ],
           stateMutability: "view",
@@ -5884,32 +5754,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "s_latStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_longStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "s_userLat",
           inputs: [],
           outputs: [
@@ -6974,32 +6818,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "s_latStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_longStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "s_userLat",
           inputs: [],
           outputs: [
@@ -8058,32 +7876,6 @@ const deployedContracts = {
               name: "",
               type: "int256",
               internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_latStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_longStr",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
             },
           ],
           stateMutability: "view",

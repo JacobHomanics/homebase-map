@@ -89,10 +89,10 @@ contract DeployYourContract is ScaffoldETHDeploy {
             "ipfs://bafkreibengojht5th2j2ph3exuf5pfpcabipzxxeclra54hxq2hkm7p65e",
             admins,
             minters,
-            -33816600000000000000,
+            -3381660000000000000,
             36701731000000000000,
             0x4200000000000000000000000000000000000021,
-            0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2
+            0xc4d36724ce4643672ca70ff49c51f4c6d0a7e2036c90c9a2c07d5125714fb92d
         );
 
         Brussels brussels = new Brussels(
@@ -104,7 +104,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
             50822830042000000000,
             43586652320000000000,
             0x4200000000000000000000000000000000000021,
-            0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2
+            0xc4d36724ce4643672ca70ff49c51f4c6d0a7e2036c90c9a2c07d5125714fb92d
         );
 
         Gosho gosho = new Gosho(
@@ -116,7 +116,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
             -18179401300000000000,
             31627821000000000000,
             0x4200000000000000000000000000000000000021,
-            0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2
+            0xc4d36724ce4643672ca70ff49c51f4c6d0a7e2036c90c9a2c07d5125714fb92d
         );
 
         Yogyakarta yogyakarta = new Yogyakarta(
@@ -128,7 +128,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
             -77970680000000000000,
             11037053000000000000,
             0x4200000000000000000000000000000000000021,
-            0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2
+            0xc4d36724ce4643672ca70ff49c51f4c6d0a7e2036c90c9a2c07d5125714fb92d
         );
 
         // console.logString(

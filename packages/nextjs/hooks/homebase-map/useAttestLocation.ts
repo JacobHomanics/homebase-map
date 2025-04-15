@@ -42,22 +42,30 @@ export const useAttestLocation = () => {
     }
 
     try {
-      const longitude = userLocation ? userLocation.lng.toString() : "-9.3539";
-      const latitude = userLocation ? userLocation.lat.toString() : "51.4747";
+      // Convert latitude and longitude to fixed-point representation (multiplied by 1e18)
+      const longitudeRaw = userLocation ? userLocation.lng.toString() : "-9.3539";
+      const latitudeRaw = userLocation ? userLocation.lat.toString() : "51.4747";
+
+      // Convert to BigInt with 1e18 precision
+      const longitude = ethers.parseUnits(longitudeRaw, 18).toString();
+      const latitude = ethers.parseUnits(latitudeRaw, 18).toString();
+
       const mediaLink = "<IPFS CID, or a URL>";
       const memo = "Your memo";
 
       // Define encodeData function to structure the data for attestation
       const encodedData = schemaEncoder.encodeData([
         { name: "eventTimestamp", value: Math.floor(Date.now() / 1000), type: "uint256" },
-        { name: "srs", value: "EPSG:4326", type: "string" },
-        { name: "locationType", value: "DecimalDegrees<string>", type: "string" },
-        { name: "location", value: `${longitude}, ${latitude}`, type: "string" },
-        { name: "recipeType", value: ["Type1", "Type2"], type: "string[]" },
-        { name: "recipePayload", value: [ethers.toUtf8Bytes("Payload1")], type: "bytes[]" },
-        { name: "mediaType", value: ["image/jpeg"], type: "string[]" },
-        { name: "mediaData", value: ["CID1", "CID2"], type: "string[]" },
-        { name: "memo", value: "Test memo", type: "string" },
+        // { name: "srs", value: "EPSG:4326", type: "string" },
+        // { name: "locationType", value: "DecimalDegrees<string>", type: "string" },
+        // { name: "location", value: `${longitude}, ${latitude}`, type: "string" },
+        // { name: "recipeType", value: ["Type1", "Type2"], type: "string[]" },
+        // { name: "recipePayload", value: [ethers.toUtf8Bytes("Payload1")], type: "bytes[]" },
+        // { name: "mediaType", value: ["image/jpeg"], type: "string[]" },
+        // { name: "mediaData", value: ["CID1", "CID2"], type: "string[]" },
+        // { name: "memo", value: "Test memo", type: "string" },
+        { name: "lat", value: latitude, type: "int256" },
+        { name: "lng", value: longitude, type: "int256" },
       ]);
 
       const tx = await eas?.attest({

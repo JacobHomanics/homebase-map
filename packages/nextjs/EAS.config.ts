@@ -16,8 +16,7 @@ const easConfig = {
       mediaData: "string[]",
       memo: "string",
     },
-    rawString:
-      "uint256 eventTimestamp,string srs,string locationType,string location,string[] recipeType,bytes[] recipePayload,string[] mediaType,string[] mediaData,string memo",
+    rawString: "uint256 eventTimestamp,int256 lat,int256 lng",
   },
   chains: {
     "42220": {
@@ -43,7 +42,7 @@ const easConfig = {
     "8453": {
       chain: "base",
       easContractAddress: "0x4200000000000000000000000000000000000021",
-      schemaUID: "0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2",
+      schemaUID: "0xc4d36724ce4643672ca70ff49c51f4c6d0a7e2036c90c9a2c07d5125714fb92d",
     },
   },
 } as const satisfies EASConfig;
