@@ -6,33 +6,26 @@ export type EASConfig = {
 const easConfig = {
   schema: {
     interface: {
-      eventTimestamp: "uint256",
-      srs: "string",
-      locationType: "string",
-      location: "string",
-      recipeType: "string[]",
-      recipePayload: "bytes[]",
-      mediaType: "string[]",
-      mediaData: "string[]",
-      memo: "string",
+      lat: "int256",
+      lng: "int256",
     },
-    rawString: "uint256 eventTimestamp,int256 lat,int256 lng",
+    rawString: "int256 lat, int256 lng",
   },
   chains: {
     "42220": {
       chain: "celo",
       easContractAddress: "0x72E1d8ccf5299fb36fEfD8CC4394B8ef7e98Af92",
-      schemaUID: "0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2",
+      schemaUID: "0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b",
     },
     "42161": {
       chain: "arbitrum",
       easContractAddress: "0xbD75f629A22Dc1ceD33dDA0b68c546A1c035c458",
-      schemaUID: "0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2",
+      schemaUID: "0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b",
     },
     "11155111": {
       chain: "sepolia",
       easContractAddress: "0xC2679fBD37d54388Ce493F1DB75320D236e1815e",
-      schemaUID: "0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2",
+      schemaUID: "0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b",
     },
     "1": {
       chain: "mainnet",
@@ -42,7 +35,7 @@ const easConfig = {
     "8453": {
       chain: "base",
       easContractAddress: "0x4200000000000000000000000000000000000021",
-      schemaUID: "0xc4d36724ce4643672ca70ff49c51f4c6d0a7e2036c90c9a2c07d5125714fb92d",
+      schemaUID: "0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b",
     },
   },
 } as const satisfies EASConfig;

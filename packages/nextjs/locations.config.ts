@@ -11,7 +11,9 @@ export const locations: Location[] = [
   {
     id: 0,
 
-    position: { lat: 50.822830042, lng: 4.358665232 },
+    position: { lat: 50.822830042, lng: 4.3586652321 },
+    // position: { lat: 50822830042, lng: 4358665232 },
+
     title: "Based Community Meetup - Brussels",
     address: deployedContracts[8453].Brussels.address,
   },
@@ -19,19 +21,25 @@ export const locations: Location[] = [
   {
     id: 1,
 
-    position: { lat: -18.179401293882474, lng: 31.62782055952788 },
+    position: { lat: -18.179401293, lng: 31.627820559 },
+    // position: { lat: -18179401293, lng: 31627820559 },
+
     title: "The Cool Down with UBU - A Based Meetup.",
     address: deployedContracts[8453].Gosho.address,
   },
   {
     id: 2,
-    position: { lat: -7.797068, lng: 110.370529 },
+    position: { lat: -7.7970681111, lng: 110.37052911 },
+    // position: { lat: -7797068111, lng: 110370529110 },
+
     title: "Based Community Meet-Up Yogyakarta",
     address: deployedContracts[8453].Yogyakarta.address,
   },
   {
     id: 3,
-    position: { lat: -3.3816595330236003, lng: 36.701730603710025 },
+    position: { lat: -3.3816595331, lng: 36.701730603 },
+    // position: { lat: -3381659533, lng: 36701730603 },
+
     title: "BASE WORKSHOP. Building With BASE - Agent Edition.",
     address: deployedContracts[8453].Ndotohub.address,
   },

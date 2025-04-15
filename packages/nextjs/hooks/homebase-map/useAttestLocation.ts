@@ -23,7 +23,7 @@ export const useAttestLocation = () => {
   const schemaEncoder = new SchemaEncoder(easConfig.schema.rawString);
   const schemaUID = easConfig.chains[chainId.toString() as keyof typeof easConfig.chains]?.schemaUID;
 
-  const handleSubmit = async ({ userLocation }: { userLocation: UserLocation }) => {
+  const handleSubmit = async ({ lat, lng }: { lat: bigint; lng: bigint }) => {
     console.log("started");
 
     setIsTxLoading(true);
@@ -43,19 +43,19 @@ export const useAttestLocation = () => {
 
     try {
       // Convert latitude and longitude to fixed-point representation (multiplied by 1e18)
-      const longitudeRaw = userLocation ? userLocation.lng.toString() : "-9.3539";
-      const latitudeRaw = userLocation ? userLocation.lat.toString() : "51.4747";
+      // const longitudeRaw = userLocation ? userLocation.lng.toString() : "-9.3539";
+      // const latitudeRaw = userLocation ? userLocation.lat.toString() : "51.4747";
 
       // Convert to BigInt with 1e18 precision
-      const longitude = ethers.parseUnits(longitudeRaw, 18).toString();
-      const latitude = ethers.parseUnits(latitudeRaw, 18).toString();
+      // const longitude = ethers.parseUnits(longitudeRaw, 9).toString();
+      // const latitude = ethers.parseUnits(latitudeRaw, 9).toString();
 
-      const mediaLink = "<IPFS CID, or a URL>";
-      const memo = "Your memo";
+      // const mediaLink = "<IPFS CID, or a URL>";
+      // const memo = "Your memo";
 
       // Define encodeData function to structure the data for attestation
       const encodedData = schemaEncoder.encodeData([
-        { name: "eventTimestamp", value: Math.floor(Date.now() / 1000), type: "uint256" },
+        // { name: "eventTimestamp", value: Math.floor(Date.now() / 1000), type: "uint256" },
         // { name: "srs", value: "EPSG:4326", type: "string" },
         // { name: "locationType", value: "DecimalDegrees<string>", type: "string" },
         // { name: "location", value: `${longitude}, ${latitude}`, type: "string" },
@@ -64,8 +64,8 @@ export const useAttestLocation = () => {
         // { name: "mediaType", value: ["image/jpeg"], type: "string[]" },
         // { name: "mediaData", value: ["CID1", "CID2"], type: "string[]" },
         // { name: "memo", value: "Test memo", type: "string" },
-        { name: "lat", value: latitude, type: "int256" },
-        { name: "lng", value: longitude, type: "int256" },
+        { name: "lat", value: lat, type: "int256" },
+        { name: "lng", value: lng, type: "int256" },
       ]);
 
       const tx = await eas?.attest({

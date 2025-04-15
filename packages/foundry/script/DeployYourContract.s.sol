@@ -89,10 +89,10 @@ contract DeployYourContract is ScaffoldETHDeploy {
             "ipfs://bafkreibengojht5th2j2ph3exuf5pfpcabipzxxeclra54hxq2hkm7p65e",
             admins,
             minters,
-            -3381660000000000000,
-            36701731000000000000,
+            -3381659533,
+            36701730603,
             0x4200000000000000000000000000000000000021,
-            0xc4d36724ce4643672ca70ff49c51f4c6d0a7e2036c90c9a2c07d5125714fb92d
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
         );
 
         Brussels brussels = new Brussels(
@@ -101,10 +101,10 @@ contract DeployYourContract is ScaffoldETHDeploy {
             "ipfs://bafkreiemlbkgj222hnjo5eqt7wy4jp6t5zcfobzbxqlpoyc2rywtxhfyp4",
             admins,
             minters,
-            50822830042000000000,
-            43586652320000000000,
+            50822830042, // 50.84360536860012 * 10^9
+            4358665232, // 4.355158216238602 * 10^9
             0x4200000000000000000000000000000000000021,
-            0xc4d36724ce4643672ca70ff49c51f4c6d0a7e2036c90c9a2c07d5125714fb92d
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
         );
 
         Gosho gosho = new Gosho(
@@ -113,10 +113,10 @@ contract DeployYourContract is ScaffoldETHDeploy {
             "ipfs://bafkreidsmtbi7234m6v4wq6r2secpmuf5ykz4zfvd5go3akdtmt574xy2i",
             admins,
             minters,
-            -18179401300000000000,
-            31627821000000000000,
+            -18179401293,
+            31627820559,
             0x4200000000000000000000000000000000000021,
-            0xc4d36724ce4643672ca70ff49c51f4c6d0a7e2036c90c9a2c07d5125714fb92d
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
         );
 
         Yogyakarta yogyakarta = new Yogyakarta(
@@ -125,10 +125,10 @@ contract DeployYourContract is ScaffoldETHDeploy {
             "ipfs://bafkreid7jpfdtxbmixgoi4bfg3wa76rqhvgdzo3bmgrrcfkbqoxznh6kry",
             admins,
             minters,
-            -77970680000000000000,
-            11037053000000000000,
+            -7797068111,
+            110370529110,
             0x4200000000000000000000000000000000000021,
-            0xc4d36724ce4643672ca70ff49c51f4c6d0a7e2036c90c9a2c07d5125714fb92d
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
         );
 
         // console.logString(

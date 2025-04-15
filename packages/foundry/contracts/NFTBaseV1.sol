@@ -35,11 +35,11 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
     IEAS public immutable eas;
 
     string private uri;
-    int256 public latitude;
-    int256 public longitude;
 
-    // Default range matching the frontend value (56327.04 meters = 35 miles)
-    int256 public constant DEFAULT_RANGE_METERS = 56327040000000000000000;
+    int256[2] public coordinates;
+
+    // int256 public latitude;
+    // int256 public longitude;
 
     constructor(
         string memory name,
@@ -53,8 +53,10 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         bytes32 _schemaUID
     ) ERC721(name, symbol) {
         uri = baseURI;
-        latitude = _latitude;
-        longitude = _longitude;
+
+        coordinates[0] = _latitude; // latitude
+        coordinates[1] = _longitude; // longitude
+
         eas = IEAS(_eas);
         SCHEMA_UID = _schemaUID;
         for (uint256 i = 0; i < admins.length; i++) {
@@ -108,9 +110,9 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         }
 
         // Decode the attestation data
-        (, int256 userLat, int256 userLong) = abi.decode(
+        (int256 attestationLatitude, int256 attestationLongitude) = abi.decode(
             attestation.data,
-            (uint256, int256, int256)
+            (int256, int256)
         );
 
         // s_userLocation = location;
@@ -136,30 +138,51 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         //     userLong *= 10;
         // }
 
-        s_userLat = userLat;
-        s_userLong = userLong;
+        // s_userLat = userLat;
+        // s_userLong = userLong;
 
         // Uncomment for distance restriction
-        int256 distanceInMeters = DistanceUtils.getDistance(
-            latitude,
-            longitude,
-            userLat, // these are reversed due to attestation
-            userLong
+        // int256 distanceInMeters = DistanceUtils.getDistance(
+        //     latitude,
+        //     longitude,
+        //     userLat, // these are reversed due to attestation
+        //     userLong
+        // );
+
+        // s_distanceInMeters = distanceInMeters;
+
+        int256 bufferMeters = 35; // 35 meters
+        int256 bufferLatNanodegrees = metersToNanodegreesLatitude(bufferMeters);
+        int256 bufferLonNanodegrees = metersToNanodegreesLongitude(
+            bufferMeters,
+            coordinates[0]
         );
 
-        s_distanceInMeters = distanceInMeters;
-        require(
-            distanceInMeters <= DEFAULT_RANGE_METERS,
-            "User location too far from contract location"
-        );
+        int256[2][2] memory bbox;
+        // Lower left
+        bbox[0][0] = coordinates[0] - bufferLatNanodegrees;
+        bbox[0][1] = coordinates[1] - bufferLonNanodegrees;
+        // Upper right
+        bbox[1][0] = coordinates[0] + bufferLatNanodegrees;
+        bbox[1][1] = coordinates[1] + bufferLonNanodegrees;
+
+        bool isInBbox = attestationLatitude > bbox[0][0] &&
+            attestationLatitude < bbox[1][0] &&
+            attestationLongitude > bbox[0][1] &&
+            attestationLongitude < bbox[1][1];
+
+        // lastCoords = [attestationLatitude, attestationLongitude];
+        require(isInBbox, "User location too far from contract location");
 
         _mint(msg.sender, totalSupply());
     }
 
-    string public s_userLocation;
-    int256 public s_distanceInMeters;
-    int256 public s_userLat;
-    int256 public s_userLong;
+    // int256[] public lastCoords;
+
+    // string public s_userLocation;
+    // int256 public s_distanceInMeters;
+    // int256 public s_userLat;
+    // int256 public s_userLong;
 
     function supportsInterface(
         bytes4 interfaceId
@@ -294,28 +317,71 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
     }
 
     // Combined utility functions to reduce contract size
-    function getLocationInfo(
-        int256 userLat,
-        int256 userLong,
-        int256 maxDistance
-    )
-        external
-        view
-        returns (
-            int256 distance,
-            bool isWithinRange,
-            int256 contractLat,
-            int256 contractLong
-        )
-    {
-        distance = DistanceUtils.getDistance(
-            latitude,
-            longitude,
-            userLat,
-            userLong
-        );
-        isWithinRange =
-            distance <= (maxDistance > 0 ? maxDistance : DEFAULT_RANGE_METERS);
-        return (distance, isWithinRange, latitude, longitude);
+    // function getLocationInfo(
+    //     int256 userLat,
+    //     int256 userLong,
+    //     int256 maxDistance
+    // )
+    //     external
+    //     view
+    //     returns (
+    //         int256 distance,
+    //         bool isWithinRange,
+    //         int256 contractLat,
+    //         int256 contractLong
+    //     )
+    // {
+    //     distance = DistanceUtils.getDistance(
+    //         latitude,
+    //         longitude,
+    //         userLat,
+    //         userLong
+    //     );
+    //     isWithinRange =
+    //         distance <= (maxDistance > 0 ? maxDistance : DEFAULT_RANGE_METERS);
+    //     return (distance, isWithinRange, latitude, longitude);
+    // }
+
+    int256 constant METERS_TO_NANODEGREES_AT_EQUATOR = 9; // 0.000009 * 10^9
+
+    // Calculate nanodegrees from meters, adjusting for latitude
+    // The formula accounts for the fact that longitude degrees get smaller as you move away from the equator
+    function metersToNanodegreesLongitude(
+        int256 meters,
+        int256 latitudeNanodegrees
+    ) internal pure returns (int256) {
+        // For longitude, degrees get smaller as you move away from the equator
+        // Approximate formula: meters_in_one_degree = 111000 * cos(latitude)
+        // We use a simplified approach for the blockchain
+        int256 factor = METERS_TO_NANODEGREES_AT_EQUATOR;
+
+        // Simple adjustment for latitude - the closer to poles, the smaller the longitude degrees
+        // This is a very rough approximation
+        if (latitudeNanodegrees > 0) {
+            // Northern hemisphere
+            if (latitudeNanodegrees > 60 * 10 ** 9)
+                // Above 60 degrees north
+                factor = factor * 2; // Double the nanodegrees to account for smaller distance
+            else if (latitudeNanodegrees > 30 * 10 ** 9)
+                // Between 30-60 degrees north
+                factor = (factor * 3) / 2; // Multiply by 1.5
+        } else {
+            // Southern hemisphere
+            if (latitudeNanodegrees < -60 * 10 ** 9)
+                // Below 60 degrees south
+                factor = factor * 2;
+            else if (latitudeNanodegrees < -30 * 10 ** 9)
+                // Between 30-60 degrees south
+                factor = (factor * 3) / 2;
+        }
+
+        return meters * factor;
+    }
+
+    // For latitude, one degree is consistently ~111,000 meters everywhere on Earth
+    function metersToNanodegreesLatitude(
+        int256 meters
+    ) internal pure returns (int256) {
+        return meters * METERS_TO_NANODEGREES_AT_EQUATOR;
     }
 }

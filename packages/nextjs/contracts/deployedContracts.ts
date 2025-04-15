@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   8453: {
     Ndotohub: {
-      address: "0xd669b38d1064f02ef09eb107d71fd42bf2a23310",
+      address: "0x0bfd665e9c6dad7297b9de3cee552c3fa8ad5b31",
       abi: [
         {
           type: "constructor",
@@ -69,19 +69,6 @@ const deployedContracts = {
               name: "",
               type: "bytes32",
               internalType: "bytes32",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "DEFAULT_RANGE_METERS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -151,6 +138,25 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "coordinates",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -177,50 +183,6 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "getLocationInfo",
-          inputs: [
-            {
-              name: "userLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "userLong",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "maxDistance",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          outputs: [
-            {
-              name: "distance",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "isWithinRange",
-              type: "bool",
-              internalType: "bool",
-            },
-            {
-              name: "contractLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "contractLong",
-              type: "int256",
-              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -312,32 +274,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "latitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "longitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "mint",
           inputs: [
             {
@@ -416,58 +352,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_distanceInMeters",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLat",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLocation",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLong",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -963,115 +847,13 @@ const deployedContracts = {
             },
           ],
         },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__AbsInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtNegativeInput",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtOverflow",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivFixedPointOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-            {
-              name: "denominator",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744744235.json",
+      deploymentFile: "run-1744757554.json",
       deploymentScript: "Deploy.s.sol",
     },
     Brussels: {
-      address: "0x94ee33c7bd762c61c9d8511a1be81d4a17a4577a",
+      address: "0xbbd62d1c38760dd16049735c377d09e96fca3ccd",
       abi: [
         {
           type: "constructor",
@@ -1133,19 +915,6 @@ const deployedContracts = {
               name: "",
               type: "bytes32",
               internalType: "bytes32",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "DEFAULT_RANGE_METERS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -1215,6 +984,25 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "coordinates",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -1241,50 +1029,6 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "getLocationInfo",
-          inputs: [
-            {
-              name: "userLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "userLong",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "maxDistance",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          outputs: [
-            {
-              name: "distance",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "isWithinRange",
-              type: "bool",
-              internalType: "bool",
-            },
-            {
-              name: "contractLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "contractLong",
-              type: "int256",
-              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -1376,32 +1120,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "latitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "longitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "mint",
           inputs: [
             {
@@ -1480,58 +1198,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_distanceInMeters",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLat",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLocation",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLong",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -2027,115 +1693,13 @@ const deployedContracts = {
             },
           ],
         },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__AbsInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtNegativeInput",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtOverflow",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivFixedPointOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-            {
-              name: "denominator",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744744235.json",
+      deploymentFile: "run-1744757554.json",
       deploymentScript: "Deploy.s.sol",
     },
     Gosho: {
-      address: "0x989690e5e49eb0859f853ec42c9e244ea612e1da",
+      address: "0xf71bf49f9ec4974a5acd602deaa7ce61f90caf94",
       abi: [
         {
           type: "constructor",
@@ -2197,19 +1761,6 @@ const deployedContracts = {
               name: "",
               type: "bytes32",
               internalType: "bytes32",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "DEFAULT_RANGE_METERS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -2279,6 +1830,25 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "coordinates",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -2305,50 +1875,6 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "getLocationInfo",
-          inputs: [
-            {
-              name: "userLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "userLong",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "maxDistance",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          outputs: [
-            {
-              name: "distance",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "isWithinRange",
-              type: "bool",
-              internalType: "bool",
-            },
-            {
-              name: "contractLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "contractLong",
-              type: "int256",
-              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -2440,32 +1966,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "latitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "longitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "mint",
           inputs: [
             {
@@ -2544,58 +2044,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_distanceInMeters",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLat",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLocation",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLong",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -3091,115 +2539,13 @@ const deployedContracts = {
             },
           ],
         },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__AbsInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtNegativeInput",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtOverflow",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivFixedPointOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-            {
-              name: "denominator",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744744235.json",
+      deploymentFile: "run-1744757554.json",
       deploymentScript: "Deploy.s.sol",
     },
     Yogyakarta: {
-      address: "0x6456c42d839ed215fef155574a8daca324130703",
+      address: "0x9a9a39762a3db0fa00d5d9c78fd84a940f31d4e2",
       abi: [
         {
           type: "constructor",
@@ -3261,19 +2607,6 @@ const deployedContracts = {
               name: "",
               type: "bytes32",
               internalType: "bytes32",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "DEFAULT_RANGE_METERS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -3343,6 +2676,25 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "coordinates",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -3369,50 +2721,6 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "getLocationInfo",
-          inputs: [
-            {
-              name: "userLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "userLong",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "maxDistance",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          outputs: [
-            {
-              name: "distance",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "isWithinRange",
-              type: "bool",
-              internalType: "bool",
-            },
-            {
-              name: "contractLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "contractLong",
-              type: "int256",
-              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -3504,32 +2812,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "latitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "longitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "mint",
           inputs: [
             {
@@ -3608,58 +2890,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_distanceInMeters",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLat",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLocation",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLong",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -4155,111 +3385,9 @@ const deployedContracts = {
             },
           ],
         },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__AbsInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtNegativeInput",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtOverflow",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivFixedPointOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-            {
-              name: "denominator",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744744235.json",
+      deploymentFile: "run-1744757554.json",
       deploymentScript: "Deploy.s.sol",
     },
   },
@@ -4333,19 +3461,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "DEFAULT_RANGE_METERS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "MINTER_ROLE",
           inputs: [],
           outputs: [
@@ -4409,6 +3524,25 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "coordinates",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -4435,50 +3569,6 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "getLocationInfo",
-          inputs: [
-            {
-              name: "userLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "userLong",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "maxDistance",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          outputs: [
-            {
-              name: "distance",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "isWithinRange",
-              type: "bool",
-              internalType: "bool",
-            },
-            {
-              name: "contractLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "contractLong",
-              type: "int256",
-              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -4570,32 +3660,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "latitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "longitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "mint",
           inputs: [
             {
@@ -4674,58 +3738,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_distanceInMeters",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLat",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLocation",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLong",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -5216,108 +4228,6 @@ const deployedContracts = {
             },
             {
               name: "index",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__AbsInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtNegativeInput",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtOverflow",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivFixedPointOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-            {
-              name: "denominator",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedOverflow",
-          inputs: [
-            {
-              name: "rAbs",
               type: "uint256",
               internalType: "uint256",
             },
@@ -5397,19 +4307,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "DEFAULT_RANGE_METERS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "MINTER_ROLE",
           inputs: [],
           outputs: [
@@ -5473,6 +4370,25 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "coordinates",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -5499,50 +4415,6 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "getLocationInfo",
-          inputs: [
-            {
-              name: "userLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "userLong",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "maxDistance",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          outputs: [
-            {
-              name: "distance",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "isWithinRange",
-              type: "bool",
-              internalType: "bool",
-            },
-            {
-              name: "contractLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "contractLong",
-              type: "int256",
-              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -5634,32 +4506,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "latitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "longitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "mint",
           inputs: [
             {
@@ -5738,58 +4584,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_distanceInMeters",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLat",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLocation",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLong",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -6280,108 +5074,6 @@ const deployedContracts = {
             },
             {
               name: "index",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__AbsInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtNegativeInput",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtOverflow",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivFixedPointOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-            {
-              name: "denominator",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedOverflow",
-          inputs: [
-            {
-              name: "rAbs",
               type: "uint256",
               internalType: "uint256",
             },
@@ -6461,19 +5153,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "DEFAULT_RANGE_METERS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "MINTER_ROLE",
           inputs: [],
           outputs: [
@@ -6537,6 +5216,25 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "coordinates",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -6563,50 +5261,6 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "getLocationInfo",
-          inputs: [
-            {
-              name: "userLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "userLong",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "maxDistance",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          outputs: [
-            {
-              name: "distance",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "isWithinRange",
-              type: "bool",
-              internalType: "bool",
-            },
-            {
-              name: "contractLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "contractLong",
-              type: "int256",
-              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -6698,32 +5352,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "latitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "longitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "mint",
           inputs: [
             {
@@ -6802,58 +5430,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_distanceInMeters",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLat",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLocation",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLong",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -7344,108 +5920,6 @@ const deployedContracts = {
             },
             {
               name: "index",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__AbsInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtNegativeInput",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtOverflow",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivFixedPointOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-            {
-              name: "denominator",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedOverflow",
-          inputs: [
-            {
-              name: "rAbs",
               type: "uint256",
               internalType: "uint256",
             },
@@ -7525,19 +5999,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "DEFAULT_RANGE_METERS",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "MINTER_ROLE",
           inputs: [],
           outputs: [
@@ -7601,6 +6062,25 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "coordinates",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eas",
           inputs: [],
           outputs: [
@@ -7627,50 +6107,6 @@ const deployedContracts = {
               name: "",
               type: "address",
               internalType: "address",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "getLocationInfo",
-          inputs: [
-            {
-              name: "userLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "userLong",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "maxDistance",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          outputs: [
-            {
-              name: "distance",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "isWithinRange",
-              type: "bool",
-              internalType: "bool",
-            },
-            {
-              name: "contractLat",
-              type: "int256",
-              internalType: "int256",
-            },
-            {
-              name: "contractLong",
-              type: "int256",
-              internalType: "int256",
             },
           ],
           stateMutability: "view",
@@ -7762,32 +6198,6 @@ const deployedContracts = {
         },
         {
           type: "function",
-          name: "latitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "longitude",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
           name: "mint",
           inputs: [
             {
@@ -7866,58 +6276,6 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
-        },
-        {
-          type: "function",
-          name: "s_distanceInMeters",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLat",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLocation",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "string",
-              internalType: "string",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_userLong",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-          stateMutability: "view",
         },
         {
           type: "function",
@@ -8408,108 +6766,6 @@ const deployedContracts = {
             },
             {
               name: "index",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__AbsInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__DivOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__MulOverflow",
-          inputs: [
-            {
-              name: "rAbs",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtNegativeInput",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMathSD59x18__SqrtOverflow",
-          inputs: [
-            {
-              name: "x",
-              type: "int256",
-              internalType: "int256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivFixedPointOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivOverflow",
-          inputs: [
-            {
-              name: "prod1",
-              type: "uint256",
-              internalType: "uint256",
-            },
-            {
-              name: "denominator",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedInputTooSmall",
-          inputs: [],
-        },
-        {
-          type: "error",
-          name: "PRBMath__MulDivSignedOverflow",
-          inputs: [
-            {
-              name: "rAbs",
               type: "uint256",
               internalType: "uint256",
             },

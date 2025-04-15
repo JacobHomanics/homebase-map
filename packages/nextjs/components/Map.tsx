@@ -3,6 +3,8 @@ import { LoadingOverlay } from "./LoadingOverlay";
 import { HomebaseMap } from "./homebase-map/HomebaseMap";
 import { UserAlignedLocations } from "./homebase-map/UserAlignedLocations";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { ethers } from "ethers";
+import { parseUnits } from "viem";
 import { useAccount, useWriteContract } from "wagmi";
 import { useAttestLocation } from "~~/hooks/homebase-map/useAttestLocation";
 import { useGetUserLocation } from "~~/hooks/homebase-map/useGetUserLocation";
@@ -24,7 +26,7 @@ export function Map() {
 
   // const { userLocation, center } = useGetUserLocation();
 
-  const userLocation = { lat: 50.822830042, lng: 4.358665232 };
+  const userLocation = { lat: -3.3816595331, lng: 36.701730603 };
   const center = { lat: 50.84364262516137, lng: 4.403013511221624 };
   const { address: connectedAddress } = useAccount();
 
@@ -189,16 +191,25 @@ export function Map() {
 
     console.log("userLocation");
     console.log(userLocation);
-    const newAttestationUID = await attestLocation({ userLocation: userLocation ?? { lat: 0, lng: 0 } });
+
+    // const longitude = parseUnits(userLocation.lng.toString(), 9);
+    // const latitude = parseUnits(userLocation.lat.toString(), 9);
+
+    const testLongitude = parseUnits(userLocation.lng.toString(), 9);
+    const testLatitude = parseUnits(userLocation.lat.toString(), 9);
+
+    const newAttestationUID = await attestLocation({ lat: testLatitude, lng: testLongitude });
     console.log("newAttestationUID");
     console.log(newAttestationUID);
 
-    if (newAttestationUID !== undefined) {
-      await nftWriteMapping[selectedMarker?.id ?? 0]({
-        functionName: "mint",
-        args: [newAttestationUID as `0x${string}`],
-      });
-    }
+    // position: { lat: 50822830042, lng: 4358665232 },
+    // if (newAttestationUID !== undefined) {
+    await nftWriteMapping[selectedMarker?.id ?? 0]({
+      functionName: "mint",
+      // args: [[testLatitude, testLongitude]],
+      args: [newAttestationUID as `0x${string}`],
+    });
+    // }
   }
 
   return (
