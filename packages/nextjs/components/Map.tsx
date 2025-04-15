@@ -66,22 +66,22 @@ export function Map() {
   //   args: [selectedMarker?.address, connectedAddress],
   // });
 
-  const { data: brusselsTotalSupply } = useScaffoldReadContract({
+  const { data: brusselsTotalSupply, refetch: refetchBrusselsTotalSupply } = useScaffoldReadContract({
     contractName: "Brussels",
     functionName: "totalSupply",
   });
 
-  const { data: goshoTotalSupply } = useScaffoldReadContract({
+  const { data: goshoTotalSupply, refetch: refetchGoshoTotalSupply } = useScaffoldReadContract({
     contractName: "Gosho",
     functionName: "totalSupply",
   });
 
-  const { data: yogyakartaTotalSupply } = useScaffoldReadContract({
+  const { data: yogyakartaTotalSupply, refetch: refetchYogyakartaTotalSupply } = useScaffoldReadContract({
     contractName: "Yogyakarta",
     functionName: "totalSupply",
   });
 
-  const { data: ndotohubTotalSupply } = useScaffoldReadContract({
+  const { data: ndotohubTotalSupply, refetch: refetchNdotohubTotalSupply } = useScaffoldReadContract({
     contractName: "Ndotohub",
     functionName: "totalSupply",
   });
@@ -210,6 +210,11 @@ export function Map() {
       args: [newAttestationUID as `0x${string}`],
     });
     // }
+
+    refetchBrusselsTotalSupply();
+    refetchGoshoTotalSupply();
+    refetchYogyakartaTotalSupply();
+    refetchNdotohubTotalSupply();
   }
 
   // Handler for clicking on the map in manual mode
@@ -263,18 +268,14 @@ export function Map() {
             {connectedAddress &&
               ((nftBalanceMapping?.[location.id] ?? 0) > 0 ? (
                 <>
-                  <p className="text-green-600 text-2xl">You are Based with this Region!</p>
+                  <p className="text-green-600 text-2xl">You call this place your homebase!</p>
                 </>
               ) : (
                 <>
-                  <button
-                    className="btn btn-primary btn-sm"
-                    onClick={pledge} //disabled={!isLocationInRange(location)}
-                  >
-                    {
-                      //!isLocationInRange(location) ? "Location Out of Range" :
-                      "Check in"
-                    }
+                  {!isLocationInRange(location) && <p className="text-red-500">This location is outside your range</p>}
+
+                  <button className="btn btn-primary btn-sm" onClick={pledge} disabled={!isLocationInRange(location)}>
+                    {!isLocationInRange(location) ? "Location Out of Range" : "Check in"}
                   </button>
                 </>
               ))}
