@@ -130,13 +130,18 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         s_userLong = userLong;
 
         // Uncomment for distance restriction
-        // int256 distanceInMeters = DistanceUtils.getDistance(latitude, longitude, userLat, userLong);
-        // require(
-        //     distanceInMeters <= DEFAULT_RANGE_METERS,
-        //     "User location too far from contract location"
-        // );
+        int256 distanceInMeters = DistanceUtils.getDistance(
+            latitude,
+            longitude,
+            userLat,
+            userLong
+        );
+        require(
+            distanceInMeters <= DEFAULT_RANGE_METERS,
+            "User location too far from contract location"
+        );
 
-        // _mint(msg.sender, totalSupply());
+        _mint(msg.sender, totalSupply());
     }
 
     int256 public s_userLat;
@@ -207,6 +212,8 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         bool negative = false;
         uint start = 0;
         int256 result = 0;
+        bool decimalFound = false;
+        uint8 decimals = 0;
 
         if (b[0] == "-") {
             negative = true;
@@ -215,8 +222,19 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
 
         for (uint i = start; i < b.length; i++) {
             uint8 c = uint8(bytes1(b[i]));
+
+            if (c == 46) {
+                // Decimal point '.'
+                decimalFound = true;
+                continue;
+            }
+
             if (c >= 48 && c <= 57) {
+                // Digits 0-9
                 result = result * 10 + int256(uint256(c - 48));
+                if (decimalFound) {
+                    decimals++;
+                }
             }
         }
 
@@ -224,8 +242,20 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
             result = -result;
         }
 
-        // Scale to 18 decimals - simplistic implementation
-        result = result * 1_000_000_000_000_000_000;
+        // Scale to 18 decimals
+        if (decimals > 0) {
+            // If we have less than 18 decimal places, multiply to reach 18
+            if (decimals < 18) {
+                result = result * int256(10 ** (18 - decimals));
+            }
+            // If we have more than 18 decimal places, divide to reach 18
+            else if (decimals > 18) {
+                result = result / int256(10 ** (decimals - 18));
+            }
+        } else {
+            // No decimals found, scale to 18 decimal places
+            result = result * 1_000_000_000_000_000_000;
+        }
 
         return result;
     }

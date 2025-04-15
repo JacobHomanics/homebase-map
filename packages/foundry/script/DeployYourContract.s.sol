@@ -90,7 +90,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
             admins,
             minters,
             -33816600000000000000,
-            367017310000000000000,
+            36701731000000000000,
             0x4200000000000000000000000000000000000021,
             0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2
         );
@@ -126,7 +126,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
             admins,
             minters,
             -77970680000000000000,
-            110370530000000000000,
+            11037053000000000000,
             0x4200000000000000000000000000000000000021,
             0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2
         );
