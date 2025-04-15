@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   8453: {
     Ndotohub: {
-      address: "0xb055b1d149d35123c66b6154f72ac335a2395367",
+      address: "0xd7743befa1aa7db947d38040fc38f775676523e4",
       abi: [
         {
           type: "constructor",
@@ -419,6 +419,45 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "s_distanceInMeters",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_latStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_longStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "s_userLat",
           inputs: [],
           outputs: [
@@ -426,6 +465,19 @@ const deployedContracts = {
               name: "",
               type: "int256",
               internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_userLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
             },
           ],
           stateMutability: "view",
@@ -1041,11 +1093,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744740917.json",
+      deploymentFile: "run-1744742158.json",
       deploymentScript: "Deploy.s.sol",
     },
     Brussels: {
-      address: "0x8452d5691a0afa4e78e4c5612eda649bd5ea8f68",
+      address: "0xe40879915fa78660b133facbe21294f869725b1b",
       abi: [
         {
           type: "constructor",
@@ -1457,6 +1509,45 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "s_distanceInMeters",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_latStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_longStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "s_userLat",
           inputs: [],
           outputs: [
@@ -1464,6 +1555,19 @@ const deployedContracts = {
               name: "",
               type: "int256",
               internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_userLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
             },
           ],
           stateMutability: "view",
@@ -2079,11 +2183,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744740917.json",
+      deploymentFile: "run-1744742158.json",
       deploymentScript: "Deploy.s.sol",
     },
     Gosho: {
-      address: "0x69e265ef99d5463935b9ed33d898606e1a7581f2",
+      address: "0x2e9666a6c7fa73acb463cfe0aa0a37be5ed755bf",
       abi: [
         {
           type: "constructor",
@@ -2495,6 +2599,45 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "s_distanceInMeters",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_latStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_longStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "s_userLat",
           inputs: [],
           outputs: [
@@ -2502,6 +2645,19 @@ const deployedContracts = {
               name: "",
               type: "int256",
               internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_userLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
             },
           ],
           stateMutability: "view",
@@ -3117,11 +3273,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744740917.json",
+      deploymentFile: "run-1744742158.json",
       deploymentScript: "Deploy.s.sol",
     },
     Yogyakarta: {
-      address: "0xdf6a4b0ad7f243381b5ab1619c8c615357c04f5e",
+      address: "0x771de67dd3d88c4eb0ca77e87891644b4cf6e546",
       abi: [
         {
           type: "constructor",
@@ -3533,6 +3689,45 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "s_distanceInMeters",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_latStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_longStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "s_userLat",
           inputs: [],
           outputs: [
@@ -3540,6 +3735,19 @@ const deployedContracts = {
               name: "",
               type: "int256",
               internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_userLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
             },
           ],
           stateMutability: "view",
@@ -4155,7 +4363,7 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744740917.json",
+      deploymentFile: "run-1744742158.json",
       deploymentScript: "Deploy.s.sol",
     },
   },
@@ -4573,6 +4781,45 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "s_distanceInMeters",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_latStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_longStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "s_userLat",
           inputs: [],
           outputs: [
@@ -4580,6 +4827,19 @@ const deployedContracts = {
               name: "",
               type: "int256",
               internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_userLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
             },
           ],
           stateMutability: "view",
@@ -5611,6 +5871,45 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "s_distanceInMeters",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_latStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_longStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "s_userLat",
           inputs: [],
           outputs: [
@@ -5618,6 +5917,19 @@ const deployedContracts = {
               name: "",
               type: "int256",
               internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_userLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
             },
           ],
           stateMutability: "view",
@@ -6649,6 +6961,45 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "s_distanceInMeters",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_latStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_longStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "s_userLat",
           inputs: [],
           outputs: [
@@ -6656,6 +7007,19 @@ const deployedContracts = {
               name: "",
               type: "int256",
               internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_userLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
             },
           ],
           stateMutability: "view",
@@ -7687,6 +8051,45 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "s_distanceInMeters",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_latStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_longStr",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "s_userLat",
           inputs: [],
           outputs: [
@@ -7694,6 +8097,19 @@ const deployedContracts = {
               name: "",
               type: "int256",
               internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_userLocation",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
             },
           ],
           stateMutability: "view",

@@ -123,6 +123,8 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
             )
         );
 
+        s_userLocation = location;
+
         // Parse location string to get coordinates
         (int256 userLat, int256 userLong) = _parseLocation(location);
 
@@ -136,14 +138,18 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
             userLat,
             userLong
         );
-        require(
-            distanceInMeters <= DEFAULT_RANGE_METERS,
-            "User location too far from contract location"
-        );
 
-        _mint(msg.sender, totalSupply());
+        s_distanceInMeters = distanceInMeters;
+        // require(
+        //     distanceInMeters <= DEFAULT_RANGE_METERS,
+        //     "User location too far from contract location"
+        // );
+
+        // _mint(msg.sender, totalSupply());
     }
 
+    string public s_userLocation;
+    int256 public s_distanceInMeters;
     int256 public s_userLat;
     int256 public s_userLong;
 
@@ -181,15 +187,16 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         require(foundComma, "Invalid location format: no comma found");
 
         // Basic implementation - would need full parser in production
-        string memory firstPart = _substring(_location, 0, commaIndex);
-        string memory secondPart = _substring(
+        string memory longitudeStr = _substring(_location, 0, commaIndex);
+        string memory latitudeStr = _substring(
             _location,
             commaIndex + 1,
             locationBytes.length - commaIndex - 1
         );
 
-        long = _stringToInt(firstPart);
-        lat = _stringToInt(secondPart);
+        // Properly convert the strings to integers, preserving negative signs
+        long = _stringToInt(longitudeStr);
+        lat = _stringToInt(latitudeStr);
 
         return (lat, long);
     }
@@ -215,9 +222,15 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         bool decimalFound = false;
         uint8 decimals = 0;
 
-        if (b[0] == "-") {
+        // Skip leading whitespace if any
+        while (start < b.length && (b[start] == " " || b[start] == "\t")) {
+            start++;
+        }
+
+        // Check for negative sign
+        if (start < b.length && b[start] == "-") {
             negative = true;
-            start = 1;
+            start++;
         }
 
         for (uint i = start; i < b.length; i++) {
@@ -238,6 +251,7 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
             }
         }
 
+        // Apply negative sign if necessary
         if (negative) {
             result = -result;
         }

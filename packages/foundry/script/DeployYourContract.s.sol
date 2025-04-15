@@ -101,8 +101,8 @@ contract DeployYourContract is ScaffoldETHDeploy {
             "ipfs://bafkreiemlbkgj222hnjo5eqt7wy4jp6t5zcfobzbxqlpoyc2rywtxhfyp4",
             admins,
             minters,
-            508228300420000000000,
-            435866523200000000000,
+            50822830042000000000,
+            43586652320000000000,
             0x4200000000000000000000000000000000000021,
             0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2
         );
@@ -113,8 +113,8 @@ contract DeployYourContract is ScaffoldETHDeploy {
             "ipfs://bafkreidsmtbi7234m6v4wq6r2secpmuf5ykz4zfvd5go3akdtmt574xy2i",
             admins,
             minters,
-            -181794013000000000000,
-            316278210000000000000,
+            -18179401300000000000,
+            31627821000000000000,
             0x4200000000000000000000000000000000000021,
             0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2
         );
