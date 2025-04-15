@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
+import "./LatLongDistance.sol";
 
 interface IEAS {
     struct Attestation {
@@ -26,6 +27,8 @@ interface IEAS {
 }
 
 contract NFTBaseV1 is AccessControl, ERC721Enumerable {
+    using LatLonDistance for int256;
+
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public immutable SCHEMA_UID;
     IEAS public immutable eas;
@@ -33,6 +36,12 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
     string private uri;
     int256 public latitude;
     int256 public longitude;
+
+    // Optional: Uncomment and set this value to enable distance-based minting restriction
+    // int256 public constant MAX_DISTANCE_METERS = 50000000000000000000000; // 50km with 18 decimal places
+
+    // Default range matching the frontend value (56327.04 meters = 35 miles)
+    int256 public constant DEFAULT_RANGE_METERS = 56327040000000000000000;
 
     constructor(
         string memory name,
@@ -140,6 +149,16 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         // Parse location string to get coordinates
         (int256 userLat, int256 userLong) = _parseLocation(location);
 
+        // DISTANCE RESTRICTION EXAMPLE:
+        // To enable distance-based minting restriction, uncomment the following lines
+        // and set DEFAULT_RANGE_METERS or use your own custom value:
+
+        int256 distanceInMeters = getDistanceFromContract(userLat, userLong);
+        require(
+            distanceInMeters <= DEFAULT_RANGE_METERS,
+            "User location too far from contract location"
+        );
+
         _mint(msg.sender, totalSupply());
     }
 
@@ -203,14 +222,6 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         // Parse the coordinates - expecting "longitude,latitude" format
         long = _stringToInt(firstCoord);
         lat = _stringToInt(secondCoord);
-
-        // Scale the coordinates if they're not already scaled
-        if (lat >= -90 * SCALING_FACTOR && lat <= 90 * SCALING_FACTOR) {
-            lat = lat * SCALING_FACTOR;
-        }
-        if (long >= -180 * SCALING_FACTOR && long <= 180 * SCALING_FACTOR) {
-            long = long * SCALING_FACTOR;
-        }
 
         return (lat, long);
     }
@@ -337,5 +348,59 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         returns (int256 lat, int256 long)
     {
         return (latitude, longitude);
+    }
+
+    /**
+     * @notice Calculates the distance between the contract's location and a user's location
+     * @param userLat User's latitude in fixed-point format (18 decimal places)
+     * @param userLong User's longitude in fixed-point format (18 decimal places)
+     * @return Distance in meters as a fixed-point number with 18 decimal places
+     */
+    function getDistanceFromContract(
+        int256 userLat,
+        int256 userLong
+    ) public view returns (int256) {
+        // Use the LatLonDistance library to calculate the distance
+        return
+            LatLonDistance.distance(
+                latitude, // contract latitude
+                longitude, // contract longitude
+                userLat, // user latitude
+                userLong // user longitude
+            );
+    }
+
+    /**
+     * @notice Checks if a user's location is within a specified distance from the contract
+     * @param userLat User's latitude in fixed-point format (18 decimal places)
+     * @param userLong User's longitude in fixed-point format (18 decimal places)
+     * @param maxDistanceMeters Maximum allowed distance in meters (18 decimal places)
+     * @return True if user is within the specified distance, false otherwise
+     */
+    function isWithinRangeOfContract(
+        int256 userLat,
+        int256 userLong,
+        int256 maxDistanceMeters
+    ) public view returns (bool) {
+        int256 distance = getDistanceFromContract(userLat, userLong);
+        return distance <= maxDistanceMeters;
+    }
+
+    /**
+     * @notice Returns both the distance and whether the user is within range in a single call
+     * @param userLat User's latitude in fixed-point format (18 decimal places)
+     * @param userLong User's longitude in fixed-point format (18 decimal places)
+     * @param maxDistanceMeters Maximum allowed distance in meters (18 decimal places)
+     * @return distance Distance in meters as a fixed-point number with 18 decimal places
+     * @return withinRange True if user is within the specified distance, false otherwise
+     */
+    function checkDistanceAndRange(
+        int256 userLat,
+        int256 userLong,
+        int256 maxDistanceMeters
+    ) external view returns (int256 distance, bool withinRange) {
+        distance = getDistanceFromContract(userLat, userLong);
+        withinRange = distance <= maxDistanceMeters;
+        return (distance, withinRange);
     }
 }

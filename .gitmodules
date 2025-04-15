@@ -9,7 +9,7 @@
 	url = https://github.com/gnsps/solidity-bytes-utils
 [submodule "packages/foundry/lib/solidity-trigonometry"]
 	path = packages/foundry/lib/solidity-trigonometry
-	url = https://github.com/dClimate/solidity-trigonometry
+	url = https://github.com/mds1/solidity-trigonometry
 [submodule "packages/foundry/lib/prb-math"]
 	path = packages/foundry/lib/prb-math
 	url = https://github.com/paulrberg/prb-math
