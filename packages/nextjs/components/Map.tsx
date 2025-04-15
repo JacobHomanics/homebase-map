@@ -3,13 +3,13 @@ import { LoadingOverlay } from "./LoadingOverlay";
 import { HomebaseMap } from "./homebase-map/HomebaseMap";
 import { UserAlignedLocations } from "./homebase-map/UserAlignedLocations";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { useAccount } from "wagmi";
+import { useAccount, useWriteContract } from "wagmi";
 import { useAttestLocation } from "~~/hooks/homebase-map/useAttestLocation";
 import { useGetUserLocation } from "~~/hooks/homebase-map/useGetUserLocation";
 // import { useLocationScores } from "~~/hooks/homebase-map/useLocationScores";
 import { useMapHeight } from "~~/hooks/homebase-map/useMapHeight";
 import { useSelectedMarker } from "~~/hooks/homebase-map/useSelectedMarker";
-import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { useTokenURI } from "~~/hooks/useTokenURI";
 import { Location, locations } from "~~/locations.config";
 import { DEFAULT_RANGE_METERS, isWithinRange } from "~~/utils/distance";
@@ -153,31 +153,50 @@ export function Map() {
     ndotohubNFT.image = ndotohubNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
   }
 
+  const { handleSubmit: attestLocation } = useAttestLocation();
+
+  const { writeContractAsync: writeBrusselsAsync } = useScaffoldWriteContract({ contractName: "Brussels" });
+  const { writeContractAsync: writeGoshoAsync } = useScaffoldWriteContract({ contractName: "Gosho" });
+  const { writeContractAsync: writeYogyakartaAsync } = useScaffoldWriteContract({ contractName: "Yogyakarta" });
+  const { writeContractAsync: writeNdotohubAsync } = useScaffoldWriteContract({ contractName: "Ndotohub" });
+
+  const nftWriteMapping = [writeBrusselsAsync, writeGoshoAsync, writeYogyakartaAsync, writeNdotohubAsync];
   const nftBalanceMapping = [brusselsBalance, goshoBalance, yogyakartaBalance, ndotohubBalance];
   const nftTotalSupplyMapping = [brusselsTotalSupply, goshoTotalSupply, yogyakartaTotalSupply, ndotohubTotalSupply];
-  const { handleSubmit: attestLocation } = useAttestLocation({ userLocation });
 
   async function pledge(event: SyntheticEvent) {
     event.preventDefault();
 
-    console.log(selectedMarker);
+    // console.log(selectedMarker);
 
-    const response = await fetch("/api/pledge", {
-      method: "POST",
-      body: JSON.stringify({ userAddress: connectedAddress, location: userLocation, locationId: selectedMarker?.id }),
-    });
+    // const response = await fetch("/api/pledge", {
+    //   method: "POST",
+    //   body: JSON.stringify({ userAddress: connectedAddress, location: userLocation, locationId: selectedMarker?.id }),
+    // });
 
-    console.log(response);
+    // console.log(response);
 
-    const data = await response.json();
-    console.log(data);
-    if (data.message === "Alignment succesfully added!") {
+    // const data = await response.json();
+    // console.log(data);
+    // if (data.message === "Alignment succesfully added!") {
+    // }
+
+    // if (data.error === "You are not in range of this location") {
+    //   console.error(data.error);
+    // }
+
+    console.log("userLocation");
+    console.log(userLocation);
+    const newAttestationUID = await attestLocation({ userLocation: userLocation ?? { lat: 0, lng: 0 } });
+    console.log("newAttestationUID");
+    console.log(newAttestationUID);
+
+    if (newAttestationUID !== undefined) {
+      await nftWriteMapping[selectedMarker?.id ?? 0]({
+        functionName: "mint",
+        args: [newAttestationUID as `0x${string}`],
+      });
     }
-
-    if (data.error === "You are not in range of this location") {
-      console.error(data.error);
-    }
-    // await attestLocation();
   }
 
   return (

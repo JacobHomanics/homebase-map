@@ -10,10 +10,12 @@ export type Location = {
 export const locations: Location[] = [
   {
     id: 0,
-    position: { lat: -3.3816595330236003, lng: 36.701730603710025 },
-    title: "BASE WORKSHOP. Building With BASE - Agent Edition.",
+
+    position: { lat: 50.822830042, lng: 4.358665232 },
+    title: "Based Community Meetup - Brussels",
     address: deployedContracts[8453].Brussels.address,
   },
+
   {
     id: 1,
 
@@ -29,16 +31,16 @@ export const locations: Location[] = [
   },
   {
     id: 3,
-
-    position: { lat: 50.822830042, lng: 4.358665232 },
-    title: "Based Community Meetup - Brussels",
+    position: { lat: -3.3816595330236003, lng: 36.701730603710025 },
+    title: "BASE WORKSHOP. Building With BASE - Agent Edition.",
     address: deployedContracts[8453].Ndotohub.address,
   },
-  {
-    id: 4,
 
-    position: { lat: 40.4463428755682, lng: -80.0117817121559 },
-    title: "Test Location",
-    address: deployedContracts[8453].Ndotohub.address,
-  },
+  // {
+  //   id: 5,
+
+  //   position: { lat: 40.4463428755682, lng: -80.0117817121559 },
+  //   title: "Test Location",
+  //   address: deployedContracts[8453].Ndotohub.address,
+  // },
 ];

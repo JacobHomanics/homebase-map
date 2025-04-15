@@ -9,7 +9,7 @@ import easConfig from "~~/EAS.config";
 import { UserLocation } from "~~/hooks/homebase-map/useGetUserLocation";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 
-export const useAttestLocation = ({ userLocation }: { userLocation: UserLocation | null }) => {
+export const useAttestLocation = () => {
   const [error, setError] = useState<string | null>(null);
   const [isTxLoading, setIsTxLoading] = useState(false);
 
@@ -23,7 +23,7 @@ export const useAttestLocation = ({ userLocation }: { userLocation: UserLocation
   const schemaEncoder = new SchemaEncoder(easConfig.schema.rawString);
   const schemaUID = easConfig.chains[chainId.toString() as keyof typeof easConfig.chains]?.schemaUID;
 
-  const handleSubmit = async () => {
+  const handleSubmit = async ({ userLocation }: { userLocation: UserLocation }) => {
     console.log("started");
 
     setIsTxLoading(true);
@@ -72,7 +72,7 @@ export const useAttestLocation = ({ userLocation }: { userLocation: UserLocation
 
       const newAttestationUID = await tx?.wait();
 
-      console.log(newAttestationUID);
+      return newAttestationUID;
     } catch (err) {
       console.log(err);
 

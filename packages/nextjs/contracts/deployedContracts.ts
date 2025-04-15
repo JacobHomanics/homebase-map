@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   8453: {
     Ndotohub: {
-      address: "0xe7aedab110ea27f19efa09f8ec61909e61122c62",
+      address: "0x84d148f6bf8b6ddbed572e03143eea1326e305ac",
       abi: [
         {
           type: "constructor",
@@ -37,6 +37,26 @@ const deployedContracts = {
               type: "address[]",
               internalType: "address[]",
             },
+            {
+              name: "latitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "longitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "eas",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "schemaUID",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
           ],
           stateMutability: "nonpayable",
         },
@@ -55,7 +75,46 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "EARTH_RADIUS",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "MAX_DISTANCE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "MINTER_ROLE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCHEMA_UID",
           inputs: [],
           outputs: [
             {
@@ -99,6 +158,19 @@ const deployedContracts = {
               name: "",
               type: "uint256",
               internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "eas",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IEAS",
             },
           ],
           stateMutability: "view",
@@ -209,12 +281,38 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "latitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "longitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "mint",
           inputs: [
             {
-              name: "to",
-              type: "address",
-              internalType: "address",
+              name: "attestationUID",
+              type: "bytes32",
+              internalType: "bytes32",
             },
           ],
           outputs: [],
@@ -287,6 +385,96 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "s_eventTimestamp",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_location",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_locationType",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipePayload",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes",
+              internalType: "bytes",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipeType",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_srs",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
         },
         {
           type: "function",
@@ -784,11 +972,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744686284.json",
+      deploymentFile: "run-1744692703.json",
       deploymentScript: "Deploy.s.sol",
     },
     Brussels: {
-      address: "0x91b471a3891ee2409185d07c9a71ebe3e9e59625",
+      address: "0x505ac475a100755d989896ac8d8617588fadf67c",
       abi: [
         {
           type: "constructor",
@@ -818,6 +1006,26 @@ const deployedContracts = {
               type: "address[]",
               internalType: "address[]",
             },
+            {
+              name: "latitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "longitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "eas",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "schemaUID",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
           ],
           stateMutability: "nonpayable",
         },
@@ -836,7 +1044,46 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "EARTH_RADIUS",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "MAX_DISTANCE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "MINTER_ROLE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCHEMA_UID",
           inputs: [],
           outputs: [
             {
@@ -880,6 +1127,19 @@ const deployedContracts = {
               name: "",
               type: "uint256",
               internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "eas",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IEAS",
             },
           ],
           stateMutability: "view",
@@ -990,12 +1250,38 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "latitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "longitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "mint",
           inputs: [
             {
-              name: "to",
-              type: "address",
-              internalType: "address",
+              name: "attestationUID",
+              type: "bytes32",
+              internalType: "bytes32",
             },
           ],
           outputs: [],
@@ -1068,6 +1354,96 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "s_eventTimestamp",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_location",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_locationType",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipePayload",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes",
+              internalType: "bytes",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipeType",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_srs",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
         },
         {
           type: "function",
@@ -1565,11 +1941,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744686284.json",
+      deploymentFile: "run-1744692703.json",
       deploymentScript: "Deploy.s.sol",
     },
     Gosho: {
-      address: "0x5f6bed88305e76a0979ee6165d6a343b6bc5aabb",
+      address: "0x6b47f33ce022ddafe424ff30097b4b9bce494446",
       abi: [
         {
           type: "constructor",
@@ -1599,6 +1975,26 @@ const deployedContracts = {
               type: "address[]",
               internalType: "address[]",
             },
+            {
+              name: "latitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "longitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "eas",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "schemaUID",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
           ],
           stateMutability: "nonpayable",
         },
@@ -1617,7 +2013,46 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "EARTH_RADIUS",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "MAX_DISTANCE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "MINTER_ROLE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCHEMA_UID",
           inputs: [],
           outputs: [
             {
@@ -1661,6 +2096,19 @@ const deployedContracts = {
               name: "",
               type: "uint256",
               internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "eas",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IEAS",
             },
           ],
           stateMutability: "view",
@@ -1771,12 +2219,38 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "latitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "longitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "mint",
           inputs: [
             {
-              name: "to",
-              type: "address",
-              internalType: "address",
+              name: "attestationUID",
+              type: "bytes32",
+              internalType: "bytes32",
             },
           ],
           outputs: [],
@@ -1849,6 +2323,96 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "s_eventTimestamp",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_location",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_locationType",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipePayload",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes",
+              internalType: "bytes",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipeType",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_srs",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
         },
         {
           type: "function",
@@ -2346,11 +2910,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744686284.json",
+      deploymentFile: "run-1744692703.json",
       deploymentScript: "Deploy.s.sol",
     },
     Yogyakarta: {
-      address: "0x831aef246da8c321cb160c0a33192383327dac15",
+      address: "0x10303712ec85aecc466d54642d43950fb241de99",
       abi: [
         {
           type: "constructor",
@@ -2380,6 +2944,26 @@ const deployedContracts = {
               type: "address[]",
               internalType: "address[]",
             },
+            {
+              name: "latitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "longitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "eas",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "schemaUID",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
           ],
           stateMutability: "nonpayable",
         },
@@ -2398,7 +2982,46 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "EARTH_RADIUS",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "MAX_DISTANCE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "MINTER_ROLE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCHEMA_UID",
           inputs: [],
           outputs: [
             {
@@ -2442,6 +3065,19 @@ const deployedContracts = {
               name: "",
               type: "uint256",
               internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "eas",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IEAS",
             },
           ],
           stateMutability: "view",
@@ -2552,12 +3188,38 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "latitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "longitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "mint",
           inputs: [
             {
-              name: "to",
-              type: "address",
-              internalType: "address",
+              name: "attestationUID",
+              type: "bytes32",
+              internalType: "bytes32",
             },
           ],
           outputs: [],
@@ -2630,6 +3292,96 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "s_eventTimestamp",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_location",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_locationType",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipePayload",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes",
+              internalType: "bytes",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipeType",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_srs",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
         },
         {
           type: "function",
@@ -3127,13 +3879,13 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744686284.json",
+      deploymentFile: "run-1744692703.json",
       deploymentScript: "Deploy.s.sol",
     },
   },
   31337: {
     Ndotohub: {
-      address: "0xb52f7503457e353c4e876c081d557ff3c721f756",
+      address: "0xf28b2ac054655011ac5a62d133ca52e1779ca517",
       abi: [
         {
           type: "constructor",
@@ -3163,6 +3915,26 @@ const deployedContracts = {
               type: "address[]",
               internalType: "address[]",
             },
+            {
+              name: "latitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "longitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "eas",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "schemaUID",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
           ],
           stateMutability: "nonpayable",
         },
@@ -3181,7 +3953,46 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "EARTH_RADIUS",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "MAX_DISTANCE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "MINTER_ROLE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCHEMA_UID",
           inputs: [],
           outputs: [
             {
@@ -3225,6 +4036,19 @@ const deployedContracts = {
               name: "",
               type: "uint256",
               internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "eas",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IEAS",
             },
           ],
           stateMutability: "view",
@@ -3335,12 +4159,38 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "latitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "longitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "mint",
           inputs: [
             {
-              name: "to",
-              type: "address",
-              internalType: "address",
+              name: "attestationUID",
+              type: "bytes32",
+              internalType: "bytes32",
             },
           ],
           outputs: [],
@@ -3413,6 +4263,96 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "s_eventTimestamp",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_location",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_locationType",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipePayload",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes",
+              internalType: "bytes",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipeType",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_srs",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
         },
         {
           type: "function",
@@ -3910,11 +4850,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744678071.json",
+      deploymentFile: "run-1744688421.json",
       deploymentScript: "Deploy.s.sol",
     },
     Brussels: {
-      address: "0x21cf36d47f10b1ce0fc205a46bf971a2be653201",
+      address: "0x0960871fdadee60d4297b1f609a6da16c323c89b",
       abi: [
         {
           type: "constructor",
@@ -3944,6 +4884,26 @@ const deployedContracts = {
               type: "address[]",
               internalType: "address[]",
             },
+            {
+              name: "latitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "longitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "eas",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "schemaUID",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
           ],
           stateMutability: "nonpayable",
         },
@@ -3962,7 +4922,46 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "EARTH_RADIUS",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "MAX_DISTANCE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "MINTER_ROLE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCHEMA_UID",
           inputs: [],
           outputs: [
             {
@@ -4006,6 +5005,19 @@ const deployedContracts = {
               name: "",
               type: "uint256",
               internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "eas",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IEAS",
             },
           ],
           stateMutability: "view",
@@ -4116,12 +5128,38 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "latitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "longitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "mint",
           inputs: [
             {
-              name: "to",
-              type: "address",
-              internalType: "address",
+              name: "attestationUID",
+              type: "bytes32",
+              internalType: "bytes32",
             },
           ],
           outputs: [],
@@ -4194,6 +5232,96 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "s_eventTimestamp",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_location",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_locationType",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipePayload",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes",
+              internalType: "bytes",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipeType",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_srs",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
         },
         {
           type: "function",
@@ -4691,11 +5819,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744678071.json",
+      deploymentFile: "run-1744688421.json",
       deploymentScript: "Deploy.s.sol",
     },
     Gosho: {
-      address: "0x2c4082b9a7dc58f542307d9ab06184ba7c354b0e",
+      address: "0x99baeedc2664c6f84ff0ec2dd5afc73c86e17850",
       abi: [
         {
           type: "constructor",
@@ -4725,6 +5853,26 @@ const deployedContracts = {
               type: "address[]",
               internalType: "address[]",
             },
+            {
+              name: "latitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "longitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "eas",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "schemaUID",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
           ],
           stateMutability: "nonpayable",
         },
@@ -4743,7 +5891,46 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "EARTH_RADIUS",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "MAX_DISTANCE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "MINTER_ROLE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCHEMA_UID",
           inputs: [],
           outputs: [
             {
@@ -4787,6 +5974,19 @@ const deployedContracts = {
               name: "",
               type: "uint256",
               internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "eas",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IEAS",
             },
           ],
           stateMutability: "view",
@@ -4897,12 +6097,38 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "latitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "longitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "mint",
           inputs: [
             {
-              name: "to",
-              type: "address",
-              internalType: "address",
+              name: "attestationUID",
+              type: "bytes32",
+              internalType: "bytes32",
             },
           ],
           outputs: [],
@@ -4975,6 +6201,96 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "s_eventTimestamp",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_location",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_locationType",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipePayload",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes",
+              internalType: "bytes",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipeType",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_srs",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
         },
         {
           type: "function",
@@ -5472,11 +6788,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744678071.json",
+      deploymentFile: "run-1744688421.json",
       deploymentScript: "Deploy.s.sol",
     },
     Yogyakarta: {
-      address: "0x2920d57fb12ffa15d5d1f11583806ce7ef15b7b1",
+      address: "0xaa293cbc108abe02bf36926713f1d536fb84709e",
       abi: [
         {
           type: "constructor",
@@ -5506,6 +6822,26 @@ const deployedContracts = {
               type: "address[]",
               internalType: "address[]",
             },
+            {
+              name: "latitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "longitude",
+              type: "int256",
+              internalType: "int256",
+            },
+            {
+              name: "eas",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "schemaUID",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
           ],
           stateMutability: "nonpayable",
         },
@@ -5524,7 +6860,46 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "EARTH_RADIUS",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "MAX_DISTANCE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "MINTER_ROLE",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "SCHEMA_UID",
           inputs: [],
           outputs: [
             {
@@ -5568,6 +6943,19 @@ const deployedContracts = {
               name: "",
               type: "uint256",
               internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "eas",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IEAS",
             },
           ],
           stateMutability: "view",
@@ -5678,12 +7066,38 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "latitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "longitude",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "int256",
+              internalType: "int256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "mint",
           inputs: [
             {
-              name: "to",
-              type: "address",
-              internalType: "address",
+              name: "attestationUID",
+              type: "bytes32",
+              internalType: "bytes32",
             },
           ],
           outputs: [],
@@ -5756,6 +7170,96 @@ const deployedContracts = {
           ],
           outputs: [],
           stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "s_eventTimestamp",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_location",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_locationType",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipePayload",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bytes",
+              internalType: "bytes",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_recipeType",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "s_srs",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
         },
         {
           type: "function",
@@ -6253,7 +7757,7 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1744678071.json",
+      deploymentFile: "run-1744688421.json",
       deploymentScript: "Deploy.s.sol",
     },
   },

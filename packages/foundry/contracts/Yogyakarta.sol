@@ -13,6 +13,22 @@ contract Yogyakarta is NFTBaseV1 {
         string memory symbol,
         string memory baseURI,
         address[] memory admins,
-        address[] memory minters
-    ) NFTBaseV1(name, symbol, baseURI, admins, minters) {}
+        address[] memory minters,
+        int256 latitude,
+        int256 longitude,
+        address eas,
+        bytes32 schemaUID
+    )
+        NFTBaseV1(
+            name,
+            symbol,
+            baseURI,
+            admins,
+            minters,
+            latitude,
+            longitude,
+            eas,
+            schemaUID
+        )
+    {}
 }
