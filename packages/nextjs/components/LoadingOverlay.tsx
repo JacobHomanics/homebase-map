@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface LoadingOverlayProps {
   message?: string;
@@ -20,12 +21,13 @@ export const LoadingOverlay = ({ message = "Loading...", duration = 2000 }: Load
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-primary bg-opacity-100 transition-opacity duration-500 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-base-100 bg-opacity-100 transition-opacity duration-500 ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <div className="text-center">
+      <div className="text-center flex flex-col items-center">
         <div className="loading loading-spinner loading-lg mb-4"></div>
+        <Image src="/homebase.jpg" alt="logo" width={100} height={100} className="rounded-full" />
         <p className="text-xl font-semibold">{message}</p>
       </div>
     </div>

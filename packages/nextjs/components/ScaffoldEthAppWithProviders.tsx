@@ -54,9 +54,9 @@ export const ScaffoldEthAppWithProviders = ({ children }: { children: React.Reac
           avatar={BlockieAvatar}
           theme={mounted ? (isDarkMode ? darkTheme() : lightTheme()) : lightTheme()}
         >
-          <EASProvider>
-            <ScaffoldEthApp>{children}</ScaffoldEthApp>
-          </EASProvider>
+          {/* <EASProvider> */}
+          <ScaffoldEthApp>{children}</ScaffoldEthApp>
+          {/* </EASProvider> */}
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>

@@ -1,65 +1,60 @@
 import { NextResponse } from "next/server";
-import { attestLocation } from "../shared/location";
-import { createWalletClient, http } from "viem";
+import { createWalletClient, http, parseAbi } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { foundry } from "viem/chains";
+import { base } from "viem/chains";
 import deployedContracts from "~~/contracts/deployedContracts";
+import { locations } from "~~/locations.config";
+import { DEFAULT_RANGE_METERS } from "~~/utils/distance";
+import { isWithinRange } from "~~/utils/distance";
 
-// Store topics, opinions, and user-trained data in-memory for simplicity
-// In production, use a database like MongoDB, Redis, etc.
+const account = privateKeyToAccount(process.env.ADMIN_PRIVATE_KEY as `0x${string}`);
+const client = createWalletClient({
+  account,
+  chain: base,
+  transport: http(),
+});
 
 export async function POST(request: Request) {
-  //   async function getLocationProofs() {
-  //     try {
-  //       // Get all location proofs
-  //       const response = await fetch("https://api.astral.global/api/v0/location-proofs");
-  //       const data = await response.json();
-  //       //   console.log(`Found ${data.count} location proofs`);
-  //       //   console.log(data.data);
-  //     } catch (error) {
-  //       console.error("Error fetching location proofs:", error);
-  //     }
-  //   }
-
-  //   getLocationProofs();
-
   try {
-    const { password, userAddress, location } = await request.json();
+    const { password, userAddress, location: userLocation, locationId } = await request.json();
 
-    const result = await attestLocation(userAddress);
-    // console.log(result);
+    const selectedLocation = locations.find(location => location.id === locationId);
 
-    // // Create wallet client with private key
-    // // IMPORTANT: Store this in an environment variable in production
-    // const privateKey = process.env.ADMIN_PRIVATE_KEY; // Replace with your private key or use env var
-    // const account = privateKeyToAccount(privateKey as `0x${string}`);
+    if (!selectedLocation) {
+      return NextResponse.json({ error: "Location not found" }, { status: 400 });
+    }
 
-    // const client = createWalletClient({
-    //   account,
-    //   chain: foundry, // Change to your desired chain
-    //   transport: http(), // You may want to specify an RPC URL here
-    // });
+    const isInRange = isWithinRange(
+      userLocation?.lat,
+      userLocation?.lng,
+      selectedLocation?.position.lat,
+      selectedLocation?.position.lng,
+      DEFAULT_RANGE_METERS,
+    );
 
-    // const contractInfo = deployedContracts[31337].AlignmentManagerV1;
+    if (!isInRange) {
+      return NextResponse.json({ error: "You are not in range of this location" }, { status: 400 });
+    }
 
-    // if (!contractInfo) {
-    //   return NextResponse.json({ error: "Contract not found" }, { status: 404 });
-    // }
+    const nfts = [
+      deployedContracts[base.id].Brussels,
+      deployedContracts[base.id].Gosho,
+      deployedContracts[base.id].Yogyakarta,
+      deployedContracts[base.id].Ndotohub,
+    ];
 
-    // // console.log(contractInfo);
-    // // console.log(userAddress);
-    // // console.log(location);
-    // client.writeContract({
-    //   address: contractInfo?.address,
-    //   abi: contractInfo?.abi,
-    //   functionName: "addAlignment",
-    //   args: [location, userAddress],
-    // });
+    const nft = nfts[locationId];
 
-    // Return transaction result or other data
+    const result = await client.writeContract({
+      address: nft.address,
+      abi: nft.abi,
+      functionName: "mint",
+      args: [userAddress],
+    });
+
     return NextResponse.json({
-      message: "Alignment succesfully added!",
-      // txHash: result // Uncomment when using actual contract interaction
+      message: "Alignment successfully added!",
+      hash: result,
     });
   } catch (error) {
     console.error("Error in pledge API:", error);

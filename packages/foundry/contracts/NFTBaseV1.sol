@@ -3,15 +3,22 @@ pragma solidity >=0.8.0 <0.9.0;
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract NFTV1 is AccessControl, ERC721Enumerable {
+contract NFTBaseV1 is AccessControl, ERC721Enumerable {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
+    string private uri;
+
     constructor(
+        string memory name,
+        string memory symbol,
+        string memory baseURI,
         address[] memory admins,
         address[] memory minters
-    ) ERC721("NFT", "NFT") {
+    ) ERC721(name, symbol) {
+        uri = baseURI;
         for (uint256 i = 0; i < admins.length; i++) {
             _grantRole(DEFAULT_ADMIN_ROLE, admins[i]);
         }
@@ -20,14 +27,28 @@ contract NFTV1 is AccessControl, ERC721Enumerable {
         }
     }
 
+    function transferFrom(
+        address from,
+        address to,
+        uint256 tokenId
+    ) public override(ERC721, IERC721) {
+        require(
+            from == address(0) || to == address(0),
+            "This is a Soulbound token. It cannot be transferred."
+        );
+        super.transferFrom(from, to, tokenId);
+    }
+
     function tokenURI(
         uint256 tokenId
     ) public view virtual override returns (string memory) {
-        return
-            string.concat(
-                "https://api.example.com/token/",
-                Strings.toString(tokenId)
-            );
+        return uri;
+
+        // "https://bafkreigrb5r3qqpxylnuk6aiycudyyzovfm62mrooettegrxrdnyfdurqi.ipfs.w3s.link/";
+        // string.concat(
+        //     "https://api.example.com/token/",
+        //     Strings.toString(tokenId)
+        // );
     }
 
     function mint(address to) external onlyRole(MINTER_ROLE) {
@@ -44,19 +65,5 @@ contract NFTV1 is AccessControl, ERC721Enumerable {
         returns (bool)
     {
         return super.supportsInterface(interfaceId);
-    }
-
-    // Prevent transfers
-    function _beforeTokenTransfer(
-        address from,
-        address to,
-        uint256 tokenId,
-        uint256 batchSize
-    ) internal virtual override {
-        require(
-            from == address(0) || to == address(0),
-            "This is a Soulbound token. It cannot be transferred."
-        );
-        super._beforeTokenTransfer(from, to, tokenId, batchSize);
     }
 }
