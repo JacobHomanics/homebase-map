@@ -6,8 +6,6 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "./DistanceUtils.sol";
 
-// import "./GeoDistance.sol";
-
 interface IEAS {
     struct Attestation {
         bytes32 uid;
@@ -22,9 +20,7 @@ interface IEAS {
         bytes data;
     }
 
-    function getAttestation(
-        bytes32 uid
-    ) external view returns (Attestation memory);
+    function getAttestation(bytes32 uid) external view returns (Attestation memory);
 }
 
 contract NFTBaseV1 is AccessControl, ERC721Enumerable {
@@ -77,57 +73,31 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         super.transferFrom(from, to, tokenId);
     }
 
-    function tokenURI(
-        uint256
-    ) public view virtual override returns (string memory) {
+    function tokenURI(uint256) public view virtual override returns (string memory) {
         return uri;
     }
 
     function mint(bytes32 attestationUID) external {
         // Get the attestation
-        IEAS.Attestation memory attestation = eas.getAttestation(
-            attestationUID
-        );
+        IEAS.Attestation memory attestation = eas.getAttestation(attestationUID);
 
         // Verify attestation requirements
         require(attestation.schema == SCHEMA_UID, "Invalid attestation schema");
-        require(
-            attestation.recipient == msg.sender,
-            "Attestation recipient mismatch"
-        );
-        require(
-            attestation.revocationTime == 0,
-            "Attestation has been revoked"
-        );
-
+        require(attestation.recipient == msg.sender, "Attestation recipient mismatch");
+        require(attestation.revocationTime == 0, "Attestation has been revoked");
+        
         if (attestation.expirationTime > 0) {
-            require(
-                block.timestamp < attestation.expirationTime,
-                "Attestation has expired"
-            );
+            require(block.timestamp < attestation.expirationTime, "Attestation has expired");
         }
 
         // Decode the attestation data
         (, , , string memory location, , , , , ) = abi.decode(
             attestation.data,
-            (
-                uint256,
-                string,
-                string,
-                string,
-                string[],
-                bytes[],
-                string[],
-                string[],
-                string
-            )
+            (uint256, string, string, string, string[], bytes[], string[], string[], string)
         );
 
         // Parse location string to get coordinates
         (int256 userLat, int256 userLong) = _parseLocation(location);
-
-        s_userLat = userLat;
-        s_userLong = userLong;
 
         // Uncomment for distance restriction
         // int256 distanceInMeters = DistanceUtils.getDistance(latitude, longitude, userLat, userLong);
@@ -136,34 +106,23 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         //     "User location too far from contract location"
         // );
 
-        // _mint(msg.sender, totalSupply());
+        _mint(msg.sender, totalSupply());
     }
 
-    int256 public s_userLat;
-    int256 public s_userLong;
-
-    function supportsInterface(
-        bytes4 interfaceId
-    )
-        public
-        view
-        virtual
-        override(ERC721Enumerable, AccessControl)
-        returns (bool)
+    function supportsInterface(bytes4 interfaceId)
+        public view virtual override(ERC721Enumerable, AccessControl) returns (bool)
     {
         return super.supportsInterface(interfaceId);
     }
 
     // Helper for parsing locations
-    function _parseLocation(
-        string memory _location
-    ) internal pure returns (int256 lat, int256 long) {
+    function _parseLocation(string memory _location) internal pure returns (int256 lat, int256 long) {
         bytes memory locationBytes = bytes(_location);
         require(locationBytes.length > 0, "Empty location string");
-
+        
         uint256 commaIndex;
         bool foundComma = false;
-
+        
         // Find the comma separator
         for (uint i = 0; i < locationBytes.length; i++) {
             if (locationBytes[i] == bytes1(",")) {
@@ -172,28 +131,20 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
                 break;
             }
         }
-
+        
         require(foundComma, "Invalid location format: no comma found");
-
+        
         // Basic implementation - would need full parser in production
         string memory firstPart = _substring(_location, 0, commaIndex);
-        string memory secondPart = _substring(
-            _location,
-            commaIndex + 1,
-            locationBytes.length - commaIndex - 1
-        );
-
+        string memory secondPart = _substring(_location, commaIndex + 1, locationBytes.length - commaIndex - 1);
+        
         long = _stringToInt(firstPart);
         lat = _stringToInt(secondPart);
-
+        
         return (lat, long);
     }
-
-    function _substring(
-        string memory str,
-        uint startIndex,
-        uint length
-    ) internal pure returns (string memory) {
+    
+    function _substring(string memory str, uint startIndex, uint length) internal pure returns (string memory) {
         bytes memory strBytes = bytes(str);
         bytes memory result = new bytes(length);
         for (uint i = 0; i < length; i++) {
@@ -201,32 +152,32 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         }
         return string(result);
     }
-
+    
     function _stringToInt(string memory _str) internal pure returns (int256) {
         bytes memory b = bytes(_str);
         bool negative = false;
         uint start = 0;
         int256 result = 0;
-
+        
         if (b[0] == "-") {
             negative = true;
             start = 1;
         }
-
+        
         for (uint i = start; i < b.length; i++) {
             uint8 c = uint8(bytes1(b[i]));
             if (c >= 48 && c <= 57) {
                 result = result * 10 + int256(uint256(c - 48));
             }
         }
-
+        
         if (negative) {
             result = -result;
         }
-
+        
         // Scale to 18 decimals - simplistic implementation
         result = result * 1_000_000_000_000_000_000;
-
+        
         return result;
     }
 
@@ -235,24 +186,14 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         int256 userLat,
         int256 userLong,
         int256 maxDistance
-    )
-        external
-        view
-        returns (
-            int256 distance,
-            bool isWithinRange,
-            int256 contractLat,
-            int256 contractLong
-        )
-    {
-        distance = DistanceUtils.getDistance(
-            latitude,
-            longitude,
-            userLat,
-            userLong
-        );
-        isWithinRange =
-            distance <= (maxDistance > 0 ? maxDistance : DEFAULT_RANGE_METERS);
+    ) external view returns (
+        int256 distance, 
+        bool isWithinRange,
+        int256 contractLat,
+        int256 contractLong
+    ) {
+        distance = DistanceUtils.getDistance(latitude, longitude, userLat, userLong);
+        isWithinRange = distance <= (maxDistance > 0 ? maxDistance : DEFAULT_RANGE_METERS);
         return (distance, isWithinRange, latitude, longitude);
     }
-}
+} 

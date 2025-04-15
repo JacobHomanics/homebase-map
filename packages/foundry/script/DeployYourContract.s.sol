@@ -9,6 +9,7 @@ import "../contracts/Ndotohub.sol";
 import "../contracts/Brussels.sol";
 import "../contracts/Gosho.sol";
 import "../contracts/Yogyakarta.sol";
+import {PRBMathSD59x18 as P} from "prb-math/PRBMathSD59x18.sol";
 
 contract DeployYourContract is ScaffoldETHDeploy {
     address[] admins;
@@ -88,8 +89,8 @@ contract DeployYourContract is ScaffoldETHDeploy {
             "ipfs://bafkreibengojht5th2j2ph3exuf5pfpcabipzxxeclra54hxq2hkm7p65e",
             admins,
             minters,
-            -33816600,
-            367017310,
+            -33816600000000000000,
+            367017310000000000000,
             0x4200000000000000000000000000000000000021,
             0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2
         );
@@ -100,8 +101,8 @@ contract DeployYourContract is ScaffoldETHDeploy {
             "ipfs://bafkreiemlbkgj222hnjo5eqt7wy4jp6t5zcfobzbxqlpoyc2rywtxhfyp4",
             admins,
             minters,
-            508228300,
-            43586652,
+            508228300420000000000,
+            435866523200000000000,
             0x4200000000000000000000000000000000000021,
             0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2
         );
@@ -112,8 +113,8 @@ contract DeployYourContract is ScaffoldETHDeploy {
             "ipfs://bafkreidsmtbi7234m6v4wq6r2secpmuf5ykz4zfvd5go3akdtmt574xy2i",
             admins,
             minters,
-            -181794013,
-            316278210,
+            -181794013000000000000,
+            316278210000000000000,
             0x4200000000000000000000000000000000000021,
             0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2
         );
@@ -124,8 +125,8 @@ contract DeployYourContract is ScaffoldETHDeploy {
             "ipfs://bafkreid7jpfdtxbmixgoi4bfg3wa76rqhvgdzo3bmgrrcfkbqoxznh6kry",
             admins,
             minters,
-            -77970680,
-            1103705290,
+            -77970680000000000000,
+            110370530000000000000,
             0x4200000000000000000000000000000000000021,
             0xba4171c92572b1e4f241d044c32cdf083be9fd946b8766977558ca6378c824e2
         );
