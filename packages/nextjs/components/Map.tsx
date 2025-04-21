@@ -233,15 +233,17 @@ export function Map() {
               Share Location
             </button>
           )}
-          <label className="cursor-pointer label">
-            <span className="label-text mr-2">Manual Location</span>
-            <input
-              type="checkbox"
-              className="toggle toggle-primary"
-              checked={isManualMode}
-              onChange={toggleManualMode}
-            />
-          </label>
+          {hasPermission === false && (
+            <label className="cursor-pointer label">
+              <span className="label-text mr-2">Manual Location</span>
+              <input
+                type="checkbox"
+                className="toggle toggle-primary"
+                checked={isManualMode}
+                onChange={toggleManualMode}
+              />
+            </label>
+          )}
         </div>
         {isManualMode && (
           <div className="text-sm text-info">
