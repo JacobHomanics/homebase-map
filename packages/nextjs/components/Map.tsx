@@ -24,15 +24,12 @@ export function Map() {
     height: `${mapHeight}px`,
   };
 
-  const { userLocation, center, isManualMode, setManualLocation, toggleManualMode } = useGetUserLocation();
+  const { userLocation, center, isManualMode, hasPermission, requestLocation, setManualLocation, toggleManualMode } =
+    useGetUserLocation();
 
-  // const userLocation = { lat: -3.3816595331, lng: 36.701730603 };
-  // const center = { lat: 50.84364262516137, lng: 4.403013511221624 };
   const { address: connectedAddress } = useAccount();
 
   const { selectedMarker } = useSelectedMarker();
-
-  // const { locationScores } = useLocationScores();
 
   // Calculate which locations are within range of the user's location
   let locationsInRange: number[] = [];
@@ -227,7 +224,12 @@ export function Map() {
       <LoadingOverlay message="Where is your Homebase?" duration={1000} />
 
       <div className="flex justify-between items-center mb-4 px-4">
-        <div className="flex items-center">
+        <div className="flex items-center gap-4">
+          {hasPermission === null && (
+            <button className="btn btn-primary btn-sm" onClick={requestLocation}>
+              Share Location
+            </button>
+          )}
           <label className="cursor-pointer label">
             <span className="label-text mr-2">Manual Location</span>
             <input
@@ -259,11 +261,6 @@ export function Map() {
             <p className="m-0 text-xl text-black dark:text-white">{location.title}</p>
             <p className="m-0 text-2xl md:text-xl text-black dark:text-white">Pledges</p>{" "}
             <p className="m-0 text-2xl md:text-6xl text-black dark:text-white">{nftTotalSupplyMapping[location.id]}</p>
-            {/* {isManualMode && (
-              <button className="btn btn-secondary btn-sm mt-2" onClick={() => setManualLocation(location.position)}>
-                Set my location here
-              </button>
-            )} */}
             {!connectedAddress && <ConnectButton />}
             {connectedAddress &&
               ((nftBalanceMapping?.[location.id] ?? 0) > 0 ? (
