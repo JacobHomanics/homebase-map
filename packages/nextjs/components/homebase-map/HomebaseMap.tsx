@@ -62,6 +62,18 @@ const UserLocationCircle = ({ position }: { position: UserLocation }) => {
   return null;
 };
 
+const MapCenter = ({ center }: { center: UserLocation }) => {
+  const map = useMap();
+
+  useEffect(() => {
+    if (map && center) {
+      map.panTo(center);
+    }
+  }, [map, center]);
+
+  return null;
+};
+
 export const HomebaseMap = ({
   userLocation,
   center,
@@ -96,6 +108,7 @@ export const HomebaseMap = ({
           mapId="8c78d816c97d148e"
           onClick={handleMapClick}
         >
+          <MapCenter center={center} />
           {locations.map(marker => (
             <MarkerWithInfowindow
               key={marker.id}
