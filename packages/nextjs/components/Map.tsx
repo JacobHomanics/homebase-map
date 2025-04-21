@@ -24,7 +24,8 @@ export function Map() {
     height: `${mapHeight}px`,
   };
 
-  const { userLocation, center, isManualMode, setManualLocation, toggleManualMode } = useGetUserLocation();
+  const { userLocation, center, isManualMode, hasPermission, setManualLocation, toggleManualMode, requestLocation } =
+    useGetUserLocation();
 
   // const userLocation = { lat: -3.3816595331, lng: 36.701730603 };
   // const center = { lat: 50.84364262516137, lng: 4.403013511221624 };
@@ -227,7 +228,12 @@ export function Map() {
       <LoadingOverlay message="Where is your Homebase?" duration={1000} />
 
       <div className="flex justify-between items-center mb-4 px-4">
-        <div className="flex items-center">
+        <div className="flex items-center gap-4">
+          {hasPermission === null && (
+            <button className="btn btn-primary btn-sm" onClick={requestLocation}>
+              Share Location
+            </button>
+          )}
           <label className="cursor-pointer label">
             <span className="label-text mr-2">Manual Location</span>
             <input
