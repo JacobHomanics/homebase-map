@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import type { NextPage } from "next";
 import { NFTCard } from "~~/components/homebase-map/nftCard";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";

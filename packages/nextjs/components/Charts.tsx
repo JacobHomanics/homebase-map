@@ -1,7 +1,3 @@
-import { useEffect, useState } from "react";
-import { locations } from "../locations.config";
-import { useScaffoldContract } from "~~/hooks/scaffold-eth";
-
 export function Charts() {
   // const { data: alignmentManager } = useScaffoldContract({
   //   contractName: "AlignmentManagerV1",

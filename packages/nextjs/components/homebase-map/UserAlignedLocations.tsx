@@ -1,7 +1,3 @@
-import { useAccount } from "wagmi";
-import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
-import { Location, locations } from "~~/locations.config";
-
 export const UserAlignedLocations = () => {
   // const { address: connectedAddress } = useAccount();
 
