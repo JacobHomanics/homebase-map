@@ -62,17 +62,26 @@ const UserLocationCircle = ({ position }: { position: UserLocation }) => {
   return null;
 };
 
-export const HomebaseMap = ({
+const MapContainer = ({
   userLocation,
   center,
   locations,
-  containerStyle,
   infoWindowChildren,
-  isManualMode = false,
+  isManualMode,
   onMapClick,
+  containerStyle,
 }: HomebaseMapProps) => {
   const { set } = useSelectedMarker();
   const [openInfoWindowId, setOpenInfoWindowId] = useState<number | null>(null);
+  const map = useMap();
+
+  // Center map on user location when it changes
+  useEffect(() => {
+    if (!map || !userLocation) return;
+
+    // Center the map on user location
+    map.panTo(userLocation);
+  }, [map, userLocation]);
 
   // Handle map click events when in manual mode
   const handleMapClick = (e: MapMouseEvent) => {
@@ -85,41 +94,46 @@ export const HomebaseMap = ({
   };
 
   return (
-    <>
-      {" "}
-      <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ""} libraries={["geometry"]}>
-        <Map
-          style={containerStyle}
-          defaultCenter={center}
-          defaultZoom={4}
-          gestureHandling={"greedy"}
-          mapId="8c78d816c97d148e"
-          onClick={handleMapClick}
+    <Map
+      style={containerStyle}
+      defaultCenter={center}
+      defaultZoom={4}
+      gestureHandling={"greedy"}
+      mapId="8c78d816c97d148e"
+      onClick={handleMapClick}
+    >
+      {locations.map(marker => (
+        <MarkerWithInfowindow
+          key={marker.id}
+          position={marker.position}
+          onClick={() => {
+            set(marker);
+            setOpenInfoWindowId(marker.id);
+          }}
+          isOpen={openInfoWindowId === marker.id}
+          onClose={() => setOpenInfoWindowId(null)}
         >
-          {locations.map(marker => (
-            <MarkerWithInfowindow
-              key={marker.id}
-              position={marker.position}
-              onClick={() => {
-                set(marker);
-                setOpenInfoWindowId(marker.id);
-              }}
-              isOpen={openInfoWindowId === marker.id}
-              onClose={() => setOpenInfoWindowId(null)}
-            >
-              {infoWindowChildren(marker)}
-            </MarkerWithInfowindow>
-          ))}
+          {infoWindowChildren(marker)}
+        </MarkerWithInfowindow>
+      ))}
 
-          {userLocation && (
-            <>
-              <AdvancedMarker position={userLocation}>
-                <Pin scale={1} background="#0052FF" borderColor="#000000" glyphColor="#000000" />
-              </AdvancedMarker>
-              <UserLocationCircle position={userLocation} />
-            </>
-          )}
-        </Map>
+      {userLocation && (
+        <>
+          <AdvancedMarker position={userLocation}>
+            <Pin scale={1} background="#0052FF" borderColor="#000000" glyphColor="#000000" />
+          </AdvancedMarker>
+          <UserLocationCircle position={userLocation} />
+        </>
+      )}
+    </Map>
+  );
+};
+
+export const HomebaseMap = (props: HomebaseMapProps) => {
+  return (
+    <>
+      <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY || ""} libraries={["geometry"]}>
+        <MapContainer {...props} />
       </APIProvider>
     </>
   );
