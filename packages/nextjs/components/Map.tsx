@@ -7,7 +7,7 @@ import { ethers } from "ethers";
 import { parseUnits } from "viem";
 import { useAccount, useWriteContract } from "wagmi";
 import { useAttestLocation } from "~~/hooks/homebase-map/useAttestLocation";
-import { useGetUserLocation } from "~~/hooks/homebase-map/useGetUserLocation";
+// import { useGetUserLocation } from "~~/hooks/homebase-map/useGetUserLocation";
 // import { useLocationScores } from "~~/hooks/homebase-map/useLocationScores";
 import { useMapHeight } from "~~/hooks/homebase-map/useMapHeight";
 import { useSelectedMarker } from "~~/hooks/homebase-map/useSelectedMarker";
@@ -18,13 +18,57 @@ import { DEFAULT_RANGE_METERS, isWithinRange } from "~~/utils/distance";
 
 export function Map() {
   const mapHeight = useMapHeight(450, 650);
+  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [center, setCenter] = useState({ lat: 39.78597, lng: -101.58847 });
+  const [isManualMode, setIsManualMode] = useState(false);
+  const [showLoadingOverlay, setShowLoadingOverlay] = useState(false);
+
+  // Function to get user location when the button is clicked
+  const requestUserLocation = () => {
+    setShowLoadingOverlay(true);
+
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const newLocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          setUserLocation(newLocation);
+          setCenter(newLocation);
+          setShowLoadingOverlay(false);
+        },
+        error => {
+          console.error("Error getting location:", error);
+          setShowLoadingOverlay(false);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 8000,
+          maximumAge: 0,
+        },
+      );
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+      setShowLoadingOverlay(false);
+    }
+  };
+
+  // Function to manually set user location
+  const setManualLocation = (location: { lat: number; lng: number }) => {
+    setUserLocation(location);
+    setCenter(location);
+  };
+
+  // Toggle between automatic and manual location modes
+  const toggleManualMode = () => {
+    setIsManualMode(prev => !prev);
+  };
 
   const mapContainerStyle = {
     width: "100%",
     height: `${mapHeight}px`,
   };
-
-  const { userLocation, center, isManualMode, setManualLocation, toggleManualMode } = useGetUserLocation();
 
   // const userLocation = { lat: -3.3816595331, lng: 36.701730603 };
   // const center = { lat: 50.84364262516137, lng: 4.403013511221624 };
@@ -224,7 +268,7 @@ export function Map() {
 
   return (
     <>
-      <LoadingOverlay message="Where is your Homebase?" duration={1000} />
+      {showLoadingOverlay && <LoadingOverlay message="Finding your Homebase..." duration={5000} />}
 
       <div className="flex justify-between items-center mb-4 px-4">
         <div className="flex items-center">
@@ -238,13 +282,20 @@ export function Map() {
             />
           </label>
         </div>
-        {isManualMode && (
-          <div className="text-sm text-info">
-            {userLocation
-              ? `Current location: ${userLocation.lat.toFixed(6)}, ${userLocation.lng.toFixed(6)}`
-              : "Click on the map to set your location"}
-          </div>
-        )}
+
+        <div className="flex items-center gap-4">
+          {isManualMode && (
+            <div className="text-sm text-info">
+              {userLocation
+                ? `Current location: ${userLocation.lat.toFixed(6)}, ${userLocation.lng.toFixed(6)}`
+                : "Click on the map to set your location"}
+            </div>
+          )}
+
+          <button className="btn btn-primary" onClick={requestUserLocation} disabled={isManualMode}>
+            {userLocation ? "Update My Location" : "Find My Location"}
+          </button>
+        </div>
       </div>
 
       <HomebaseMap
