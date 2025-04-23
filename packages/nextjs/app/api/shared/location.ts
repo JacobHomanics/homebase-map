@@ -25,8 +25,6 @@ export async function attestLocation(recipientAddress: string) {
   // Dynamic values are:
   const longitude = "-9.3539"; // decimal degrees, formatted as strings
   const latitude = "51.4747";
-  const mediaLink = "<IPFS CID, or a URL>";
-  const memo = "Your memo";
 
   // Define encodeData function to structure the data for attestation
   const encodedData = schemaEncoder.encodeData([
