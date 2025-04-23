@@ -5,9 +5,9 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
-import "./NFTBaseV1.sol";
+import "../NFTBaseV1.sol";
 
-contract Yogyakarta is NFTBaseV1 {
+contract Ndotohub is NFTBaseV1 {
     constructor(
         string memory name,
         string memory symbol,

@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
-import "./NFTBaseV1.sol";
+import "../NFTBaseV1.sol";
 
 contract Brussels is NFTBaseV1 {
     constructor(
