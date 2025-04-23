@@ -5,10 +5,26 @@ pragma solidity ^0.8.19;
 // import "../contracts/AlignmentManagerV1.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "./DeployHelpers.s.sol";
-import "../contracts/Ndotohub.sol";
-import "../contracts/Brussels.sol";
-import "../contracts/Gosho.sol";
-import "../contracts/Yogyakarta.sol";
+import "../contracts/events/Ndotohub.sol";
+import "../contracts/events/Brussels.sol";
+import "../contracts/events/Gosho.sol";
+import "../contracts/events/Yogyakarta.sol";
+import "../contracts/events/Swabi.sol";
+import "../contracts/events/Camarines.sol";
+import "../contracts/events/Pune.sol";
+import "../contracts/events/Nairobi.sol";
+import "../contracts/events/HongKong.sol";
+import "../contracts/events/Accra.sol";
+import "../contracts/events/Cartagena.sol";
+import "../contracts/events/DaNang.sol";
+import "../contracts/events/Mumbai.sol";
+import "../contracts/events/Bangalore.sol";
+import "../contracts/events/NewYorkCity.sol";
+import "../contracts/events/BuenosAires.sol";
+import "../contracts/events/Manila.sol";
+import "../contracts/events/Dubai.sol";
+import "../contracts/events/DarEsSalaam.sol";
+import "../contracts/events/Kigali.sol";
 import {PRBMathSD59x18 as P} from "prb-math/PRBMathSD59x18.sol";
 
 contract DeployYourContract is ScaffoldETHDeploy {
@@ -127,6 +143,200 @@ contract DeployYourContract is ScaffoldETHDeploy {
             minters,
             -7797068111,
             110370529110,
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        // Deploy new events from the Luma page
+
+        Swabi swabi = new Swabi(
+            "Swabi",
+            "SWABI",
+            "ipfs://placeholder-uri-for-swabi",
+            admins,
+            minters,
+            34040271481, // Latitude for Swabi, Pakistan
+            72458903443, // Longitude for Swabi, Pakistan
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        Camarines camarines = new Camarines(
+            "Camarines",
+            "CAMARINES",
+            "ipfs://placeholder-uri-for-camarines",
+            admins,
+            minters,
+            13622775178, // Latitude for Camarines, Philippines
+            123354691267, // Longitude for Camarines, Philippines
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        Pune pune = new Pune(
+            "Pune",
+            "PUNE",
+            "ipfs://placeholder-uri-for-pune",
+            admins,
+            minters,
+            18520430196, // Latitude for Pune, India
+            73854694366, // Longitude for Pune, India
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        Nairobi nairobi = new Nairobi(
+            "Nairobi",
+            "NAIROBI",
+            "ipfs://placeholder-uri-for-nairobi",
+            admins,
+            minters,
+            -1292066069, // Latitude for Nairobi, Kenya
+            36821945190, // Longitude for Nairobi, Kenya
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        HongKong hongKong = new HongKong(
+            "HongKong",
+            "HONGKONG",
+            "ipfs://placeholder-uri-for-hongkong",
+            admins,
+            minters,
+            22396428204, // Latitude for Hong Kong, China
+            114109497070, // Longitude for Hong Kong, China
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        Accra accra = new Accra(
+            "Accra",
+            "ACCRA",
+            "ipfs://placeholder-uri-for-accra",
+            admins,
+            minters,
+            5560000000, // Latitude for Accra, Ghana (5.56 * 10^9)
+            -205782500, // Longitude for Accra, Ghana (-0.2057825 * 10^9)
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        Cartagena cartagena = new Cartagena(
+            "Cartagena",
+            "CARTAGENA",
+            "ipfs://placeholder-uri-for-cartagena",
+            admins,
+            minters,
+            10391000000, // Latitude for Cartagena, Colombia (10.391 * 10^9)
+            -75479400000, // Longitude for Cartagena, Colombia (-75.4794 * 10^9)
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        DaNang daNang = new DaNang(
+            "DaNang",
+            "DANANG",
+            "ipfs://placeholder-uri-for-danang",
+            admins,
+            minters,
+            16054400000, // Latitude for Da Nang, Vietnam (16.0544 * 10^9)
+            108202200000, // Longitude for Da Nang, Vietnam (108.2022 * 10^9)
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        Mumbai mumbai = new Mumbai(
+            "Mumbai",
+            "MUMBAI",
+            "ipfs://placeholder-uri-for-mumbai",
+            admins,
+            minters,
+            19076000000, // Latitude for Mumbai, India (19.076 * 10^9)
+            72877700000, // Longitude for Mumbai, India (72.8777 * 10^9)
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        Bangalore bangalore = new Bangalore(
+            "Bangalore",
+            "BANGALORE",
+            "ipfs://placeholder-uri-for-bangalore",
+            admins,
+            minters,
+            12971600000, // Latitude for Bangalore, India (12.9716 * 10^9)
+            77594600000, // Longitude for Bangalore, India (77.5946 * 10^9)
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        NewYorkCity newYorkCity = new NewYorkCity(
+            "NewYorkCity",
+            "NYC",
+            "ipfs://placeholder-uri-for-nyc",
+            admins,
+            minters,
+            40712800000, // Latitude for New York City, USA (40.7128 * 10^9)
+            -74006000000, // Longitude for New York City, USA (-74.006 * 10^9)
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        BuenosAires buenosAires = new BuenosAires(
+            "BuenosAires",
+            "BUENOSAIRES",
+            "ipfs://placeholder-uri-for-buenosaires",
+            admins,
+            minters,
+            -34603700000, // Latitude for Buenos Aires, Argentina (-34.6037 * 10^9)
+            -58381600000, // Longitude for Buenos Aires, Argentina (-58.3816 * 10^9)
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        Manila manila = new Manila(
+            "Manila",
+            "MANILA",
+            "ipfs://placeholder-uri-for-manila",
+            admins,
+            minters,
+            14599500000, // Latitude for Manila, Philippines (14.5995 * 10^9)
+            120984200000, // Longitude for Manila, Philippines (120.9842 * 10^9)
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        Dubai dubai = new Dubai(
+            "Dubai",
+            "DUBAI",
+            "ipfs://placeholder-uri-for-dubai",
+            admins,
+            minters,
+            25204800000, // Latitude for Dubai, UAE (25.2048 * 10^9)
+            55270800000, // Longitude for Dubai, UAE (55.2708 * 10^9)
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        DarEsSalaam darEsSalaam = new DarEsSalaam(
+            "DarEsSalaam",
+            "DARESSALAAM",
+            "ipfs://placeholder-uri-for-daressalaam",
+            admins,
+            minters,
+            -6792400000, // Latitude for Dar Es Salaam, Tanzania (-6.7924 * 10^9)
+            39208300000, // Longitude for Dar Es Salaam, Tanzania (39.2083 * 10^9)
+            0x4200000000000000000000000000000000000021,
+            0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
+        );
+
+        Kigali kigali = new Kigali(
+            "Kigali",
+            "KIGALI",
+            "ipfs://placeholder-uri-for-kigali",
+            admins,
+            minters,
+            -1970600000, // Latitude for Kigali, Rwanda (-1.9706 * 10^9)
+            30104400000, // Longitude for Kigali, Rwanda (30.1044 * 10^9)
             0x4200000000000000000000000000000000000021,
             0xd665d417263da788c9ec676caeb9f7a82c8824556107a3720c4c34037658129b
         );

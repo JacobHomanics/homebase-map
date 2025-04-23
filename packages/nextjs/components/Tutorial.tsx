@@ -62,7 +62,7 @@ export const Tutorial = () => {
       <button
         onClick={() => setIsOpen(true)}
         className="btn btn-circle btn-sm bg-primary text-primary-content hover:bg-primary-focus"
-        title="How to use Home Base"
+        title="How to use Homebase"
         aria-label="Open Tutorial"
       >
         <QuestionMarkCircleIcon className="h-5 w-5" />
@@ -82,7 +82,7 @@ export const Tutorial = () => {
             </button>
 
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold">Home Base Tutorial</h2>
+              <h2 className="text-2xl font-bold">Homebase Tutorial</h2>
               <p className="text-sm opacity-70">Learn how to use the app in a few simple steps</p>
             </div>
 

@@ -129,6 +129,87 @@ export function Map() {
     functionName: "totalSupply",
   });
 
+  // Add totalSupply for new events
+  const { data: swabiTotalSupply, refetch: refetchSwabiTotalSupply } = useScaffoldReadContract({
+    contractName: "Swabi",
+    functionName: "totalSupply",
+  });
+
+  const { data: camarinesTotalSupply, refetch: refetchCamarinesTotalSupply } = useScaffoldReadContract({
+    contractName: "Camarines",
+    functionName: "totalSupply",
+  });
+
+  const { data: puneTotalSupply, refetch: refetchPuneTotalSupply } = useScaffoldReadContract({
+    contractName: "Pune",
+    functionName: "totalSupply",
+  });
+
+  const { data: nairobiTotalSupply, refetch: refetchNairobiTotalSupply } = useScaffoldReadContract({
+    contractName: "Nairobi",
+    functionName: "totalSupply",
+  });
+
+  const { data: hongKongTotalSupply, refetch: refetchHongKongTotalSupply } = useScaffoldReadContract({
+    contractName: "HongKong",
+    functionName: "totalSupply",
+  });
+
+  const { data: accraTotalSupply, refetch: refetchAccraTotalSupply } = useScaffoldReadContract({
+    contractName: "Accra",
+    functionName: "totalSupply",
+  });
+
+  const { data: cartagenaTotalSupply, refetch: refetchCartagenaTotalSupply } = useScaffoldReadContract({
+    contractName: "Cartagena",
+    functionName: "totalSupply",
+  });
+
+  const { data: daNangTotalSupply, refetch: refetchDaNangTotalSupply } = useScaffoldReadContract({
+    contractName: "DaNang",
+    functionName: "totalSupply",
+  });
+
+  const { data: mumbaiTotalSupply, refetch: refetchMumbaiTotalSupply } = useScaffoldReadContract({
+    contractName: "Mumbai",
+    functionName: "totalSupply",
+  });
+
+  const { data: bangaloreTotalSupply, refetch: refetchBangaloreTotalSupply } = useScaffoldReadContract({
+    contractName: "Bangalore",
+    functionName: "totalSupply",
+  });
+
+  const { data: newYorkCityTotalSupply, refetch: refetchNewYorkCityTotalSupply } = useScaffoldReadContract({
+    contractName: "NewYorkCity",
+    functionName: "totalSupply",
+  });
+
+  const { data: buenosAiresTotalSupply, refetch: refetchBuenosAiresTotalSupply } = useScaffoldReadContract({
+    contractName: "BuenosAires",
+    functionName: "totalSupply",
+  });
+
+  const { data: manilaTotalSupply, refetch: refetchManilaTotalSupply } = useScaffoldReadContract({
+    contractName: "Manila",
+    functionName: "totalSupply",
+  });
+
+  const { data: dubaiTotalSupply, refetch: refetchDubaiTotalSupply } = useScaffoldReadContract({
+    contractName: "Dubai",
+    functionName: "totalSupply",
+  });
+
+  const { data: darEsSalaamTotalSupply, refetch: refetchDarEsSalaamTotalSupply } = useScaffoldReadContract({
+    contractName: "DarEsSalaam",
+    functionName: "totalSupply",
+  });
+
+  const { data: kigaliTotalSupply, refetch: refetchKigaliTotalSupply } = useScaffoldReadContract({
+    contractName: "Kigali",
+    functionName: "totalSupply",
+  });
+
   const { data: brusselsBalance } = useScaffoldReadContract({
     contractName: "Brussels",
     functionName: "balanceOf",
@@ -149,6 +230,103 @@ export function Map() {
 
   const { data: ndotohubBalance } = useScaffoldReadContract({
     contractName: "Ndotohub",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  // Add balanceOf for new events
+  const { data: swabiBalance } = useScaffoldReadContract({
+    contractName: "Swabi",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: camarinesBalance } = useScaffoldReadContract({
+    contractName: "Camarines",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: puneBalance } = useScaffoldReadContract({
+    contractName: "Pune",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: nairobiBalance } = useScaffoldReadContract({
+    contractName: "Nairobi",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: hongKongBalance } = useScaffoldReadContract({
+    contractName: "HongKong",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: accraBalance } = useScaffoldReadContract({
+    contractName: "Accra",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: cartagenaBalance } = useScaffoldReadContract({
+    contractName: "Cartagena",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: daNangBalance } = useScaffoldReadContract({
+    contractName: "DaNang",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: mumbaiBalance } = useScaffoldReadContract({
+    contractName: "Mumbai",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: bangaloreBalance } = useScaffoldReadContract({
+    contractName: "Bangalore",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: newYorkCityBalance } = useScaffoldReadContract({
+    contractName: "NewYorkCity",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: buenosAiresBalance } = useScaffoldReadContract({
+    contractName: "BuenosAires",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: manilaBalance } = useScaffoldReadContract({
+    contractName: "Manila",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: dubaiBalance } = useScaffoldReadContract({
+    contractName: "Dubai",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: darEsSalaamBalance } = useScaffoldReadContract({
+    contractName: "DarEsSalaam",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+  });
+
+  const { data: kigaliBalance } = useScaffoldReadContract({
+    contractName: "Kigali",
     functionName: "balanceOf",
     args: [connectedAddress],
   });
@@ -177,15 +355,148 @@ export function Map() {
     args: [BigInt(0)],
   });
 
+  // Add tokenURI for new events
+  const { data: swabiTokenURI } = useScaffoldReadContract({
+    contractName: "Swabi",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: camarinesTokenURI } = useScaffoldReadContract({
+    contractName: "Camarines",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: puneTokenURI } = useScaffoldReadContract({
+    contractName: "Pune",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: nairobiTokenURI } = useScaffoldReadContract({
+    contractName: "Nairobi",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: hongKongTokenURI } = useScaffoldReadContract({
+    contractName: "HongKong",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: accraTokenURI } = useScaffoldReadContract({
+    contractName: "Accra",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: cartagenaTokenURI } = useScaffoldReadContract({
+    contractName: "Cartagena",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: daNangTokenURI } = useScaffoldReadContract({
+    contractName: "DaNang",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: mumbaiTokenURI } = useScaffoldReadContract({
+    contractName: "Mumbai",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: bangaloreTokenURI } = useScaffoldReadContract({
+    contractName: "Bangalore",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: newYorkCityTokenURI } = useScaffoldReadContract({
+    contractName: "NewYorkCity",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: buenosAiresTokenURI } = useScaffoldReadContract({
+    contractName: "BuenosAires",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: manilaTokenURI } = useScaffoldReadContract({
+    contractName: "Manila",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: dubaiTokenURI } = useScaffoldReadContract({
+    contractName: "Dubai",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: darEsSalaamTokenURI } = useScaffoldReadContract({
+    contractName: "DarEsSalaam",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
+  const { data: kigaliTokenURI } = useScaffoldReadContract({
+    contractName: "Kigali",
+    functionName: "tokenURI",
+    args: [BigInt(0)],
+  });
+
   const brusselsTokenURIReplaced = brusselsTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
   const goshoTokenURIReplaced = goshoTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
   const yogyakartaTokenURIReplaced = yogyakartaTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
   const ndotohubTokenURIReplaced = ndotohubTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
 
+  // Add tokenURI replacements for new events
+  const swabiTokenURIReplaced = swabiTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const camarinesTokenURIReplaced = camarinesTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const puneTokenURIReplaced = puneTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const nairobiTokenURIReplaced = nairobiTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const hongKongTokenURIReplaced = hongKongTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const accraTokenURIReplaced = accraTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const cartagenaTokenURIReplaced = cartagenaTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const daNangTokenURIReplaced = daNangTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const mumbaiTokenURIReplaced = mumbaiTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const bangaloreTokenURIReplaced = bangaloreTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const newYorkCityTokenURIReplaced = newYorkCityTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const buenosAiresTokenURIReplaced = buenosAiresTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const manilaTokenURIReplaced = manilaTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const dubaiTokenURIReplaced = dubaiTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const darEsSalaamTokenURIReplaced = darEsSalaamTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+  const kigaliTokenURIReplaced = kigaliTokenURI?.replace("ipfs://", "https://ipfs.io/ipfs/");
+
   const { nft: brusselsNFT } = useTokenURI(brusselsTokenURIReplaced);
   const { nft: goshoNFT } = useTokenURI(goshoTokenURIReplaced);
   const { nft: yogyakartaNFT } = useTokenURI(yogyakartaTokenURIReplaced);
   const { nft: ndotohubNFT } = useTokenURI(ndotohubTokenURIReplaced);
+
+  // Add NFT hooks for new events
+  const { nft: swabiNFT } = useTokenURI(swabiTokenURIReplaced);
+  const { nft: camarinesNFT } = useTokenURI(camarinesTokenURIReplaced);
+  const { nft: puneNFT } = useTokenURI(puneTokenURIReplaced);
+  const { nft: nairobiNFT } = useTokenURI(nairobiTokenURIReplaced);
+  const { nft: hongKongNFT } = useTokenURI(hongKongTokenURIReplaced);
+  const { nft: accraNFT } = useTokenURI(accraTokenURIReplaced);
+  const { nft: cartagenaNFT } = useTokenURI(cartagenaTokenURIReplaced);
+  const { nft: daNangNFT } = useTokenURI(daNangTokenURIReplaced);
+  const { nft: mumbaiNFT } = useTokenURI(mumbaiTokenURIReplaced);
+  const { nft: bangaloreNFT } = useTokenURI(bangaloreTokenURIReplaced);
+  const { nft: newYorkCityNFT } = useTokenURI(newYorkCityTokenURIReplaced);
+  const { nft: buenosAiresNFT } = useTokenURI(buenosAiresTokenURIReplaced);
+  const { nft: manilaNFT } = useTokenURI(manilaTokenURIReplaced);
+  const { nft: dubaiNFT } = useTokenURI(dubaiTokenURIReplaced);
+  const { nft: darEsSalaamNFT } = useTokenURI(darEsSalaamTokenURIReplaced);
+  const { nft: kigaliNFT } = useTokenURI(kigaliTokenURIReplaced);
 
   if (brusselsNFT) {
     brusselsNFT.image = brusselsNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
@@ -200,6 +511,56 @@ export function Map() {
     ndotohubNFT.image = ndotohubNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
   }
 
+  // Add image replacements for new events
+  if (swabiNFT) {
+    swabiNFT.image = swabiNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (camarinesNFT) {
+    camarinesNFT.image = camarinesNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (puneNFT) {
+    puneNFT.image = puneNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (nairobiNFT) {
+    nairobiNFT.image = nairobiNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (hongKongNFT) {
+    hongKongNFT.image = hongKongNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (accraNFT) {
+    accraNFT.image = accraNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (cartagenaNFT) {
+    cartagenaNFT.image = cartagenaNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (daNangNFT) {
+    daNangNFT.image = daNangNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (mumbaiNFT) {
+    mumbaiNFT.image = mumbaiNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (bangaloreNFT) {
+    bangaloreNFT.image = bangaloreNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (newYorkCityNFT) {
+    newYorkCityNFT.image = newYorkCityNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (buenosAiresNFT) {
+    buenosAiresNFT.image = buenosAiresNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (manilaNFT) {
+    manilaNFT.image = manilaNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (dubaiNFT) {
+    dubaiNFT.image = dubaiNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (darEsSalaamNFT) {
+    darEsSalaamNFT.image = darEsSalaamNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+  if (kigaliNFT) {
+    kigaliNFT.image = kigaliNFT?.image.replace("ipfs://", "https://ipfs.io/ipfs/");
+  }
+
   const { handleSubmit: attestLocation } = useAttestLocation();
 
   const { writeContractAsync: writeBrusselsAsync } = useScaffoldWriteContract({ contractName: "Brussels" });
@@ -207,9 +568,92 @@ export function Map() {
   const { writeContractAsync: writeYogyakartaAsync } = useScaffoldWriteContract({ contractName: "Yogyakarta" });
   const { writeContractAsync: writeNdotohubAsync } = useScaffoldWriteContract({ contractName: "Ndotohub" });
 
-  const nftWriteMapping = [writeBrusselsAsync, writeGoshoAsync, writeYogyakartaAsync, writeNdotohubAsync];
-  const nftBalanceMapping = [brusselsBalance, goshoBalance, yogyakartaBalance, ndotohubBalance];
-  const nftTotalSupplyMapping = [brusselsTotalSupply, goshoTotalSupply, yogyakartaTotalSupply, ndotohubTotalSupply];
+  // Add write contract hooks for new events
+  const { writeContractAsync: writeSwabiAsync } = useScaffoldWriteContract({ contractName: "Swabi" });
+  const { writeContractAsync: writeCamarinesAsync } = useScaffoldWriteContract({ contractName: "Camarines" });
+  const { writeContractAsync: writePuneAsync } = useScaffoldWriteContract({ contractName: "Pune" });
+  const { writeContractAsync: writeNairobiAsync } = useScaffoldWriteContract({ contractName: "Nairobi" });
+  const { writeContractAsync: writeHongKongAsync } = useScaffoldWriteContract({ contractName: "HongKong" });
+  const { writeContractAsync: writeAccraAsync } = useScaffoldWriteContract({ contractName: "Accra" });
+  const { writeContractAsync: writeCartagenaAsync } = useScaffoldWriteContract({ contractName: "Cartagena" });
+  const { writeContractAsync: writeDaNangAsync } = useScaffoldWriteContract({ contractName: "DaNang" });
+  const { writeContractAsync: writeMumbaiAsync } = useScaffoldWriteContract({ contractName: "Mumbai" });
+  const { writeContractAsync: writeBangaloreAsync } = useScaffoldWriteContract({ contractName: "Bangalore" });
+  const { writeContractAsync: writeNewYorkCityAsync } = useScaffoldWriteContract({ contractName: "NewYorkCity" });
+  const { writeContractAsync: writeBuenosAiresAsync } = useScaffoldWriteContract({ contractName: "BuenosAires" });
+  const { writeContractAsync: writeManilaAsync } = useScaffoldWriteContract({ contractName: "Manila" });
+  const { writeContractAsync: writeDubaiAsync } = useScaffoldWriteContract({ contractName: "Dubai" });
+  const { writeContractAsync: writeDarEsSalaamAsync } = useScaffoldWriteContract({ contractName: "DarEsSalaam" });
+  const { writeContractAsync: writeKigaliAsync } = useScaffoldWriteContract({ contractName: "Kigali" });
+
+  const nftWriteMapping = [
+    writeBrusselsAsync,
+    writeGoshoAsync,
+    writeYogyakartaAsync,
+    writeNdotohubAsync,
+    writeSwabiAsync,
+    writeCamarinesAsync,
+    writePuneAsync,
+    writeNairobiAsync,
+    writeHongKongAsync,
+    writeAccraAsync,
+    writeCartagenaAsync,
+    writeDaNangAsync,
+    writeMumbaiAsync,
+    writeBangaloreAsync,
+    writeNewYorkCityAsync,
+    writeBuenosAiresAsync,
+    writeManilaAsync,
+    writeDubaiAsync,
+    writeDarEsSalaamAsync,
+    writeKigaliAsync,
+  ];
+
+  const nftBalanceMapping = [
+    brusselsBalance,
+    goshoBalance,
+    yogyakartaBalance,
+    ndotohubBalance,
+    swabiBalance,
+    camarinesBalance,
+    puneBalance,
+    nairobiBalance,
+    hongKongBalance,
+    accraBalance,
+    cartagenaBalance,
+    daNangBalance,
+    mumbaiBalance,
+    bangaloreBalance,
+    newYorkCityBalance,
+    buenosAiresBalance,
+    manilaBalance,
+    dubaiBalance,
+    darEsSalaamBalance,
+    kigaliBalance,
+  ];
+
+  const nftTotalSupplyMapping = [
+    brusselsTotalSupply,
+    goshoTotalSupply,
+    yogyakartaTotalSupply,
+    ndotohubTotalSupply,
+    swabiTotalSupply,
+    camarinesTotalSupply,
+    puneTotalSupply,
+    nairobiTotalSupply,
+    hongKongTotalSupply,
+    accraTotalSupply,
+    cartagenaTotalSupply,
+    daNangTotalSupply,
+    mumbaiTotalSupply,
+    bangaloreTotalSupply,
+    newYorkCityTotalSupply,
+    buenosAiresTotalSupply,
+    manilaTotalSupply,
+    dubaiTotalSupply,
+    darEsSalaamTotalSupply,
+    kigaliTotalSupply,
+  ];
 
   async function pledge(event: SyntheticEvent) {
     event.preventDefault();
@@ -254,10 +698,27 @@ export function Map() {
     });
     // }
 
+    // Refetch totalSupply for all events
     refetchBrusselsTotalSupply();
     refetchGoshoTotalSupply();
     refetchYogyakartaTotalSupply();
     refetchNdotohubTotalSupply();
+    refetchSwabiTotalSupply();
+    refetchCamarinesTotalSupply();
+    refetchPuneTotalSupply();
+    refetchNairobiTotalSupply();
+    refetchHongKongTotalSupply();
+    refetchAccraTotalSupply();
+    refetchCartagenaTotalSupply();
+    refetchDaNangTotalSupply();
+    refetchMumbaiTotalSupply();
+    refetchBangaloreTotalSupply();
+    refetchNewYorkCityTotalSupply();
+    refetchBuenosAiresTotalSupply();
+    refetchManilaTotalSupply();
+    refetchDubaiTotalSupply();
+    refetchDarEsSalaamTotalSupply();
+    refetchKigaliTotalSupply();
   }
 
   // Handler for clicking on the map in manual mode

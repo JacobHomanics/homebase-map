@@ -4,7 +4,7 @@ import { ThemeProvider } from "~~/components/ThemeProvider";
 import "~~/styles/globals.css";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
-export const metadata = getMetadata({ title: "Home Base", description: "Community-driven, onchain check-in app." });
+export const metadata = getMetadata({ title: "Homebase", description: "Community-driven, onchain check-in app." });
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (

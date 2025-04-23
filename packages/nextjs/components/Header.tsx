@@ -107,7 +107,7 @@ export const Header = () => {
             />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">Home Base</span>
+            <span className="font-bold leading-tight">Homebase</span>
             <span className="text-xs">{"Community-driven, onchain check-in app"}</span>
           </div>
         </Link>

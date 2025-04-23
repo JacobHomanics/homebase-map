@@ -109,6 +109,8 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
             );
         }
 
+        require(balanceOf(msg.sender) == 0, "User already has a token");
+
         // Decode the attestation data
         (int256 attestationLatitude, int256 attestationLongitude) = abi.decode(
             attestation.data,

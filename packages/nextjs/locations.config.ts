@@ -43,12 +43,100 @@ export const locations: Location[] = [
     title: "BASE WORKSHOP. Building With BASE - Agent Edition.",
     address: deployedContracts[8453].Ndotohub.address,
   },
-
-  // {
-  //   id: 5,
-
-  //   position: { lat: 40.4463428755682, lng: -80.0117817121559 },
-  //   title: "Test Location",
-  //   address: deployedContracts[8453].Ndotohub.address,
-  // },
+  {
+    id: 4,
+    position: { lat: 34.040271481, lng: 72.458903443 },
+    title: "BASE Community Meet-Up - Swabi",
+    address: deployedContracts[8453].Swabi.address,
+  },
+  {
+    id: 5,
+    position: { lat: 13.622775178, lng: 123.354691267 },
+    title: "BASE Workshop - Camarines",
+    address: deployedContracts[8453].Camarines.address,
+  },
+  {
+    id: 6,
+    position: { lat: 18.520430196, lng: 73.854694366 },
+    title: "BASE Community Meet-Up - Pune",
+    address: deployedContracts[8453].Pune.address,
+  },
+  {
+    id: 7,
+    position: { lat: -1.292066069, lng: 36.82194519 },
+    title: "BASE Workshop - Nairobi",
+    address: deployedContracts[8453].Nairobi.address,
+  },
+  {
+    id: 8,
+    position: { lat: 22.396428204, lng: 114.10949707 },
+    title: "BASE Community Meet-Up - Hong Kong",
+    address: deployedContracts[8453].HongKong.address,
+  },
+  {
+    id: 9,
+    position: { lat: 5.56, lng: -0.2057825 },
+    title: "BASE Workshop - Accra",
+    address: deployedContracts[8453].Accra.address,
+  },
+  {
+    id: 10,
+    position: { lat: 10.391, lng: -75.4794 },
+    title: "BASE Community Meet-Up - Cartagena",
+    address: deployedContracts[8453].Cartagena.address,
+  },
+  {
+    id: 11,
+    position: { lat: 16.0544, lng: 108.2022 },
+    title: "BASE Workshop - Da Nang",
+    address: deployedContracts[8453].DaNang.address,
+  },
+  {
+    id: 12,
+    position: { lat: 19.076, lng: 72.8777 },
+    title: "BASE Community Meet-Up - Mumbai",
+    address: deployedContracts[8453].Mumbai.address,
+  },
+  {
+    id: 13,
+    position: { lat: 12.9716, lng: 77.5946 },
+    title: "BASE Workshop - Bangalore",
+    address: deployedContracts[8453].Bangalore.address,
+  },
+  {
+    id: 14,
+    position: { lat: 40.7128, lng: -74.006 },
+    title: "BASE Community Meet-Up - New York City",
+    address: deployedContracts[8453].NewYorkCity.address,
+  },
+  {
+    id: 15,
+    position: { lat: -34.6037, lng: -58.3816 },
+    title: "BASE Workshop - Buenos Aires",
+    address: deployedContracts[8453].BuenosAires.address,
+  },
+  {
+    id: 16,
+    position: { lat: 14.5995, lng: 120.9842 },
+    title: "BASE Community Meet-Up - Manila",
+    address: deployedContracts[8453].Manila.address,
+  },
+  {
+    id: 17,
+    position: { lat: 25.2048, lng: 55.2708 },
+    title: "BASE Workshop - Dubai",
+    address: deployedContracts[8453].Dubai.address,
+  },
+  {
+    id: 18,
+    position: { lat: -6.7924, lng: 39.2083 },
+    title: "BASE Community Meet-Up - Dar Es Salaam",
+    address: deployedContracts[8453].DarEsSalaam.address,
+  },
+  {
+    id: 19,
+    position: { lat: -1.9706, lng: 30.1044 },
+    title: "BASE Workshop - Kigali",
+    address: deployedContracts[8453].Kigali.address,
+  },
 ];
