@@ -526,7 +526,7 @@ export const locations: Location[] = [
     address: getContractAddress("Austin"),
     image: "/base-batches/na.webp",
     region: "N. America",
-    date: "May 16",
+    date: "May 9",
     venue: "TBD",
     lumaLink: "https://lu.ma/agdiik4u",
   },
