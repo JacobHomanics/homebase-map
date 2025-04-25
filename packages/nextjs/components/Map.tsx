@@ -152,11 +152,6 @@ export function Map() {
   //   functionName: "totalSupply",
   // });
 
-  // const { data: accraTotalSupply, refetch: refetchAccraTotalSupply } = useScaffoldReadContract({
-  //   contractName: "Accra",
-  //   functionName: "totalSupply",
-  // });
-
   // const { data: cartagenaTotalSupply, refetch: refetchCartagenaTotalSupply } = useScaffoldReadContract({
   //   contractName: "Cartagena",
   //   functionName: "totalSupply",
@@ -778,119 +773,119 @@ export function Map() {
   const { writeContractAsync: writeZugAsync } = useScaffoldWriteContract({ contractName: "Zug" });
 
   const nftWriteMapping = [
-    writeBrusselsAsync,
+    writeBangkokAsync, // ID 0: Bangkok, Thailand
+    writeNewYorkCityAsync, // ID 1: New York City, USA
+    writeZanzibarAsync, // ID 2: Zanzibar, Tanzania
+    writeZugAsync, // ID 3: Zug, Switzerland
+    writeYogyakartaAsync, // ID 4: Yogyakarta, Indonesia
+    writeSwabiAsync, // ID 5: Swabi, Pakistan
+    writeSaoPauloAsync, // ID 6: São Paulo, Brazil
+    writeSeoulAsync, // ID 7: Seoul, South Korea
+    writeSingaporeAsync, // ID 8: Singapore
+    writeRomeAsync, // ID 9: Rome, Italy
+    writePanabuCityAsync, // ID 10: Panabu City, Philippines
+    writePuneAsync, // ID 11: Pune, India
+    writeMumbaiAsync, // ID 12: Mumbai, India
+    writeNagaCityAsync, // ID 13: Naga City, Philippines
+    writeNairobiAsync, // ID 14: Nairobi, Kenya
+    writeMakatiCityAsync, // ID 15: Makati City, Philippines
+    writeMalolosCityAsync, // ID 16: Malolos City, Philippines
+    writeManilaAsync, // ID 17: Manila City, Philippines
+    writeMexicoCityAsync, // ID 18: Mexico City, Mexico
+    writeLagosAsync, // ID 19: Lagos, Nigeria
+    writeLegazpieCityAsync, // ID 20: Legazpie City, Philippines
+    writeLisbonAsync, // ID 21: Lisbon, Portugal
+    writeKampalaAsync, // ID 22: Kampala, Uganda
+    writeKigaliAsync, // ID 23: Kigali, Rwanda
+    writeKisumuAsync, // ID 24: Kisumu, Kenya
+    writeKyivAsync, // ID 25: Kyiv, Ukraine
+    writeHongKongAsync, // ID 26: Hong Kong
+    writeIstanbulAsync, // ID 27: Istanbul, Turkey
+    writeJakartaAsync, // ID 28: Jakarta, Indonesia
+    writeDelhiAsync, // ID 29: Delhi, India
+    writeEnuguAsync, // ID 30: Enugu, Nigeria
+    writeHaripurAsync, // ID 31: Haripur, Pakistan
+    writeDarEsSalaamAsync, // ID 32: Dar Es Salaam, Tanzania
+    writeDasmariasAsync, // ID 33: Dasmariñas, Philippines
+    writeDavaoCityAsync, // ID 34: Davao City, Philippines
+    writeCebu2Async, // ID 35: Cebu 2, Philippines
+    writeCebu3Async, // ID 36: Cebu 3, Philippines
+    writeCebuAsync, // ID 37: Cebu, Philippines
+    writeDaNangAsync, // ID 38: Da Nang, Vietnam
+    writeBuenosAiresAsync, // ID 39: Buenos Aires, Argentina
+    writeCamarinesAsync, // ID 40: Camarines, Philippines
+    writeCartagenaAsync, // ID 41: Cartagena, Colombia
+    writeBangaloreAsync, // ID 42: Bangalore, India
+    writeBudapestAsync, // ID 43: Budapest, Hungary
+    writeAngelesCityAsync, // ID 44: Angeles City, Philippines
+    writeAustinAsync, // ID 45: Houston, USA
+    writeBalangaCityAsync, // ID 46: Balanga City, Philippines
+    writeAddisAbabaAsync, // ID 47: Addis Ababa, Ethiopia
+    writeAccraAsync, // ID 48: Accra, Ghana
+    writeAbujaAsync, // ID 49: Abuja, Nigeria
+    writeTagumAsync, // ID 50: Tagum, Philippines
+    writeBrusselsAsync, // Additional functions
     writeGoshoAsync,
-    writeYogyakartaAsync,
     writeNdotohubAsync,
-    writeSwabiAsync,
-    writeCamarinesAsync,
-    writePuneAsync,
-    writeNairobiAsync,
-    writeHongKongAsync,
-    writeAccraAsync,
-    writeCartagenaAsync,
-    writeDaNangAsync,
-    writeMumbaiAsync,
-    writeBangaloreAsync,
-    writeNewYorkCityAsync,
-    writeBuenosAiresAsync,
-    writeManilaAsync,
     writeDubaiAsync,
-    writeDarEsSalaamAsync,
-    writeKigaliAsync,
-    writeAbujaAsync,
-    writeAddisAbabaAsync,
-    writeAngelesCityAsync,
-    writeAustinAsync,
-    writeBalangaCityAsync,
-    writeBangkokAsync,
-    writeBudapestAsync,
-    writeCebuAsync,
-    writeCebu2Async,
-    writeCebu3Async,
-    writeDasmariasAsync,
-    writeDavaoCityAsync,
-    writeDelhiAsync,
-    writeEnuguAsync,
-    writeHaripurAsync,
-    writeIstanbulAsync,
-    writeJakartaAsync,
-    writeKampalaAsync,
-    writeKisumuAsync,
-    writeKyivAsync,
-    writeLagosAsync,
-    writeLegazpieCityAsync,
-    writeLisbonAsync,
-    writeMakatiCityAsync,
-    writeMalolosCityAsync,
-    writeMexicoCityAsync,
-    writeNagaCityAsync,
-    writePanabuCityAsync,
-    writeRomeAsync,
-    writeSaoPauloAsync,
-    writeSeoulAsync,
-    writeSingaporeAsync,
-    writeTagumAsync,
-    writeZanzibarAsync,
-    writeZugAsync,
   ];
 
   const nftBalanceMapping = [
-    brusselsBalance,
+    bangkokBalance, // ID 0: Bangkok, Thailand
+    newYorkCityBalance, // ID 1: New York City, USA
+    zanzibarBalance, // ID 2: Zanzibar, Tanzania
+    zugBalance, // ID 3: Zug, Switzerland
+    yogyakartaBalance, // ID 4: Yogyakarta, Indonesia
+    swabiBalance, // ID 5: Swabi, Pakistan
+    saoPauloBalance, // ID 6: São Paulo, Brazil
+    seoulBalance, // ID 7: Seoul, South Korea
+    singaporeBalance, // ID 8: Singapore
+    romeBalance, // ID 9: Rome, Italy
+    panabuCityBalance, // ID 10: Panabu City, Philippines
+    puneBalance, // ID 11: Pune, India
+    mumbaiBalance, // ID 12: Mumbai, India
+    nagaCityBalance, // ID 13: Naga City, Philippines
+    nairobiBalance, // ID 14: Nairobi, Kenya
+    makatiCityBalance, // ID 15: Makati City, Philippines
+    malolosCityBalance, // ID 16: Malolos City, Philippines
+    manilaBalance, // ID 17: Manila City, Philippines
+    mexicoCityBalance, // ID 18: Mexico City, Mexico
+    lagosBalance, // ID 19: Lagos, Nigeria
+    legazpieCityBalance, // ID 20: Legazpie City, Philippines
+    lisbonBalance, // ID 21: Lisbon, Portugal
+    kampalaBalance, // ID 22: Kampala, Uganda
+    kigaliBalance, // ID 23: Kigali, Rwanda
+    kisumuBalance, // ID 24: Kisumu, Kenya
+    kyivBalance, // ID 25: Kyiv, Ukraine
+    hongKongBalance, // ID 26: Hong Kong
+    istanbulBalance, // ID 27: Istanbul, Turkey
+    jakartaBalance, // ID 28: Jakarta, Indonesia
+    delhiBalance, // ID 29: Delhi, India
+    enuguBalance, // ID 30: Enugu, Nigeria
+    haripurBalance, // ID 31: Haripur, Pakistan
+    darEsSalaamBalance, // ID 32: Dar Es Salaam, Tanzania
+    dasmariasBalance, // ID 33: Dasmariñas, Philippines
+    davaoCityBalance, // ID 34: Davao City, Philippines
+    cebu2Balance, // ID 35: Cebu 2, Philippines
+    cebu3Balance, // ID 36: Cebu 3, Philippines
+    cebuBalance, // ID 37: Cebu, Philippines
+    daNangBalance, // ID 38: Da Nang, Vietnam
+    buenosAiresBalance, // ID 39: Buenos Aires, Argentina
+    camarinesBalance, // ID 40: Camarines, Philippines
+    cartagenaBalance, // ID 41: Cartagena, Colombia
+    bangaloreBalance, // ID 42: Bangalore, India
+    budapestBalance, // ID 43: Budapest, Hungary
+    angelesCityBalance, // ID 44: Angeles City, Philippines
+    austinBalance, // ID 45: Houston, USA
+    balangaCityBalance, // ID 46: Balanga City, Philippines
+    addisAbabaBalance, // ID 47: Addis Ababa, Ethiopia
+    accraBalance, // ID 48: Accra, Ghana
+    abujaBalance, // ID 49: Abuja, Nigeria
+    tagumBalance, // ID 50: Tagum, Philippines
+    brusselsBalance, // Additional functions
     goshoBalance,
-    yogyakartaBalance,
     ndotohubBalance,
-    swabiBalance,
-    camarinesBalance,
-    puneBalance,
-    nairobiBalance,
-    hongKongBalance,
-    accraBalance,
-    cartagenaBalance,
-    daNangBalance,
-    mumbaiBalance,
-    bangaloreBalance,
-    newYorkCityBalance,
-    buenosAiresBalance,
-    manilaBalance,
     dubaiBalance,
-    darEsSalaamBalance,
-    kigaliBalance,
-    abujaBalance,
-    addisAbabaBalance,
-    angelesCityBalance,
-    austinBalance,
-    balangaCityBalance,
-    bangkokBalance,
-    budapestBalance,
-    cebuBalance,
-    cebu2Balance,
-    cebu3Balance,
-    dasmariasBalance,
-    davaoCityBalance,
-    delhiBalance,
-    enuguBalance,
-    haripurBalance,
-    istanbulBalance,
-    jakartaBalance,
-    kampalaBalance,
-    kisumuBalance,
-    kyivBalance,
-    lagosBalance,
-    legazpieCityBalance,
-    lisbonBalance,
-    makatiCityBalance,
-    malolosCityBalance,
-    mexicoCityBalance,
-    nagaCityBalance,
-    panabuCityBalance,
-    romeBalance,
-    saoPauloBalance,
-    seoulBalance,
-    singaporeBalance,
-    tagumBalance,
-    zanzibarBalance,
-    zugBalance,
   ];
 
   // const nftTotalSupplyMapping = [
