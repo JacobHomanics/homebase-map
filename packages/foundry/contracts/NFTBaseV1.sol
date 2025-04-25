@@ -99,7 +99,8 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         return uri;
     }
 
-    function mint(bytes32 attestationUID) external {
+    function mint() external //bytes32 attestationUID
+    {
         // Get the attestation
         // IEAS.Attestation memory attestation = eas.getAttestation(
         //     attestationUID

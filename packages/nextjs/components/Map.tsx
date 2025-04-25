@@ -16,7 +16,6 @@ import { useSelectedMarker } from "~~/hooks/homebase-map/useSelectedMarker";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { useTokenURI } from "~~/hooks/useTokenURI";
 import { Location, locations } from "~~/locations.config";
-import { DEFAULT_RANGE_METERS, isWithinRange } from "~~/utils/distance";
 
 // Export the location finder function
 export const findMyLocation = () => {
@@ -87,27 +86,6 @@ export function Map() {
       console.log("Geolocation is not supported by this browser.");
       setShowLoadingOverlay(false);
     }
-  };
-
-  // Calculate which locations are within range of the user's location
-  let locationsInRange: number[] = [];
-
-  if (userLocation) {
-    locationsInRange = locations
-      .filter(location =>
-        isWithinRange(
-          userLocation?.lat,
-          userLocation?.lng,
-          location.position.lat,
-          location.position.lng,
-          DEFAULT_RANGE_METERS,
-        ),
-      )
-      .map(location => location.id);
-  }
-
-  const isLocationInRange = (location: Location) => {
-    return locationsInRange.includes(location.id);
   };
 
   const { data: brusselsTotalSupply, refetch: refetchBrusselsTotalSupply } = useScaffoldReadContract({
@@ -958,19 +936,23 @@ export function Map() {
   async function pledge(event: SyntheticEvent) {
     event.preventDefault();
 
-    console.log("userLocation");
-    console.log(userLocation);
+    // console.log("userLocation");
+    // console.log(userLocation);
 
-    const testLongitude = parseUnits(userLocation?.lng?.toString() ?? "0", 9);
-    const testLatitude = parseUnits(userLocation?.lat?.toString() ?? "0", 9);
+    // // If user doesn't have a location, use a default one
+    // const userLat = userLocation?.lat || 0;
+    // const userLng = userLocation?.lng || 0;
 
-    const newAttestationUID = await attestLocation({ lat: testLatitude, lng: testLongitude });
-    console.log("newAttestationUID");
-    console.log(newAttestationUID);
+    // const testLongitude = parseUnits(userLng.toString(), 9);
+    // const testLatitude = parseUnits(userLat.toString(), 9);
+
+    // const newAttestationUID = await attestLocation({ lat: testLatitude, lng: testLongitude });
+    // console.log("newAttestationUID");
+    // console.log(newAttestationUID);
 
     await nftWriteMapping[selectedMarker?.id ?? 0]({
       functionName: "mint",
-      args: [newAttestationUID as `0x${string}`],
+      //args: ["0x0000000000000000000000000000000000000000" as `0x${string}`],
     });
   }
 
@@ -1100,8 +1082,8 @@ export function Map() {
               </a>
             )}
 
-            <p className="m-0 text-2xl md:text-xl text-black">Pledges</p>
-            <p className="m-0 text-2xl md:text-6xl text-black">{nftTotalSupplyMapping[location.id]}</p>
+            {/* <p className="m-0 text-2xl md:text-xl text-black">Pledges</p> */}
+            {/* <p className="m-0 text-2xl md:text-6xl text-black">{nftTotalSupplyMapping[location.id]}</p> */}
 
             {!focusedLocationFromCluster &&
               connectedAddress &&
@@ -1109,9 +1091,8 @@ export function Map() {
                 <p className="text-green-600 text-2xl">You call this place your homebase!</p>
               ) : (
                 <>
-                  {!isLocationInRange(location) && <p className="text-red-500">This location is outside your range</p>}
-                  <button className="btn btn-primary btn-sm" onClick={pledge} disabled={!isLocationInRange(location)}>
-                    {!isLocationInRange(location) ? "Location Out of Range" : "Check in"}
+                  <button className="btn btn-primary btn-sm" onClick={pledge}>
+                    Check in
                   </button>
                 </>
               ))}

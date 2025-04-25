@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   8453: {
     Ndotohub: {
-      address: "0x6c223b07950a05f28d1b410cfc44aa4774de1989",
+      address: "0xe5843410fa2f2785d4fef0e297a662056d98f5e4",
       abi: [
         {
           type: "constructor",
@@ -285,13 +285,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -885,11 +879,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Brussels: {
-      address: "0xae81b903e7624c1d6f1e1af17d3709149448a018",
+      address: "0x94daa7d5598f0588ec3ea36aceff186dd20fa458",
       abi: [
         {
           type: "constructor",
@@ -1157,13 +1151,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -1757,11 +1745,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Gosho: {
-      address: "0x535062597fa8e9bc23db0bbb3e09f76633b17d3b",
+      address: "0x8a4a6f924b1fbb3ad682b65f463d5ff52cd26b9b",
       abi: [
         {
           type: "constructor",
@@ -2039,13 +2027,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -2639,11 +2621,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Yogyakarta: {
-      address: "0xa517c794d8dc936453f25a3d8883b1931b5dd39c",
+      address: "0xac7420e96e3d3390a2b8dda1964f88e67e8680af",
       abi: [
         {
           type: "constructor",
@@ -2911,13 +2893,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -3511,11 +3487,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Swabi: {
-      address: "0x0925bc97d576caccecd77dc2da98b63a3d52124f",
+      address: "0xc69b9a6aace1e8e976047c570f7bf97fb39e11f3",
       abi: [
         {
           type: "constructor",
@@ -3783,13 +3759,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -4383,11 +4353,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Camarines: {
-      address: "0x307279162655fc6478cf8555404fbc14cb13ead8",
+      address: "0x17a83e685dcdb8403a1a6adcc322afb7cd79d920",
       abi: [
         {
           type: "constructor",
@@ -4655,13 +4625,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -5255,11 +5219,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Pune: {
-      address: "0xeeb16f3f623ddee232f20901bb6573f77a3a87ca",
+      address: "0x536dd7177afa128b2523085b48ce1b8a5b0c3e3a",
       abi: [
         {
           type: "constructor",
@@ -5527,13 +5491,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -6127,11 +6085,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Nairobi: {
-      address: "0x483783457ccd1963fd6077703e97be75c1e088b2",
+      address: "0x89be5e5b4f4fc05c2ae0b04da32a69676b28b1e7",
       abi: [
         {
           type: "constructor",
@@ -6399,13 +6357,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -6999,11 +6951,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     HongKong: {
-      address: "0x5a78c5efe08534a96d23da4e3203301627367cf4",
+      address: "0x8b322eaba732a954c6af7e022cea2e81c3624674",
       abi: [
         {
           type: "constructor",
@@ -7271,13 +7223,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -7871,11 +7817,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Accra: {
-      address: "0xab513bd8ef677f681ac8596e541be5069c19a887",
+      address: "0x342fb7f348fa9c25f41a22fc38dbd54923f21b9c",
       abi: [
         {
           type: "constructor",
@@ -8143,13 +8089,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -8743,11 +8683,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Cartagena: {
-      address: "0xe06e7a1ae904832ecf55a85bf60a83d10c845377",
+      address: "0x0b72778d7993571a20505c39bd3a307e1bc6589a",
       abi: [
         {
           type: "constructor",
@@ -9015,13 +8955,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -9615,11 +9549,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     DaNang: {
-      address: "0x3918df19a5f6a15ad547310010cf5adcd35b8a1b",
+      address: "0x575b9eac61040a1691af22f3ecbf941502b44a47",
       abi: [
         {
           type: "constructor",
@@ -9887,13 +9821,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -10487,11 +10415,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Mumbai: {
-      address: "0x727e45a9b9103fd99e236fa314777a51f16c2b68",
+      address: "0xdc02448177a1930e4ee505636d5cb936ee678d58",
       abi: [
         {
           type: "constructor",
@@ -10759,13 +10687,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -11359,11 +11281,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Bangalore: {
-      address: "0xddba37404ab1b4e1030235cb11aa3bc1ce5f5b64",
+      address: "0x6bd9f27484fda42527cf999a2ec7c27f4ef160ab",
       abi: [
         {
           type: "constructor",
@@ -11631,13 +11553,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -12231,11 +12147,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     NewYorkCity: {
-      address: "0xd1d61098bd63a75db00a741eebc6733637b41cc7",
+      address: "0x8d4006ee66d9a6da7ec2943d63616f09d1225f93",
       abi: [
         {
           type: "constructor",
@@ -12503,13 +12419,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -13103,11 +13013,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     BuenosAires: {
-      address: "0x49474cdf281a2f6ae4b5fe542bea73774f09e7a6",
+      address: "0x0e2b84e2b8c09350dbd5005f6d7917abf2b817d0",
       abi: [
         {
           type: "constructor",
@@ -13375,13 +13285,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -13975,11 +13879,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Manila: {
-      address: "0x37ef2e3480606feb25b9518feabcebbcd5c5780c",
+      address: "0x9bfc950d306b618dd73776e17f45373838fc9b26",
       abi: [
         {
           type: "constructor",
@@ -14247,13 +14151,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -14847,11 +14745,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Dubai: {
-      address: "0xd36f815346b5e31db2cdf56c94c431b46a8c7261",
+      address: "0xd3574be8560844a002cbd390db9aa492c84c8864",
       abi: [
         {
           type: "constructor",
@@ -15119,13 +15017,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -15719,11 +15611,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     DarEsSalaam: {
-      address: "0x4851cdc77f5ccf4227e4cb32a859c6ac1f7d7807",
+      address: "0x14ee3949c3d8b55f11fafd39f7f455b03603dbc8",
       abi: [
         {
           type: "constructor",
@@ -15991,13 +15883,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -16591,11 +16477,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Kigali: {
-      address: "0x6e149594cf9138540999bb698766502f7f8e25f4",
+      address: "0x6d985ee9aeb279022de39bc0f4c451386fad2fb7",
       abi: [
         {
           type: "constructor",
@@ -16863,13 +16749,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -17463,11 +17343,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Abuja: {
-      address: "0x21f307fe85344a297a0c2f60d59fbc9256be6d9d",
+      address: "0xa43fc09448118c7ad30026544f2f345304b61ed1",
       abi: [
         {
           type: "constructor",
@@ -17735,13 +17615,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -18335,11 +18209,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     AddisAbaba: {
-      address: "0x5cc6b0f5da75dd27a3989495a9017977ce590a0d",
+      address: "0xd0ac4debda1f324f6a8301bcb7e35514f70b38f5",
       abi: [
         {
           type: "constructor",
@@ -18607,13 +18481,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -19207,11 +19075,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     AngelesCity: {
-      address: "0x56183b1f0e67e44f0f488083dc19712c0c68ada5",
+      address: "0x03c15646b3d789019e6f98547a97e6e5e72df5a2",
       abi: [
         {
           type: "constructor",
@@ -19479,13 +19347,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -20079,11 +19941,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Austin: {
-      address: "0x2e1e8aeb9e5197e245ab8de3d7794167c7a2c980",
+      address: "0x6c8ee1c8f1c745f15b29d8cd667d8543865fa1d9",
       abi: [
         {
           type: "constructor",
@@ -20351,13 +20213,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -20951,11 +20807,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     BalangaCity: {
-      address: "0x3258a5d9c887dd2db42d0cef0cfd06e00e64087b",
+      address: "0xd8f3da8868b07c9efd798a00afc25b93bba2930c",
       abi: [
         {
           type: "constructor",
@@ -21223,13 +21079,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -21823,11 +21673,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Bangkok: {
-      address: "0x47eadd488a7116383c0204419b8c795d69a4632c",
+      address: "0x3692750766d93e2655b20415ef353b2efc35d5b6",
       abi: [
         {
           type: "constructor",
@@ -22095,13 +21945,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -22695,11 +22539,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Budapest: {
-      address: "0x3dbf0033cf3b99e5a5c466a4c76eeb26b8a0b776",
+      address: "0xf7b60dfb700f6a5653a4ac73287094704f3396b0",
       abi: [
         {
           type: "constructor",
@@ -22967,13 +22811,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -23567,11 +23405,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Cebu: {
-      address: "0xe5bc7e12e4229e4c1ec3977e91e24c3dc28f8fd5",
+      address: "0x6689b87900ad1860a131d34cef8bd8d22b1cc436",
       abi: [
         {
           type: "constructor",
@@ -23839,13 +23677,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -24439,11 +24271,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Cebu2: {
-      address: "0x035c5bde3307545697599722ba5ec795ff7ff8e5",
+      address: "0x0e6718f7e5cac19f0e3a2d00624058c16df2f35f",
       abi: [
         {
           type: "constructor",
@@ -24711,13 +24543,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -25311,11 +25137,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Cebu3: {
-      address: "0xd3affd2f1ab1b8f3008e65599b14fde09bb32a02",
+      address: "0x56632e26c72cd0287ef51fbf6fede194effd3c43",
       abi: [
         {
           type: "constructor",
@@ -25583,13 +25409,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -26183,11 +26003,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Dasmarias: {
-      address: "0x0dadadcc1bcaab8fa06e926756c89db67ac4d58b",
+      address: "0xecc6732fceff6ddd001b697d5fa604d47a728795",
       abi: [
         {
           type: "constructor",
@@ -26455,13 +26275,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -27055,11 +26869,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     DavaoCity: {
-      address: "0x0c1ff9d7ed45ccbccb07bdd1d1da052b4d5f9048",
+      address: "0xf9ddc78faee0995d231403a3f35fc852466866c2",
       abi: [
         {
           type: "constructor",
@@ -27327,13 +27141,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -27927,11 +27735,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Delhi: {
-      address: "0xbe273e4920f68e593471a8ce8959e25bd2e308de",
+      address: "0x553d17c698acbc6675107f86be688d0e8b62bf7e",
       abi: [
         {
           type: "constructor",
@@ -28199,13 +28007,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -28799,11 +28601,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Enugu: {
-      address: "0xc3b82e9ac30c74e26c22207c6f747626ff3041d8",
+      address: "0x6f03d9a7f13cfd1cfa24db7735f20a3e30654053",
       abi: [
         {
           type: "constructor",
@@ -29071,13 +28873,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -29671,11 +29467,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Haripur: {
-      address: "0x18b6f084ba35464c38040a8b60fc2d1ae2528bdd",
+      address: "0x4fed1efa40416582d93f9eaf200d8d2aedbc012a",
       abi: [
         {
           type: "constructor",
@@ -29943,13 +29739,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -30543,11 +30333,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Istanbul: {
-      address: "0xbf445b050224aaa3d5f0bfad89546ac239bc099e",
+      address: "0x28e7eddc2b66f278aa5ff0eb9e3af35425360ef1",
       abi: [
         {
           type: "constructor",
@@ -30815,13 +30605,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -31415,11 +31199,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Jakarta: {
-      address: "0xae13379a50d9eed1ec4010e9a78a1fecda4541b1",
+      address: "0x9b5a875992c0c5e7109b46b85be45b32d0b26f8b",
       abi: [
         {
           type: "constructor",
@@ -31697,13 +31481,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -32297,11 +32075,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Kampala: {
-      address: "0x46c1b3fb933d9348f1245c3776e871819bffb0e3",
+      address: "0xdbe2b88ab292dd7938acdca03b5e133634386469",
       abi: [
         {
           type: "constructor",
@@ -32569,13 +32347,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -33169,11 +32941,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Kisumu: {
-      address: "0x88da542474ed2ffda3be9d5e727d622032b26596",
+      address: "0x1b4b74acba8a649123ca971469cca42071a21abb",
       abi: [
         {
           type: "constructor",
@@ -33441,13 +33213,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -34041,11 +33807,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Kyiv: {
-      address: "0xdf558e2aa94a2fc28585319095b33a5490195f6c",
+      address: "0x2a5bf5c8f76e073e045f670406d5e484781cdc0f",
       abi: [
         {
           type: "constructor",
@@ -34313,13 +34079,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -34913,11 +34673,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Lagos: {
-      address: "0x6c02aeb36451ba4f892ac6165ee00732bc313d8d",
+      address: "0x2f97842b9775ee8c6968e57ba8d783a6697d5fe5",
       abi: [
         {
           type: "constructor",
@@ -35185,13 +34945,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -35785,11 +35539,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     LegazpieCity: {
-      address: "0xd40e5f3feaff57c68ac04e15db23de0fe244a78d",
+      address: "0xa887783668b94811e71e9c443a3dc72a65eaf6af",
       abi: [
         {
           type: "constructor",
@@ -36057,13 +35811,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -36657,11 +36405,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Lisbon: {
-      address: "0xa367bdcfdb6562330e812b91480309d71bed828e",
+      address: "0x71d80fc12237b43045b5b29449e10d4e6ac82575",
       abi: [
         {
           type: "constructor",
@@ -36929,13 +36677,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -37529,11 +37271,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     MakatiCity: {
-      address: "0xa676bf9393d65928344ee9356b3a3d199419d40b",
+      address: "0xc083f212b689be1f21851bdaff5b8b50d80dce03",
       abi: [
         {
           type: "constructor",
@@ -37801,13 +37543,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -38401,11 +38137,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     MalolosCity: {
-      address: "0x661173cf1ffd34298d4f1fbc0ebba9aaed087b54",
+      address: "0x37d4450971aa30a41acfa95a10212d01e45cd8cb",
       abi: [
         {
           type: "constructor",
@@ -38673,13 +38409,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -39273,11 +39003,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     MexicoCity: {
-      address: "0xb78fd99875262284610603ea8ab3602f8d450f55",
+      address: "0x73662a5b709210ffe69053cb5587a035dfe457b8",
       abi: [
         {
           type: "constructor",
@@ -39545,13 +39275,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -40145,11 +39869,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     NagaCity: {
-      address: "0xf3ceb091fdd5a6386870eb11eb33a0c29f9b76a1",
+      address: "0xb14d37209178556dd7195674a485234b0f9ed089",
       abi: [
         {
           type: "constructor",
@@ -40417,13 +40141,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -41017,11 +40735,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     PanabuCity: {
-      address: "0x6e7b28727a4696202c1fe8b5cad21885dc37f313",
+      address: "0x89a355fdd976518aa82bf57fd3b4c5fcb0332ff8",
       abi: [
         {
           type: "constructor",
@@ -41289,13 +41007,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -41889,11 +41601,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Rome: {
-      address: "0xe6a498fc2acf60be9abf90a3999b5f696ef130c8",
+      address: "0xf471612ba16ddb9ea123f7fdf837c9bc3ef3f421",
       abi: [
         {
           type: "constructor",
@@ -42161,13 +41873,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -42761,11 +42467,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     SaoPaulo: {
-      address: "0x19ed3de15844cf1f7bd48db73836af933553ae26",
+      address: "0xa214fb4f7282962a8223ff6be355bd019052ef4b",
       abi: [
         {
           type: "constructor",
@@ -43033,13 +42739,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -43633,11 +43333,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Seoul: {
-      address: "0xd295f31ecab6fe112bdf7fbd7b1ed8860a322997",
+      address: "0xaf4459cc87fc49a0d9ad84d8a4b2fe0080f54991",
       abi: [
         {
           type: "constructor",
@@ -43905,13 +43605,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -44505,11 +44199,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Singapore: {
-      address: "0xfdcfa5020d9332cc627d4acc8a9ba71bb538d2d0",
+      address: "0xb48f23162579a6c0aa91f30c8bcbe7a9bbffdb17",
       abi: [
         {
           type: "constructor",
@@ -44777,13 +44471,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -45377,11 +45065,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Tagum: {
-      address: "0x11ef022a99bc401c59bf6303680cd385ed94edc4",
+      address: "0x389ecefb7081514724e5759f753b2cc71ee9baa4",
       abi: [
         {
           type: "constructor",
@@ -45649,13 +45337,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -46249,11 +45931,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Zanzibar: {
-      address: "0xd3147c76e6eb875931049ee083f1870eae1ac476",
+      address: "0x72fa8b9f880d2d6aa32d9b9f8bcbf572704f8d0e",
       abi: [
         {
           type: "constructor",
@@ -46521,13 +46203,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -47121,11 +46797,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
     Zug: {
-      address: "0xf7ba0aeb71fe96c83540fa733878e1f2a2c3d19d",
+      address: "0x2f75ef03aa04052637da64369d79fb6bb7f87d0a",
       abi: [
         {
           type: "constructor",
@@ -47393,13 +47069,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -47993,7 +47663,7 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745554224.json",
+      deploymentFile: "run-1745608224.json",
       deploymentScript: "Deploy.s.sol",
     },
   },
@@ -48277,13 +47947,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -49149,13 +48813,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -50031,13 +49689,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -50903,13 +50555,7 @@ const deployedContracts = {
         {
           type: "function",
           name: "mint",
-          inputs: [
-            {
-              name: "attestationUID",
-              type: "bytes32",
-              internalType: "bytes32",
-            },
-          ],
+          inputs: [],
           outputs: [],
           stateMutability: "nonpayable",
         },
