@@ -106,7 +106,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Ndotohub ndotohub = new Ndotohub(
             "Ndotohub",
             "NDOTOHUB",
-            "ipfs://bafkreibengojht5th2j2ph3exuf5pfpcabipzxxeclra54hxq2hkm7p65e",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/index.json",
             admins,
             minters,
             6033600000, // latitude in nanodegrees
@@ -118,7 +118,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Brussels brussels = new Brussels(
             "Brussels",
             "BRUSSELS",
-            "ipfs://bafkreiemlbkgj222hnjo5eqt7wy4jp6t5zcfobzbxqlpoyc2rywtxhfyp4",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/009-base-batch-workshop-budapest.json",
             admins,
             minters,
             eas,
@@ -128,7 +128,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Gosho gosho = new Gosho(
             "Gosho",
             "GOSHO",
-            "ipfs://bafkreidsmtbi7234m6v4wq6r2secpmuf5ykz4zfvd5go3akdtmt574xy2i",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/index.json",
             admins,
             minters,
             42697500000, // latitude in nanodegrees
@@ -140,7 +140,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Yogyakarta yogyakarta = new Yogyakarta(
             "Yogyakarta",
             "YOGYAKARTA",
-            "ipfs://bafkreid7jpfdtxbmixgoi4bfg3wa76rqhvgdzo3bmgrrcfkbqoxznh6kry",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/049-base-batch-workshop-yogyakarta.json",
             admins,
             minters,
             eas,
@@ -151,7 +151,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Swabi swabi = new Swabi(
             "Swabi",
             "SWABI",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/047-base-batch-workshop-swabi.json",
             admins,
             minters,
             eas,
@@ -161,7 +161,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Camarines camarines = new Camarines(
             "Camarines",
             "CAMARINES",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/011-base-batch-workshop-camarines.json",
             admins,
             minters,
             eas,
@@ -171,7 +171,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Pune pune = new Pune(
             "Pune",
             "PUNE",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/india.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/042-base-batch-workshop-pune.json",
             admins,
             minters,
             eas,
@@ -181,7 +181,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Nairobi nairobi = new Nairobi(
             "Nairobi",
             "NAIROBI",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/039-base-batch-workshop-nairobi.json",
             admins,
             minters,
             eas,
@@ -191,7 +191,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         HongKong hongKong = new HongKong(
             "HongKong",
             "HONGKONG",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/023-base-batch-workshop-hong-kong.json",
             admins,
             minters,
             eas,
@@ -201,7 +201,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Accra accra = new Accra(
             "Accra",
             "ACCRA",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/002-base-batch-workshop-accra.json",
             admins,
             minters,
             eas,
@@ -211,7 +211,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Cartagena cartagena = new Cartagena(
             "Cartagena",
             "CARTAGENA",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/latam.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/012-base-batch-workshop-cartagena.json",
             admins,
             minters,
             eas,
@@ -221,7 +221,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         DaNang daNang = new DaNang(
             "DaNang",
             "DANANG",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/016-base-batch-workshop-da-nang.json",
             admins,
             minters,
             eas,
@@ -231,7 +231,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Mumbai mumbai = new Mumbai(
             "Mumbai",
             "MUMBAI",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/india.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/037-base-batch-workshop-mumbai.json",
             admins,
             minters,
             eas,
@@ -241,7 +241,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Bangalore bangalore = new Bangalore(
             "Bangalore",
             "BANGALORE",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/india.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/007-base-batch-workshop-bangalore.json",
             admins,
             minters,
             eas,
@@ -251,7 +251,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         NewYorkCity newYorkCity = new NewYorkCity(
             "NewYorkCity",
             "NYC",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/na.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/040-base-batch-workshop-new-york-city.json",
             admins,
             minters,
             eas,
@@ -261,7 +261,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         BuenosAires buenosAires = new BuenosAires(
             "BuenosAires",
             "BUENOSAIRES",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/latam.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/010-base-batch-workshop-buenos-aires.json",
             admins,
             minters,
             eas,
@@ -271,7 +271,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Manila manila = new Manila(
             "Manila",
             "MANILA",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/035-base-batch-workshop-manila-city.json",
             admins,
             minters,
             eas,
@@ -281,7 +281,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Dubai dubai = new Dubai(
             "Dubai",
             "DUBAI",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/index.json",
             admins,
             minters,
             eas,
@@ -291,7 +291,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         DarEsSalaam darEsSalaam = new DarEsSalaam(
             "DarEsSalaam",
             "DARESSALAAM",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/017-base-batch-workshop-dar-es-salaam.json",
             admins,
             minters,
             eas,
@@ -301,7 +301,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         Kigali kigali = new Kigali(
             "Kigali",
             "KIGALI",
-            "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+            "ipfs://bafybeiagjmwqdurdhmymdur3p3uwuefp67bzwliehlcxyx6lbau3qcvgje/027-base-batch-workshop-kigali.json",
             admins,
             minters,
             eas,
