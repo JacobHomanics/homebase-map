@@ -15,7 +15,9 @@ contract Kisumu is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Kisumu is NFTBaseV1 {
             -102200000, // latitude in nanodegrees (-0.1022)
             34761700000, // longitude in nanodegrees (34.7617)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

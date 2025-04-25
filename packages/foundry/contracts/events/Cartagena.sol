@@ -15,7 +15,9 @@ contract Cartagena is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Cartagena is NFTBaseV1 {
             10391800000, // latitude in nanodegrees (10.3918)
             -75479400000, // longitude in nanodegrees (-75.4794)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

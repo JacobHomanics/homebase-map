@@ -15,7 +15,9 @@ contract DaNang is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract DaNang is NFTBaseV1 {
             16054400000, // latitude in nanodegrees (16.0544)
             108202200000, // longitude in nanodegrees (108.2022)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

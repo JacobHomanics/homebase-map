@@ -15,7 +15,9 @@ contract Haripur is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Haripur is NFTBaseV1 {
             33994600000, // latitude in nanodegrees (33.9946)
             72910600000, // longitude in nanodegrees (72.9106)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

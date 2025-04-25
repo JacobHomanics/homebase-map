@@ -15,7 +15,9 @@ contract Kyiv is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Kyiv is NFTBaseV1 {
             50450100000, // latitude in nanodegrees (50.4501)
             30523400000, // longitude in nanodegrees (30.5234)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

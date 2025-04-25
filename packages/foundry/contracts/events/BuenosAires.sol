@@ -15,7 +15,9 @@ contract BuenosAires is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract BuenosAires is NFTBaseV1 {
             -34603700000, // latitude in nanodegrees (-34.6037)
             -58381600000, // longitude in nanodegrees (-58.3816)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

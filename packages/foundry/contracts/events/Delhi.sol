@@ -15,7 +15,9 @@ contract Delhi is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Delhi is NFTBaseV1 {
             28704100000, // latitude in nanodegrees (28.7041)
             77102500000, // longitude in nanodegrees (77.1025)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

@@ -15,7 +15,9 @@ contract HongKong is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract HongKong is NFTBaseV1 {
             22396400000, // latitude in nanodegrees (22.3964)
             114109500000, // longitude in nanodegrees (114.1095)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

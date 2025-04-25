@@ -15,7 +15,9 @@ contract Pune is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Pune is NFTBaseV1 {
             18520400000, // latitude in nanodegrees (18.5204)
             73854700000, // longitude in nanodegrees (73.8547)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

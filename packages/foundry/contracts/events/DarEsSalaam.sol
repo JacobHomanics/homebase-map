@@ -15,7 +15,9 @@ contract DarEsSalaam is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract DarEsSalaam is NFTBaseV1 {
             -6792400000, // latitude in nanodegrees (-6.7924)
             39208300000, // longitude in nanodegrees (39.2083)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

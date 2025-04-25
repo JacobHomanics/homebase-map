@@ -15,7 +15,9 @@ contract LegazpieCity is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract LegazpieCity is NFTBaseV1 {
             13139100000, // latitude in nanodegrees (13.1391)
             123535700000, // longitude in nanodegrees (123.5357)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

@@ -15,7 +15,9 @@ contract DavaoCity is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract DavaoCity is NFTBaseV1 {
             7070700000, // latitude in nanodegrees (7.0707)
             125608700000, // longitude in nanodegrees (125.6087)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

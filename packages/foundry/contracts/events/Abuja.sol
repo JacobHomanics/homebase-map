@@ -15,7 +15,9 @@ contract Abuja is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Abuja is NFTBaseV1 {
             9076500000, // latitude in nanodegrees (9.0765)
             7398600000, // longitude in nanodegrees (7.3986)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

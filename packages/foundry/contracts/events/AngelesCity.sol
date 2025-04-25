@@ -15,7 +15,9 @@ contract AngelesCity is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract AngelesCity is NFTBaseV1 {
             15147100000, // latitude in nanodegrees (15.1471)
             120589700000, // longitude in nanodegrees (120.5897)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

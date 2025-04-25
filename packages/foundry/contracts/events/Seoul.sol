@@ -15,7 +15,9 @@ contract Seoul is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -23,10 +25,12 @@ contract Seoul is NFTBaseV1 {
             baseURI,
             admins,
             minters,
-            37566500000, // latitude in nanodegrees (37.5665)
+            37566400000, // latitude in nanodegrees (37.5664)
             126978000000, // longitude in nanodegrees (126.978)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

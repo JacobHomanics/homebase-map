@@ -38,6 +38,10 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
 
     int256[2] public coordinates;
 
+    // Timeframe variables for minting window
+    uint256 public mintStartTime;
+    uint256 public mintEndTime;
+
     // int256 public latitude;
     // int256 public longitude;
 
@@ -50,7 +54,9 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         int256 _latitude,
         int256 _longitude,
         address _eas,
-        bytes32 _schemaUID
+        bytes32 _schemaUID,
+        uint256 _mintStartTime,
+        uint256 _mintEndTime
     ) ERC721(name, symbol) {
         uri = baseURI;
 
@@ -59,6 +65,14 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
 
         eas = IEAS(_eas);
         SCHEMA_UID = _schemaUID;
+
+        require(
+            _mintEndTime > _mintStartTime,
+            "End time must be after start time"
+        );
+        mintStartTime = _mintStartTime;
+        mintEndTime = _mintEndTime;
+
         for (uint256 i = 0; i < admins.length; i++) {
             _grantRole(DEFAULT_ADMIN_ROLE, admins[i]);
         }
@@ -86,6 +100,13 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
     }
 
     function mint(bytes32 attestationUID) external {
+        // Verify timeframe
+        require(
+            block.timestamp >= mintStartTime,
+            "Minting has not started yet"
+        );
+        require(block.timestamp <= mintEndTime, "Minting period has ended");
+
         // Get the attestation
         IEAS.Attestation memory attestation = eas.getAttestation(
             attestationUID

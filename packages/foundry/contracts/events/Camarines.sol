@@ -15,7 +15,9 @@ contract Camarines is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -24,9 +26,11 @@ contract Camarines is NFTBaseV1 {
             admins,
             minters,
             13622800000, // latitude in nanodegrees (13.6228)
-            123354700000, // longitude in nanodegrees (123.3547)
+            123194800000, // longitude in nanodegrees (123.1948)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

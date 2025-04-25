@@ -15,7 +15,9 @@ contract Dasmarias is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Dasmarias is NFTBaseV1 {
             14329500000, // latitude in nanodegrees (14.3295)
             120936700000, // longitude in nanodegrees (120.9367)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

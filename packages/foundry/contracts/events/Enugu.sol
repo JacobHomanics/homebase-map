@@ -15,7 +15,9 @@ contract Enugu is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Enugu is NFTBaseV1 {
             6453100000, // latitude in nanodegrees (6.4531)
             7517600000, // longitude in nanodegrees (7.5176)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

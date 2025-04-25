@@ -15,7 +15,9 @@ contract NagaCity is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract NagaCity is NFTBaseV1 {
             13622800000, // latitude in nanodegrees (13.6228)
             123194800000, // longitude in nanodegrees (123.1948)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

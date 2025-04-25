@@ -15,7 +15,9 @@ contract Bangalore is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Bangalore is NFTBaseV1 {
             12971600000, // latitude in nanodegrees (12.9716)
             77594600000, // longitude in nanodegrees (77.5946)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

@@ -15,7 +15,9 @@ contract Bangkok is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Bangkok is NFTBaseV1 {
             13756300000, // latitude in nanodegrees (13.7563)
             100501800000, // longitude in nanodegrees (100.5018)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

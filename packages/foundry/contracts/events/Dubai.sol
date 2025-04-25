@@ -15,7 +15,9 @@ contract Dubai is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -23,10 +25,12 @@ contract Dubai is NFTBaseV1 {
             baseURI,
             admins,
             minters,
-            25276100000, // latitude in nanodegrees (25.2761)
-            55296900000, // longitude in nanodegrees (55.2969)
+            25276000000, // latitude in nanodegrees (25.276)
+            55296700000, // longitude in nanodegrees (55.2967)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

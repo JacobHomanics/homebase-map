@@ -15,7 +15,9 @@ contract Kampala is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Kampala is NFTBaseV1 {
             347600000, // latitude in nanodegrees (0.3476)
             32582500000, // longitude in nanodegrees (32.5825)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

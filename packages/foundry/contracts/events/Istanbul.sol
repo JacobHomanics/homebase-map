@@ -15,7 +15,9 @@ contract Istanbul is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Istanbul is NFTBaseV1 {
             41008200000, // latitude in nanodegrees (41.0082)
             28978400000, // longitude in nanodegrees (28.9784)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

@@ -15,7 +15,9 @@ contract Singapore is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -23,10 +25,12 @@ contract Singapore is NFTBaseV1 {
             baseURI,
             admins,
             minters,
-            1352100000, // latitude in nanodegrees (1.3521)
-            103819800000, // longitude in nanodegrees (103.8198)
+            1300000000, // latitude in nanodegrees (1.3)
+            103800000000, // longitude in nanodegrees (103.8)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

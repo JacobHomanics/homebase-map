@@ -17,7 +17,9 @@ contract Ndotohub is NFTBaseV1 {
         int256 latitude,
         int256 longitude,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -28,7 +30,9 @@ contract Ndotohub is NFTBaseV1 {
             latitude,
             longitude,
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

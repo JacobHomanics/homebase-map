@@ -15,7 +15,9 @@ contract Zug is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Zug is NFTBaseV1 {
             47376900000, // latitude in nanodegrees (47.3769)
             8541700000, // longitude in nanodegrees (8.5417)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

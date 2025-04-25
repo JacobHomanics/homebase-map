@@ -15,7 +15,9 @@ contract Cebu3 is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Cebu3 is NFTBaseV1 {
             10318500000, // latitude in nanodegrees (10.3185)
             123917500000, // longitude in nanodegrees (123.9175)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

@@ -15,7 +15,9 @@ contract MexicoCity is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract MexicoCity is NFTBaseV1 {
             19432600000, // latitude in nanodegrees (19.4326)
             -99133200000, // longitude in nanodegrees (-99.1332)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

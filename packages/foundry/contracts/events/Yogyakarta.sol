@@ -15,7 +15,9 @@ contract Yogyakarta is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Yogyakarta is NFTBaseV1 {
             -7797000000, // latitude in nanodegrees (-7.797)
             110370500000, // longitude in nanodegrees (110.3705)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

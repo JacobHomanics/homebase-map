@@ -15,7 +15,9 @@ contract Swabi is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Swabi is NFTBaseV1 {
             34040200000, // latitude in nanodegrees (34.0402)
             72458900000, // longitude in nanodegrees (72.4589)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

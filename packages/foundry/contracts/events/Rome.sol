@@ -15,7 +15,9 @@ contract Rome is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Rome is NFTBaseV1 {
             41902800000, // latitude in nanodegrees (41.9028)
             12496400000, // longitude in nanodegrees (12.4964)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

@@ -15,7 +15,9 @@ contract Lisbon is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Lisbon is NFTBaseV1 {
             38722300000, // latitude in nanodegrees (38.7223)
             -9139300000, // longitude in nanodegrees (-9.1393)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

@@ -15,7 +15,9 @@ contract Austin is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract Austin is NFTBaseV1 {
             30267200000, // latitude in nanodegrees (30.2672)
             -97743100000, // longitude in nanodegrees (-97.7431)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

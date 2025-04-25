@@ -15,7 +15,9 @@ contract SaoPaulo is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -24,9 +26,11 @@ contract SaoPaulo is NFTBaseV1 {
             admins,
             minters,
             -23550500000, // latitude in nanodegrees (-23.5505)
-            -46633300000, // longitude in nanodegrees (-46.6333)
+            -46633100000, // longitude in nanodegrees (-46.6331)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }

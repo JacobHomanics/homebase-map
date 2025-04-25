@@ -15,7 +15,9 @@ contract MalolosCity is NFTBaseV1 {
         address[] memory admins,
         address[] memory minters,
         address eas,
-        bytes32 schemaUID
+        bytes32 schemaUID,
+        uint256 mintStartTime,
+        uint256 mintEndTime
     )
         NFTBaseV1(
             name,
@@ -26,7 +28,9 @@ contract MalolosCity is NFTBaseV1 {
             14852700000, // latitude in nanodegrees (14.8527)
             120816000000, // longitude in nanodegrees (120.816)
             eas,
-            schemaUID
+            schemaUID,
+            mintStartTime,
+            mintEndTime
         )
     {}
 }
