@@ -1,6 +1,6 @@
 "use client";
 
-import { SyntheticEvent, useRef, useState } from "react";
+import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { LoadingOverlay } from "./LoadingOverlay";
 import { HomebaseMap } from "./homebase-map/HomebaseMap";
@@ -52,6 +52,20 @@ export function Map() {
   };
   const { address: connectedAddress } = useAccount();
   const mapRef = useRef<any>(null);
+
+  // Read user location from localStorage on component mount
+  useEffect(() => {
+    const savedLocation = localStorage.getItem("userLocation");
+    if (savedLocation) {
+      try {
+        const parsedLocation = JSON.parse(savedLocation);
+        setUserLocation(parsedLocation);
+        setCenter(parsedLocation);
+      } catch (error) {
+        console.error("Error parsing saved location:", error);
+      }
+    }
+  }, []);
 
   const { selectedMarker } = useSelectedMarker();
 
