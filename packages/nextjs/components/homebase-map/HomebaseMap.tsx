@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MarkerWithInfowindow } from "../MarkerWithInfowindow";
+import { ClusterInfoWindow } from "../homebase-map/ClusterInfoWindow";
+import { ClusterMarker } from "../homebase-map/ClusterMarker";
 import { APIProvider, AdvancedMarker, Map, MapMouseEvent, Pin, useMap } from "@vis.gl/react-google-maps";
 import { UserLocation } from "~~/hooks/homebase-map/useGetUserLocation";
 import { useSelectedMarker } from "~~/hooks/homebase-map/useSelectedMarker";
 import { Location } from "~~/locations.config";
+import { Cluster, clusterLocations } from "~~/utils/clustering";
 import { DEFAULT_RANGE_METERS } from "~~/utils/distance";
 
 interface HomebaseMapProps {
@@ -17,6 +20,7 @@ interface HomebaseMapProps {
   infoWindowChildren: (location: Location) => React.ReactNode;
   isManualMode?: boolean;
   onMapClick?: (location: UserLocation) => void;
+  clusterRadius?: number; // Radius in meters for clustering
 }
 
 const UserLocationCircle = ({ position }: { position: UserLocation }) => {
@@ -70,10 +74,31 @@ const MapContainer = ({
   isManualMode,
   onMapClick,
   containerStyle,
+  clusterRadius = 15000, // Default 15km radius for clustering
 }: HomebaseMapProps) => {
   const { set } = useSelectedMarker();
   const [openInfoWindowId, setOpenInfoWindowId] = useState<number | null>(null);
+  const [openClusterId, setOpenClusterId] = useState<string | null>(null);
+  const [zoom, setZoom] = useState(4);
+  const [clusters, setClusters] = useState<Cluster[]>([]);
   const map = useMap();
+
+  // Handle zoom change to determine whether to show clusters
+  useEffect(() => {
+    if (map) {
+      const handleZoomChanged = () => {
+        const newZoom = map.getZoom();
+        if (newZoom !== undefined) {
+          setZoom(newZoom);
+        }
+      };
+
+      map.addListener("zoom_changed", handleZoomChanged);
+      return () => {
+        google.maps.event.clearListeners(map, "zoom_changed");
+      };
+    }
+  }, [map]);
 
   // Center map on user location when it changes
   useEffect(() => {
@@ -82,6 +107,25 @@ const MapContainer = ({
     // Center the map on user location
     map.panTo(userLocation);
   }, [map, userLocation]);
+
+  // Memoize clusters calculation
+  const computeClusters = React.useCallback(() => {
+    if (zoom < 8) {
+      return clusterLocations(locations, clusterRadius);
+    }
+    return [];
+  }, [locations, clusterRadius, zoom]);
+
+  // Update clusters when locations, zoom, or clusterRadius changes
+  useEffect(() => {
+    const newClusters = computeClusters();
+    setClusters(newClusters);
+
+    // If changing cluster radius, close any open cluster info windows
+    if (openClusterId && newClusters.every(c => c.id !== openClusterId)) {
+      setOpenClusterId(null);
+    }
+  }, [computeClusters, openClusterId]);
 
   // Handle map click events when in manual mode
   const handleMapClick = (e: MapMouseEvent) => {
@@ -93,6 +137,14 @@ const MapContainer = ({
     }
   };
 
+  const handleClusterClick = (cluster: Cluster) => {
+    setOpenClusterId(cluster.id);
+    // Clear any open single marker infowindows
+    setOpenInfoWindowId(null);
+  };
+
+  const shouldShowClusters = zoom < 8 && clusters.length > 0;
+
   return (
     <Map
       style={containerStyle}
@@ -101,22 +153,48 @@ const MapContainer = ({
       gestureHandling={"greedy"}
       mapId="8c78d816c97d148e"
       onClick={handleMapClick}
+      onZoomChanged={event => {
+        if (event.detail?.zoom !== undefined) {
+          setZoom(event.detail.zoom);
+        }
+      }}
+      controlSize={24}
+      zoomControl={true}
     >
-      {locations.map(marker => (
-        <MarkerWithInfowindow
-          key={marker.id}
-          position={marker.position}
-          onClick={() => {
-            set(marker);
-            setOpenInfoWindowId(marker.id);
-          }}
-          isOpen={openInfoWindowId === marker.id}
-          onClose={() => setOpenInfoWindowId(null)}
-          image={marker.image || "/homebase.jpg"}
-        >
-          {infoWindowChildren(marker)}
-        </MarkerWithInfowindow>
-      ))}
+      {shouldShowClusters
+        ? // Render clusters
+          clusters.map(cluster => (
+            <React.Fragment key={cluster.id}>
+              <ClusterMarker cluster={cluster} onClick={() => handleClusterClick(cluster)} />
+              {openClusterId === cluster.id && (
+                <ClusterInfoWindow
+                  cluster={cluster}
+                  onClose={() => setOpenClusterId(null)}
+                  renderLocation={locationId => {
+                    const location = locations.find(loc => loc.id === locationId);
+                    if (!location) return null;
+                    return infoWindowChildren(location);
+                  }}
+                />
+              )}
+            </React.Fragment>
+          ))
+        : // Render individual markers
+          locations.map(marker => (
+            <MarkerWithInfowindow
+              key={marker.id}
+              position={marker.position}
+              onClick={() => {
+                set(marker);
+                setOpenInfoWindowId(marker.id);
+              }}
+              isOpen={openInfoWindowId === marker.id}
+              onClose={() => setOpenInfoWindowId(null)}
+              image={marker.image || "/homebase.jpg"}
+            >
+              {infoWindowChildren(marker)}
+            </MarkerWithInfowindow>
+          ))}
 
       {userLocation && (
         <>

@@ -22,6 +22,7 @@ export function Map() {
   const [center, setCenter] = useState({ lat: 39.78597, lng: -101.58847 });
   const [isManualMode, setIsManualMode] = useState(false);
   const [showLoadingOverlay, setShowLoadingOverlay] = useState(false);
+  const [clusterRadius, setClusterRadius] = useState(15000); // Default 15km cluster radius
 
   // Function to get user location when the button is clicked
   const requestUserLocation = () => {
@@ -732,7 +733,7 @@ export function Map() {
       {showLoadingOverlay && <LoadingOverlay message="Finding your Homebase..." duration={5000} />}
 
       <div className="flex justify-between items-center mb-4 px-4">
-        <div className="flex items-center">
+        <div className="flex items-center space-x-4">
           <label className="cursor-pointer label">
             <span className="label-text mr-2">Manual Location</span>
             <input
@@ -742,6 +743,25 @@ export function Map() {
               onChange={toggleManualMode}
             />
           </label>
+
+          <div className="flex items-center space-x-2">
+            <span className="label-text">Cluster Radius: {(clusterRadius / 1000).toFixed(0)}km</span>
+            <input
+              type="range"
+              min="5000"
+              max="50000"
+              step="5000"
+              value={clusterRadius}
+              onChange={e => setClusterRadius(Number(e.target.value))}
+              className="range range-primary range-xs"
+            />
+            <div
+              className="tooltip"
+              data-tip="Locations will be clustered when zoomed out. Zoom in to see individual locations."
+            >
+              <span className="text-info cursor-help text-sm">ⓘ</span>
+            </div>
+          </div>
         </div>
 
         <div className="flex items-center gap-4">
@@ -766,6 +786,7 @@ export function Map() {
         containerStyle={mapContainerStyle}
         isManualMode={isManualMode}
         onMapClick={handleMapClick}
+        clusterRadius={clusterRadius}
         infoWindowChildren={(location: Location) => (
           <div className="p-4 text-center bg-base-300 m-4 rounded-lg items-center flex justify-center flex-col">
             <Image
