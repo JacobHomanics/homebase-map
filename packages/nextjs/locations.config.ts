@@ -9,6 +9,7 @@ export type Location = {
   region: string;
   date: string;
   venue: string;
+  lumaLink?: string; // Optional link to Luma event
 };
 
 // Helper function to safely get contract address
@@ -32,6 +33,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 10",
     venue: "TBD",
+    lumaLink: "https://lu.ma/1dy944t1",
   },
   {
     id: 1,
@@ -42,6 +44,7 @@ export const locations: Location[] = [
     region: "N. America",
     date: "May 4",
     venue: "Variant office",
+    lumaLink: "https://lu.ma/vnv007mi",
   },
   {
     id: 2,
@@ -52,6 +55,7 @@ export const locations: Location[] = [
     region: "E Africa",
     date: "May 10",
     venue: "TBD",
+    lumaLink: "https://lu.ma/sy1k2af7",
   },
   {
     id: 3,
@@ -62,6 +66,7 @@ export const locations: Location[] = [
     region: "Europe",
     date: "May 13",
     venue: "TBD",
+    lumaLink: "https://lu.ma/6jghl0ts",
   },
   {
     id: 4,
@@ -72,6 +77,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 11",
     venue: "TBD",
+    lumaLink: "https://lu.ma/tiiw11pg",
   },
   {
     id: 5,
@@ -82,6 +88,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 18",
     venue: "TBD",
+    lumaLink: "https://lu.ma/q4a0fz0y",
   },
   {
     id: 6,
@@ -92,6 +99,7 @@ export const locations: Location[] = [
     region: "LATAM",
     date: "May 18",
     venue: "TBD",
+    lumaLink: "https://lu.ma/4oux3j9x",
   },
   {
     id: 7,
@@ -102,6 +110,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 18",
     venue: "TBD",
+    lumaLink: "https://lu.ma/q4a0fz0y",
   },
   {
     id: 8,
@@ -112,6 +121,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 15",
     venue: "TBD",
+    lumaLink: "https://lu.ma/tizh5u0t",
   },
   {
     id: 9,
@@ -122,6 +132,7 @@ export const locations: Location[] = [
     region: "Europe",
     date: "May 6",
     venue: "TBD",
+    lumaLink: "https://lu.ma/foxtc7hr",
   },
   {
     id: 10,
@@ -132,6 +143,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 17",
     venue: "TBD",
+    lumaLink: "https://lu.ma/zujqeul1",
   },
   {
     id: 11,
@@ -142,6 +154,7 @@ export const locations: Location[] = [
     region: "India",
     date: "May 11",
     venue: "TBD",
+    lumaLink: "https://lu.ma/q4a0fz0y",
   },
   {
     id: 12,
@@ -152,6 +165,7 @@ export const locations: Location[] = [
     region: "India",
     date: "May 18",
     venue: "TBD",
+    lumaLink: "https://lu.ma/q4a0fz0y",
   },
   {
     id: 13,
@@ -162,6 +176,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 6",
     venue: "TBD",
+    lumaLink: "https://lu.ma/zujqeul1",
   },
   {
     id: 14,
@@ -172,6 +187,7 @@ export const locations: Location[] = [
     region: "Africa",
     date: "May 18",
     venue: "TBD",
+    lumaLink: "https://lu.ma/x3f1hsuo",
   },
   {
     id: 15,
@@ -182,6 +198,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 8",
     venue: "TBD",
+    lumaLink: "https://lu.ma/zujqeul1",
   },
   {
     id: 16,
@@ -192,6 +209,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 9",
     venue: "TBD",
+    lumaLink: "https://lu.ma/zujqeul1",
   },
   {
     id: 17,
@@ -202,6 +220,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 9",
     venue: "TBD",
+    lumaLink: "https://lu.ma/za6cgxuo",
   },
   {
     id: 18,
@@ -212,6 +231,7 @@ export const locations: Location[] = [
     region: "LATAM",
     date: "May 11",
     venue: "TBD",
+    lumaLink: "https://lu.ma/ysm3jaqt",
   },
   {
     id: 19,
@@ -222,6 +242,7 @@ export const locations: Location[] = [
     region: "Africa",
     date: "May 18",
     venue: "TBD",
+    lumaLink: "https://lu.ma/r7sjp801",
   },
   {
     id: 20,
@@ -232,6 +253,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 18",
     venue: "TBD",
+    lumaLink: "https://lu.ma/zujqeul1",
   },
   {
     id: 21,
@@ -242,6 +264,7 @@ export const locations: Location[] = [
     region: "Europe",
     date: "May 10",
     venue: "TBD",
+    lumaLink: "https://lu.ma/lisbon-base-workshop",
   },
   {
     id: 22,
@@ -252,6 +275,7 @@ export const locations: Location[] = [
     region: "Africa",
     date: "May 4",
     venue: "TBD",
+    lumaLink: "https://lu.ma/rrwt99ru",
   },
   {
     id: 23,
@@ -262,6 +286,7 @@ export const locations: Location[] = [
     region: "Africa",
     date: "May 11",
     venue: "TBD",
+    lumaLink: "https://lu.ma/rrwt99ru",
   },
   {
     id: 24,
@@ -272,6 +297,7 @@ export const locations: Location[] = [
     region: "Africa",
     date: "May 4",
     venue: "TBD",
+    lumaLink: "https://lu.ma/rrwt99ru",
   },
   {
     id: 25,
@@ -282,6 +308,7 @@ export const locations: Location[] = [
     region: "Europe",
     date: "May 25",
     venue: "TBD",
+    lumaLink: "https://lu.ma/i5tq6zu3",
   },
   {
     id: 26,
@@ -292,6 +319,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 22",
     venue: "TBD",
+    lumaLink: "https://lu.ma/q4a0fz0y",
   },
   {
     id: 27,
@@ -302,6 +330,7 @@ export const locations: Location[] = [
     region: "Europe",
     date: "May 4",
     venue: "TBD",
+    lumaLink: "https://lu.ma/l0g71zi9",
   },
   {
     id: 28,
@@ -312,6 +341,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 8",
     venue: "TBD",
+    lumaLink: "https://lu.ma/5g02dc9i",
   },
   {
     id: 29,
@@ -322,6 +352,7 @@ export const locations: Location[] = [
     region: "India",
     date: "May 10",
     venue: "TBD",
+    lumaLink: "https://lu.ma/q4a0fz0y",
   },
   {
     id: 30,
@@ -332,6 +363,7 @@ export const locations: Location[] = [
     region: "Africa",
     date: "May 17",
     venue: "TBD",
+    lumaLink: "https://lu.ma/rrwt99ru",
   },
   {
     id: 31,
@@ -342,6 +374,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 19",
     venue: "TBD",
+    lumaLink: "https://lu.ma/q4a0fz0y",
   },
   {
     id: 32,
@@ -352,6 +385,7 @@ export const locations: Location[] = [
     region: "Africa",
     date: "May 18",
     venue: "TBD",
+    lumaLink: "https://lu.ma/rrwt99ru",
   },
   {
     id: 33,
@@ -362,6 +396,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 4",
     venue: "TBD",
+    lumaLink: "https://lu.ma/zujqeul1",
   },
   {
     id: 34,
@@ -372,6 +407,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 25",
     venue: "TBD",
+    lumaLink: "https://lu.ma/zujqeul1",
   },
   {
     id: 35,
@@ -382,6 +418,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 10",
     venue: "TBD",
+    lumaLink: "https://lu.ma/zujqeul1",
   },
   {
     id: 36,
@@ -392,6 +429,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 11",
     venue: "TBD",
+    lumaLink: "https://lu.ma/zujqeul1",
   },
   {
     id: 37,
@@ -402,6 +440,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 18",
     venue: "TBD",
+    lumaLink: "https://lu.ma/zujqeul1",
   },
   {
     id: 38,
@@ -412,6 +451,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 12",
     venue: "TBD",
+    lumaLink: "https://lu.ma/q4a0fz0y",
   },
   {
     id: 39,
@@ -422,6 +462,7 @@ export const locations: Location[] = [
     region: "LATAM",
     date: "May 21",
     venue: "TBD",
+    lumaLink: "https://lu.ma/0hnv2178",
   },
   {
     id: 40,
@@ -432,6 +473,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 4",
     venue: "TBD",
+    lumaLink: "https://lu.ma/zujqeul1",
   },
   {
     id: 41,
@@ -442,6 +484,7 @@ export const locations: Location[] = [
     region: "LATAM",
     date: "May 18",
     venue: "TBD",
+    lumaLink: "https://lu.ma/9pdvs76k",
   },
   {
     id: 42,
@@ -452,6 +495,7 @@ export const locations: Location[] = [
     region: "India",
     date: "May 4",
     venue: "TBD",
+    lumaLink: "https://lu.ma/q4a0fz0y",
   },
   {
     id: 43,
@@ -462,6 +506,7 @@ export const locations: Location[] = [
     region: "Europe",
     date: "May 16",
     venue: "TBD",
+    lumaLink: "https://lu.ma/0oaho8e3",
   },
   {
     id: 44,
@@ -472,6 +517,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 23",
     venue: "TBD",
+    lumaLink: "https://lu.ma/zujqeul1",
   },
   {
     id: 45,
@@ -482,6 +528,7 @@ export const locations: Location[] = [
     region: "N. America",
     date: "May 16",
     venue: "TBD",
+    lumaLink: "https://lu.ma/agdiik4u",
   },
   {
     id: 46,
@@ -492,6 +539,7 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 23",
     venue: "TBD",
+    lumaLink: "https://lu.ma/zujqeul1",
   },
   {
     id: 47,
@@ -502,6 +550,7 @@ export const locations: Location[] = [
     region: "Africa",
     date: "May 18",
     venue: "TBD",
+    lumaLink: "https://lu.ma/rrwt99ru",
   },
   {
     id: 48,
@@ -512,6 +561,7 @@ export const locations: Location[] = [
     region: "Africa",
     date: "May 10",
     venue: "TBD",
+    lumaLink: "https://lu.ma/prj5e77i",
   },
   {
     id: 49,
@@ -522,6 +572,7 @@ export const locations: Location[] = [
     region: "Africa",
     date: "May 11",
     venue: "TBD",
+    lumaLink: "https://lu.ma/rrwt99ru",
   },
   {
     id: 50,
@@ -532,5 +583,6 @@ export const locations: Location[] = [
     region: "APAC",
     date: "May 3",
     venue: "TBD",
+    lumaLink: "https://lu.ma/zujqeul1",
   },
 ];

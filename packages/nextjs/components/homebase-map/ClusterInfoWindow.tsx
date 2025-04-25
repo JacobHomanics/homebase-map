@@ -43,6 +43,19 @@ export const ClusterInfoWindow = ({ cluster, onClose, onLocationSelect }: Cluste
                 <span className="text-xs">{location.region}</span>
                 <span className="text-xs">{location.date}</span>
               </div>
+              {location.lumaLink && (
+                <div className="mt-2">
+                  <a
+                    href={location.lumaLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-accent underline block text-center"
+                    onClick={e => e.stopPropagation()}
+                  >
+                    Register on Luma
+                  </a>
+                </div>
+              )}
             </div>
           ))}
         </div>

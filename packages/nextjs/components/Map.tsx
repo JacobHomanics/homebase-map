@@ -833,6 +833,18 @@ export function Map() {
               <span className="badge badge-outline">{location.region}</span>
               <span className="badge badge-outline">{location.date}</span>
             </div>
+
+            {location.lumaLink && (
+              <a
+                href={location.lumaLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-accent btn-sm mb-4"
+              >
+                Register on Luma
+              </a>
+            )}
+
             <p className="m-0 text-2xl md:text-xl text-black dark:text-white">Pledges</p>
             <p className="m-0 text-2xl md:text-6xl text-black dark:text-white">{nftTotalSupplyMapping[location.id]}</p>
 
