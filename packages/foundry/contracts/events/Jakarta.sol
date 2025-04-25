@@ -14,6 +14,8 @@ contract Jakarta is NFTBaseV1 {
         string memory baseURI,
         address[] memory admins,
         address[] memory minters,
+        int256 latitude,
+        int256 longitude,
         address eas,
         bytes32 schemaUID
     )
@@ -23,8 +25,8 @@ contract Jakarta is NFTBaseV1 {
             baseURI,
             admins,
             minters,
-            -6208800000, // latitude in nanodegrees (-6.2088)
-            106845600000, // longitude in nanodegrees (106.8456)
+            latitude,
+            longitude,
             eas,
             schemaUID
         )
