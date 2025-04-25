@@ -27,7 +27,7 @@ export const MarkerWithInfowindow = ({
         position={position}
         title={"AdvancedMarker that opens an Infowindow when clicked."}
       >
-        <Image width={"400"} height={"400"} className="w-14 h-14 rounded-full" src={image} alt="Location" />
+        <Image width={"400"} height={"400"} className="w-14 h-14 rounded-full" src="/homebase.jpg" alt="Location" />
       </AdvancedMarker>
       {isOpen && (
         <InfoWindow anchor={marker} onCloseClick={onClose}>

@@ -1,4 +1,5 @@
 import { SyntheticEvent, useState } from "react";
+import Image from "next/image";
 import { LoadingOverlay } from "./LoadingOverlay";
 import { HomebaseMap } from "./homebase-map/HomebaseMap";
 import { UserAlignedLocations } from "./homebase-map/UserAlignedLocations";
@@ -767,6 +768,13 @@ export function Map() {
         onMapClick={handleMapClick}
         infoWindowChildren={(location: Location) => (
           <div className="p-4 text-center bg-base-300 m-4 rounded-lg items-center flex justify-center flex-col">
+            <Image
+              width={200}
+              height={200}
+              className="w-48 h-32 object-cover rounded-lg mb-3"
+              src={location.image || "/homebase.jpg"}
+              alt={location.title}
+            />
             <p className="m-0 text-xl text-black dark:text-white">{location.title}</p>
             <p className="m-0 text-2xl md:text-xl text-black dark:text-white">Pledges</p>{" "}
             <p className="m-0 text-2xl md:text-6xl text-black dark:text-white">{nftTotalSupplyMapping[location.id]}</p>
