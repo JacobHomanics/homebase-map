@@ -23,10 +23,13 @@ export const findMyLocation = () => {
     navigator.geolocation.getCurrentPosition(
       position => {
         const { latitude, longitude } = position.coords;
-        localStorage.setItem("userLocation", JSON.stringify({ lat: latitude, lng: longitude }));
-        window.dispatchEvent(new Event("storage"));
-        // Force page reload to update the location
-        window.location.reload();
+        // Remove localStorage usage
+        // Dispatch a custom event with the location data
+        window.dispatchEvent(
+          new CustomEvent("userLocationUpdated", {
+            detail: { lat: latitude, lng: longitude },
+          }),
+        );
       },
       error => {
         console.error("Error getting the location:", error);
@@ -42,7 +45,7 @@ export function Map() {
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [center, setCenter] = useState({ lat: 26.4160872, lng: 167.849134 });
   // const [isManualMode, setIsManualMode] = useState(false);
-  const [showLoadingOverlay, setShowLoadingOverlay] = useState(false);
+  // const [showLoadingOverlay, setShowLoadingOverlay] = useState(false);
   // We're keeping clusterRadius state because it's still used by the map, but hiding the UI control
   const [clusterRadius, setClusterRadius] = useState(15000); // Default 15km cluster radius
   const [focusedLocationFromCluster, setFocusedLocationFromCluster] = useState(false);
@@ -53,18 +56,19 @@ export function Map() {
   const { address: connectedAddress } = useAccount();
   const mapRef = useRef<any>(null);
 
-  // Read user location from localStorage on component mount
+  // Listen for the custom event instead of reading from localStorage
   useEffect(() => {
-    const savedLocation = localStorage.getItem("userLocation");
-    if (savedLocation) {
-      try {
-        const parsedLocation = JSON.parse(savedLocation);
-        setUserLocation(parsedLocation);
-        setCenter(parsedLocation);
-      } catch (error) {
-        console.error("Error parsing saved location:", error);
-      }
-    }
+    const handleLocationUpdate = (event: any) => {
+      const newLocation = event.detail;
+      setUserLocation(newLocation);
+      setCenter(newLocation);
+    };
+
+    window.addEventListener("userLocationUpdated", handleLocationUpdate);
+
+    return () => {
+      window.removeEventListener("userLocationUpdated", handleLocationUpdate);
+    };
   }, []);
 
   const { selectedMarker } = useSelectedMarker();
@@ -72,312 +76,312 @@ export function Map() {
   // const { locationScores } = useLocationScores();
 
   // Function to get user location when the button is clicked
-  const requestUserLocation = () => {
-    setShowLoadingOverlay(true);
+  // const requestUserLocation = () => {
+  //   setShowLoadingOverlay(true);
 
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          const newLocation = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          setUserLocation(newLocation);
-          setCenter(newLocation);
-          setShowLoadingOverlay(false);
-        },
-        error => {
-          console.error("Error getting location:", error);
-          setShowLoadingOverlay(false);
-        },
-        {
-          enableHighAccuracy: true,
-          timeout: 8000,
-          maximumAge: 0,
-        },
-      );
-    } else {
-      console.log("Geolocation is not supported by this browser.");
-      setShowLoadingOverlay(false);
-    }
-  };
+  //   if ("geolocation" in navigator) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       position => {
+  //         const newLocation = {
+  //           lat: position.coords.latitude,
+  //           lng: position.coords.longitude,
+  //         };
+  //         setUserLocation(newLocation);
+  //         setCenter(newLocation);
+  //         setShowLoadingOverlay(false);
+  //       },
+  //       error => {
+  //         console.error("Error getting location:", error);
+  //         setShowLoadingOverlay(false);
+  //       },
+  //       {
+  //         enableHighAccuracy: true,
+  //         timeout: 8000,
+  //         maximumAge: 0,
+  //       },
+  //     );
+  //   } else {
+  //     console.log("Geolocation is not supported by this browser.");
+  //     setShowLoadingOverlay(false);
+  //   }
+  // };
 
-  const { data: brusselsTotalSupply, refetch: refetchBrusselsTotalSupply } = useScaffoldReadContract({
-    contractName: "Brussels",
-    functionName: "totalSupply",
-  });
+  // const { data: brusselsTotalSupply, refetch: refetchBrusselsTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Brussels",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: goshoTotalSupply, refetch: refetchGoshoTotalSupply } = useScaffoldReadContract({
-    contractName: "Gosho",
-    functionName: "totalSupply",
-  });
+  // const { data: goshoTotalSupply, refetch: refetchGoshoTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Gosho",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: yogyakartaTotalSupply, refetch: refetchYogyakartaTotalSupply } = useScaffoldReadContract({
-    contractName: "Yogyakarta",
-    functionName: "totalSupply",
-  });
+  // const { data: yogyakartaTotalSupply, refetch: refetchYogyakartaTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Yogyakarta",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: ndotohubTotalSupply, refetch: refetchNdotohubTotalSupply } = useScaffoldReadContract({
-    contractName: "Ndotohub",
-    functionName: "totalSupply",
-  });
+  // const { data: ndotohubTotalSupply, refetch: refetchNdotohubTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Ndotohub",
+  //   functionName: "totalSupply",
+  // });
 
-  // Add totalSupply for new events
-  const { data: swabiTotalSupply, refetch: refetchSwabiTotalSupply } = useScaffoldReadContract({
-    contractName: "Swabi",
-    functionName: "totalSupply",
-  });
+  // // Add totalSupply for new events
+  // const { data: swabiTotalSupply, refetch: refetchSwabiTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Swabi",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: camarinesTotalSupply, refetch: refetchCamarinesTotalSupply } = useScaffoldReadContract({
-    contractName: "Camarines",
-    functionName: "totalSupply",
-  });
+  // const { data: camarinesTotalSupply, refetch: refetchCamarinesTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Camarines",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: puneTotalSupply, refetch: refetchPuneTotalSupply } = useScaffoldReadContract({
-    contractName: "Pune",
-    functionName: "totalSupply",
-  });
+  // const { data: puneTotalSupply, refetch: refetchPuneTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Pune",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: nairobiTotalSupply, refetch: refetchNairobiTotalSupply } = useScaffoldReadContract({
-    contractName: "Nairobi",
-    functionName: "totalSupply",
-  });
+  // const { data: nairobiTotalSupply, refetch: refetchNairobiTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Nairobi",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: hongKongTotalSupply, refetch: refetchHongKongTotalSupply } = useScaffoldReadContract({
-    contractName: "HongKong",
-    functionName: "totalSupply",
-  });
+  // const { data: hongKongTotalSupply, refetch: refetchHongKongTotalSupply } = useScaffoldReadContract({
+  //   contractName: "HongKong",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: accraTotalSupply, refetch: refetchAccraTotalSupply } = useScaffoldReadContract({
-    contractName: "Accra",
-    functionName: "totalSupply",
-  });
+  // const { data: accraTotalSupply, refetch: refetchAccraTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Accra",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: cartagenaTotalSupply, refetch: refetchCartagenaTotalSupply } = useScaffoldReadContract({
-    contractName: "Cartagena",
-    functionName: "totalSupply",
-  });
+  // const { data: cartagenaTotalSupply, refetch: refetchCartagenaTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Cartagena",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: daNangTotalSupply, refetch: refetchDaNangTotalSupply } = useScaffoldReadContract({
-    contractName: "DaNang",
-    functionName: "totalSupply",
-  });
+  // const { data: daNangTotalSupply, refetch: refetchDaNangTotalSupply } = useScaffoldReadContract({
+  //   contractName: "DaNang",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: mumbaiTotalSupply, refetch: refetchMumbaiTotalSupply } = useScaffoldReadContract({
-    contractName: "Mumbai",
-    functionName: "totalSupply",
-  });
+  // const { data: mumbaiTotalSupply, refetch: refetchMumbaiTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Mumbai",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: bangaloreTotalSupply, refetch: refetchBangaloreTotalSupply } = useScaffoldReadContract({
-    contractName: "Bangalore",
-    functionName: "totalSupply",
-  });
+  // const { data: bangaloreTotalSupply, refetch: refetchBangaloreTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Bangalore",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: newYorkCityTotalSupply, refetch: refetchNewYorkCityTotalSupply } = useScaffoldReadContract({
-    contractName: "NewYorkCity",
-    functionName: "totalSupply",
-  });
+  // const { data: newYorkCityTotalSupply, refetch: refetchNewYorkCityTotalSupply } = useScaffoldReadContract({
+  //   contractName: "NewYorkCity",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: buenosAiresTotalSupply, refetch: refetchBuenosAiresTotalSupply } = useScaffoldReadContract({
-    contractName: "BuenosAires",
-    functionName: "totalSupply",
-  });
+  // const { data: buenosAiresTotalSupply, refetch: refetchBuenosAiresTotalSupply } = useScaffoldReadContract({
+  //   contractName: "BuenosAires",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: manilaTotalSupply, refetch: refetchManilaTotalSupply } = useScaffoldReadContract({
-    contractName: "Manila",
-    functionName: "totalSupply",
-  });
+  // const { data: manilaTotalSupply, refetch: refetchManilaTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Manila",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: dubaiTotalSupply, refetch: refetchDubaiTotalSupply } = useScaffoldReadContract({
-    contractName: "Dubai",
-    functionName: "totalSupply",
-  });
+  // const { data: dubaiTotalSupply, refetch: refetchDubaiTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Dubai",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: darEsSalaamTotalSupply, refetch: refetchDarEsSalaamTotalSupply } = useScaffoldReadContract({
-    contractName: "DarEsSalaam",
-    functionName: "totalSupply",
-  });
+  // const { data: darEsSalaamTotalSupply, refetch: refetchDarEsSalaamTotalSupply } = useScaffoldReadContract({
+  //   contractName: "DarEsSalaam",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: kigaliTotalSupply, refetch: refetchKigaliTotalSupply } = useScaffoldReadContract({
-    contractName: "Kigali",
-    functionName: "totalSupply",
-  });
+  // const { data: kigaliTotalSupply, refetch: refetchKigaliTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Kigali",
+  //   functionName: "totalSupply",
+  // });
 
-  // Add totalSupply for remaining events
-  const { data: abujaTotalSupply, refetch: refetchAbujaTotalSupply } = useScaffoldReadContract({
-    contractName: "Abuja",
-    functionName: "totalSupply",
-  });
+  // // Add totalSupply for remaining events
+  // const { data: abujaTotalSupply, refetch: refetchAbujaTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Abuja",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: addisAbabaTotalSupply, refetch: refetchAddisAbabaTotalSupply } = useScaffoldReadContract({
-    contractName: "AddisAbaba",
-    functionName: "totalSupply",
-  });
+  // const { data: addisAbabaTotalSupply, refetch: refetchAddisAbabaTotalSupply } = useScaffoldReadContract({
+  //   contractName: "AddisAbaba",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: angelesCityTotalSupply, refetch: refetchAngelesCityTotalSupply } = useScaffoldReadContract({
-    contractName: "AngelesCity",
-    functionName: "totalSupply",
-  });
+  // const { data: angelesCityTotalSupply, refetch: refetchAngelesCityTotalSupply } = useScaffoldReadContract({
+  //   contractName: "AngelesCity",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: austinTotalSupply, refetch: refetchAustinTotalSupply } = useScaffoldReadContract({
-    contractName: "Austin",
-    functionName: "totalSupply",
-  });
+  // const { data: austinTotalSupply, refetch: refetchAustinTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Austin",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: balangaCityTotalSupply, refetch: refetchBalangaCityTotalSupply } = useScaffoldReadContract({
-    contractName: "BalangaCity",
-    functionName: "totalSupply",
-  });
+  // const { data: balangaCityTotalSupply, refetch: refetchBalangaCityTotalSupply } = useScaffoldReadContract({
+  //   contractName: "BalangaCity",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: bangkokTotalSupply, refetch: refetchBangkokTotalSupply } = useScaffoldReadContract({
-    contractName: "Bangkok",
-    functionName: "totalSupply",
-  });
+  // const { data: bangkokTotalSupply, refetch: refetchBangkokTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Bangkok",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: budapestTotalSupply, refetch: refetchBudapestTotalSupply } = useScaffoldReadContract({
-    contractName: "Budapest",
-    functionName: "totalSupply",
-  });
+  // const { data: budapestTotalSupply, refetch: refetchBudapestTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Budapest",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: cebuTotalSupply, refetch: refetchCebuTotalSupply } = useScaffoldReadContract({
-    contractName: "Cebu",
-    functionName: "totalSupply",
-  });
+  // const { data: cebuTotalSupply, refetch: refetchCebuTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Cebu",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: cebu2TotalSupply, refetch: refetchCebu2TotalSupply } = useScaffoldReadContract({
-    contractName: "Cebu2",
-    functionName: "totalSupply",
-  });
+  // const { data: cebu2TotalSupply, refetch: refetchCebu2TotalSupply } = useScaffoldReadContract({
+  //   contractName: "Cebu2",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: cebu3TotalSupply, refetch: refetchCebu3TotalSupply } = useScaffoldReadContract({
-    contractName: "Cebu3",
-    functionName: "totalSupply",
-  });
+  // const { data: cebu3TotalSupply, refetch: refetchCebu3TotalSupply } = useScaffoldReadContract({
+  //   contractName: "Cebu3",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: dasmariasTotalSupply, refetch: refetchDasmariasTotalSupply } = useScaffoldReadContract({
-    contractName: "Dasmarias",
-    functionName: "totalSupply",
-  });
+  // const { data: dasmariasTotalSupply, refetch: refetchDasmariasTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Dasmarias",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: davaoCityTotalSupply, refetch: refetchDavaoCityTotalSupply } = useScaffoldReadContract({
-    contractName: "DavaoCity",
-    functionName: "totalSupply",
-  });
+  // const { data: davaoCityTotalSupply, refetch: refetchDavaoCityTotalSupply } = useScaffoldReadContract({
+  //   contractName: "DavaoCity",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: delhiTotalSupply, refetch: refetchDelhiTotalSupply } = useScaffoldReadContract({
-    contractName: "Delhi",
-    functionName: "totalSupply",
-  });
+  // const { data: delhiTotalSupply, refetch: refetchDelhiTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Delhi",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: enuguTotalSupply, refetch: refetchEnuguTotalSupply } = useScaffoldReadContract({
-    contractName: "Enugu",
-    functionName: "totalSupply",
-  });
+  // const { data: enuguTotalSupply, refetch: refetchEnuguTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Enugu",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: haripurTotalSupply, refetch: refetchHaripurTotalSupply } = useScaffoldReadContract({
-    contractName: "Haripur",
-    functionName: "totalSupply",
-  });
+  // const { data: haripurTotalSupply, refetch: refetchHaripurTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Haripur",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: istanbulTotalSupply, refetch: refetchIstanbulTotalSupply } = useScaffoldReadContract({
-    contractName: "Istanbul",
-    functionName: "totalSupply",
-  });
+  // const { data: istanbulTotalSupply, refetch: refetchIstanbulTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Istanbul",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: jakartaTotalSupply, refetch: refetchJakartaTotalSupply } = useScaffoldReadContract({
-    contractName: "Jakarta",
-    functionName: "totalSupply",
-  });
+  // const { data: jakartaTotalSupply, refetch: refetchJakartaTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Jakarta",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: kampalaTotalSupply, refetch: refetchKampalaTotalSupply } = useScaffoldReadContract({
-    contractName: "Kampala",
-    functionName: "totalSupply",
-  });
+  // const { data: kampalaTotalSupply, refetch: refetchKampalaTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Kampala",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: kisumuTotalSupply, refetch: refetchKisumuTotalSupply } = useScaffoldReadContract({
-    contractName: "Kisumu",
-    functionName: "totalSupply",
-  });
+  // const { data: kisumuTotalSupply, refetch: refetchKisumuTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Kisumu",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: kyivTotalSupply, refetch: refetchKyivTotalSupply } = useScaffoldReadContract({
-    contractName: "Kyiv",
-    functionName: "totalSupply",
-  });
+  // const { data: kyivTotalSupply, refetch: refetchKyivTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Kyiv",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: lagosTotalSupply, refetch: refetchLagosTotalSupply } = useScaffoldReadContract({
-    contractName: "Lagos",
-    functionName: "totalSupply",
-  });
+  // const { data: lagosTotalSupply, refetch: refetchLagosTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Lagos",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: legazpieCityTotalSupply, refetch: refetchLegazpieCityTotalSupply } = useScaffoldReadContract({
-    contractName: "LegazpieCity",
-    functionName: "totalSupply",
-  });
+  // const { data: legazpieCityTotalSupply, refetch: refetchLegazpieCityTotalSupply } = useScaffoldReadContract({
+  //   contractName: "LegazpieCity",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: lisbonTotalSupply, refetch: refetchLisbonTotalSupply } = useScaffoldReadContract({
-    contractName: "Lisbon",
-    functionName: "totalSupply",
-  });
+  // const { data: lisbonTotalSupply, refetch: refetchLisbonTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Lisbon",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: makatiCityTotalSupply, refetch: refetchMakatiCityTotalSupply } = useScaffoldReadContract({
-    contractName: "MakatiCity",
-    functionName: "totalSupply",
-  });
+  // const { data: makatiCityTotalSupply, refetch: refetchMakatiCityTotalSupply } = useScaffoldReadContract({
+  //   contractName: "MakatiCity",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: malolosCityTotalSupply, refetch: refetchMalolosCityTotalSupply } = useScaffoldReadContract({
-    contractName: "MalolosCity",
-    functionName: "totalSupply",
-  });
+  // const { data: malolosCityTotalSupply, refetch: refetchMalolosCityTotalSupply } = useScaffoldReadContract({
+  //   contractName: "MalolosCity",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: mexicoCityTotalSupply, refetch: refetchMexicoCityTotalSupply } = useScaffoldReadContract({
-    contractName: "MexicoCity",
-    functionName: "totalSupply",
-  });
+  // const { data: mexicoCityTotalSupply, refetch: refetchMexicoCityTotalSupply } = useScaffoldReadContract({
+  //   contractName: "MexicoCity",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: nagaCityTotalSupply, refetch: refetchNagaCityTotalSupply } = useScaffoldReadContract({
-    contractName: "NagaCity",
-    functionName: "totalSupply",
-  });
+  // const { data: nagaCityTotalSupply, refetch: refetchNagaCityTotalSupply } = useScaffoldReadContract({
+  //   contractName: "NagaCity",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: panabuCityTotalSupply, refetch: refetchPanabuCityTotalSupply } = useScaffoldReadContract({
-    contractName: "PanabuCity",
-    functionName: "totalSupply",
-  });
+  // const { data: panabuCityTotalSupply, refetch: refetchPanabuCityTotalSupply } = useScaffoldReadContract({
+  //   contractName: "PanabuCity",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: romeTotalSupply, refetch: refetchRomeTotalSupply } = useScaffoldReadContract({
-    contractName: "Rome",
-    functionName: "totalSupply",
-  });
+  // const { data: romeTotalSupply, refetch: refetchRomeTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Rome",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: saoPauloTotalSupply, refetch: refetchSaoPauloTotalSupply } = useScaffoldReadContract({
-    contractName: "SaoPaulo",
-    functionName: "totalSupply",
-  });
+  // const { data: saoPauloTotalSupply, refetch: refetchSaoPauloTotalSupply } = useScaffoldReadContract({
+  //   contractName: "SaoPaulo",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: seoulTotalSupply, refetch: refetchSeoulTotalSupply } = useScaffoldReadContract({
-    contractName: "Seoul",
-    functionName: "totalSupply",
-  });
+  // const { data: seoulTotalSupply, refetch: refetchSeoulTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Seoul",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: singaporeTotalSupply, refetch: refetchSingaporeTotalSupply } = useScaffoldReadContract({
-    contractName: "Singapore",
-    functionName: "totalSupply",
-  });
+  // const { data: singaporeTotalSupply, refetch: refetchSingaporeTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Singapore",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: tagumTotalSupply, refetch: refetchTagumTotalSupply } = useScaffoldReadContract({
-    contractName: "Tagum",
-    functionName: "totalSupply",
-  });
+  // const { data: tagumTotalSupply, refetch: refetchTagumTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Tagum",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: zanzibarTotalSupply, refetch: refetchZanzibarTotalSupply } = useScaffoldReadContract({
-    contractName: "Zanzibar",
-    functionName: "totalSupply",
-  });
+  // const { data: zanzibarTotalSupply, refetch: refetchZanzibarTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Zanzibar",
+  //   functionName: "totalSupply",
+  // });
 
-  const { data: zugTotalSupply, refetch: refetchZugTotalSupply } = useScaffoldReadContract({
-    contractName: "Zug",
-    functionName: "totalSupply",
-  });
+  // const { data: zugTotalSupply, refetch: refetchZugTotalSupply } = useScaffoldReadContract({
+  //   contractName: "Zug",
+  //   functionName: "totalSupply",
+  // });
 
   const { data: brusselsBalance } = useScaffoldReadContract({
     contractName: "Brussels",
@@ -889,63 +893,63 @@ export function Map() {
     zugBalance,
   ];
 
-  const nftTotalSupplyMapping = [
-    brusselsTotalSupply,
-    goshoTotalSupply,
-    yogyakartaTotalSupply,
-    ndotohubTotalSupply,
-    swabiTotalSupply,
-    camarinesTotalSupply,
-    puneTotalSupply,
-    nairobiTotalSupply,
-    hongKongTotalSupply,
-    accraTotalSupply,
-    cartagenaTotalSupply,
-    daNangTotalSupply,
-    mumbaiTotalSupply,
-    bangaloreTotalSupply,
-    newYorkCityTotalSupply,
-    buenosAiresTotalSupply,
-    manilaTotalSupply,
-    dubaiTotalSupply,
-    darEsSalaamTotalSupply,
-    kigaliTotalSupply,
-    abujaTotalSupply,
-    addisAbabaTotalSupply,
-    angelesCityTotalSupply,
-    austinTotalSupply,
-    balangaCityTotalSupply,
-    bangkokTotalSupply,
-    budapestTotalSupply,
-    cebuTotalSupply,
-    cebu2TotalSupply,
-    cebu3TotalSupply,
-    dasmariasTotalSupply,
-    davaoCityTotalSupply,
-    delhiTotalSupply,
-    enuguTotalSupply,
-    haripurTotalSupply,
-    istanbulTotalSupply,
-    jakartaTotalSupply,
-    kampalaTotalSupply,
-    kisumuTotalSupply,
-    kyivTotalSupply,
-    lagosTotalSupply,
-    legazpieCityTotalSupply,
-    lisbonTotalSupply,
-    makatiCityTotalSupply,
-    malolosCityTotalSupply,
-    mexicoCityTotalSupply,
-    nagaCityTotalSupply,
-    panabuCityTotalSupply,
-    romeTotalSupply,
-    saoPauloTotalSupply,
-    seoulTotalSupply,
-    singaporeTotalSupply,
-    tagumTotalSupply,
-    zanzibarTotalSupply,
-    zugTotalSupply,
-  ];
+  // const nftTotalSupplyMapping = [
+  //   brusselsTotalSupply,
+  //   goshoTotalSupply,
+  //   yogyakartaTotalSupply,
+  //   ndotohubTotalSupply,
+  //   swabiTotalSupply,
+  //   camarinesTotalSupply,
+  //   puneTotalSupply,
+  //   nairobiTotalSupply,
+  //   hongKongTotalSupply,
+  //   accraTotalSupply,
+  //   cartagenaTotalSupply,
+  //   daNangTotalSupply,
+  //   mumbaiTotalSupply,
+  //   bangaloreTotalSupply,
+  //   newYorkCityTotalSupply,
+  //   buenosAiresTotalSupply,
+  //   manilaTotalSupply,
+  //   dubaiTotalSupply,
+  //   darEsSalaamTotalSupply,
+  //   kigaliTotalSupply,
+  //   abujaTotalSupply,
+  //   addisAbabaTotalSupply,
+  //   angelesCityTotalSupply,
+  //   austinTotalSupply,
+  //   balangaCityTotalSupply,
+  //   bangkokTotalSupply,
+  //   budapestTotalSupply,
+  //   cebuTotalSupply,
+  //   cebu2TotalSupply,
+  //   cebu3TotalSupply,
+  //   dasmariasTotalSupply,
+  //   davaoCityTotalSupply,
+  //   delhiTotalSupply,
+  //   enuguTotalSupply,
+  //   haripurTotalSupply,
+  //   istanbulTotalSupply,
+  //   jakartaTotalSupply,
+  //   kampalaTotalSupply,
+  //   kisumuTotalSupply,
+  //   kyivTotalSupply,
+  //   lagosTotalSupply,
+  //   legazpieCityTotalSupply,
+  //   lisbonTotalSupply,
+  //   makatiCityTotalSupply,
+  //   malolosCityTotalSupply,
+  //   mexicoCityTotalSupply,
+  //   nagaCityTotalSupply,
+  //   panabuCityTotalSupply,
+  //   romeTotalSupply,
+  //   saoPauloTotalSupply,
+  //   seoulTotalSupply,
+  //   singaporeTotalSupply,
+  //   tagumTotalSupply,
+  //   zanzibarTotalSupply,
+  //   zugTotalSupply,
+  // ];
 
   async function pledge(event: SyntheticEvent) {
     event.preventDefault();
@@ -954,15 +958,19 @@ export function Map() {
     // console.log(userLocation);
 
     // // If user doesn't have a location, use a default one
-    // const userLat = userLocation?.lat || 0;
-    // const userLng = userLocation?.lng || 0;
 
-    // const testLongitude = parseUnits(userLng.toString(), 9);
-    // const testLatitude = parseUnits(userLat.toString(), 9);
+    if (userLocation) {
+      console.log(userLocation);
+      const userLat = userLocation.lat;
+      const userLng = userLocation.lng;
 
-    // const newAttestationUID = await attestLocation({ lat: testLatitude, lng: testLongitude });
-    // console.log("newAttestationUID");
-    // console.log(newAttestationUID);
+      const testLongitude = parseUnits(userLng.toString(), 9);
+      const testLatitude = parseUnits(userLat.toString(), 9);
+
+      const newAttestationUID = await attestLocation({ lat: testLatitude, lng: testLongitude });
+      console.log("newAttestationUID");
+      console.log(newAttestationUID);
+    }
 
     await nftWriteMapping[selectedMarker?.id ?? 0]({
       functionName: "mint",
@@ -1000,7 +1008,8 @@ export function Map() {
 
   return (
     <>
-      {showLoadingOverlay && <LoadingOverlay message="Finding your Homebase..." duration={5000} />}
+      {/* {showLoadingOverlay && <LoadingOverlay message="Finding your Homebase..." duration={5000} />} */}
+      <LoadingOverlay message="Finding your Homebase..." duration={3000} />
 
       {/* Header div with controls - most controls commented out */}
       <div className="flex justify-between items-center mb-4 px-4">
