@@ -112,6 +112,7 @@ const MapContainer = ({
           }}
           isOpen={openInfoWindowId === marker.id}
           onClose={() => setOpenInfoWindowId(null)}
+          image={marker.image || "/homebase.jpg"}
         >
           {infoWindowChildren(marker)}
         </MarkerWithInfowindow>
