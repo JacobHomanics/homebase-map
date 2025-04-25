@@ -306,7 +306,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         (
             uint256 yogyakartaStartTime,
             uint256 yogyakartaEndTime
-        ) = getDateTimestamp("May 11");
+        ) = getDateTimestamp("May 3");
 
         Yogyakarta yogyakarta = new Yogyakarta(
             "Yogyakarta",
@@ -323,7 +323,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         // Deploy new events from the Luma page
         // Get timestamps for Swabi (May 18 according to locations.config.ts)
         (uint256 swabiStartTime, uint256 swabiEndTime) = getDateTimestamp(
-            "May 18"
+            "April 24"
         );
 
         Swabi swabi = new Swabi(
@@ -358,7 +358,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
 
         // Get timestamps for Pune (May 11 according to locations.config.ts)
         (uint256 puneStartTime, uint256 puneEndTime) = getDateTimestamp(
-            "May 11"
+            "April 26"
         );
 
         Pune pune = new Pune(
@@ -392,7 +392,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
 
         // Get timestamps for HongKong (May 22 according to locations.config.ts)
         (uint256 hongKongStartTime, uint256 hongKongEndTime) = getDateTimestamp(
-            "May 22"
+            "April 26"
         );
 
         HongKong hongKong = new HongKong(
@@ -461,7 +461,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
 
         // Get timestamps for Mumbai (May 18 according to locations.config.ts)
         (uint256 mumbaiStartTime, uint256 mumbaiEndTime) = getDateTimestamp(
-            "May 18"
+            "April 27"
         );
 
         Mumbai mumbai = new Mumbai(
@@ -480,7 +480,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
         (
             uint256 bangaloreStartTime,
             uint256 bangaloreEndTime
-        ) = getDateTimestamp("May 4");
+        ) = getDateTimestamp("April 27");
 
         Bangalore bangalore = new Bangalore(
             "Bangalore",
@@ -723,7 +723,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
 
         // Get timestamps for Cebu (May 18 according to locations.config.ts)
         (uint256 cebuStartTime, uint256 cebuEndTime) = getDateTimestamp(
-            "May 18"
+            "May 8"
         );
 
         Cebu cebu = new Cebu(
@@ -810,7 +810,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
 
         // Get timestamps for Delhi (May 10 according to locations.config.ts)
         (uint256 delhiStartTime, uint256 delhiEndTime) = getDateTimestamp(
-            "May 10"
+            "May 3"
         );
 
         Delhi delhi = new Delhi(
@@ -844,7 +844,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
 
         // Get timestamps for Haripur (May 19 according to locations.config.ts)
         (uint256 haripurStartTime, uint256 haripurEndTime) = getDateTimestamp(
-            "May 19"
+            "May 7"
         );
 
         Haripur haripur = new Haripur(
@@ -861,7 +861,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
 
         // Get timestamps for Istanbul (May 4 according to locations.config.ts)
         (uint256 istanbulStartTime, uint256 istanbulEndTime) = getDateTimestamp(
-            "May 4"
+            "May 10"
         );
 
         Istanbul istanbul = new Istanbul(
@@ -878,7 +878,7 @@ contract DeployYourContract is ScaffoldETHDeploy {
 
         // Get timestamps for Jakarta (May 8 according to locations.config.ts)
         (uint256 jakartaStartTime, uint256 jakartaEndTime) = getDateTimestamp(
-            "May 8"
+            "May 4"
         );
 
         Jakarta jakarta = new Jakarta(

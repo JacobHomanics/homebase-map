@@ -100,43 +100,43 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
     }
 
     function mint(bytes32 attestationUID) external {
-        // Verify timeframe
-        require(
-            block.timestamp >= mintStartTime,
-            "Minting has not started yet"
-        );
-        require(block.timestamp <= mintEndTime, "Minting period has ended");
-
         // Get the attestation
-        IEAS.Attestation memory attestation = eas.getAttestation(
-            attestationUID
-        );
+        // IEAS.Attestation memory attestation = eas.getAttestation(
+        //     attestationUID
+        // );
 
-        // Verify attestation requirements
-        require(attestation.schema == SCHEMA_UID, "Invalid attestation schema");
-        require(
-            attestation.recipient == msg.sender,
-            "Attestation recipient mismatch"
-        );
-        require(
-            attestation.revocationTime == 0,
-            "Attestation has been revoked"
-        );
+        // // Verify attestation requirements
+        // require(attestation.schema == SCHEMA_UID, "Invalid attestation schema");
+        // require(
+        //     attestation.recipient == msg.sender,
+        //     "Attestation recipient mismatch"
+        // );
+        // require(
+        //     attestation.revocationTime == 0,
+        //     "Attestation has been revoked"
+        // );
 
-        if (attestation.expirationTime > 0) {
-            require(
-                block.timestamp < attestation.expirationTime,
-                "Attestation has expired"
-            );
-        }
+        // if (attestation.expirationTime > 0) {
+        //     require(
+        //         block.timestamp < attestation.expirationTime,
+        //         "Attestation has expired"
+        //     );
+        // }
 
         require(balanceOf(msg.sender) == 0, "User already has a token");
 
         // Decode the attestation data
-        (int256 attestationLatitude, int256 attestationLongitude) = abi.decode(
-            attestation.data,
-            (int256, int256)
-        );
+        // (int256 attestationLatitude, int256 attestationLongitude) = abi.decode(
+        //     attestation.data,
+        //     (int256, int256)
+        // );
+
+        // // Verify timeframe
+        // require(
+        //     block.timestamp >= mintStartTime,
+        //     "Minting has not started yet"
+        // );
+        // require(block.timestamp <= mintEndTime, "Minting period has ended");
 
         // s_userLocation = location;
 
@@ -181,16 +181,16 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         //     coordinates[0]
         // );
 
-        int256 buffer = 1 * 10 ** 9; // 5 degrees in nanodegrees
+        // int256 buffer = 1 * 10 ** 9; // 5 degrees in nanodegrees
 
-        int256[2][2] memory bbox;
-        // Lower left
+        // int256[2][2] memory bbox;
+        // // Lower left
 
-        bbox[0][0] = coordinates[0] - buffer;
-        bbox[0][1] = coordinates[1] - buffer;
-        // Upper right
-        bbox[1][0] = coordinates[0] + buffer;
-        bbox[1][1] = coordinates[1] + buffer;
+        // bbox[0][0] = coordinates[0] - buffer;
+        // bbox[0][1] = coordinates[1] - buffer;
+        // // Upper right
+        // bbox[1][0] = coordinates[0] + buffer;
+        // bbox[1][1] = coordinates[1] + buffer;
 
         // bbox[0][0] = coordinates[0] - bufferLatNanodegrees;
         // bbox[0][1] = coordinates[1] - bufferLonNanodegrees;
@@ -198,13 +198,13 @@ contract NFTBaseV1 is AccessControl, ERC721Enumerable {
         // bbox[1][0] = coordinates[0] + bufferLatNanodegrees;
         // bbox[1][1] = coordinates[1] + bufferLonNanodegrees;
 
-        bool isInBbox = attestationLatitude > bbox[0][0] &&
-            attestationLatitude < bbox[1][0] &&
-            attestationLongitude > bbox[0][1] &&
-            attestationLongitude < bbox[1][1];
+        // bool isInBbox = attestationLatitude > bbox[0][0] &&
+        //     attestationLatitude < bbox[1][0] &&
+        //     attestationLongitude > bbox[0][1] &&
+        //     attestationLongitude < bbox[1][1];
 
         // lastCoords = [attestationLatitude, attestationLongitude];
-        require(isInBbox, "User location too far from contract location");
+        // require(isInBbox, "User location too far from contract location");
 
         _mint(msg.sender, totalSupply());
     }
