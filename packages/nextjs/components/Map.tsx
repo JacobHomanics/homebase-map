@@ -1,4 +1,4 @@
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useRef, useState } from "react";
 import Image from "next/image";
 import { LoadingOverlay } from "./LoadingOverlay";
 import { HomebaseMap } from "./homebase-map/HomebaseMap";
@@ -23,6 +23,8 @@ export function Map() {
   const [isManualMode, setIsManualMode] = useState(false);
   const [showLoadingOverlay, setShowLoadingOverlay] = useState(false);
   const [clusterRadius, setClusterRadius] = useState(15000); // Default 15km cluster radius
+  const [focusedLocationFromCluster, setFocusedLocationFromCluster] = useState(false);
+  const mapRef = useRef<any>(null);
 
   // Function to get user location when the button is clicked
   const requestUserLocation = () => {
@@ -728,6 +730,28 @@ export function Map() {
     setManualLocation(location);
   };
 
+  // Handler for when user focuses on a location from a cluster
+  const handleFocusFromCluster = (focused: boolean) => {
+    setFocusedLocationFromCluster(focused);
+  };
+
+  // Handler to return to the cluster view
+  const handleBackToClusters = () => {
+    if (mapRef.current) {
+      // Zoom out to see the clusters again
+      const currentZoom = mapRef.current.getZoom();
+      if (currentZoom !== undefined && currentZoom > 7) {
+        mapRef.current.setZoom(7);
+      }
+      setFocusedLocationFromCluster(false);
+    }
+  };
+
+  // Handler to get map instance reference
+  const handleMapLoad = (map: any) => {
+    mapRef.current = map;
+  };
+
   return (
     <>
       {showLoadingOverlay && <LoadingOverlay message="Finding your Homebase..." duration={5000} />}
@@ -757,7 +781,7 @@ export function Map() {
             />
             <div
               className="tooltip"
-              data-tip="Locations will be clustered when zoomed out. Zoom in to see individual locations."
+              data-tip="Clusters will be shown at all zoom levels. Events within this radius will be grouped together."
             >
               <span className="text-info cursor-help text-sm">ⓘ</span>
             </div>
@@ -765,6 +789,12 @@ export function Map() {
         </div>
 
         <div className="flex items-center gap-4">
+          {focusedLocationFromCluster && (
+            <button onClick={handleBackToClusters} className="btn btn-sm btn-outline btn-primary">
+              ← Back to clusters
+            </button>
+          )}
+
           {isManualMode && (
             <div className="text-sm text-info">
               {userLocation
@@ -787,6 +817,8 @@ export function Map() {
         isManualMode={isManualMode}
         onMapClick={handleMapClick}
         clusterRadius={clusterRadius}
+        onFocusFromCluster={handleFocusFromCluster}
+        onMapLoad={handleMapLoad}
         infoWindowChildren={(location: Location) => (
           <div className="p-4 text-center bg-base-300 m-4 rounded-lg items-center flex justify-center flex-col">
             <Image
@@ -797,28 +829,27 @@ export function Map() {
               alt={location.title}
             />
             <p className="m-0 text-xl text-black dark:text-white">{location.title}</p>
-            <p className="m-0 text-2xl md:text-xl text-black dark:text-white">Pledges</p>{" "}
+            <div className="flex items-center gap-2 mb-2">
+              <span className="badge badge-outline">{location.region}</span>
+              <span className="badge badge-outline">{location.date}</span>
+            </div>
+            <p className="m-0 text-2xl md:text-xl text-black dark:text-white">Pledges</p>
             <p className="m-0 text-2xl md:text-6xl text-black dark:text-white">{nftTotalSupplyMapping[location.id]}</p>
-            {/* {isManualMode && (
-              <button className="btn btn-secondary btn-sm mt-2" onClick={() => setManualLocation(location.position)}>
-                Set my location here
-              </button>
-            )} */}
-            {!connectedAddress && <ConnectButton />}
-            {connectedAddress &&
+
+            {!focusedLocationFromCluster &&
+              connectedAddress &&
               ((nftBalanceMapping?.[location.id] ?? 0) > 0 ? (
-                <>
-                  <p className="text-green-600 text-2xl">You call this place your homebase!</p>
-                </>
+                <p className="text-green-600 text-2xl">You call this place your homebase!</p>
               ) : (
                 <>
                   {!isLocationInRange(location) && <p className="text-red-500">This location is outside your range</p>}
-
                   <button className="btn btn-primary btn-sm" onClick={pledge} disabled={!isLocationInRange(location)}>
                     {!isLocationInRange(location) ? "Location Out of Range" : "Check in"}
                   </button>
                 </>
               ))}
+
+            {!connectedAddress && !focusedLocationFromCluster && <ConnectButton />}
           </div>
         )}
       />

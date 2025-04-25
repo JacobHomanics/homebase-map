@@ -54,7 +54,7 @@ export function clusterLocations(locations: Location[], radiusInMeters: number):
     // Calculate centroid for cluster
     const centerPosition = calculateClusterCenter(clusterLocations);
 
-    // Create the cluster
+    // Create the cluster (even if it's just a single location)
     clusters.push({
       id: `cluster-${currentLocation.id}`,
       locations: clusterLocations,
@@ -74,6 +74,11 @@ export function clusterLocations(locations: Location[], radiusInMeters: number):
 function calculateClusterCenter(locations: Location[]): { lat: number; lng: number } {
   if (!locations.length) {
     return { lat: 0, lng: 0 };
+  }
+
+  // If there's only one location, just use its position
+  if (locations.length === 1) {
+    return { ...locations[0].position };
   }
 
   let totalLat = 0;
