@@ -1,3 +1,5 @@
+"use client";
+
 import { SyntheticEvent, useRef, useState } from "react";
 import Image from "next/image";
 import { LoadingOverlay } from "./LoadingOverlay";
@@ -16,15 +18,45 @@ import { useTokenURI } from "~~/hooks/useTokenURI";
 import { Location, locations } from "~~/locations.config";
 import { DEFAULT_RANGE_METERS, isWithinRange } from "~~/utils/distance";
 
+// Export the location finder function
+export const findMyLocation = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const { latitude, longitude } = position.coords;
+        localStorage.setItem("userLocation", JSON.stringify({ lat: latitude, lng: longitude }));
+        window.dispatchEvent(new Event("storage"));
+        // Force page reload to update the location
+        window.location.reload();
+      },
+      error => {
+        console.error("Error getting the location:", error);
+      },
+    );
+  } else {
+    console.error("Geolocation is not supported by this browser.");
+  }
+};
+
 export function Map() {
   const mapHeight = useMapHeight(450, 650);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
-  const [center, setCenter] = useState({ lat: 39.78597, lng: -101.58847 });
-  const [isManualMode, setIsManualMode] = useState(false);
+  const [center, setCenter] = useState({ lat: 26.4160872, lng: 167.849134 });
+  // const [isManualMode, setIsManualMode] = useState(false);
   const [showLoadingOverlay, setShowLoadingOverlay] = useState(false);
+  // We're keeping clusterRadius state because it's still used by the map, but hiding the UI control
   const [clusterRadius, setClusterRadius] = useState(15000); // Default 15km cluster radius
   const [focusedLocationFromCluster, setFocusedLocationFromCluster] = useState(false);
+  const mapContainerStyle = {
+    width: "100%",
+    height: `${mapHeight}px`,
+  };
+  const { address: connectedAddress } = useAccount();
   const mapRef = useRef<any>(null);
+
+  const { selectedMarker } = useSelectedMarker();
+
+  // const { locationScores } = useLocationScores();
 
   // Function to get user location when the button is clicked
   const requestUserLocation = () => {
@@ -57,30 +89,6 @@ export function Map() {
     }
   };
 
-  // Function to manually set user location
-  const setManualLocation = (location: { lat: number; lng: number }) => {
-    setUserLocation(location);
-    setCenter(location);
-  };
-
-  // Toggle between automatic and manual location modes
-  const toggleManualMode = () => {
-    setIsManualMode(prev => !prev);
-  };
-
-  const mapContainerStyle = {
-    width: "100%",
-    height: `${mapHeight}px`,
-  };
-
-  // const userLocation = { lat: -3.3816595331, lng: 36.701730603 };
-  // const center = { lat: 50.84364262516137, lng: 4.403013511221624 };
-  const { address: connectedAddress } = useAccount();
-
-  const { selectedMarker } = useSelectedMarker();
-
-  // const { locationScores } = useLocationScores();
-
   // Calculate which locations are within range of the user's location
   let locationsInRange: number[] = [];
 
@@ -101,17 +109,6 @@ export function Map() {
   const isLocationInRange = (location: Location) => {
     return locationsInRange.includes(location.id);
   };
-
-  // const { data: alignmentCost } = useScaffoldReadContract({
-  //   contractName: "AlignmentManagerV1",
-  //   functionName: "getAlignmentCost",
-  // });
-
-  // const { data: isUserAlignedWithEntity } = useScaffoldReadContract({
-  //   contractName: "AlignmentV1",
-  //   functionName: "getUserAlignmentWithEntity",
-  //   args: [selectedMarker?.address, connectedAddress],
-  // });
 
   const { data: brusselsTotalSupply, refetch: refetchBrusselsTotalSupply } = useScaffoldReadContract({
     contractName: "Brussels",
@@ -961,29 +958,8 @@ export function Map() {
   async function pledge(event: SyntheticEvent) {
     event.preventDefault();
 
-    // console.log(selectedMarker);
-
-    // const response = await fetch("/api/pledge", {
-    //   method: "POST",
-    //   body: JSON.stringify({ userAddress: connectedAddress, location: userLocation, locationId: selectedMarker?.id }),
-    // });
-
-    // console.log(response);
-
-    // const data = await response.json();
-    // console.log(data);
-    // if (data.message === "Alignment succesfully added!") {
-    // }
-
-    // if (data.error === "You are not in range of this location") {
-    //   console.error(data.error);
-    // }
-
     console.log("userLocation");
     console.log(userLocation);
-
-    // const longitude = parseUnits(userLocation.lng.toString(), 9);
-    // const latitude = parseUnits(userLocation.lat.toString(), 9);
 
     const testLongitude = parseUnits(userLocation?.lng?.toString() ?? "0", 9);
     const testLatitude = parseUnits(userLocation?.lat?.toString() ?? "0", 9);
@@ -992,82 +968,21 @@ export function Map() {
     console.log("newAttestationUID");
     console.log(newAttestationUID);
 
-    // position: { lat: 50822830042, lng: 4358665232 },
-    // if (newAttestationUID !== undefined) {
     await nftWriteMapping[selectedMarker?.id ?? 0]({
       functionName: "mint",
-      // args: [[testLatitude, testLongitude]],
       args: [newAttestationUID as `0x${string}`],
     });
-    // }
-
-    // Refetch totalSupply for all events
-    refetchBrusselsTotalSupply();
-    refetchGoshoTotalSupply();
-    refetchYogyakartaTotalSupply();
-    refetchNdotohubTotalSupply();
-    refetchSwabiTotalSupply();
-    refetchCamarinesTotalSupply();
-    refetchPuneTotalSupply();
-    refetchNairobiTotalSupply();
-    refetchHongKongTotalSupply();
-    refetchAccraTotalSupply();
-    refetchCartagenaTotalSupply();
-    refetchDaNangTotalSupply();
-    refetchMumbaiTotalSupply();
-    refetchBangaloreTotalSupply();
-    refetchNewYorkCityTotalSupply();
-    refetchBuenosAiresTotalSupply();
-    refetchManilaTotalSupply();
-    refetchDubaiTotalSupply();
-    refetchDarEsSalaamTotalSupply();
-    refetchKigaliTotalSupply();
-    // Refetch totalSupply for remaining events
-    refetchAbujaTotalSupply();
-    refetchAddisAbabaTotalSupply();
-    refetchAngelesCityTotalSupply();
-    refetchAustinTotalSupply();
-    refetchBalangaCityTotalSupply();
-    refetchBangkokTotalSupply();
-    refetchBudapestTotalSupply();
-    refetchCebuTotalSupply();
-    refetchCebu2TotalSupply();
-    refetchCebu3TotalSupply();
-    refetchDasmariasTotalSupply();
-    refetchDavaoCityTotalSupply();
-    refetchDelhiTotalSupply();
-    refetchEnuguTotalSupply();
-    refetchHaripurTotalSupply();
-    refetchIstanbulTotalSupply();
-    refetchJakartaTotalSupply();
-    refetchKampalaTotalSupply();
-    refetchKisumuTotalSupply();
-    refetchKyivTotalSupply();
-    refetchLagosTotalSupply();
-    refetchLegazpieCityTotalSupply();
-    refetchLisbonTotalSupply();
-    refetchMakatiCityTotalSupply();
-    refetchMalolosCityTotalSupply();
-    refetchMexicoCityTotalSupply();
-    refetchNagaCityTotalSupply();
-    refetchPanabuCityTotalSupply();
-    refetchRomeTotalSupply();
-    refetchSaoPauloTotalSupply();
-    refetchSeoulTotalSupply();
-    refetchSingaporeTotalSupply();
-    refetchTagumTotalSupply();
-    refetchZanzibarTotalSupply();
-    refetchZugTotalSupply();
   }
-
-  // Handler for clicking on the map in manual mode
-  const handleMapClick = (location: { lat: number; lng: number }) => {
-    setManualLocation(location);
-  };
 
   // Handler for when user focuses on a location from a cluster
   const handleFocusFromCluster = (focused: boolean) => {
     setFocusedLocationFromCluster(focused);
+  };
+
+  // Add a dummy map click handler since we disabled manual mode
+  // This empty function replaces the previous handleMapClick that was removed
+  const handleMapClick = () => {
+    // No-op function since manual mode is disabled
   };
 
   // Handler to return to the cluster view
@@ -1091,8 +1006,11 @@ export function Map() {
     <>
       {showLoadingOverlay && <LoadingOverlay message="Finding your Homebase..." duration={5000} />}
 
+      {/* Header div with controls - most controls commented out */}
       <div className="flex justify-between items-center mb-4 px-4">
+        {/* Left side is now empty since controls are commented out */}
         <div className="flex items-center space-x-4">
+          {/* Manual location toggle - commented out
           <label className="cursor-pointer label">
             <span className="label-text mr-2">Manual Location</span>
             <input
@@ -1102,7 +1020,9 @@ export function Map() {
               onChange={toggleManualMode}
             />
           </label>
+          */}
 
+          {/* Cluster radius slider - commented out
           <div className="flex items-center space-x-2">
             <span className="label-text">Cluster Radius: {(clusterRadius / 1000).toFixed(0)}km</span>
             <input
@@ -1121,8 +1041,10 @@ export function Map() {
               <span className="text-info cursor-help text-sm">ⓘ</span>
             </div>
           </div>
+          */}
         </div>
 
+        {/* Right side - keep the back button */}
         <div className="flex items-center gap-4">
           {focusedLocationFromCluster && (
             <button onClick={handleBackToClusters} className="btn btn-sm btn-outline btn-primary">
@@ -1130,6 +1052,7 @@ export function Map() {
             </button>
           )}
 
+          {/* Manual location info - commented out
           {isManualMode && (
             <div className="text-sm text-info">
               {userLocation
@@ -1137,10 +1060,7 @@ export function Map() {
                 : "Click on the map to set your location"}
             </div>
           )}
-
-          <button className="btn btn-primary" onClick={requestUserLocation} disabled={isManualMode}>
-            {userLocation ? "Update My Location" : "Find My Location"}
-          </button>
+          */}
         </div>
       </div>
 
@@ -1149,7 +1069,7 @@ export function Map() {
         center={center}
         locations={locations}
         containerStyle={mapContainerStyle}
-        isManualMode={isManualMode}
+        isManualMode={false}
         onMapClick={handleMapClick}
         clusterRadius={clusterRadius}
         onFocusFromCluster={handleFocusFromCluster}
@@ -1163,7 +1083,7 @@ export function Map() {
               src={location.image || "/homebase.jpg"}
               alt={location.title}
             />
-            <p className="m-0 text-xl text-black dark:text-white">{location.title}</p>
+            <p className="m-0 text-xl text-black">{location.title}</p>
             <div className="flex items-center gap-2 mb-2">
               <span className="badge badge-outline">{location.region}</span>
               <span className="badge badge-outline">{location.date}</span>
@@ -1180,8 +1100,8 @@ export function Map() {
               </a>
             )}
 
-            <p className="m-0 text-2xl md:text-xl text-black dark:text-white">Pledges</p>
-            <p className="m-0 text-2xl md:text-6xl text-black dark:text-white">{nftTotalSupplyMapping[location.id]}</p>
+            <p className="m-0 text-2xl md:text-xl text-black">Pledges</p>
+            <p className="m-0 text-2xl md:text-6xl text-black">{nftTotalSupplyMapping[location.id]}</p>
 
             {!focusedLocationFromCluster &&
               connectedAddress &&

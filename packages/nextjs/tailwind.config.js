@@ -3,8 +3,9 @@ module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./utils/**/*.{js,ts,jsx,tsx}"],
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("daisyui")],
-  darkTheme: "dark",
-  darkMode: ["selector", "[data-theme='dark']"],
+  // Dark mode disabled
+  // darkTheme: "dark",
+  // darkMode: ["selector", "[data-theme='dark']"],
   // DaisyUI theme colors
   daisyui: {
     themes: [
@@ -40,6 +41,7 @@ module.exports = {
           },
         },
       },
+      /* Dark theme disabled
       {
         dark: {
           primary: "#0052FF",
@@ -73,6 +75,7 @@ module.exports = {
           },
         },
       },
+      */
     ],
   },
   theme: {

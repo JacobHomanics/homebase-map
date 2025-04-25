@@ -263,7 +263,7 @@ const MapContainer = ({
     <Map
       style={containerStyle}
       defaultCenter={center}
-      defaultZoom={4}
+      defaultZoom={2}
       gestureHandling={"greedy"}
       mapId="8c78d816c97d148e"
       onClick={handleMapClick}

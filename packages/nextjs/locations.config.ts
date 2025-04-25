@@ -521,8 +521,8 @@ export const locations: Location[] = [
   },
   {
     id: 45,
-    position: { lat: 30.2672, lng: -97.7431 },
-    title: "Base Batch Workshop - Austin, USA",
+    position: { lat: 29.7601, lng: -95.3701 },
+    title: "Base Batch Workshop - Houston, USA",
     address: getContractAddress("Austin"),
     image: "/base-batches/na.webp",
     region: "N. America",

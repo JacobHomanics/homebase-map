@@ -57,10 +57,22 @@ export const HeaderMenuLinks = () => {
   );
 };
 
+interface FindMyLocationButtonProps {
+  requestUserLocation: () => void;
+}
+
+export const FindMyLocationButton = ({ requestUserLocation }: FindMyLocationButtonProps) => {
+  return (
+    <button className="btn btn-primary btn-sm mr-2" onClick={requestUserLocation}>
+      Find my location
+    </button>
+  );
+};
+
 /**
  * Site header
  */
-export const Header = () => {
+export const Header = ({ requestUserLocation }: { requestUserLocation?: () => void }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const burgerMenuRef = useRef<HTMLDivElement>(null);
   useOutsideClick(
@@ -116,6 +128,7 @@ export const Header = () => {
         </ul>
       </div>
       <div className="navbar-end flex-grow mr-4">
+        {requestUserLocation && <FindMyLocationButton requestUserLocation={requestUserLocation} />}
         <RainbowKitCustomConnectButton />
         <FaucetButton />
       </div>
