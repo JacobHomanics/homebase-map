@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "../NFTBaseV1.sol";
 
-contract DaNang is NFTBaseV1 {
+contract AngelesCity is NFTBaseV1 {
     constructor(
         string memory name,
         string memory symbol,
@@ -23,8 +23,8 @@ contract DaNang is NFTBaseV1 {
             baseURI,
             admins,
             minters,
-            16054400000, // latitude in nanodegrees (16.0544)
-            108202200000, // longitude in nanodegrees (108.2022)
+            15147100000, // latitude in nanodegrees (15.1471)
+            120589700000, // longitude in nanodegrees (120.5897)
             eas,
             schemaUID
         )

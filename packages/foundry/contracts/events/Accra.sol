@@ -14,8 +14,6 @@ contract Accra is NFTBaseV1 {
         string memory baseURI,
         address[] memory admins,
         address[] memory minters,
-        int256 latitude,
-        int256 longitude,
         address eas,
         bytes32 schemaUID
     )
@@ -25,8 +23,8 @@ contract Accra is NFTBaseV1 {
             baseURI,
             admins,
             minters,
-            latitude,
-            longitude,
+            5603700000, // latitude in nanodegrees (5.6037)
+            -187000000, // longitude in nanodegrees (-0.187)
             eas,
             schemaUID
         )

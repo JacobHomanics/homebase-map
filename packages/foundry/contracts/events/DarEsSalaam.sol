@@ -14,8 +14,6 @@ contract DarEsSalaam is NFTBaseV1 {
         string memory baseURI,
         address[] memory admins,
         address[] memory minters,
-        int256 latitude,
-        int256 longitude,
         address eas,
         bytes32 schemaUID
     )
@@ -25,8 +23,8 @@ contract DarEsSalaam is NFTBaseV1 {
             baseURI,
             admins,
             minters,
-            latitude,
-            longitude,
+            -6792400000, // latitude in nanodegrees (-6.7924)
+            39208300000, // longitude in nanodegrees (39.2083)
             eas,
             schemaUID
         )

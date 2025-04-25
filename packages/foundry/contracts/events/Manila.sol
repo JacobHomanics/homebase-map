@@ -14,8 +14,6 @@ contract Manila is NFTBaseV1 {
         string memory baseURI,
         address[] memory admins,
         address[] memory minters,
-        int256 latitude,
-        int256 longitude,
         address eas,
         bytes32 schemaUID
     )
@@ -25,8 +23,8 @@ contract Manila is NFTBaseV1 {
             baseURI,
             admins,
             minters,
-            latitude,
-            longitude,
+            14599500000, // latitude in nanodegrees (14.5995)
+            120984200000, // longitude in nanodegrees (120.9842)
             eas,
             schemaUID
         )

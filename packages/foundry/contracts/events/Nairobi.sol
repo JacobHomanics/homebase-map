@@ -14,8 +14,6 @@ contract Nairobi is NFTBaseV1 {
         string memory baseURI,
         address[] memory admins,
         address[] memory minters,
-        int256 latitude,
-        int256 longitude,
         address eas,
         bytes32 schemaUID
     )
@@ -25,8 +23,8 @@ contract Nairobi is NFTBaseV1 {
             baseURI,
             admins,
             minters,
-            latitude,
-            longitude,
+            -1292100000, // latitude in nanodegrees (-1.2921)
+            36821900000, // longitude in nanodegrees (36.8219)
             eas,
             schemaUID
         )

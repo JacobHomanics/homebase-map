@@ -14,8 +14,6 @@ contract Kigali is NFTBaseV1 {
         string memory baseURI,
         address[] memory admins,
         address[] memory minters,
-        int256 latitude,
-        int256 longitude,
         address eas,
         bytes32 schemaUID
     )
@@ -25,8 +23,8 @@ contract Kigali is NFTBaseV1 {
             baseURI,
             admins,
             minters,
-            latitude,
-            longitude,
+            -1970600000, // latitude in nanodegrees (-1.9706)
+            30104400000, // longitude in nanodegrees (30.1044)
             eas,
             schemaUID
         )

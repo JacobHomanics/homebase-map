@@ -14,8 +14,6 @@ contract Brussels is NFTBaseV1 {
         string memory baseURI,
         address[] memory admins,
         address[] memory minters,
-        int256 latitude,
-        int256 longitude,
         address eas,
         bytes32 schemaUID
     )
@@ -25,8 +23,8 @@ contract Brussels is NFTBaseV1 {
             baseURI,
             admins,
             minters,
-            latitude,
-            longitude,
+            50850300000, // latitude in nanodegrees (50.8503)
+            4351700000, // longitude in nanodegrees (4.3517)
             eas,
             schemaUID
         )

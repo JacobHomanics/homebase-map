@@ -14,8 +14,6 @@ contract NewYorkCity is NFTBaseV1 {
         string memory baseURI,
         address[] memory admins,
         address[] memory minters,
-        int256 latitude,
-        int256 longitude,
         address eas,
         bytes32 schemaUID
     )
@@ -25,8 +23,8 @@ contract NewYorkCity is NFTBaseV1 {
             baseURI,
             admins,
             minters,
-            latitude,
-            longitude,
+            40712800000, // latitude in nanodegrees (40.7128)
+            -74006000000, // longitude in nanodegrees (-74.006)
             eas,
             schemaUID
         )

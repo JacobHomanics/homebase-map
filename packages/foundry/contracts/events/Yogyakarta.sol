@@ -14,8 +14,6 @@ contract Yogyakarta is NFTBaseV1 {
         string memory baseURI,
         address[] memory admins,
         address[] memory minters,
-        int256 latitude,
-        int256 longitude,
         address eas,
         bytes32 schemaUID
     )
@@ -25,8 +23,8 @@ contract Yogyakarta is NFTBaseV1 {
             baseURI,
             admins,
             minters,
-            latitude,
-            longitude,
+            -7797000000, // latitude in nanodegrees (-7.797)
+            110370500000, // longitude in nanodegrees (110.3705)
             eas,
             schemaUID
         )
