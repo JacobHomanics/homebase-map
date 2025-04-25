@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-cebu",
+  "name": "Base Batch Workshop - Cebu, Philippines",
+  "description": "https://lu.ma/ir4ogxqw",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Cebu, Philippines"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 8"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 10.3157,
+    "lng": 123.8854
+  },
+  "index": 33
+}

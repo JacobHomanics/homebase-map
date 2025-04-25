@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-austin",
+  "name": "Base Batch Workshop - Austin, Texas, USA",
+  "description": "https://lu.ma/agdiik4u",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/na.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "N. America"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Austin, Texas, USA"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 7"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Texas Saké Company"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 30.2672,
+    "lng": -97.7431
+  },
+  "index": 31
+}

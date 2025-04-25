@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-davao-city",
+  "name": "Base Batch Workshop - Davao City, Philippines",
+  "description": "https://lu.ma/a3du5h7u",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Davao City, Philippines"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 8"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 7.1907,
+    "lng": 125.4553
+  },
+  "index": 32
+}

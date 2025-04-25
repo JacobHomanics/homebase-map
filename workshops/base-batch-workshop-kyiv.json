@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-kyiv",
+  "name": "Base Batch Workshop - Kyiv, Ukraine",
+  "description": "https://lu.ma/i5tq6zu3",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/europe.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "EMEA"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Kyiv, Ukraine"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 3"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 50.4501,
+    "lng": 30.5234
+  },
+  "index": 20
+}

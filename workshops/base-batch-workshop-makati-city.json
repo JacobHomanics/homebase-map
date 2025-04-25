@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-makati-city",
+  "name": "Base Batch Workshop - Makati City, Philipines",
+  "description": "https://lu.ma/nxjpfcrz",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Makati City, Philipines"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 5"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "BLOKCSPACE"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 14.5547,
+    "lng": 121.0244
+  },
+  "index": 26
+}

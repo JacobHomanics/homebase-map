@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-swabi",
+  "name": "Base Batch Workshop - Swabi, Pakistan",
+  "description": "https://lu.ma/4klsjlqa",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Swabi, Pakistan"
+    },
+    {
+      "trait_type": "Date",
+      "value": "April 24"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Ghulam Ishaq Khan Institute"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 34.1202,
+    "lng": 72.4705
+  },
+  "index": 1
+}

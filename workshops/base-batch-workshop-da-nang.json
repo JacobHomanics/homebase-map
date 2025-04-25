@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-da-nang",
+  "name": "Base Batch Workshop - Da Nang, Vietnam",
+  "description": "https://lu.ma/ofkhuce6",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Da Nang, Vietnam"
+    },
+    {
+      "trait_type": "Date",
+      "value": "April 27"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "The Local Beans / check date"
+    },
+    {
+      "trait_type": "Status",
+      "value": "check"
+    }
+  ],
+  "position": {
+    "lat": 16.0544,
+    "lng": 108.2022
+  },
+  "index": 10
+}

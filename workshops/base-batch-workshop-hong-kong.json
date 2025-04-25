@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-hong-kong",
+  "name": "Base Batch Workshop - Hong Kong, China",
+  "description": "https://lu.ma/ho312dt8",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Hong Kong, China"
+    },
+    {
+      "trait_type": "Date",
+      "value": "April 26"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Hong Kong University of Science and Technology"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 22.3193,
+    "lng": 114.1694
+  },
+  "index": 9
+}

@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-kisumu",
+  "name": "Base Batch Workshop - Kisumu, Kenya",
+  "description": "https://lu.ma/iijofm2s",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "E Africa"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Kisumu, Kenya"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 3"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": -0.1022,
+    "lng": 34.7617
+  },
+  "index": 18
+}

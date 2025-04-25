@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-enugu",
+  "name": "Base Batch Workshop - Enugu, Nigeria",
+  "description": "https://lu.ma/vn46tr1q",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "W Africa"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Enugu, Nigeria"
+    },
+    {
+      "trait_type": "Date",
+      "value": "April 26"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Cafe One Enugu"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 6.4446,
+    "lng": 7.4997
+  },
+  "index": 6
+}

@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-dar-es-salaam",
+  "name": "Base Batch Workshop - Dar Es Salaam, Tanzania",
+  "description": "https://lu.ma/m6h1jipg",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "E Africa"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Dar Es Salaam, Tanzania"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 3"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "University of Dar es salaam"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": -6.7924,
+    "lng": 39.2083
+  },
+  "index": 17
+}

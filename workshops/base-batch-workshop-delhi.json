@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-delhi",
+  "name": "Base Batch Workshop - Delhi, India",
+  "description": "https://lu.ma/y12r03ug",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/india.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "India"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Delhi, India"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 3"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  "index": 19
+}

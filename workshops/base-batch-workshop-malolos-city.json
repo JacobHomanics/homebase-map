@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-malolos-city",
+  "name": "Base Batch Workshop - Malolos City, Philippines",
+  "description": "https://lu.ma/207cl9ag",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Malolos City, Philippines"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 8"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue? location?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 14.8527,
+    "lng": 120.8113
+  },
+  "index": 34
+}

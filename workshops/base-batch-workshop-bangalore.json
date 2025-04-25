@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-bangalore",
+  "name": "Base Batch Workshop - Bangalore, India",
+  "description": "https://lu.ma/wtpmoz2q",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/india.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "India"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Bangalore, India"
+    },
+    {
+      "trait_type": "Date",
+      "value": "April 27"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Zo House"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 12.9716,
+    "lng": 77.5946
+  },
+  "index": 12
+}

@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-kigali",
+  "name": "Base Batch Workshop - Kigali, Rwanda",
+  "description": "https://lu.ma/sfqpnz8c",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "E Africa"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Kigali, Rwanda"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 3"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": -1.9706,
+    "lng": 30.1044
+  },
+  "index": 22
+}

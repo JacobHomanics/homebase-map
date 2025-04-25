@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-kampala",
+  "name": "Base Batch Workshop - Kampala, Uganda",
+  "description": "https://lu.ma/jnoajxft",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "E Africa"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Kampala, Uganda"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 9"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Circular Design Hub Kampala"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 0.3476,
+    "lng": 32.5825
+  },
+  "index": 38
+}

@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-nairobi",
+  "name": "Base Batch Workshop - Nairobi, Kenya",
+  "description": "https://lu.ma/x3f1hsuo",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "E Africa"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Nairobi, Kenya"
+    },
+    {
+      "trait_type": "Date",
+      "value": "April 26"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Rooftop Garden Sarit Center"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": -1.2921,
+    "lng": 36.8219
+  },
+  "index": 3
+}

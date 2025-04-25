@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-abuja",
+  "name": "Base Batch Workshop - Abuja, Nigeria",
+  "description": "https://lu.ma/m0tqqe68",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "W Africa"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Abuja, Nigeria"
+    },
+    {
+      "trait_type": "Date",
+      "value": "April 25"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Cafe One Abuja"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 9.0765,
+    "lng": 7.3986
+  },
+  "index": 2
+}

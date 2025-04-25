@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-panabu-city",
+  "name": "Base Batch Workshop - Panabu City, Philippines",
+  "description": "https://lu.ma/a31zdj3u",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Panabu City, Philippines"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 10"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 10.0433,
+    "lng": 122.9968
+  },
+  "index": 46
+}

@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-so-paulo",
+  "name": "Base Batch Workshop - São Paulo, Brazil",
+  "description": "https://lu.ma/4oux3j9x",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/latam.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "LatAm"
+    },
+    {
+      "trait_type": "Location",
+      "value": "São Paulo, Brazil"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 7"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Nouns House"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": -23.5505,
+    "lng": -46.6333
+  },
+  "index": 28
+}

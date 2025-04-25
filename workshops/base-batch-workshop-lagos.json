@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-lagos",
+  "name": "Base Batch Workshop - Lagos, Nigeria",
+  "description": "https://lu.ma/r7sjp801",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "W Africa"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Lagos, Nigeria"
+    },
+    {
+      "trait_type": "Date",
+      "value": "April 26"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Cafe One, Lekki"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 6.5244,
+    "lng": 3.3792
+  },
+  "index": 4
+}

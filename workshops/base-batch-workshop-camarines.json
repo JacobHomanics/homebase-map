@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-camarines",
+  "name": "Base Batch Workshop - Camarines, Philippines",
+  "description": "https://lu.ma/aca2i1so",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Camarines, Philippines"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 3"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 13.525,
+    "lng": 123.3486
+  },
+  "index": 16
+}

@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-angeles-city",
+  "name": "Base Batch Workshop - Angeles City, Philippines",
+  "description": "https://lu.ma/tcq2edrl",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Angeles City, Philippines"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 9"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 15.1449,
+    "lng": 120.5887
+  },
+  "index": 41
+}

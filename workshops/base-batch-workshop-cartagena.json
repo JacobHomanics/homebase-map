@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-cartagena",
+  "name": "Base Batch Workshop - Cartagena, Colombia",
+  "description": "https://lu.ma/9pdvs76k",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/latam.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "LatAm"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Cartagena, Colombia"
+    },
+    {
+      "trait_type": "Date",
+      "value": "April 26"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Sociedad de Ingenieros y Arquitectos de Bolívar"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 10.391,
+    "lng": -75.4794
+  },
+  "index": 8
+}

@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-mexico-city",
+  "name": "Base Batch Workshop - Mexico City, Mexico",
+  "description": "https://lu.ma/ysm3jaqt",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/latam.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "LatAm"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Mexico City, Mexico"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 8"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Openhub Coworking Condesa"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 19.4326,
+    "lng": -99.1332
+  },
+  "index": 37
+}

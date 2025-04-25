@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-addis-ababa",
+  "name": "Base Batch Workshop - Addis Ababa, Ethiopia",
+  "description": "https://lu.ma/6bsuad99",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "E Africa"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Addis Ababa, Ethiopia"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 4"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 9.032,
+    "lng": 38.7341
+  },
+  "index": 24
+}

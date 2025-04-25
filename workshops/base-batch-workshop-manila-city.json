@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-manila-city",
+  "name": "Base Batch Workshop - Manila City, Philipines",
+  "description": "https://lu.ma/za6cgxuo",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Manila City, Philipines"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 2"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Adamson Uni"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 14.5995,
+    "lng": 120.9842
+  },
+  "index": 15
+}

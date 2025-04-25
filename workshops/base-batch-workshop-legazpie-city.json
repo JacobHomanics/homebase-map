@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-legazpie-city",
+  "name": "Base Batch Workshop - Legazpie City, Philippines",
+  "description": "https://lu.ma/sbp21elr",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Legazpie City, Philippines"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 1"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 13.1375,
+    "lng": 123.5326
+  },
+  "index": 13
+}

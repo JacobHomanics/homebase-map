@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-jakarta",
+  "name": "Base Batch Workshop - Jakarta, Indonesia",
+  "description": "https://lu.ma/5g02dc9i",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Jakarta, Indonesia"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 4"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Indodax - Pondok Indah"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": -6.2088,
+    "lng": 106.8456
+  },
+  "index": 25
+}

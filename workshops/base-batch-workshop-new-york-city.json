@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-new-york-city",
+  "name": "Base Batch Workshop - New York City, USA",
+  "description": "https://lu.ma/vnv007mi",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/na.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "N. America"
+    },
+    {
+      "trait_type": "Location",
+      "value": "New York City, USA"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 4"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "DATE?? Variant office?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 40.7128,
+    "lng": -74.006
+  },
+  "index": 23
+}

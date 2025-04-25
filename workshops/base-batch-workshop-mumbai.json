@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-mumbai",
+  "name": "Base Batch Workshop - Mumbai, India",
+  "description": "https://lu.ma/gphgvyb0",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/india.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "India"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Mumbai, India"
+    },
+    {
+      "trait_type": "Date",
+      "value": "April 27"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "91Springboard Lotus, Andheri East"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 19.076,
+    "lng": 72.8777
+  },
+  "index": 11
+}

@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-zug",
+  "name": "Base Batch Workshop - Zug, Switzerland",
+  "description": "https://lu.ma/6jghl0ts",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/europe.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "EMEA"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Zug, Switzerland"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 8"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "CV Labs Zug"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 47.1662,
+    "lng": 8.5155
+  },
+  "index": 36
+}

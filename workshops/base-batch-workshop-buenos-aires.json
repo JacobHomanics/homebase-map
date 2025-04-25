@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-buenos-aires",
+  "name": "Base Batch Workshop - Buenos Aires, Argentina",
+  "description": "https://lu.ma/0hnv2178",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/latam.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "LatAm"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Buenos Aires, Argentina"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 6"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Concepción Live"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": -34.6037,
+    "lng": -58.3816
+  },
+  "index": 27
+}

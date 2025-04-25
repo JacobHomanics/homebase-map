@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-dasmarias",
+  "name": "Base Batch Workshop - Dasmariñas, Cavite, Philippines",
+  "description": "https://lu.ma/gyikgs3i",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Dasmariñas, Cavite, Philippines"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 10"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "National University - Dasmariñas"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 14.3294,
+    "lng": 120.9367
+  },
+  "index": 45
+}

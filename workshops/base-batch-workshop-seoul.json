@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-seoul",
+  "name": "Base Batch Workshop - Seoul, Korea",
+  "description": "https://lu.ma/icgc0png",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Seoul, Korea"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 7"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "수호라운지"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 37.5665,
+    "lng": 126.978
+  },
+  "index": 29
+}

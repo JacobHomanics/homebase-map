@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-singapore",
+  "name": "Base Batch Workshop - Singapore",
+  "description": "https://lu.ma/tizh5u0t",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Singapore"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 9"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 1.3521,
+    "lng": 103.8198
+  },
+  "index": 43
+}

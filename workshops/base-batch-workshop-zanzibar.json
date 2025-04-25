@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-zanzibar",
+  "name": "Base Batch Workshop - Zanzibar, Tanzania",
+  "description": "https://lu.ma/sy1k2af7",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "E Africa"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Zanzibar, Tanzania"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 10"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": -6.1659,
+    "lng": 39.1998
+  },
+  "index": 44
+}

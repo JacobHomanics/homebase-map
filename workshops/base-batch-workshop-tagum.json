@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-tagum",
+  "name": "Base Batch Workshop - Tagum, Philippines",
+  "description": "https://lu.ma/1cgedaud",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Tagum, Philippines"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 9"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 7.4478,
+    "lng": 125.808
+  },
+  "index": 39
+}

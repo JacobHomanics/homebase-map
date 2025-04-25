@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-budapest",
+  "name": "Base Batch Workshop - Budapest, Hungary",
+  "description": "https://lu.ma/0oaho8e3",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/europe.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "EMEA"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Budapest, Hungary"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 10"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Guild - Z Gen Kibernetika Kft"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 47.4979,
+    "lng": 19.0402
+  },
+  "index": 50
+}

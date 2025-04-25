@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-rome",
+  "name": "Base Batch Workshop - Rome, Italy",
+  "description": "https://lu.ma/foxtc7hr",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/europe.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "EMEA"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Rome, Italy"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 9"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Urbe Hub"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 41.9028,
+    "lng": 12.4964
+  },
+  "index": 42
+}

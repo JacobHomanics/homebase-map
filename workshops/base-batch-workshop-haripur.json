@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-haripur",
+  "name": "Base Batch Workshop - Haripur, Pakistan",
+  "description": "https://lu.ma/e3ifi9qs",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Haripur, Pakistan"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 7"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "University of Haripur"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 33.9946,
+    "lng": 72.9106
+  },
+  "index": 30
+}

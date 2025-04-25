@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-naga-city",
+  "name": "Base Batch Workshop - Naga City, Philippines",
+  "description": "https://lu.ma/x9jt1jcl",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Naga City, Philippines"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 2"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 13.621,
+    "lng": 123.1945
+  },
+  "index": 14
+}

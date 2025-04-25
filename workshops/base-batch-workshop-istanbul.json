@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-istanbul",
+  "name": "Base Batch Workshop - Istanbul, Türkiye",
+  "description": "https://lu.ma/l0g71zi9",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/europe.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "EMEA"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Istanbul, Türkiye"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 10"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Altcointurk | Base"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 41.0082,
+    "lng": 28.9784
+  },
+  "index": 49
+}

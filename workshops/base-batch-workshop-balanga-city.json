@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-balanga-city",
+  "name": "Base Batch Workshop - Balanga City, Philippines",
+  "description": "https://lu.ma/dmx0g4oc",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Balanga City, Philippines"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 10"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "no venue?"
+    },
+    {
+      "trait_type": "Status",
+      "value": "problem"
+    }
+  ],
+  "position": {
+    "lat": 14.6784,
+    "lng": 120.5426
+  },
+  "index": 48
+}

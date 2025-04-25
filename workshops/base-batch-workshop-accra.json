@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-accra",
+  "name": "Base Batch Workshop - Accra, Ghana",
+  "description": "https://lu.ma/prj5e77i",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/africa.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "W Africa"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Accra, Ghana"
+    },
+    {
+      "trait_type": "Date",
+      "value": "April 26"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "AyaHQ Builder Hub"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 5.6037,
+    "lng": -0.187
+  },
+  "index": 5
+}

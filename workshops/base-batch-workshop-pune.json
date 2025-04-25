@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-pune",
+  "name": "Base Batch Workshop - Pune, India",
+  "description": "https://lu.ma/z6kc12e7",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/india.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "India"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Pune, India"
+    },
+    {
+      "trait_type": "Date",
+      "value": "April 26"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Bootstart Coworking Space"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": 18.5204,
+    "lng": 73.8567
+  },
+  "index": 7
+}

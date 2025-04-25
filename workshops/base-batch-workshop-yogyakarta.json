@@ -1,0 +1,33 @@
+{
+  "id": "base-batch-workshop-yogyakarta",
+  "name": "Base Batch Workshop - Yogyakarta, Indonesia",
+  "description": "https://lu.ma/tiiw11pg",
+  "image": "ipfs://bafybeichth2ull6aj2iesajsfo7wepp2c2pyqzwjdi7y7folzhfv4jr3nu/apac.webp",
+  "attributes": [
+    {
+      "trait_type": "Region",
+      "value": "APAC"
+    },
+    {
+      "trait_type": "Location",
+      "value": "Yogyakarta, Indonesia"
+    },
+    {
+      "trait_type": "Date",
+      "value": "May 3"
+    },
+    {
+      "trait_type": "Venue",
+      "value": "Kolektif Coworking Space & Collaboraction"
+    },
+    {
+      "trait_type": "Status",
+      "value": "confirmed"
+    }
+  ],
+  "position": {
+    "lat": -7.7956,
+    "lng": 110.3695
+  },
+  "index": 21
+}
