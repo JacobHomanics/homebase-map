@@ -449,7 +449,7 @@ export const locations: Location[] = [
     address: getContractAddress("DaNang"),
     image: "/base-batches/apac.webp",
     region: "APAC",
-    date: "April 26",
+    date: "April 27",
     venue: "TBD",
     lumaLink: "https://lu.ma/q4a0fz0y",
   },
