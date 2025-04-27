@@ -17,26 +17,36 @@ import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaf
 import { useTokenURI } from "~~/hooks/useTokenURI";
 import { Location, locations } from "~~/locations.config";
 
+const isSpoofingLocation = false;
+
 // Export the location finder function
 export const findMyLocation = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        const { latitude, longitude } = position.coords;
-        // Remove localStorage usage
-        // Dispatch a custom event with the location data
-        window.dispatchEvent(
-          new CustomEvent("userLocationUpdated", {
-            detail: { lat: latitude, lng: longitude },
-          }),
-        );
-      },
-      error => {
-        console.error("Error getting the location:", error);
-      },
+  if (isSpoofingLocation) {
+    window.dispatchEvent(
+      new CustomEvent("userLocationUpdated", {
+        detail: { lat: 40.7123013, lng: -74.0069899 },
+      }),
     );
   } else {
-    console.error("Geolocation is not supported by this browser.");
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const { latitude, longitude } = position.coords;
+          // Remove localStorage usage
+          // Dispatch a custom event with the location data
+          window.dispatchEvent(
+            new CustomEvent("userLocationUpdated", {
+              detail: { lat: latitude, lng: longitude },
+            }),
+          );
+        },
+        error => {
+          console.error("Error getting the location:", error);
+        },
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
   }
 };
 
@@ -60,6 +70,7 @@ export function Map() {
   useEffect(() => {
     const handleLocationUpdate = (event: any) => {
       const newLocation = event.detail;
+
       setUserLocation(newLocation);
       setCenter(newLocation);
     };
