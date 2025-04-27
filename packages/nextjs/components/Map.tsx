@@ -1139,7 +1139,7 @@ export function Map() {
                     </button>
                   )} */}
                   <button className="btn btn-primary btn-sm" onClick={pledge}>
-                    Get Based
+                    Check in
                   </button>
                 </>
               ))}
