@@ -4,10 +4,13 @@ import React, { useCallback, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { parseUnits } from "viem";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import { Tutorial } from "~~/components/Tutorial";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
+import { useAttestLocation } from "~~/hooks/homebase-map/useAttestLocation";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
+import { useGlobalState } from "~~/services/store/store";
 
 type HeaderMenuLink = {
   label: string;
@@ -64,7 +67,7 @@ interface FindMyLocationButtonProps {
 export const FindMyLocationButton = ({ requestUserLocation }: FindMyLocationButtonProps) => {
   return (
     <button className="btn btn-primary btn-sm mr-2" onClick={requestUserLocation}>
-      Find my location
+      Find your homebase
     </button>
   );
 };
@@ -72,9 +75,36 @@ export const FindMyLocationButton = ({ requestUserLocation }: FindMyLocationButt
 /**
  * Site header
  */
-export const Header = ({ requestUserLocation }: { requestUserLocation?: () => void }) => {
+export const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const burgerMenuRef = useRef<HTMLDivElement>(null);
+
+  // const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const { handleSubmit: attestLocation } = useAttestLocation();
+
+  const setUserLocation = useGlobalState(state => state.setUserLocation);
+
+  function scaleCoordinates(latitude: number, longitude: number, scale: number) {
+    return {
+      lat: parseUnits(latitude.toString(), scale),
+      lng: parseUnits(longitude.toString(), scale),
+    };
+  }
+
+  async function getUserLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async position => {
+        const { latitude, longitude } = position.coords;
+
+        setUserLocation({ lat: latitude, lng: longitude });
+        const scaledCoordinates = scaleCoordinates(latitude, longitude, 9);
+
+        const newAttestationUID = await attestLocation(scaledCoordinates);
+        console.log("newAttestationUID", newAttestationUID);
+      });
+    }
+  }
+
   useOutsideClick(
     burgerMenuRef,
     useCallback(() => setIsDrawerOpen(false), []),
@@ -128,7 +158,10 @@ export const Header = ({ requestUserLocation }: { requestUserLocation?: () => vo
         </ul>
       </div>
       <div className="navbar-end flex-grow mr-4">
-        {requestUserLocation && <FindMyLocationButton requestUserLocation={requestUserLocation} />}
+        <button className="btn btn-primary btn-sm mr-2" onClick={getUserLocation}>
+          Find your homebase
+        </button>
+
         <RainbowKitCustomConnectButton />
         <FaucetButton />
       </div>

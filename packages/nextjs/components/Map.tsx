@@ -14,46 +14,54 @@ import { useAttestLocation } from "~~/hooks/homebase-map/useAttestLocation";
 import { useMapHeight } from "~~/hooks/homebase-map/useMapHeight";
 import { useSelectedMarker } from "~~/hooks/homebase-map/useSelectedMarker";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
-import { useTokenURI } from "~~/hooks/useTokenURI";
+// import { useTokenURI } from "~~/hooks/useTokenURI";
 import { Location, locations } from "~~/locations.config";
+import { useGlobalState } from "~~/services/store/store";
 
-const isSpoofingLocation = false;
+// const isSpoofingLocation = false;
 
-// Export the location finder function
-export const findMyLocation = () => {
-  if (isSpoofingLocation) {
-    window.dispatchEvent(
-      new CustomEvent("userLocationUpdated", {
-        detail: { lat: 40.7123013, lng: -74.0069899 },
-      }),
-    );
-  } else {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          const { latitude, longitude } = position.coords;
-          // Remove localStorage usage
-          // Dispatch a custom event with the location data
-          window.dispatchEvent(
-            new CustomEvent("userLocationUpdated", {
-              detail: { lat: latitude, lng: longitude },
-            }),
-          );
-        },
-        error => {
-          console.error("Error getting the location:", error);
-        },
-      );
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-    }
-  }
-};
+// // Export the location finder function
+// export const findMyLocation = () => {
+//   if (isSpoofingLocation) {
+//     window.dispatchEvent(
+//       new CustomEvent("userLocationUpdated", {
+//         detail: { lat: 40.7123013, lng: -74.0069899 },
+//       }),
+//     );
+//   } else {
+//     if (navigator.geolocation) {
+//       navigator.geolocation.getCurrentPosition(
+//         position => {
+//           const { latitude, longitude } = position.coords;
+//           // Remove localStorage usage
+//           // Dispatch a custom event with the location data
+//           window.dispatchEvent(
+//             new CustomEvent("userLocationUpdated", {
+//               detail: { lat: latitude, lng: longitude },
+//             }),
+//           );
+//         },
+//         error => {
+//           console.error("Error getting the location:", error);
+//         },
+//       );
+//     } else {
+//       console.error("Geolocation is not supported by this browser.");
+//     }
+//   }
+// };
 
 export function Map() {
   const mapHeight = useMapHeight(450, 650);
-  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
-  const [center, setCenter] = useState({ lat: 26.4160872, lng: 167.849134 });
+
+  const userLocation = useGlobalState(state => state.userLocation);
+
+  // const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const center = userLocation ? { lat: userLocation.lat, lng: userLocation.lng } : { lat: 26.4160872, lng: 167.849134 };
+
+  // const [center, setCenter] = useState(
+  //   userLocation ? { lat: userLocation.lat, lng: userLocation.lng } : { lat: 26.4160872, lng: 167.849134 },
+  // );
   // const [isManualMode, setIsManualMode] = useState(false);
   // const [showLoadingOverlay, setShowLoadingOverlay] = useState(false);
   // We're keeping clusterRadius state because it's still used by the map, but hiding the UI control
@@ -67,20 +75,25 @@ export function Map() {
   const mapRef = useRef<any>(null);
 
   // Listen for the custom event instead of reading from localStorage
-  useEffect(() => {
-    const handleLocationUpdate = (event: any) => {
-      const newLocation = event.detail;
+  // useEffect(() => {
+  //   const handleLocationUpdate = async (event: any) => {
+  //     const newLocation = event.detail;
 
-      setUserLocation(newLocation);
-      setCenter(newLocation);
-    };
+  //     setUserLocation(newLocation);
+  //     setCenter(newLocation);
+  //     const testLongitude = parseUnits(newLocation.lng.toString(), 9);
+  //     const testLatitude = parseUnits(newLocation.lat.toString(), 9);
 
-    window.addEventListener("userLocationUpdated", handleLocationUpdate);
+  //     const newAttestationUID = await attestLocation({ lat: testLatitude, lng: testLongitude });
+  //     console.log("newAttestationUID", newAttestationUID);
+  //   };
 
-    return () => {
-      window.removeEventListener("userLocationUpdated", handleLocationUpdate);
-    };
-  }, []);
+  //   window.addEventListener("userLocationUpdated", handleLocationUpdate);
+
+  //   return () => {
+  //     window.removeEventListener("userLocationUpdated", handleLocationUpdate);
+  //   };
+  // }, []);
 
   const { selectedMarker } = useSelectedMarker();
 
@@ -1120,8 +1133,13 @@ export function Map() {
                 <p className="text-green-600 text-2xl">You call this place your homebase!</p>
               ) : (
                 <>
+                  {userLocation && (
+                    <button className="btn btn-primary btn-sm" onClick={pledge}>
+                      Verify Homebase
+                    </button>
+                  )}
                   <button className="btn btn-primary btn-sm" onClick={pledge}>
-                    Check in
+                    Get Based
                   </button>
                 </>
               ))}
