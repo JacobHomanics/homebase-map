@@ -78,6 +78,7 @@ export const FindMyLocationButton = ({ requestUserLocation }: FindMyLocationButt
 export const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const burgerMenuRef = useRef<HTMLDivElement>(null);
+  const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
 
   // const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const { handleSubmit: attestLocation } = useAttestLocation();
@@ -104,6 +105,19 @@ export const Header = () => {
       });
     }
   }
+
+  const openLocationModal = () => {
+    setIsLocationModalOpen(true);
+  };
+
+  const closeLocationModal = () => {
+    setIsLocationModalOpen(false);
+  };
+
+  const handleLocationConfirm = () => {
+    closeLocationModal();
+    getUserLocation();
+  };
 
   useOutsideClick(
     burgerMenuRef,
@@ -158,13 +172,42 @@ export const Header = () => {
         </ul>
       </div>
       <div className="navbar-end flex-grow mr-4">
-        <button className="btn btn-primary btn-sm mr-2" onClick={getUserLocation}>
+        <button className="btn btn-primary btn-sm mr-2" onClick={openLocationModal}>
           Find your homebase
         </button>
 
         <RainbowKitCustomConnectButton />
         <FaucetButton />
       </div>
+
+      {/* Location Confirmation Modal */}
+      {isLocationModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+          <div className="bg-base-100 p-6 rounded-lg max-w-md shadow-xl">
+            <h3 className="font-bold text-lg mb-3 text-center">Share Your Location</h3>
+            <div className="divider my-1"></div>
+            <div className="space-y-3 my-4">
+              <p className="text-sm">We&apos;ll need to:</p>
+              <ul className="list-disc pl-5 text-sm space-y-2">
+                <li>Access your current location</li>
+                <li>Create a blockchain record of where you are</li>
+              </ul>
+              <p className="text-sm italic mt-2">
+                This step is optional, however it may be referenced at a later time to verify your attendance at the
+                event.
+              </p>
+            </div>
+            <div className="flex justify-center gap-3 mt-4">
+              <button className="btn btn-outline btn-sm" onClick={closeLocationModal}>
+                Not Now
+              </button>
+              <button className="btn btn-primary btn-sm" onClick={handleLocationConfirm}>
+                Continue
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

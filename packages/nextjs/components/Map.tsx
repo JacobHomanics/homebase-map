@@ -978,18 +978,18 @@ export function Map() {
 
     // // If user doesn't have a location, use a default one
 
-    if (userLocation) {
-      console.log(userLocation);
-      const userLat = userLocation.lat;
-      const userLng = userLocation.lng;
+    // if (userLocation) {
+    //   console.log(userLocation);
+    //   const userLat = userLocation.lat;
+    //   const userLng = userLocation.lng;
 
-      const testLongitude = parseUnits(userLng.toString(), 9);
-      const testLatitude = parseUnits(userLat.toString(), 9);
+    //   const testLongitude = parseUnits(userLng.toString(), 9);
+    //   const testLatitude = parseUnits(userLat.toString(), 9);
 
-      const newAttestationUID = await attestLocation({ lat: testLatitude, lng: testLongitude });
-      console.log("newAttestationUID");
-      console.log(newAttestationUID);
-    }
+    //   const newAttestationUID = await attestLocation({ lat: testLatitude, lng: testLongitude });
+    //   console.log("newAttestationUID");
+    //   console.log(newAttestationUID);
+    // }
 
     await nftWriteMapping[selectedMarker?.id ?? 0]({
       functionName: "mint",
@@ -1133,11 +1133,11 @@ export function Map() {
                 <p className="text-green-600 text-2xl">You call this place your homebase!</p>
               ) : (
                 <>
-                  {userLocation && (
+                  {/* {userLocation && (
                     <button className="btn btn-primary btn-sm" onClick={pledge}>
                       Verify Homebase
                     </button>
-                  )}
+                  )} */}
                   <button className="btn btn-primary btn-sm" onClick={pledge}>
                     Get Based
                   </button>
