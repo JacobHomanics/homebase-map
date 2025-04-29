@@ -9,10 +9,5 @@ export default function Profile({ user }: { user: string }) {
 
   const isOwner = account.address === user;
 
-  return (
-    <>
-      {/* <Observer user={user} /> */}
-      <Owner user={user} />
-    </>
-  );
+  return isOwner ? <Owner user={user} /> : <Observer user={user} />;
 }

@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { useAccount, useReadContract } from "wagmi";
+import { useAccount, usePublicClient, useReadContract, useWriteContract } from "wagmi";
 import { InputBase } from "~~/components/scaffold-eth/Input/InputBase";
-import { RootABI } from "~~/utils/jackal/bridgeAbi";
+import { HOMEBASE_PROFILE_ADDRESS, abi } from "~~/utils/homebase-profile";
+import { notification } from "~~/utils/scaffold-eth";
 
 export default function Owner({ user }: { user: string }) {
+  const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
   const [skills, setSkills] = useState<string[]>([]);
   const [currentSkill, setCurrentSkill] = useState("");
@@ -28,23 +30,31 @@ export default function Owner({ user }: { user: string }) {
   const [farcasterUsername, setFarcasterUsername] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
+  const { address } = useAccount();
+  const { writeContract, writeContractAsync } = useWriteContract();
+  const publicClient = usePublicClient();
 
-  const ipfsHash = "QmVRyHyXrxTgHFjCbRQrbSMT1qLQvGhQtPo1xAEabbR95M";
+  const { data: ipfsUrl } = useReadContract({
+    address: HOMEBASE_PROFILE_ADDRESS,
+    abi,
+    functionName: "getUrl",
+    args: [address],
+  });
 
   useEffect(() => {
     const fetchProfileData = async () => {
       console.log("Fetching...");
       try {
         setIsLoading(true);
-        // const ipfsHash = searchParams.get("ipfs");
-        if (ipfsHash) {
-          const response = await fetch(`https://ipfs.io/ipfs/${ipfsHash}`);
+        if (ipfsUrl && typeof ipfsUrl === "string") {
+          const response = await fetch(ipfsUrl);
           if (!response.ok) {
             throw new Error("Failed to fetch profile data");
           }
           const profileData = await response.json();
 
           // Update state with fetched data
+          setUsername(profileData.username || "");
           setBio(profileData.bio || "");
           setSkills(profileData.skills || []);
           setProjects(profileData.projects || []);
@@ -81,7 +91,7 @@ export default function Owner({ user }: { user: string }) {
     };
 
     fetchProfileData();
-  }, []);
+  }, [ipfsUrl]);
 
   useEffect(() => {
     const githubConnectedParam = searchParams.get("github_connected");
@@ -163,11 +173,48 @@ export default function Owner({ user }: { user: string }) {
       return;
     }
 
+    if (!publicClient) {
+      setUploadError("Public client not available");
+      return;
+    }
+
     try {
       setIsUploading(true);
       setUploadError(null);
 
       const profileData = {
+        name: "Homebase Profile",
+        description: bio || "Homebase profile for web3 collaboration",
+        image: `https://ipfs.io/ipfs/${profilePictureIpfsHash}`,
+        external_url: "https://homebase.xyz",
+        attributes: [
+          {
+            trait_type: "Username",
+            value: username,
+          },
+          {
+            trait_type: "Skills",
+            value: skills,
+          },
+          {
+            trait_type: "Projects",
+            value: projects.map(p => p.name),
+          },
+          {
+            trait_type: "Project Links",
+            value: projects.map(p => p.link),
+          },
+          {
+            trait_type: "Social",
+            value: {
+              github: githubConnected ? githubUsername : null,
+              twitter: twitterConnected ? twitterUsername : null,
+              farcaster: farcasterConnected ? farcasterUsername : null,
+            },
+          },
+        ],
+        // Preserve the original data structure for backward compatibility
+        username,
         bio,
         skills,
         projects,
@@ -196,12 +243,26 @@ export default function Owner({ user }: { user: string }) {
       const data = await response.json();
       console.log("Profile saved with IPFS hash:", data.IpfsHash);
 
-      // Here you would typically store the IPFS hash of the profile metadata
-      // in your smart contract or database
-      // TODO: Add contract interaction to store the IPFS hash
+      // Write the IPFS URL to the smart contract
+      const ipfsUrl = `https://ipfs.io/ipfs/${data.IpfsHash}`;
+      const hash = await writeContractAsync({
+        address: HOMEBASE_PROFILE_ADDRESS,
+        abi,
+        functionName: "setUrl",
+        args: [ipfsUrl],
+      });
+
+      // Wait for the transaction to be mined
+      const receipt = await publicClient.waitForTransactionReceipt({ hash });
+      if (receipt.status === "success") {
+        notification.success("Profile saved successfully!");
+      } else {
+        throw new Error("Transaction failed");
+      }
     } catch (error) {
       console.error("Error saving profile:", error);
       setUploadError("Failed to save profile. Please try again.");
+      notification.error("Failed to save profile. Please try again.");
     } finally {
       setIsUploading(false);
     }
@@ -285,6 +346,14 @@ export default function Owner({ user }: { user: string }) {
   return (
     <div className="max-w-2xl mx-auto p-6 space-y-8">
       <h1 className="text-2xl font-bold">Complete Your Profile</h1>
+
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">Username</h2>
+        <div>
+          <InputBase placeholder="Choose a username" value={username} onChange={setUsername} />
+          <p className="mt-1 text-sm text-gray-500">This will be your unique identifier on Homebase</p>
+        </div>
+      </div>
 
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Profile Picture</h2>
