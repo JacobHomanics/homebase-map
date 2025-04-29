@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { useAccount } from "wagmi";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useAccount, useReadContract } from "wagmi";
 import { InputBase } from "~~/components/scaffold-eth/Input/InputBase";
+import { RootABI } from "~~/utils/jackal/bridgeAbi";
 
 export default function Owner({ user }: { user: string }) {
   const [bio, setBio] = useState("");
@@ -10,6 +12,31 @@ export default function Owner({ user }: { user: string }) {
   const [currentSkill, setCurrentSkill] = useState("");
   const [projects, setProjects] = useState<string[]>([]);
   const [currentProject, setCurrentProject] = useState("");
+  const [profilePicture, setProfilePicture] = useState<string | null>(null);
+  const [githubConnected, setGithubConnected] = useState(false);
+  const [githubUsername, setGithubUsername] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const githubConnectedParam = searchParams.get("github_connected");
+    const githubUsernameParam = searchParams.get("github_username");
+
+    if (githubConnectedParam === "true" && githubUsernameParam) {
+      setGithubConnected(true);
+      setGithubUsername(githubUsernameParam);
+    }
+  }, [searchParams]);
+
+  const handleProfilePictureChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfilePicture(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const addSkill = () => {
     if (currentSkill && skills.length < 3) {
@@ -25,16 +52,64 @@ export default function Owner({ user }: { user: string }) {
     }
   };
 
+  const handleGithubConnect = async () => {
+    const clientId = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID;
+    const redirectUri = `${window.location.origin}/api/auth/github/callback`;
+    const scope = "read:user user:email";
+
+    const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
+    window.location.href = githubAuthUrl;
+  };
+
   return (
     <div className="max-w-2xl mx-auto p-6 space-y-8">
       <h1 className="text-2xl font-bold">Complete Your Profile</h1>
+
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">Profile Picture</h2>
+        <div className="flex items-center gap-4">
+          <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
+            {profilePicture ? (
+              <img src={profilePicture} alt="Profile" className="w-full h-full object-cover" />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-gray-500">
+                <span>No image</span>
+              </div>
+            )}
+          </div>
+          <div>
+            <label className="block">
+              <span className="sr-only">Choose profile photo</span>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleProfilePictureChange}
+                className="block w-full text-sm text-gray-500
+                  file:mr-4 file:py-2 file:px-4
+                  file:rounded-md file:border-0
+                  file:text-sm file:font-semibold
+                  file:bg-blue-50 file:text-blue-700
+                  hover:file:bg-blue-100"
+              />
+            </label>
+            <p className="mt-1 text-sm text-gray-500">JPG, PNG or GIF. Max size of 2MB</p>
+          </div>
+        </div>
+      </div>
 
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Connect Your Accounts</h2>
         <div className="flex flex-col gap-4">
           <button className="w-full px-4 py-2 border rounded-md hover:bg-gray-100">Connect Farcaster</button>
           <button className="w-full px-4 py-2 border rounded-md hover:bg-gray-100">Connect Twitter</button>
-          <button className="w-full px-4 py-2 border rounded-md hover:bg-gray-100">Connect Github</button>
+          <button
+            onClick={handleGithubConnect}
+            className={`w-full px-4 py-2 border rounded-md ${
+              githubConnected ? "bg-green-100 text-green-700 border-green-300" : "hover:bg-gray-100"
+            }`}
+          >
+            {githubConnected ? `Connected to GitHub as ${githubUsername}` : "Connect GitHub"}
+          </button>
         </div>
       </div>
 
