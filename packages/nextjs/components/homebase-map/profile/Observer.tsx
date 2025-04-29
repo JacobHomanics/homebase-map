@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { useReadContract } from "wagmi";
+import { HOMEBASE_PROFILE_ADDRESS, abi } from "~~/utils/homebase-profile";
 
 interface ProfileData {
   username: string;
@@ -27,17 +29,21 @@ export default function Observer({ user }: { user: string }) {
   const [error, setError] = useState<string | null>(null);
   const searchParams = useSearchParams();
 
+  const { data: ipfsUrl } = useReadContract({
+    address: HOMEBASE_PROFILE_ADDRESS,
+    abi,
+    functionName: "getUrl",
+    args: [user],
+  });
+
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
         setIsLoading(true);
         setError(null);
 
-        // TODO: Replace with actual IPFS hash from contract or database
-        const ipfsHash = "QmfZSewJdQoZeR95AMeW1dw1yLQVcRkznFVkhtyaweh5yA";
-
-        if (ipfsHash) {
-          const response = await fetch(`https://ipfs.io/ipfs/${ipfsHash}`);
+        if (ipfsUrl && typeof ipfsUrl === "string") {
+          const response = await fetch(ipfsUrl);
           if (!response.ok) {
             throw new Error("Failed to fetch profile data");
           }
@@ -71,7 +77,7 @@ export default function Observer({ user }: { user: string }) {
     };
 
     fetchProfileData();
-  }, []);
+  }, [ipfsUrl]);
 
   if (isLoading) {
     return (
