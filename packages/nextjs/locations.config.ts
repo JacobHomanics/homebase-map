@@ -295,9 +295,9 @@ export const locations: Location[] = [
     address: getContractAddress("Kisumu"),
     image: "/base-batches/africa.webp",
     region: "Africa",
-    date: "April 26",
+    date: "May 2",
     venue: "TBD",
-    lumaLink: "https://lu.ma/rrwt99ru",
+    lumaLink: "https://lu.ma/iijofm2s",
   },
   {
     id: 25,
