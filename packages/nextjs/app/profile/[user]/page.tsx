@@ -1,4 +1,5 @@
 import { use } from "react";
+import Profile from "~~/components/homebase-map/profile/Profile";
 
 type UserParams = {
   user: string;
@@ -10,5 +11,6 @@ type PageProps = {
 
 export default function UserPage({ params }: PageProps) {
   const { user } = use(Promise.resolve(params));
-  return <p>{user}</p>;
+
+  return <Profile user={user} />;
 }
