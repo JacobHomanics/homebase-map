@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { SignInButton, useProfile } from "@farcaster/auth-kit";
+import "@farcaster/auth-kit/styles.css";
 import { useAccount, usePublicClient, useReadContract, useWriteContract } from "wagmi";
 import { InputBase } from "~~/components/scaffold-eth/Input/InputBase";
 import { HOMEBASE_PROFILE_ADDRESS, abi } from "~~/utils/homebase-profile";
@@ -33,6 +35,7 @@ export default function Owner({ user }: { user: string }) {
   const { address } = useAccount();
   const { writeContract, writeContractAsync } = useWriteContract();
   const publicClient = usePublicClient();
+  const { isAuthenticated, profile } = useProfile();
 
   const { data: ipfsUrl } = useReadContract({
     address: HOMEBASE_PROFILE_ADDRESS,
@@ -116,6 +119,17 @@ export default function Owner({ user }: { user: string }) {
       setFarcasterUsername(farcasterUsernameParam);
     }
   }, [searchParams]);
+
+  // Update Farcaster state when AuthKit profile changes
+  useEffect(() => {
+    if (isAuthenticated && profile?.username) {
+      setFarcasterConnected(true);
+      setFarcasterUsername(profile.username || null);
+    } else {
+      setFarcasterConnected(false);
+      setFarcasterUsername(null);
+    }
+  }, [isAuthenticated, profile]);
 
   const uploadToPinata = async (file: File): Promise<string> => {
     try {
@@ -303,15 +317,6 @@ export default function Owner({ user }: { user: string }) {
     window.location.href = twitterAuthUrl;
   };
 
-  const handleFarcasterConnect = async () => {
-    const clientId = process.env.NEXT_PUBLIC_FARCASTER_CLIENT_ID;
-    const redirectUri = `${window.location.origin}/api/auth/farcaster/callback`;
-    const scope = "profile:read";
-
-    const farcasterAuthUrl = `https://warpcast.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
-    window.location.href = farcasterAuthUrl;
-  };
-
   const handleEditProject = (index: number) => {
     setEditingProjectIndex(index);
     setEditingProjectName(projects[index].name);
@@ -333,6 +338,13 @@ export default function Owner({ user }: { user: string }) {
     setEditingProjectIndex(null);
     setEditingProjectName("");
     setEditingProjectLink("");
+  };
+
+  const handleFarcasterSignOut = () => {
+    setFarcasterConnected(false);
+    setFarcasterUsername(null);
+    // The actual sign out will be handled by the Farcaster Auth Kit's internal state
+    notification.success("Successfully signed out from Farcaster");
   };
 
   if (isLoading) {
@@ -394,14 +406,55 @@ export default function Owner({ user }: { user: string }) {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Connect Your Accounts</h2>
         <div className="flex flex-col gap-4">
-          <button
-            onClick={handleFarcasterConnect}
-            className={`w-full px-4 py-2 border rounded-md ${
-              farcasterConnected ? "bg-green-100 text-green-700 border-green-300" : "hover:bg-gray-100"
-            }`}
-          >
-            {farcasterConnected ? `Connected to Farcaster as ${farcasterUsername}` : "Connect Farcaster"}
-          </button>
+          {!farcasterConnected && !farcasterUsername && (
+            <SignInButton
+              onSuccess={obj => {
+                console.log(obj);
+
+                console.log(obj);
+                console.log(obj.username);
+
+                if (username) {
+                  setFarcasterConnected(true);
+                  setFarcasterUsername(username || null);
+                  notification.success(`Connected to Farcaster as ${username}`);
+                }
+              }}
+              onError={error => {
+                if (error?.message) {
+                  notification.error(`Failed to connect to Farcaster: ${error.message}`);
+                } else {
+                  notification.error("Failed to connect to Farcaster");
+                }
+              }}
+            />
+          )}
+
+          {farcasterConnected && farcasterUsername && (
+            <div className="flex items-center justify-between p-3 border rounded-md bg-[#7c65c1]">
+              <div className="flex items-center gap-3">
+                <img
+                  src={profile.pfpUrl}
+                  alt={`${farcasterUsername}'s Farcaster profile`}
+                  className="w-10 h-10 rounded-full"
+                />
+                <div className="flex items-center gap-2">
+                  <img
+                    src="/farcaster-brand-main/icons/icon-transparent/transparent-white.svg"
+                    alt="Warpcast logo"
+                    className="w-10 h-10"
+                  />
+                  <span className="font-medium text-white">@{farcasterUsername}</span>
+                </div>
+              </div>
+              <button
+                onClick={handleFarcasterSignOut}
+                className="px-4 py-2 text-sm text-white hover:text-gray-800 hover:bg-gray-100 rounded-md transition-colors"
+              >
+                Sign Out
+              </button>
+            </div>
+          )}
           <button
             onClick={handleTwitterConnect}
             className={`w-full px-4 py-2 border rounded-md ${

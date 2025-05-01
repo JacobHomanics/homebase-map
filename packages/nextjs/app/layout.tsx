@@ -2,6 +2,7 @@ import "@rainbow-me/rainbowkit/styles.css";
 import { Analytics } from "@vercel/analytics/react";
 import { ScaffoldEthAppWithProviders } from "~~/components/ScaffoldEthAppWithProviders";
 import { ThemeProvider } from "~~/components/ThemeProvider";
+import { FarcasterAuthProvider } from "~~/components/providers/FarcasterAuthProvider";
 import "~~/styles/globals.css";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
@@ -12,7 +13,9 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
     <html suppressHydrationWarning>
       <body>
         <ThemeProvider forcedTheme="light">
-          <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>
+          <FarcasterAuthProvider>
+            <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>
+          </FarcasterAuthProvider>
         </ThemeProvider>
         <Analytics />
       </body>

@@ -61,13 +61,13 @@ export const AddressInfoDropdown = ({
           className="dropdown-content menu z-[2] p-2 mt-2 shadow-center shadow-accent bg-base-200 rounded-box gap-1"
         >
           <NetworkOptions hidden={!selectingNetwork} />
-          <li className={selectingNetwork ? "hidden" : ""}>
-            <button className="menu-item btn-sm !rounded-xl flex gap-3 py-3" type="button">
-              <UserIcon className="h-6 w-4 ml-2 sm:ml-0" />
-              <a href={`/profile/${checkSumAddress}`} rel="noopener noreferrer" className="whitespace-nowrap">
+          <li className={`flex ${selectingNetwork ? "hidden" : ""}`}>
+            <a href={`/profile/${checkSumAddress}`} rel="noopener noreferrer" className="btn-sm !rounded-xl flex">
+              <button className="menu-item flex gap-3 whitespace-nowrap" type="button">
+                <UserIcon className="h-6 w-4 ml-2 sm:ml-0" />
                 Profile
-              </a>
-            </button>
+              </button>
+            </a>
 
             {addressCopied ? (
               <div className="btn-sm !rounded-xl flex gap-3 py-3">
