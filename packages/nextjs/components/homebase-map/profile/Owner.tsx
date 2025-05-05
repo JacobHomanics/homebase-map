@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { SignInButton, useProfile } from "@farcaster/auth-kit";
+import { QRCode, useProfile, useSignIn } from "@farcaster/auth-kit";
 import "@farcaster/auth-kit/styles.css";
 import { useAccount, usePublicClient, useReadContract, useWriteContract } from "wagmi";
 import { InputBase } from "~~/components/scaffold-eth/Input/InputBase";
@@ -31,11 +31,64 @@ export default function Owner({ user }: { user: string }) {
   const [farcasterConnected, setFarcasterConnected] = useState(false);
   const [farcasterUsername, setFarcasterUsername] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isConnecting, setIsConnecting] = useState(false);
+  const [shouldConnect, setShouldConnect] = useState(false);
+  const [currentChannelToken, setCurrentChannelToken] = useState<string | undefined>();
   const searchParams = useSearchParams();
   const { address } = useAccount();
   const { writeContract, writeContractAsync } = useWriteContract();
   const publicClient = usePublicClient();
   const { isAuthenticated, profile } = useProfile();
+  const {
+    signIn,
+    signOut,
+    isConnected,
+    isSuccess,
+    data,
+    url,
+    connect,
+    reconnect,
+    isPolling,
+    channelToken,
+    validSignature,
+    error,
+  } = useSignIn({
+    timeout: 300000, // 5 minutes
+    interval: 1500, // 1.5 seconds
+    onSuccess: ({ fid, username }) => {
+      console.log("Farcaster sign in success:", { fid, username });
+      if (username) {
+        setFarcasterConnected(true);
+        setFarcasterUsername(username);
+        setIsConnecting(false);
+        setShouldConnect(false);
+        notification.success(`Connected to Farcaster as ${username}`);
+      }
+    },
+    onError: error => {
+      console.error("Farcaster sign in error:", error);
+      setIsConnecting(false);
+      setShouldConnect(false);
+      if (error?.message) {
+        notification.error(`Failed to connect to Farcaster: ${error.message}`);
+      } else {
+        notification.error("Failed to connect to Farcaster");
+      }
+    },
+    onStatusResponse: status => {
+      console.log("Farcaster sign in status:", status);
+      if (status.state === "completed" && status.metadata) {
+        const username = (status.metadata as any).username;
+        if (username && !farcasterConnected) {
+          setFarcasterConnected(true);
+          setFarcasterUsername(username);
+          setIsConnecting(false);
+          setShouldConnect(false);
+          notification.success(`Connected to Farcaster as ${username}`);
+        }
+      }
+    },
+  });
 
   const { data: ipfsUrl } = useReadContract({
     address: HOMEBASE_PROFILE_ADDRESS,
@@ -130,6 +183,14 @@ export default function Owner({ user }: { user: string }) {
       setFarcasterUsername(null);
     }
   }, [isAuthenticated, profile]);
+
+  // Update currentChannelToken when channelToken changes
+  useEffect(() => {
+    if (channelToken) {
+      console.log("Channel token updated:", channelToken);
+      setCurrentChannelToken(channelToken);
+    }
+  }, [channelToken]);
 
   const uploadToPinata = async (file: File): Promise<string> => {
     try {
@@ -340,12 +401,87 @@ export default function Owner({ user }: { user: string }) {
     setEditingProjectLink("");
   };
 
-  const handleFarcasterSignOut = () => {
-    setFarcasterConnected(false);
-    setFarcasterUsername(null);
-    // The actual sign out will be handled by the Farcaster Auth Kit's internal state
-    notification.success("Successfully signed out from Farcaster");
+  const handleFarcasterSignOut = async () => {
+    try {
+      await signOut();
+      setFarcasterConnected(false);
+      setFarcasterUsername(null);
+      notification.success("Successfully signed out from Farcaster");
+    } catch (error) {
+      console.error("Error signing out:", error);
+      notification.error("Failed to sign out from Farcaster");
+    }
   };
+
+  const handleFarcasterSignIn = async () => {
+    if (isConnecting || isPolling) return;
+
+    console.log("Attempting to sign in to Farcaster...");
+    try {
+      setIsConnecting(true);
+      setShouldConnect(true);
+
+      // Reset any existing connection state
+      if (isConnected) {
+        await signOut();
+        setFarcasterConnected(false);
+        setFarcasterUsername(null);
+      }
+
+      // Try to reconnect
+      console.log("Attempting to reconnect...");
+      await reconnect();
+    } catch (error) {
+      console.error("Error during sign in:", error);
+      setIsConnecting(false);
+      setShouldConnect(false);
+      notification.error("Failed to connect to Farcaster. Please try again.");
+    }
+  };
+
+  // Update the connection handling effect
+  useEffect(() => {
+    let mounted = true;
+
+    const handleConnection = async () => {
+      if (!shouldConnect || !mounted) return;
+
+      try {
+        if (channelToken && !isSuccess && !farcasterConnected) {
+          console.log("Channel token available, initiating sign in...", { channelToken });
+          await signIn();
+        } else if (!isConnected && !isPolling && !farcasterConnected) {
+          console.log("Not connected, trying to connect...");
+          await connect();
+        }
+      } catch (error) {
+        console.error("Error in connection process:", error);
+        if (mounted) {
+          setIsConnecting(false);
+          setShouldConnect(false);
+          notification.error("Failed to establish connection. Please try again.");
+        }
+      }
+    };
+
+    handleConnection();
+
+    return () => {
+      mounted = false;
+    };
+  }, [shouldConnect, channelToken, isConnected, isSuccess, isPolling, farcasterConnected, signIn, connect]);
+
+  // Add effect to handle connection state changes
+  useEffect(() => {
+    if (isSuccess && data && !farcasterConnected) {
+      setFarcasterConnected(true);
+      if (data.username) {
+        setFarcasterUsername(data.username);
+      }
+      setIsConnecting(false);
+      setShouldConnect(false);
+    }
+  }, [isSuccess, data, farcasterConnected]);
 
   if (isLoading) {
     return (
@@ -407,34 +543,42 @@ export default function Owner({ user }: { user: string }) {
         <h2 className="text-xl font-semibold">Connect Your Accounts</h2>
         <div className="flex flex-col gap-4">
           {!farcasterConnected && !farcasterUsername && (
-            <SignInButton
-              onSuccess={obj => {
-                console.log(obj);
-
-                console.log(obj);
-                console.log(obj.username);
-
-                if (username) {
-                  setFarcasterConnected(true);
-                  setFarcasterUsername(username || null);
-                  notification.success(`Connected to Farcaster as ${username}`);
-                }
-              }}
-              onError={error => {
-                if (error?.message) {
-                  notification.error(`Failed to connect to Farcaster: ${error.message}`);
-                } else {
-                  notification.error("Failed to connect to Farcaster");
-                }
-              }}
-            />
+            <div className="flex flex-col items-center gap-4">
+              <button
+                onClick={handleFarcasterSignIn}
+                disabled={isPolling || isConnecting}
+                className="w-full px-4 py-2 border rounded-md hover:bg-gray-100 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <img
+                  src="/farcaster-brand-main/icons/icon-transparent/transparent-black.svg"
+                  alt="Warpcast logo"
+                  className="w-6 h-6"
+                />
+                {isConnecting ? "Connecting..." : isPolling ? "Waiting for sign in..." : "Connect Farcaster"}
+              </button>
+              {url && (
+                <div className="flex flex-col items-center gap-2 p-4 border rounded-md">
+                  <p className="text-sm text-gray-600">
+                    {isPolling ? "Waiting for you to sign in..." : "Scan with Warpcast to connect"}
+                  </p>
+                  <QRCode uri={url} />
+                  {isPolling && (
+                    <div className="mt-2 flex items-center gap-2">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-500"></div>
+                      <span className="text-sm text-gray-600">Waiting for confirmation...</span>
+                    </div>
+                  )}
+                  {error && <p className="text-sm text-red-500 mt-2">{error.message}</p>}
+                </div>
+              )}
+            </div>
           )}
 
           {farcasterConnected && farcasterUsername && (
             <div className="flex items-center justify-between p-3 border rounded-md bg-[#7c65c1]">
               <div className="flex items-center gap-3">
                 <img
-                  src={profile.pfpUrl}
+                  src={data?.pfpUrl}
                   alt={`${farcasterUsername}'s Farcaster profile`}
                   className="w-10 h-10 rounded-full"
                 />
