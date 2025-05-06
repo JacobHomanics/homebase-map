@@ -1,80 +1,121 @@
-# 🏗 Scaffold-ETH 2
+# 🏠 Homebase Map: Base Batch Workshops DApp
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+## Overview
+Homebase Map is a full-stack decentralized application for powering Base Batch Workshops on the Base (Layer 2) network. It combines:
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+- A global interactive map of upcoming and past workshops.
+- On-chain attendance attestation via EAS (Ethereum Attestation Service).
+- Location-specific attendance NFTs built on a shared ERC721 base contract (`NFTBaseV1`).
 
-⚙️ Built using NextJS, RainbowKit, Foundry, Wagmi, Viem, and Typescript.
+This monorepo provides everything you need to define event locations, generate and deploy smart contracts, and run the Next.js frontend UI.
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+## Monorepo Structure
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+- **packages/foundry**:  
+  - Solidity smart contracts, including the base `NFTBaseV1.sol` and auto-generated event contracts in `contracts/events`.  
+  - Foundry configuration, tests, and deployment scripts (`scripts-js/`).
 
-## Requirements
+- **packages/nextjs**:  
+  - Next.js App Router frontend under `app/`, including the `Map` component (`components/Map.tsx`) that renders a Google Map with clustering.  
+  - Hooks for blockchain interactions (`useAttestLocation`, `useScaffoldReadContract`, `useScaffoldWriteContract`, etc.).  
+  - Event definitions and metadata in `locations.config.ts` and pre-built components for addresses, balances, and inputs.
 
-Before you begin, you need to install the following tools:
+- **nft-metadata**:  
+  - JSON templates for event NFT metadata (e.g., `brussels.json`, `yogyakarta.json`).  
 
-- [Node (>= v20.18.3)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+- **create_location_contracts.js**:  
+  - Node script that reads `packages/nextjs/locations.config.ts` and generates event-specific `.sol` contracts in `packages/foundry/contracts/events`.
 
-## Quickstart
+- **debug/**:  
+  - Utility scripts for parsing location data, testing contract outputs, and validating attestation formats.
 
-To get started with Scaffold-ETH 2, follow the steps below:
+## Prerequisites
 
-1. Install dependencies if it was skipped in CLI:
+- **Node.js** >= v20.18.3  
+- **Yarn** (v1 or v2+)  
+- **Git**
 
+## Setup & Workflow
+
+1. **Clone & install dependencies**
+   ```bash
+   git clone <repo-url>
+   cd <repo-directory>
+   yarn install
+   ```
+
+2. **Generate event contracts**
+   ```bash
+   node create_location_contracts.js
+   ```
+   This creates `.sol` files for each event in `packages/foundry/contracts/events` based on your `locations.config.ts`.
+
+3. **Run local blockchain**
+   ```bash
+   yarn chain
+   ```
+
+4. **Deploy contracts**
+   ```bash
+   yarn deploy
+   ```
+
+5. **Start the frontend**
+   ```bash
+   yarn start
+   ```
+   Open your browser at `http://localhost:3000` to explore the map, connect your wallet, attest attendance, and mint event NFTs.
+
+## Testing & Quality
+
+- **Solidity tests (Foundry)**:
+  ```bash
+  yarn foundry:test
+  ```
+
+- **Frontend lint & type-check**:
+  ```bash
+  yarn lint
+  yarn next:check-types
+  ```
+
+## How It Works
+
+1. **Define Events**: `packages/nextjs/locations.config.ts` lists each workshop's ID, latitude/longitude, title, image, and (deployed) contract address.
+2. **Generate Contracts**: `create_location_contracts.js` reads the config and produces Solidity contracts inheriting `NFTBaseV1` for each event.
+3. **Deploy**: Contracts are compiled and deployed via Foundry to your local or live network.
+4. **Frontend Map**: The `Map` component clusters event markers on Google Maps; clicking a marker opens a detail panel.
+5. **Attestation & Minting**: Users connect via RainbowKit, optionally attest location via EAS, then mint an attendance NFT using scaffold-eth's `useScaffoldWriteContract` hooks.
+
+## Configuration
+
+- **Events**: Add, remove, or update events in `packages/nextjs/locations.config.ts`, then rerun `create_location_contracts.js`.
+- **Metadata**: Edit or add JSON files in `nft-metadata/` and configure base URI in `NFTBaseV1.sol`.
+- **UI**: Customize styles in `packages/nextjs/styles` or modify components under `packages/nextjs/components`.
+
+## Useful Commands
+
+```bash
+# Blockchain & Contracts
+yarn chain                   # Start local Foundry network
+yarn deploy                  # Compile & deploy Solidity contracts
+
+# Frontend
+yarn start                   # Run Next.js development server
+
+yarn foundry:test             # Run Solidity tests
+yarn lint                     # Lint both contracts & UI
+yarn next:check-types         # Type-check frontend code
+
+# Utilities
+node create_location_contracts.js  # Regenerate event contracts
+yarn format                  # Format all codebases
 ```
-cd my-dapp-example
-yarn install
-```
 
-2. Run a local network in the first terminal:
+## Contributing
 
-```
-yarn chain
-```
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for design patterns, coding standards, and pull request guidelines.
 
-This command starts a local Ethereum network using Foundry. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/foundry/foundry.toml`.
+---
 
-3. On a second terminal, deploy the test contract:
-
-```
-yarn deploy
-```
-
-This command deploys a test smart contract to the local network. The contract is located in `packages/foundry/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/foundry/script` to deploy the contract to the network. You can also customize the deploy script.
-
-4. On a third terminal, start your NextJS app:
-
-```
-yarn start
-```
-
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
-
-Run smart contract test with `yarn foundry:test`
-
-- Edit your smart contracts in `packages/foundry/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/foundry/script`
-
-
-## Documentation
-
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
-
-To know more about its features, check out our [website](https://scaffoldeth.io).
-
-## Contributing to Scaffold-ETH 2
-
-We welcome contributions to Scaffold-ETH 2!
-
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+Happy hacking and see you on-chain! 🚀
