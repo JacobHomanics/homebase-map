@@ -39,26 +39,26 @@ This monorepo provides everything you need to define event locations, generate a
 
 1. **Clone & install dependencies**
    ```bash
-   git clone <repo-url>
-   cd <repo-directory>
-   yarn install
-   ```
+   git clone https://github.com/Elishaokon1/homebase-map
+   cd homebase-map
+yarn install
+```
 
 2. **Generate event contracts**
    ```bash
    node create_location_contracts.js
-   ```
+```
    This creates `.sol` files for each event in `packages/foundry/contracts/events` based on your `locations.config.ts`.
 
 3. **Run local blockchain**
    ```bash
-   yarn chain
-   ```
+yarn chain
+```
 
 4. **Deploy contracts**
    ```bash
-   yarn deploy
-   ```
+yarn deploy
+```
 
 5. **Start the frontend**
    ```bash
