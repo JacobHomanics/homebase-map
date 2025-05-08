@@ -799,55 +799,55 @@ export function Map() {
   const nftWriteMapping = [
     writeBangkokAsync, // ID 0: Bangkok, Thailand
     writeNewYorkCityAsync, // ID 1: New York City, USA
-    writeZanzibarAsync, // ID 2: Zanzibar, Tanzania
-    writeZugAsync, // ID 3: Zug, Switzerland
-    writeYogyakartaAsync, // ID 4: Yogyakarta, Indonesia
-    writeSwabiAsync, // ID 5: Swabi, Pakistan
-    writeSaoPauloAsync, // ID 6: São Paulo, Brazil
-    writeSeoulAsync, // ID 7: Seoul, South Korea
-    writeSingaporeAsync, // ID 8: Singapore
-    writeRomeAsync, // ID 9: Rome, Italy
-    writePanabuCityAsync, // ID 10: Panabu City, Philippines
-    writePuneAsync, // ID 11: Pune, India
-    writeMumbaiAsync, // ID 12: Mumbai, India
-    writeNagaCityAsync, // ID 13: Naga City, Philippines
-    writeNairobiAsync, // ID 14: Nairobi, Kenya
-    writeMakatiCityAsync, // ID 15: Makati City, Philippines
-    writeMalolosCityAsync, // ID 16: Malolos City, Philippines
-    writeManilaAsync, // ID 17: Manila City, Philippines
-    writeMexicoCityAsync, // ID 18: Mexico City, Mexico
-    writeLagosAsync, // ID 19: Lagos, Nigeria
-    writeLegazpieCityAsync, // ID 20: Legazpie City, Philippines
-    writeLisbonAsync, // ID 21: Lisbon, Portugal
-    writeKampalaAsync, // ID 22: Kampala, Uganda
-    writeKigaliAsync, // ID 23: Kigali, Rwanda
-    writeKisumuAsync, // ID 24: Kisumu, Kenya
-    writeKyivAsync, // ID 25: Kyiv, Ukraine
-    writeHongKongAsync, // ID 26: Hong Kong
-    writeIstanbulAsync, // ID 27: Istanbul, Turkey
-    writeJakartaAsync, // ID 28: Jakarta, Indonesia
-    writeDelhiAsync, // ID 29: Delhi, India
-    writeEnuguAsync, // ID 30: Enugu, Nigeria
-    writeHaripurAsync, // ID 31: Haripur, Pakistan
-    writeDarEsSalaamAsync, // ID 32: Dar Es Salaam, Tanzania
-    writeDasmariasAsync, // ID 33: Dasmariñas, Philippines
-    writeDavaoCityAsync, // ID 34: Davao City, Philippines
-    writeCebu2Async, // ID 35: Cebu 2, Philippines
-    writeCebu3Async, // ID 36: Cebu 3, Philippines
-    writeCebuAsync, // ID 37: Cebu, Philippines
-    writeDaNangAsync, // ID 38: Da Nang, Vietnam
-    writeBuenosAiresAsync, // ID 39: Buenos Aires, Argentina
-    writeCamarinesAsync, // ID 40: Camarines, Philippines
-    writeCartagenaAsync, // ID 41: Cartagena, Colombia
-    writeBangaloreAsync, // ID 42: Bangalore, India
-    writeBudapestAsync, // ID 43: Budapest, Hungary
-    writeAngelesCityAsync, // ID 44: Angeles City, Philippines
-    writeAustinAsync, // ID 45: Houston, USA
-    writeBalangaCityAsync, // ID 46: Balanga City, Philippines
-    writeAddisAbabaAsync, // ID 47: Addis Ababa, Ethiopia
-    writeAccraAsync, // ID 48: Accra, Ghana
-    writeAbujaAsync, // ID 49: Abuja, Nigeria
-    writeTagumAsync, // ID 50: Tagum, Philippines
+    writeZugAsync, // ID 2: Zug, Switzerland
+    writeYogyakartaAsync, // ID 3: Yogyakarta, Indonesia
+    writeSwabiAsync, // ID 4: Swabi, Pakistan
+    writeSaoPauloAsync, // ID 5: São Paulo, Brazil
+    writeSeoulAsync, // ID 6: Seoul, South Korea
+    writeSingaporeAsync, // ID 7: Singapore
+    writeRomeAsync, // ID 8: Rome, Italy
+    writePuneAsync, // ID 9: Pune, India
+    writeMumbaiAsync, // ID 10: Mumbai, India
+    writeNagaCityAsync, // ID 11: Naga City, Philippines
+    writeNairobiAsync, // ID 12: Nairobi, Kenya
+    writeMakatiCityAsync, // ID 13: Makati City, Philippines
+    writeMalolosCityAsync, // ID 14: Malolos City, Philippines
+    writeManilaAsync, // ID 15: Manila City, Philippines
+    writeMexicoCityAsync, // ID 16: Mexico City, Mexico
+    writeLegazpieCityAsync, // ID 17: Legazpie City, Philippines
+    writeKampalaAsync, // ID 18: Kampala, Uganda
+    writeLisbonAsync, // ID 19: Lisbon, Portugal
+    writeKigaliAsync, // ID 20: Kigali, Rwanda
+    writeKisumuAsync, // ID 21: Kisumu, Kenya
+    writeKyivAsync, // ID 22: Kyiv, Ukraine
+    writeHongKongAsync, // ID 23: Hong Kong
+    writeIstanbulAsync, // ID 24: Istanbul, Turkey
+    writeJakartaAsync, // ID 25: Jakarta, Indonesia
+    writeDelhiAsync, // ID 26: Delhi, India
+    writeEnuguAsync, // ID 27: Enugu, Nigeria
+    writeHaripurAsync, // ID 28: Haripur, Pakistan
+    writeDarEsSalaamAsync, // ID 29: Dar Es Salaam, Tanzania
+    writeDasmariasAsync, // ID 30: Dasmariñas, Philippines
+    writeDavaoCityAsync, // ID 31: Davao City, Philippines
+    writeCebu2Async, // ID 32: Cebu 2, Philippines
+    writeCebu3Async, // ID 33: Cebu 3, Philippines
+    writeCebuAsync, // ID 34: Cebu, Philippines
+    writeDaNangAsync, // ID 35: Da Nang, Vietnam
+    writeBuenosAiresAsync, // ID 36: Buenos Aires, Argentina
+    writeCamarinesAsync, // ID 37: Camarines, Philippines
+    writeCartagenaAsync, // ID 38: Cartagena, Colombia
+    writeBangaloreAsync, // ID 39: Bangalore, India
+    writeBudapestAsync, // ID 40: Budapest, Hungary
+    writeAngelesCityAsync, // ID 41: Angeles City, Philippines
+    writeAustinAsync, // ID 42: Austin, USA
+    writeBalangaCityAsync, // ID 43: Balanga City, Philippines
+    writeAddisAbabaAsync, // ID 44: Addis Ababa, Ethiopia
+    writeAccraAsync, // ID 45: Accra, Ghana
+    writeAbujaAsync, // ID 46: Abuja, Nigeria
+    writeTagumAsync, // ID 47: Tagum, Philippines
+    writePanabuCityAsync, // ID 48: Panabu City, Philippines
+    writeLagosAsync, // ID 49: Lagos, Nigeria
+    writeZanzibarAsync, // ID 50: Zanzibar, Tanzania
     writeBrusselsAsync, // Additional functions
     writeGoshoAsync,
     writeNdotohubAsync,
@@ -857,55 +857,55 @@ export function Map() {
   const nftBalanceMapping = [
     bangkokBalance, // ID 0: Bangkok, Thailand
     newYorkCityBalance, // ID 1: New York City, USA
-    zanzibarBalance, // ID 2: Zanzibar, Tanzania
-    zugBalance, // ID 3: Zug, Switzerland
-    yogyakartaBalance, // ID 4: Yogyakarta, Indonesia
-    swabiBalance, // ID 5: Swabi, Pakistan
-    saoPauloBalance, // ID 6: São Paulo, Brazil
-    seoulBalance, // ID 7: Seoul, South Korea
-    singaporeBalance, // ID 8: Singapore
-    romeBalance, // ID 9: Rome, Italy
-    panabuCityBalance, // ID 10: Panabu City, Philippines
-    puneBalance, // ID 11: Pune, India
-    mumbaiBalance, // ID 12: Mumbai, India
-    nagaCityBalance, // ID 13: Naga City, Philippines
-    nairobiBalance, // ID 14: Nairobi, Kenya
-    makatiCityBalance, // ID 15: Makati City, Philippines
-    malolosCityBalance, // ID 16: Malolos City, Philippines
-    manilaBalance, // ID 17: Manila City, Philippines
-    mexicoCityBalance, // ID 18: Mexico City, Mexico
-    lagosBalance, // ID 19: Lagos, Nigeria
-    legazpieCityBalance, // ID 20: Legazpie City, Philippines
-    lisbonBalance, // ID 21: Lisbon, Portugal
-    kampalaBalance, // ID 22: Kampala, Uganda
-    kigaliBalance, // ID 23: Kigali, Rwanda
-    kisumuBalance, // ID 24: Kisumu, Kenya
-    kyivBalance, // ID 25: Kyiv, Ukraine
-    hongKongBalance, // ID 26: Hong Kong
-    istanbulBalance, // ID 27: Istanbul, Turkey
-    jakartaBalance, // ID 28: Jakarta, Indonesia
-    delhiBalance, // ID 29: Delhi, India
-    enuguBalance, // ID 30: Enugu, Nigeria
-    haripurBalance, // ID 31: Haripur, Pakistan
-    darEsSalaamBalance, // ID 32: Dar Es Salaam, Tanzania
-    dasmariasBalance, // ID 33: Dasmariñas, Philippines
-    davaoCityBalance, // ID 34: Davao City, Philippines
-    cebu2Balance, // ID 35: Cebu 2, Philippines
-    cebu3Balance, // ID 36: Cebu 3, Philippines
-    cebuBalance, // ID 37: Cebu, Philippines
-    daNangBalance, // ID 38: Da Nang, Vietnam
-    buenosAiresBalance, // ID 39: Buenos Aires, Argentina
-    camarinesBalance, // ID 40: Camarines, Philippines
-    cartagenaBalance, // ID 41: Cartagena, Colombia
-    bangaloreBalance, // ID 42: Bangalore, India
-    budapestBalance, // ID 43: Budapest, Hungary
-    angelesCityBalance, // ID 44: Angeles City, Philippines
-    austinBalance, // ID 45: Houston, USA
-    balangaCityBalance, // ID 46: Balanga City, Philippines
-    addisAbabaBalance, // ID 47: Addis Ababa, Ethiopia
-    accraBalance, // ID 48: Accra, Ghana
-    abujaBalance, // ID 49: Abuja, Nigeria
-    tagumBalance, // ID 50: Tagum, Philippines
+    zugBalance, // ID 2: Zug, Switzerland
+    yogyakartaBalance, // ID 3: Yogyakarta, Indonesia
+    swabiBalance, // ID 4: Swabi, Pakistan
+    saoPauloBalance, // ID 5: São Paulo, Brazil
+    seoulBalance, // ID 6: Seoul, South Korea
+    singaporeBalance, // ID 7: Singapore
+    romeBalance, // ID 8: Rome, Italy
+    puneBalance, // ID 9: Pune, India
+    mumbaiBalance, // ID 10: Mumbai, India
+    nagaCityBalance, // ID 11: Naga City, Philippines
+    nairobiBalance, // ID 12: Nairobi, Kenya
+    makatiCityBalance, // ID 13: Makati City, Philippines
+    malolosCityBalance, // ID 14: Malolos City, Philippines
+    manilaBalance, // ID 15: Manila City, Philippines
+    mexicoCityBalance, // ID 16: Mexico City, Mexico
+    legazpieCityBalance, // ID 17: Legazpie City, Philippines
+    kampalaBalance, // ID 18: Kampala, Uganda
+    lisbonBalance, // ID 19: Lisbon, Portugal
+    kigaliBalance, // ID 20: Kigali, Rwanda
+    kisumuBalance, // ID 21: Kisumu, Kenya
+    kyivBalance, // ID 22: Kyiv, Ukraine
+    hongKongBalance, // ID 23: Hong Kong
+    istanbulBalance, // ID 24: Istanbul, Turkey
+    jakartaBalance, // ID 25: Jakarta, Indonesia
+    delhiBalance, // ID 26: Delhi, India
+    enuguBalance, // ID 27: Enugu, Nigeria
+    haripurBalance, // ID 28: Haripur, Pakistan
+    darEsSalaamBalance, // ID 29: Dar Es Salaam, Tanzania
+    dasmariasBalance, // ID 30: Dasmariñas, Philippines
+    davaoCityBalance, // ID 31: Davao City, Philippines
+    cebu2Balance, // ID 32: Cebu 2, Philippines
+    cebu3Balance, // ID 33: Cebu 3, Philippines
+    cebuBalance, // ID 34: Cebu, Philippines
+    daNangBalance, // ID 35: Da Nang, Vietnam
+    buenosAiresBalance, // ID 36: Buenos Aires, Argentina
+    camarinesBalance, // ID 37: Camarines, Philippines
+    cartagenaBalance, // ID 38: Cartagena, Colombia
+    bangaloreBalance, // ID 39: Bangalore, India
+    budapestBalance, // ID 40: Budapest, Hungary
+    angelesCityBalance, // ID 41: Angeles City, Philippines
+    austinBalance, // ID 42: Austin, USA
+    balangaCityBalance, // ID 43: Balanga City, Philippines
+    addisAbabaBalance, // ID 44: Addis Ababa, Ethiopia
+    accraBalance, // ID 45: Accra, Ghana
+    abujaBalance, // ID 46: Abuja, Nigeria
+    tagumBalance, // ID 47: Tagum, Philippines
+    panabuCityBalance, // ID 48: Panabu City, Philippines
+    lagosBalance, // ID 49: Lagos, Nigeria
+    zanzibarBalance, // ID 50: Zanzibar, Tanzania
     brusselsBalance, // Additional functions
     goshoBalance,
     ndotohubBalance,
