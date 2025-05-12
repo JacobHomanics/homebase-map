@@ -34,6 +34,7 @@ export async function POST(request: Request) {
 
     if (!response.ok) {
       const error = await response.json();
+      console.log(error);
       throw new Error(error.error || "Failed to upload metadata to Pinata");
     }
 
@@ -41,6 +42,9 @@ export async function POST(request: Request) {
     return NextResponse.json(data);
   } catch (error) {
     console.error("Error uploading metadata to Pinata:", error);
+
+    console.log(error);
+
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Failed to upload metadata to Pinata" },
       { status: 500 },

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import SocialButtons from "./SocialButtons";
 import { useReadContract } from "wagmi";
 import { HOMEBASE_PROFILE_ADDRESS, abi } from "~~/utils/homebase-profile";
 
@@ -66,6 +67,12 @@ export default function Observer({ user }: { user: string }) {
               location: "Tokyo, Japan",
             },
           ];
+          // Add mock social data
+          data.social = {
+            github: "vitalik",
+            twitter: "VitalikButerin",
+            farcaster: "vitalik.eth",
+          };
           setProfileData(data);
         }
       } catch (error) {
@@ -114,37 +121,12 @@ export default function Observer({ user }: { user: string }) {
         <div>
           <h1 className="text-2xl font-bold">Onchain Profile</h1>
           {profileData.username && <p className="text-gray-600">@{profileData.username}</p>}
-          <div className="flex gap-4 mt-2">
-            {profileData.social.github && (
-              <a
-                href={`https://github.com/${profileData.social.github}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900"
-              >
-                GitHub
-              </a>
-            )}
-            {profileData.social.twitter && (
-              <a
-                href={`https://twitter.com/${profileData.social.twitter}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900"
-              >
-                Twitter
-              </a>
-            )}
-            {profileData.social.farcaster && (
-              <a
-                href={`https://warpcast.com/${profileData.social.farcaster}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-gray-900"
-              >
-                Farcaster
-              </a>
-            )}
+          <div className="mt-2">
+            <SocialButtons
+              github={profileData.social.github}
+              twitter={profileData.social.twitter}
+              farcaster={profileData.social.farcaster}
+            />
           </div>
         </div>
       </div>

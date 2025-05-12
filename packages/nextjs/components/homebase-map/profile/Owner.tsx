@@ -275,6 +275,8 @@ export default function Owner({ user }: { user: string }) {
       }
     } catch (error) {
       console.error("Error saving profile:", error);
+      console.log(error);
+
       setUploadError("Failed to save profile. Please try again.");
       notification.error("Failed to save profile. Please try again.");
     } finally {
