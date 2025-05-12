@@ -20,8 +20,8 @@ export async function GET(request: Request) {
         grant_type: "authorization_code",
         code,
         redirect_uri: `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/auth/twitter/callback`,
-        client_id: process.env.TWITTER_CLIENT_ID!,
-        client_secret: process.env.TWITTER_CLIENT_SECRET!,
+        client_id: process.env.TWITTER_CLIENT_ID || "",
+        client_secret: process.env.TWITTER_CLIENT_SECRET || "",
         code_verifier: state,
       }),
     });

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import SocialButtons from "./SocialButtons";
 import { useReadContract } from "wagmi";
@@ -107,7 +108,7 @@ export default function Observer({ user }: { user: string }) {
       <div className="flex items-center gap-6">
         <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
           {profileData.profilePicture ? (
-            <img
+            <Image
               src={`https://ipfs.io/ipfs/${profileData.profilePicture}`}
               alt="Profile"
               className="w-full h-full object-cover"

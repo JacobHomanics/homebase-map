@@ -21,8 +21,8 @@ export async function GET(request: Request) {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: new URLSearchParams({
-        client_id: process.env.NEXT_PUBLIC_FARCASTER_CLIENT_ID!,
-        client_secret: process.env.FARCASTER_CLIENT_SECRET!,
+        client_id: process.env.NEXT_PUBLIC_FARCASTER_CLIENT_ID || "",
+        client_secret: process.env.FARCASTER_CLIENT_SECRET || "",
         code,
         grant_type: "authorization_code",
         redirect_uri: `${process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000"}/api/auth/farcaster/callback`,

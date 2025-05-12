@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { SignInButton, useProfile } from "@farcaster/auth-kit";
 import "@farcaster/auth-kit/styles.css";
@@ -374,7 +375,7 @@ export default function Owner({ user }: { user: string }) {
         <div className="flex items-center gap-4">
           <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
             {profilePicture ? (
-              <img src={profilePicture} alt="Profile" className="w-full h-full object-cover" />
+              <Image src={profilePicture} alt="Profile" className="w-full h-full object-cover" />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-gray-500">
                 <span>No image</span>
@@ -435,13 +436,13 @@ export default function Owner({ user }: { user: string }) {
           {farcasterConnected && farcasterUsername && (
             <div className="flex items-center justify-between p-3 border rounded-md bg-[#7c65c1]">
               <div className="flex items-center gap-3">
-                <img
-                  src={profile.pfpUrl}
+                <Image
+                  src={profile.pfpUrl || "/default-avatar.png"}
                   alt={`${farcasterUsername}'s Farcaster profile`}
                   className="w-10 h-10 rounded-full"
                 />
                 <div className="flex items-center gap-2">
-                  <img
+                  <Image
                     src="/farcaster-brand-main/icons/icon-transparent/transparent-white.svg"
                     alt="Warpcast logo"
                     className="w-10 h-10"

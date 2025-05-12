@@ -141,7 +141,7 @@ const MapContainer = ({
         setZoom(currentZoom);
       }
     }
-  }, [map]);
+  }, [map, zoom]);
 
   // Handle location selection from cluster
   const handleLocationSelect = (location: Location) => {
