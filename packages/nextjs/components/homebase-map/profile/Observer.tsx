@@ -112,6 +112,8 @@ export default function Observer({ user }: { user: string }) {
               src={`https://ipfs.io/ipfs/${profileData.profilePicture}`}
               alt="Profile"
               className="w-full h-full object-cover"
+              width={96}
+              height={96}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-gray-500">

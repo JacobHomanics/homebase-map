@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
     config.externals.push("pino-pretty", "lokijs", "encoding");
     return config;
   },
+  images: {
+    domains: ["ipfs.io"],
+  },
 };
 
 const isIpfs = process.env.NEXT_PUBLIC_IPFS_BUILD === "true";
@@ -23,6 +26,7 @@ if (isIpfs) {
   nextConfig.trailingSlash = true;
   nextConfig.images = {
     unoptimized: true,
+    domains: ["ipfs.io"],
   };
 }
 

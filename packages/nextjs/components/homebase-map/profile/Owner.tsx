@@ -375,7 +375,7 @@ export default function Owner({ user }: { user: string }) {
         <div className="flex items-center gap-4">
           <div className="w-24 h-24 rounded-full overflow-hidden bg-gray-200">
             {profilePicture ? (
-              <Image src={profilePicture} alt="Profile" className="w-full h-full object-cover" />
+              <Image src={profilePicture} alt="Profile" className="w-full h-full object-cover" width={96} height={96} />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-gray-500">
                 <span>No image</span>
@@ -440,12 +440,16 @@ export default function Owner({ user }: { user: string }) {
                   src={profile.pfpUrl || "/default-avatar.png"}
                   alt={`${farcasterUsername}'s Farcaster profile`}
                   className="w-10 h-10 rounded-full"
+                  width={40}
+                  height={40}
                 />
                 <div className="flex items-center gap-2">
                   <Image
                     src="/farcaster-brand-main/icons/icon-transparent/transparent-white.svg"
                     alt="Warpcast logo"
                     className="w-10 h-10"
+                    width={40}
+                    height={40}
                   />
                   <span className="font-medium text-white">@{farcasterUsername}</span>
                 </div>
