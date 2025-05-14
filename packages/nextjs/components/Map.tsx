@@ -2,6 +2,7 @@
 
 import { SyntheticEvent, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { LoadingOverlay } from "./LoadingOverlay";
 import { HomebaseMap } from "./homebase-map/HomebaseMap";
 import { UserAlignedLocations } from "./homebase-map/UserAlignedLocations";
@@ -169,12 +170,18 @@ function NFTHoldersList({ contractAddress }: { contractAddress: string }) {
         {displayedHolders.map((holder: string, index: number) => {
           const profile = holderProfiles[holder];
           return (
-            <div key={index} className="flex items-center space-x-2 p-2 hover:bg-base-200 rounded-lg w-[200px]">
+            <Link
+              href={`/profile/${holder}`}
+              key={index}
+              className="flex items-center space-x-2 p-2 hover:bg-base-200 rounded-lg w-[200px] cursor-pointer"
+            >
               {profile?.profilePicture ? (
-                <img
+                <Image
                   src={profile.profilePicture}
                   alt={profile.username || "Profile"}
                   className="w-8 h-8 rounded-full object-cover"
+                  width={32}
+                  height={32}
                 />
               ) : (
                 <div className="w-8 h-8 rounded-full bg-base-300 flex items-center justify-center">
@@ -189,7 +196,7 @@ function NFTHoldersList({ contractAddress }: { contractAddress: string }) {
                   <div className="text-xs text-base-content/70 truncate">{profile.skills.join(" • ")}</div>
                 )}
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
