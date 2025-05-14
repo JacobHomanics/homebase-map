@@ -409,31 +409,26 @@ export default function Owner({ user }: { user: string }) {
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Connect Your Accounts</h2>
         <div className="flex flex-col gap-4">
-          {!farcasterConnected && !farcasterUsername && (
-            <SignInButton
-              onSuccess={obj => {
-                console.log(obj);
+          <SignInButton
+            onSuccess={obj => {
+              if (username) {
+                notification.success(`Connected to Farcaster as ${username}`);
+              }
+            }}
+            onError={error => {
+              if (error?.message) {
+                notification.error(`Failed to connect to Farcaster: ${error.message}`);
+              } else {
+                notification.error("Failed to connect to Farcaster");
+              }
+            }}
+          />
 
-                console.log(obj);
-                console.log(obj.username);
+          {/* {!farcasterConnected && !farcasterUsername && (
+           
+          )} */}
 
-                if (username) {
-                  setFarcasterConnected(true);
-                  setFarcasterUsername(username || null);
-                  notification.success(`Connected to Farcaster as ${username}`);
-                }
-              }}
-              onError={error => {
-                if (error?.message) {
-                  notification.error(`Failed to connect to Farcaster: ${error.message}`);
-                } else {
-                  notification.error("Failed to connect to Farcaster");
-                }
-              }}
-            />
-          )}
-
-          {farcasterConnected && farcasterUsername && (
+          {/* {farcasterConnected && farcasterUsername && (
             <div className="flex items-center justify-between p-3 border rounded-md bg-[#7c65c1]">
               <div className="flex items-center gap-3">
                 <Image
@@ -461,7 +456,7 @@ export default function Owner({ user }: { user: string }) {
                 Sign Out
               </button>
             </div>
-          )}
+          )} */}
           <button
             onClick={handleTwitterConnect}
             className={`w-full px-4 py-2 border rounded-md ${

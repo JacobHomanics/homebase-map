@@ -6,17 +6,28 @@ import { LoadingOverlay } from "./LoadingOverlay";
 import { HomebaseMap } from "./homebase-map/HomebaseMap";
 import { UserAlignedLocations } from "./homebase-map/UserAlignedLocations";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { parseUnits } from "viem";
-import { useAccount } from "wagmi";
+import { Alchemy, Network } from "alchemy-sdk";
+import { getContractAddress, parseUnits, zeroAddress } from "viem";
+import { useAccount, usePublicClient, useReadContract } from "wagmi";
 import { useAttestLocation } from "~~/hooks/homebase-map/useAttestLocation";
 // import { useGetUserLocation } from "~~/hooks/homebase-map/useGetUserLocation";
 // import { useLocationScores } from "~~/hooks/homebase-map/useLocationScores";
 import { useMapHeight } from "~~/hooks/homebase-map/useMapHeight";
 import { useSelectedMarker } from "~~/hooks/homebase-map/useSelectedMarker";
-import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldContract, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth/useScaffoldEventHistory";
 // import { useTokenURI } from "~~/hooks/useTokenURI";
 import { Location, locations } from "~~/locations.config";
 import { useGlobalState } from "~~/services/store/store";
+import { HOMEBASE_PROFILE_ADDRESS, abi } from "~~/utils/homebase-profile";
+import { ContractName } from "~~/utils/scaffold-eth/contract";
+
+// Optional Config object, but defaults to demo api-key and eth-mainnet.
+const settings = {
+  apiKey: process.env.ALCHEMY_API_KEY, // Replace with your Alchemy API Key.
+  network: Network.BASE_MAINNET, // Replace with your network.
+};
+const alchemy = new Alchemy(settings);
 
 // const isSpoofingLocation = false;
 
@@ -50,6 +61,146 @@ import { useGlobalState } from "~~/services/store/store";
 //     }
 //   }
 // };
+
+interface Attribute {
+  trait_type: string;
+  value: any;
+}
+
+function NFTHoldersList({ contractAddress }: { contractAddress: string }) {
+  const [owners, setOwners] = useState<string[]>([]);
+  const [isLoadingOwners, setIsLoadingOwners] = useState(false);
+  const [displayCount, setDisplayCount] = useState(5);
+  const [holderProfiles, setHolderProfiles] = useState<Record<string, any>>({});
+  const [isLoadingProfiles, setIsLoadingProfiles] = useState(false);
+  const publicClient = usePublicClient();
+
+  useEffect(() => {
+    const fetchOwners = async () => {
+      if (!contractAddress) return;
+      try {
+        setIsLoadingOwners(true);
+        const ownersData = await alchemy.nft.getOwnersForContract(contractAddress);
+        setOwners(ownersData.owners);
+      } catch (error) {
+        console.error("Error fetching owners:", error);
+      } finally {
+        setIsLoadingOwners(false);
+      }
+    };
+
+    fetchOwners();
+  }, [contractAddress]);
+
+  useEffect(() => {
+    const fetchHolderProfiles = async () => {
+      if (!owners.length) return;
+
+      setIsLoadingProfiles(true);
+      const profiles: Record<string, any> = {};
+
+      for (const address of owners) {
+        try {
+          const ipfsUrl = await publicClient?.readContract({
+            address: HOMEBASE_PROFILE_ADDRESS,
+            abi,
+            functionName: "getUrl",
+            args: [address],
+          });
+
+          if (ipfsUrl && typeof ipfsUrl === "string") {
+            const response = await fetch(ipfsUrl);
+            if (response.ok) {
+              const profileData = await response.json();
+              profiles[address] = {
+                username: profileData.username || "",
+                bio: profileData.bio || "",
+                skills: profileData.attributes?.find((attr: Attribute) => attr.trait_type === "Skills")?.value || [],
+                profilePicture: profileData.profilePicture
+                  ? `https://ipfs.io/ipfs/${profileData.profilePicture}`
+                  : null,
+                social: profileData.social || {},
+              };
+            }
+          }
+        } catch (error) {
+          console.error(`Error fetching profile for ${address}:`, error);
+        }
+      }
+
+      setHolderProfiles(profiles);
+      setIsLoadingProfiles(false);
+    };
+
+    fetchHolderProfiles();
+  }, [owners, publicClient]);
+
+  if (isLoadingOwners || isLoadingProfiles) {
+    return <div className="text-center">Loading attendees...</div>;
+  }
+
+  const holderAddresses = Object.values(owners);
+  const displayedHolders = holderAddresses
+    .sort((a, b) => {
+      const profileA = holderProfiles[a];
+      const profileB = holderProfiles[b];
+
+      // If both have profiles, sort by username
+      if (profileA?.username && profileB?.username) {
+        return profileA.username.localeCompare(profileB.username);
+      }
+      // If only one has a profile, put it first
+      if (profileA?.username) return -1;
+      if (profileB?.username) return 1;
+      // If neither has a profile, maintain original order
+      return 0;
+    })
+    .slice(0, displayCount);
+  const hasMore = holderAddresses.length > displayCount;
+
+  const handleLoadMore = () => {
+    setDisplayCount(prev => prev + 5);
+  };
+
+  return (
+    <div className="mt-4">
+      <h3 className="text-lg font-semibold mb-2">Attendees</h3>
+      <div className="max-h-60 overflow-y-auto">
+        {displayedHolders.map((holder: string, index: number) => {
+          const profile = holderProfiles[holder];
+          return (
+            <div key={index} className="flex items-center space-x-2 p-2 hover:bg-base-200 rounded-lg w-[200px]">
+              {profile?.profilePicture ? (
+                <img
+                  src={profile.profilePicture}
+                  alt={profile.username || "Profile"}
+                  className="w-8 h-8 rounded-full object-cover"
+                />
+              ) : (
+                <div className="w-8 h-8 rounded-full bg-base-300 flex items-center justify-center">
+                  <span className="text-xs">👤</span>
+                </div>
+              )}
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-medium truncate">
+                  {profile?.username || `${holder.slice(0, 6)}...${holder.slice(-4)}`}
+                </div>
+                {profile?.skills && profile.skills.length > 0 && (
+                  <div className="text-xs text-base-content/70 truncate">{profile.skills.join(" • ")}</div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      {hasMore && (
+        <button onClick={handleLoadMore} className="btn btn-sm btn-ghost mt-2 w-full">
+          Load 5 More
+        </button>
+      )}
+    </div>
+  );
+}
 
 export function Map() {
   const mapHeight = useMapHeight(450, 650);
@@ -747,8 +898,8 @@ export function Map() {
   const { writeContractAsync: writePuneAsync } = useScaffoldWriteContract({ contractName: "Pune" });
   const { writeContractAsync: writeNairobiAsync } = useScaffoldWriteContract({ contractName: "Nairobi" });
   const { writeContractAsync: writeHongKongAsync } = useScaffoldWriteContract({ contractName: "HongKong" });
-  const { writeContractAsync: writeAccraAsync } = useScaffoldWriteContract({ contractName: "Accra" });
   const { writeContractAsync: writeCartagenaAsync } = useScaffoldWriteContract({ contractName: "Cartagena" });
+  const { writeContractAsync: writeAccraAsync } = useScaffoldWriteContract({ contractName: "Accra" });
   const { writeContractAsync: writeDaNangAsync } = useScaffoldWriteContract({ contractName: "DaNang" });
   const { writeContractAsync: writeMumbaiAsync } = useScaffoldWriteContract({ contractName: "Mumbai" });
   const { writeContractAsync: writeBangaloreAsync } = useScaffoldWriteContract({ contractName: "Bangalore" });
@@ -1145,6 +1296,9 @@ export function Map() {
               ))}
 
             {!connectedAddress && !focusedLocationFromCluster && <ConnectButton />}
+
+            {/* Add the NFT holders list */}
+            <NFTHoldersList contractAddress={location.address} />
           </div>
         )}
       />

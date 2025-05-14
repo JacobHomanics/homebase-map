@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@ethereum-attestation-service/eas-sdk": "^2.7.0",
-    "@farcaster/auth-kit": "^0.6.0",
+    "@farcaster/auth-kit": "^0.6.1",
     "@heroicons/react": "~2.1.5",
     "@rainbow-me/rainbowkit": "2.2.3",
     "@react-google-maps/api": "^2.20.6",
@@ -27,6 +27,7 @@
     "@uniswap/v2-sdk": "~4.6.1",
     "@vercel/analytics": "^1.5.0",
     "@vis.gl/react-google-maps": "^1.5.2",
+    "alchemy-sdk": "^3.5.8",
     "blo": "~1.2.0",
     "burner-connector": "0.0.12",
     "daisyui": "4.12.10",
