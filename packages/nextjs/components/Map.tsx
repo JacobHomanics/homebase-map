@@ -1189,6 +1189,7 @@ export function Map() {
   // Handler to get map instance reference
   const handleMapLoad = (map: any) => {
     mapRef.current = map;
+    useGlobalState.getState().setMapRef(map);
   };
 
   return (

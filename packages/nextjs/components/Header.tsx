@@ -79,6 +79,7 @@ export const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const burgerMenuRef = useRef<HTMLDivElement>(null);
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
+  const mapRef = useRef<any>(null);
 
   // const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const { handleSubmit: attestLocation } = useAttestLocation();
@@ -92,16 +93,24 @@ export const Header = () => {
     };
   }
 
+  async function setUserLocationAndZoom(latitude: number, longitude: number) {
+    setUserLocation({ lat: latitude, lng: longitude });
+    // const scaledCoordinates = scaleCoordinates(latitude, longitude, 9);
+    // const newAttestationUID = await attestLocation(scaledCoordinates);
+    // console.log("newAttestationUID", newAttestationUID);
+
+    // Zoom in on user's location
+    const map = useGlobalState.getState().mapRef;
+    if (map) {
+      map.setZoom(14); // Zoom level 12 provides a good city-level view
+    }
+  }
+
   async function getUserLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(async position => {
         const { latitude, longitude } = position.coords;
-
-        setUserLocation({ lat: latitude, lng: longitude });
-        const scaledCoordinates = scaleCoordinates(latitude, longitude, 9);
-
-        const newAttestationUID = await attestLocation(scaledCoordinates);
-        console.log("newAttestationUID", newAttestationUID);
+        setUserLocationAndZoom(latitude, longitude);
       });
     }
   }
@@ -115,6 +124,7 @@ export const Header = () => {
   };
 
   const handleLocationConfirm = () => {
+    console.log("HANDLE LOCAT");
     closeLocationModal();
     getUserLocation();
   };
