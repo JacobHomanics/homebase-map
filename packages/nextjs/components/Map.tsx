@@ -195,6 +195,14 @@ function NFTHoldersList({ contractAddress }: { contractAddress: string }) {
                 {profile?.skills && profile.skills.length > 0 && (
                   <div className="text-xs text-base-content/70 truncate">{profile.skills.join(" • ")}</div>
                 )}
+                {profile?.social && Object.keys(profile.social).length > 0 && (
+                  <div className="flex gap-2 items-center justify-center">
+                    {profile.social.twitter && <p className="text-xs m-0 p-0 text-blue-400">𝕏</p>}
+                    {profile.social.github && <p className="text-xs m-0 p-0 text-gray-400">GitHub</p>}
+                    {profile.social.lens && <p className="text-xs m-0 p-0 text-green-400">Lens</p>}
+                    {profile.social.farcaster && <p className="text-xs m-0 p-0 text-purple-400">Farcaster</p>}
+                  </div>
+                )}
               </div>
             </Link>
           );
@@ -1288,7 +1296,7 @@ export function Map() {
             {!focusedLocationFromCluster &&
               connectedAddress &&
               ((nftBalanceMapping?.[location.id] ?? 0) > 0 ? (
-                <p className="text-green-600 text-2xl">You call this place your homebase!</p>
+                <p className="text-green-600 text-2xl">Homebase!</p>
               ) : (
                 <>
                   {/* {userLocation && (

@@ -25,12 +25,9 @@ export default function Owner({ user }: { user: string }) {
   const [profilePictureIpfsHash, setProfilePictureIpfsHash] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
-  const [githubConnected, setGithubConnected] = useState(false);
-  const [githubUsername, setGithubUsername] = useState<string | null>(null);
-  const [twitterConnected, setTwitterConnected] = useState(false);
-  const [twitterUsername, setTwitterUsername] = useState<string | null>(null);
-  const [farcasterConnected, setFarcasterConnected] = useState(false);
-  const [farcasterUsername, setFarcasterUsername] = useState<string | null>(null);
+  const [githubUsername, setGithubUsername] = useState<string>("");
+  const [twitterUsername, setTwitterUsername] = useState<string>("");
+  const [farcasterUsername, setFarcasterUsername] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
   const searchParams = useSearchParams();
   const { address } = useAccount();
@@ -64,20 +61,11 @@ export default function Owner({ user }: { user: string }) {
           setProjects(profileData.projects || []);
           setProfilePictureIpfsHash(profileData.profilePicture);
 
-          // Set social connections
+          // Set social usernames
           if (profileData.social) {
-            if (profileData.social.github) {
-              setGithubConnected(true);
-              setGithubUsername(profileData.social.github);
-            }
-            if (profileData.social.twitter) {
-              setTwitterConnected(true);
-              setTwitterUsername(profileData.social.twitter);
-            }
-            if (profileData.social.farcaster) {
-              setFarcasterConnected(true);
-              setFarcasterUsername(profileData.social.farcaster);
-            }
+            setGithubUsername(profileData.social.github || "");
+            setTwitterUsername(profileData.social.twitter || "");
+            setFarcasterUsername(profileData.social.farcaster || "");
           }
 
           // Load profile picture if available
@@ -96,41 +84,6 @@ export default function Owner({ user }: { user: string }) {
 
     fetchProfileData();
   }, [ipfsUrl]);
-
-  useEffect(() => {
-    const githubConnectedParam = searchParams.get("github_connected");
-    const githubUsernameParam = searchParams.get("github_username");
-    const twitterConnectedParam = searchParams.get("twitter_connected");
-    const twitterUsernameParam = searchParams.get("twitter_username");
-    const farcasterConnectedParam = searchParams.get("farcaster_connected");
-    const farcasterUsernameParam = searchParams.get("farcaster_username");
-
-    if (githubConnectedParam === "true" && githubUsernameParam) {
-      setGithubConnected(true);
-      setGithubUsername(githubUsernameParam);
-    }
-
-    if (twitterConnectedParam === "true" && twitterUsernameParam) {
-      setTwitterConnected(true);
-      setTwitterUsername(twitterUsernameParam);
-    }
-
-    if (farcasterConnectedParam === "true" && farcasterUsernameParam) {
-      setFarcasterConnected(true);
-      setFarcasterUsername(farcasterUsernameParam);
-    }
-  }, [searchParams]);
-
-  // Update Farcaster state when AuthKit profile changes
-  useEffect(() => {
-    if (isAuthenticated && profile?.username) {
-      setFarcasterConnected(true);
-      setFarcasterUsername(profile.username || null);
-    } else {
-      setFarcasterConnected(false);
-      setFarcasterUsername(null);
-    }
-  }, [isAuthenticated, profile]);
 
   const uploadToPinata = async (file: File): Promise<string> => {
     try {
@@ -222,9 +175,9 @@ export default function Owner({ user }: { user: string }) {
           {
             trait_type: "Social",
             value: {
-              github: githubConnected ? githubUsername : null,
-              twitter: twitterConnected ? twitterUsername : null,
-              farcaster: farcasterConnected ? farcasterUsername : null,
+              github: githubUsername || null,
+              twitter: twitterUsername || null,
+              farcaster: farcasterUsername || null,
             },
           },
         ],
@@ -235,9 +188,9 @@ export default function Owner({ user }: { user: string }) {
         projects,
         profilePicture: profilePictureIpfsHash,
         social: {
-          github: githubConnected ? githubUsername : null,
-          twitter: twitterConnected ? twitterUsername : null,
-          farcaster: farcasterConnected ? farcasterUsername : null,
+          github: githubUsername || null,
+          twitter: twitterUsername || null,
+          farcaster: farcasterUsername || null,
         },
       };
 
@@ -300,26 +253,6 @@ export default function Owner({ user }: { user: string }) {
     }
   };
 
-  const handleGithubConnect = async () => {
-    const clientId = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID;
-    const redirectUri = `${window.location.origin}/api/auth/github/callback`;
-    const scope = "read:user user:email";
-
-    const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}`;
-    window.location.href = githubAuthUrl;
-  };
-
-  const handleTwitterConnect = async () => {
-    const clientId = process.env.NEXT_PUBLIC_TWITTER_CLIENT_ID;
-    const redirectUri = `${window.location.origin}/api/auth/twitter/callback`;
-    const scope = "tweet.read users.read";
-    const state = Math.random().toString(36).substring(7);
-    const codeChallenge = Math.random().toString(36).substring(7);
-
-    const twitterAuthUrl = `https://twitter.com/i/oauth2/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&state=${state}&code_challenge=${codeChallenge}&code_challenge_method=plain`;
-    window.location.href = twitterAuthUrl;
-  };
-
   const handleEditProject = (index: number) => {
     setEditingProjectIndex(index);
     setEditingProjectName(projects[index].name);
@@ -341,13 +274,6 @@ export default function Owner({ user }: { user: string }) {
     setEditingProjectIndex(null);
     setEditingProjectName("");
     setEditingProjectLink("");
-  };
-
-  const handleFarcasterSignOut = () => {
-    setFarcasterConnected(false);
-    setFarcasterUsername(null);
-    // The actual sign out will be handled by the Farcaster Auth Kit's internal state
-    notification.success("Successfully signed out from Farcaster");
   };
 
   if (isLoading) {
@@ -407,72 +333,28 @@ export default function Owner({ user }: { user: string }) {
       </div>
 
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Connect Your Accounts</h2>
+        <h2 className="text-xl font-semibold">Social Media</h2>
         <div className="flex flex-col gap-4">
-          <SignInButton
-            onSuccess={obj => {
-              if (username) {
-                notification.success(`Connected to Farcaster as ${username}`);
-              }
-            }}
-            onError={error => {
-              if (error?.message) {
-                notification.error(`Failed to connect to Farcaster: ${error.message}`);
-              } else {
-                notification.error("Failed to connect to Farcaster");
-              }
-            }}
-          />
-
-          {/* {!farcasterConnected && !farcasterUsername && (
-           
-          )} */}
-
-          {/* {farcasterConnected && farcasterUsername && (
-            <div className="flex items-center justify-between p-3 border rounded-md bg-[#7c65c1]">
-              <div className="flex items-center gap-3">
-                <Image
-                  src={profile.pfpUrl || "/default-avatar.png"}
-                  alt={`${farcasterUsername}'s Farcaster profile`}
-                  className="w-10 h-10 rounded-full"
-                  width={40}
-                  height={40}
-                />
-                <div className="flex items-center gap-2">
-                  <Image
-                    src="/farcaster-brand-main/icons/icon-transparent/transparent-white.svg"
-                    alt="Warpcast logo"
-                    className="w-10 h-10"
-                    width={40}
-                    height={40}
-                  />
-                  <span className="font-medium text-white">@{farcasterUsername}</span>
-                </div>
-              </div>
-              <button
-                onClick={handleFarcasterSignOut}
-                className="px-4 py-2 text-sm text-white hover:text-gray-800 hover:bg-gray-100 rounded-md transition-colors"
-              >
-                Sign Out
-              </button>
-            </div>
-          )} */}
-          <button
-            onClick={handleTwitterConnect}
-            className={`w-full px-4 py-2 border rounded-md ${
-              twitterConnected ? "bg-green-100 text-green-700 border-green-300" : "hover:bg-gray-100"
-            }`}
-          >
-            {twitterConnected ? `Connected to Twitter as ${twitterUsername}` : "Connect Twitter"}
-          </button>
-          <button
-            onClick={handleGithubConnect}
-            className={`w-full px-4 py-2 border rounded-md ${
-              githubConnected ? "bg-green-100 text-green-700 border-green-300" : "hover:bg-gray-100"
-            }`}
-          >
-            {githubConnected ? `Connected to GitHub as ${githubUsername}` : "Connect GitHub"}
-          </button>
+          <div>
+            <label className="block text-sm font-medium mb-2">Farcaster Username</label>
+            <InputBase
+              placeholder="Enter your Farcaster username"
+              value={farcasterUsername}
+              onChange={setFarcasterUsername}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2">Twitter Username</label>
+            <InputBase
+              placeholder="Enter your Twitter username"
+              value={twitterUsername}
+              onChange={setTwitterUsername}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2">GitHub Username</label>
+            <InputBase placeholder="Enter your GitHub username" value={githubUsername} onChange={setGithubUsername} />
+          </div>
         </div>
       </div>
 

@@ -68,12 +68,7 @@ export default function Observer({ user }: { user: string }) {
               location: "Tokyo, Japan",
             },
           ];
-          // Add mock social data
-          data.social = {
-            github: "vitalik",
-            twitter: "VitalikButerin",
-            farcaster: "vitalik.eth",
-          };
+          // Remove mock social data and use the data from the profile
           setProfileData(data);
         }
       } catch (error) {
