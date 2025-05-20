@@ -29,6 +29,9 @@ export default function Owner({ user }: { user: string }) {
   const [twitterUsername, setTwitterUsername] = useState<string>("");
   const [farcasterUsername, setFarcasterUsername] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
+  const [talentScore, setTalentScore] = useState<number | null>(null);
+  const [talentScoreLoading, setTalentScoreLoading] = useState(false);
+  const [talentScoreError, setTalentScoreError] = useState<string | null>(null);
   const searchParams = useSearchParams();
   const { address } = useAccount();
   const { writeContract, writeContractAsync } = useWriteContract();
@@ -72,6 +75,11 @@ export default function Owner({ user }: { user: string }) {
           if (profileData.profilePicture) {
             setProfilePicture(`https://ipfs.io/ipfs/${profileData.profilePicture}`);
           }
+
+          // Fetch Talent Protocol score if we have addresses or usernames
+          if (address || profileData.social?.github || profileData.social?.farcaster) {
+            fetchTalentScore(address, profileData.social?.github, profileData.social?.farcaster);
+          }
         }
       } catch (error) {
         console.error("Error fetching profile data:", error);
@@ -83,7 +91,53 @@ export default function Owner({ user }: { user: string }) {
     };
 
     fetchProfileData();
-  }, [ipfsUrl]);
+  }, [ipfsUrl, address]);
+
+  const fetchTalentScore = async (walletAddress?: string, githubUser?: string, farcasterUser?: string) => {
+    setTalentScoreLoading(true);
+    setTalentScoreError(null);
+
+    try {
+      const queryParams = new URLSearchParams();
+      let accountSource = "";
+      let id = "";
+
+      if (walletAddress) {
+        id = walletAddress;
+        accountSource = "wallet";
+      } else if (farcasterUser) {
+        id = farcasterUser;
+        accountSource = "farcaster";
+      } else if (githubUser) {
+        id = githubUser;
+        accountSource = "github";
+      } else {
+        throw new Error("No valid identifier found for Talent Protocol score");
+      }
+
+      queryParams.append("id", id);
+      queryParams.append("account_source", accountSource);
+
+      const response = await fetch(`/api/talent-protocol/score?${queryParams.toString()}`, {
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch talent score: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      setTalentScore(data.score?.points || null);
+      console.log("Talent Protocol score:", data);
+    } catch (error) {
+      console.error("Error fetching Talent Protocol score:", error);
+      setTalentScoreError((error as Error).message);
+    } finally {
+      setTalentScoreLoading(false);
+    }
+  };
 
   const uploadToPinata = async (file: File): Promise<string> => {
     try {
@@ -331,6 +385,63 @@ export default function Owner({ user }: { user: string }) {
           </div>
         </div>
       </div>
+
+      {talentScore !== null && (
+        <div className="bg-gray-900 p-4 rounded-lg border border-purple-400 text-white">
+          <div className="flex items-start gap-3">
+            <Image
+              src="/talent-protocol-logo.jpg"
+              alt="Talent Protocol"
+              width={64}
+              height={64}
+              className="rounded-full mt-1"
+            />
+            <div>
+              <h2 className="text-lg font-semibold text-white m-0">Builder Score</h2>
+              <div className="text-3xl font-bold text-purple-400">{talentScore}</div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {talentScoreLoading && (
+        <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-white">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/talent-protocol-logo.jpg"
+              alt="Talent Protocol"
+              width={32}
+              height={32}
+              className="rounded-full opacity-70"
+            />
+            <div>
+              <h2 className="text-lg font-semibold text-white m-0">Builder Score</h2>
+              <div className="flex items-center gap-2">
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-purple-400"></div>
+                <p className="text-gray-300 m-0">Loading Builder score...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {talentScoreError && (
+        <div className="bg-gray-900 p-4 rounded-lg border border-red-500">
+          <div className="flex items-start gap-3">
+            <Image
+              src="/talent-protocol-logo.jpg"
+              alt="Talent Protocol"
+              width={32}
+              height={32}
+              className="rounded-full opacity-70"
+            />
+            <div>
+              <h2 className="text-lg font-semibold text-white m-0">Builder Score</h2>
+              <p className="text-red-400 text-sm m-0">{talentScoreError}</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="space-y-4">
         <h2 className="text-xl font-semibold">Social Media</h2>

@@ -74,6 +74,8 @@ function NFTHoldersList({ contractAddress }: { contractAddress: string }) {
   const [displayCount, setDisplayCount] = useState(5);
   const [holderProfiles, setHolderProfiles] = useState<Record<string, any>>({});
   const [isLoadingProfiles, setIsLoadingProfiles] = useState(false);
+  const [talentScores, setTalentScores] = useState<Record<string, number | null>>({});
+  const [isLoadingScores, setIsLoadingScores] = useState(false);
   const publicClient = usePublicClient();
 
   useEffect(() => {
@@ -136,6 +138,66 @@ function NFTHoldersList({ contractAddress }: { contractAddress: string }) {
     fetchHolderProfiles();
   }, [owners, publicClient]);
 
+  useEffect(() => {
+    const fetchTalentScores = async () => {
+      if (!owners.length || !holderProfiles) return;
+
+      setIsLoadingScores(true);
+      const scores: Record<string, number | null> = {};
+
+      for (const address of owners) {
+        try {
+          const profile = holderProfiles[address];
+          if (!profile) continue;
+
+          const queryParams = new URLSearchParams();
+          let id = "";
+          let accountSource = "";
+
+          // Try to get score using wallet address first
+          if (address) {
+            id = address;
+            accountSource = "wallet";
+          }
+          // Then try farcaster if available
+          else if (profile.social?.farcaster) {
+            id = profile.social.farcaster;
+            accountSource = "farcaster";
+          }
+          // Then try github if available
+          else if (profile.social?.github) {
+            id = profile.social.github;
+            accountSource = "github";
+          }
+          // Skip if no valid identifier
+          else {
+            continue;
+          }
+
+          queryParams.append("id", id);
+          queryParams.append("account_source", accountSource);
+
+          const response = await fetch(`/api/talent-protocol/score?${queryParams.toString()}`);
+
+          if (response.ok) {
+            const data = await response.json();
+            scores[address] = data.score?.points || null;
+          }
+        } catch (error) {
+          console.error(`Error fetching talent score for ${address}:`, error);
+          scores[address] = null;
+        }
+      }
+
+      setTalentScores(scores);
+      setIsLoadingScores(false);
+    };
+
+    if (Object.keys(holderProfiles).length > 0) {
+      fetchTalentScores();
+    }
+  }, [owners, holderProfiles]);
+
   if (isLoadingOwners || isLoadingProfiles) {
     return <div className="text-center">Loading attendees...</div>;
   }
@@ -169,6 +231,7 @@ function NFTHoldersList({ contractAddress }: { contractAddress: string }) {
       <div className="max-h-60 overflow-y-auto">
         {displayedHolders.map((holder: string, index: number) => {
           const profile = holderProfiles[holder];
+          const talentScore = talentScores[holder];
           return (
             <Link
               href={`/profile/${holder}`}
@@ -203,11 +266,34 @@ function NFTHoldersList({ contractAddress }: { contractAddress: string }) {
                     {profile.social.farcaster && <p className="text-xs m-0 p-0 text-purple-400">Farcaster</p>}
                   </div>
                 )}
+                {talentScore && talentScore > 0 && (
+                  <div className="mt-1 flex justify-center">
+                    <span className="px-1.5 py-0.5 text-md bg-gray-900 text-purple-400 rounded-full flex items-center">
+                      <Image src="/talent-protocol-logo.jpg" alt="TP" width={18} height={18} className="rounded-full" />
+                      {talentScore}
+                    </span>
+                  </div>
+                )}
               </div>
             </Link>
           );
         })}
       </div>
+      {isLoadingScores && (
+        <div className="text-center mt-2">
+          <div className="flex items-center justify-center gap-1">
+            <Image
+              src="/talent-protocol-logo.jpg"
+              alt="Talent Protocol"
+              width={16}
+              height={16}
+              className="rounded-full"
+            />
+            <div className="animate-spin inline-block h-4 w-4 border-b-2 border-purple-500 rounded-full"></div>
+            <span className="ml-1 text-xs">Loading Builder Scores...</span>
+          </div>
+        </div>
+      )}
       {hasMore && (
         <button onClick={handleLoadMore} className="btn btn-sm btn-ghost mt-2 w-full">
           Load 5 More
